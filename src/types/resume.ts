@@ -16,12 +16,12 @@ export interface ExperienceEntry {
   role: string;
   company: string;
   years: string;
-  description: string;
+  description: string[]; // Changed from string to string[]
 }
 
 export interface ProjectEntry {
   name: string;
-  description: string;
+  description: string[]; // Changed from string to string[]
   technologies?: string[];
   link: string;
 }
@@ -34,6 +34,6 @@ export interface ResumeData {
   contact: Contact;
   education: EducationEntry[];
   experience: ExperienceEntry[];
-  skills: string[];
+  skills: Record<string, string[]>; // Changed from string[] to Record<string, string[]>
   projects: ProjectEntry[];
 }
