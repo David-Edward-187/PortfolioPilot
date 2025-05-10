@@ -4,7 +4,8 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"; // Added SheetTitle
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { DialogTitle } from "@/components/ui/dialog"; // Import DialogTitle
 import { Menu, CodeXml } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import * as React from "react";
@@ -39,31 +40,35 @@ export function Navbar() {
         </Link>
         
         {isMobile ? (
-          <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Open navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              {/* Added SheetTitle for accessibility, visually hidden */}
-              <SheetTitle className="sr-only">Navigation Menu</SheetTitle> 
-              <nav className="flex flex-col gap-4 mt-8">
-                <NavItems />
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <div className="flex items-center gap-2 ml-4"> {/* Added ml-4 for spacing */}
+            <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                {/* Accessibility: Provide a title for the dialog/sheet */}
+                <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
+                {/* SheetTitle can also be used if preferred, DialogTitle is generally recommended for Radix Dialog based components */}
+                {/* <SheetTitle className="sr-only">Navigation Menu</SheetTitle>  */}
+                <nav className="flex flex-col gap-4 mt-8">
+                  <NavItems />
+                </nav>
+              </SheetContent>
+            </Sheet>
+            <ThemeToggle />
+          </div>
         ) : (
-          <nav className="hidden md:flex items-center gap-2">
-            <NavItems />
-          </nav>
+          <div className="flex items-center gap-2">
+            <nav className="hidden md:flex items-center gap-2">
+              <NavItems />
+            </nav>
+            <ThemeToggle />
+          </div>
         )}
-        <div className={isMobile ? "ml-auto pl-2" : ""}>
-         <ThemeToggle />
-        </div>
       </div>
     </header>
   );
 }
-
