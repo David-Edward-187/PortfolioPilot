@@ -1,18 +1,12 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+
 import { ProfileSection } from '@/components/profile-section';
 import { ResumeSection } from '@/components/resume-section';
 import { ContactForm } from '@/components/contact-form';
-import type { ResumeData } from '@/types/resume';
-
-async function getResumeData(): Promise<ResumeData> {
-  const filePath = path.join(process.cwd(), 'src', 'data', 'resume.json');
-  const fileContents = await fs.readFile(filePath, 'utf8');
-  return JSON.parse(fileContents);
-}
+import { resumeData } from '@/data/resume'; // Import directly from resume.ts
+// No need for fs or path imports anymore
 
 export default async function PortfolioPage() {
-  const resumeData = await getResumeData();
+  // resumeData is now directly imported
 
   return (
     <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">

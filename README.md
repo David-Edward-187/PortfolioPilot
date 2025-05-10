@@ -140,7 +140,7 @@ yarn typecheck
   - **`src/components/ui`**: ShadCN UI components.
 - **`src/ai`**: Genkit related code, including flows and prompts.
   - **`src/ai/flows`**: Genkit flows for AI functionalities.
-- **`src/data`**: Static data files, like `resume.json`.
+- **`src/data`**: Static data files, like `resume.ts`.
 - **`src/hooks`**: Custom React hooks.
 - **`src/lib`**: Utility functions and shared libraries.
 - **`src/types`**: TypeScript type definitions.
@@ -190,7 +190,7 @@ This application can be deployed to any platform that supports Next.js applicati
 ## Customization
 
 - **Theme**: Modify `src/app/globals.css` to adjust the color palette and base styles. The theme uses HSL CSS variables.
-- **Resume Data**: Update `src/data/resume.json` to personalize the portfolio content.
+- **Resume Data**: Update `src/data/resume.ts` to personalize the portfolio content.
 - **Components**: Customize or add new components in the `src/components` directory.
 - **AI Features**: Extend or modify AI functionalities in the `src/ai` directory using Genkit.
 ```
