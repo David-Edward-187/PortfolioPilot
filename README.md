@@ -1,3 +1,4 @@
+
 # PortfolioPilot
 
 This is a Next.js project bootstrapped with `create-next-app`, designed as a modern developer portfolio with AI-powered resume assistance.
@@ -13,14 +14,33 @@ First, ensure you have Node.js (version 18 or later recommended) and npm/yarn in
 
 ### Environment Variables
 
-Create a `.env.local` file in the root of the project and add any necessary environment variables. For example, if you integrate an email service like Resend, you would add your API key here:
+Create a `.env.local` file in the root of the project. This file is crucial for storing sensitive information like API keys. Copy the contents of `.env` (if it exists and has a template) or create it from scratch.
+
+**For the contact form to send emails, you MUST configure the following variables:**
 
 ```
-RESEND_API_KEY=your_resend_api_key
-CONTACT_FORM_RECIPIENT_EMAIL=your_email@example.com
+# .env.local
+
+# Resend API Key
+# 1. Sign up at https://resend.com
+# 2. Create an API Key in your Resend dashboard.
+# 3. Paste the API key here.
+RESEND_API_KEY=your_resend_api_key_here
+
+# Contact Form Recipient Email
+# This is the email address where you want to receive messages from the contact form.
+CONTACT_FORM_RECIPIENT_EMAIL=your_personal_email@example.com
+
+# (Optional but Recommended for Production) Resend Verified Domain
+# For sending emails from your own domain (e.g., contact@yourdomain.com),
+# you need to verify your domain in Resend.
+# See: https://resend.com/docs/authentication/domains
+# If you don't have a verified domain, Resend might use a default sender like onboarding@resend.dev.
+# The `from` address in `src/app/actions/contact-form-actions.ts` is initially set to onboarding@resend.dev.
+# Update it if you use a verified domain.
 ```
 
-Refer to the `.env` file for a template.
+Refer to the `.env` file for a template if one is provided.
 
 ### Installation
 
@@ -30,7 +50,7 @@ Refer to the `.env` file for a template.
    cd <project-directory>
    ```
 
-2. Install dependencies:
+2. Install dependencies (this includes `resend` for email functionality):
    ```bash
    npm install
    # or
@@ -48,6 +68,8 @@ yarn dev
 ```
 
 This will start the development server, typically on [http://localhost:9002](http://localhost:9002). The port is configured in `package.json`.
+
+**Important for Contact Form:** Ensure your `.env.local` file is correctly set up with `RESEND_API_KEY` and `CONTACT_FORM_RECIPIENT_EMAIL` for the contact form to send emails.
 
 ### Running Genkit Development Server
 
@@ -113,6 +135,7 @@ yarn typecheck
 ## Project Structure
 
 - **`src/app`**: Contains the main application routes using the Next.js App Router.
+  - **`src/app/actions`**: Server Actions for form submissions and data mutations.
 - **`src/components`**: Reusable UI components.
   - **`src/components/ui`**: ShadCN UI components.
 - **`src/ai`**: Genkit related code, including flows and prompts.
@@ -131,11 +154,38 @@ yarn typecheck
 - **ShadCN UI**: Reusable UI components built with Radix UI and Tailwind CSS.
 - **Genkit**: Toolkit for building AI-powered features.
 - **React Hook Form & Zod**: For form handling and validation.
+- **Resend**: Email sending service.
 - **Lucide React**: Icon library.
+
+## Contact Form Setup (Resend)
+
+The contact form uses Resend to send emails. To make it work:
+
+1.  **Install Resend**: This is already included in `package.json` and will be installed with `npm install` or `yarn install`.
+    ```bash
+    npm install resend
+    # or
+    yarn add resend
+    ```
+2.  **Sign up for Resend**: Go to [resend.com](https://resend.com) and create an account.
+3.  **Create an API Key**: In your Resend dashboard, navigate to API Keys and create a new API key.
+4.  **Set Environment Variables**:
+    *   Create a `.env.local` file in the root of your project (if it doesn't exist).
+    *   Add your Resend API key:
+        ```
+        RESEND_API_KEY=your_actual_api_key_from_resend
+        ```
+    *   Add the email address where you want to receive contact form submissions:
+        ```
+        CONTACT_FORM_RECIPIENT_EMAIL=your_email_address@example.com
+        ```
+5.  **(Recommended for Production) Verify Your Domain**:
+    *   To send emails from your own domain (e.g., `contact@yourdomain.com`) and improve deliverability, you need to verify your domain with Resend. Follow their documentation: [Resend Domain Verification](https://resend.com/docs/authentication/domains).
+    *   After verifying your domain, update the `from` email address in `src/app/actions/contact-form-actions.ts` to use an email from your verified domain. For testing without a verified domain, Resend allows sending from `onboarding@resend.dev`, which is the current default in the code.
 
 ## Deployment
 
-This application can be deployed to any platform that supports Next.js applications, such as Vercel, Netlify, or Firebase Hosting. Ensure your build process and environment variables are configured correctly on your chosen platform.
+This application can be deployed to any platform that supports Next.js applications, such as Vercel, Netlify, or Firebase Hosting. Ensure your build process and environment variables (especially `RESEND_API_KEY` and `CONTACT_FORM_RECIPIENT_EMAIL`) are configured correctly on your chosen platform.
 
 ## Customization
 
