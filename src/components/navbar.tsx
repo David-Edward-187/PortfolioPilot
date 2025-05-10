@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -11,6 +12,7 @@ import * as React from "react";
 const navLinks = [
   { href: "#profile", label: "Profile" },
   { href: "#resume", label: "Resume" },
+  { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -62,3 +64,4 @@ export function Navbar() {
     </header>
   );
 }
+

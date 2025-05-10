@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -90,7 +91,7 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
         </section>
 
         {/* Projects Section */}
-        <section>
+        <section id="projects">
           <div className="flex items-center mb-6">
             <Lightbulb className="h-7 w-7 text-primary mr-3" />
             <h3 className="text-2xl font-semibold text-foreground">Projects</h3>
@@ -133,3 +134,4 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
     </Card>
   );
 }
+
