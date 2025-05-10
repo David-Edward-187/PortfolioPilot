@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { Send } from 'lucide-react';
 import * as React from 'react';
+import { sendContactEmail } from '@/app/actions/contact-form-actions'; // Updated import
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -44,17 +46,43 @@ export function ContactForm() {
 
   async function onSubmit(data: ContactFormValues) {
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    
-    console.log("Form submitted:", data); // In a real app, send this data to a backend
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-      variant: "default", 
-    });
-    form.reset();
+    try {
+      const result = await sendContactEmail(data);
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+          variant: "default",
+        });
+        form.reset();
+      } else {
+        // Handle specific field errors if provided by the server action
+        if (result.errors) {
+          Object.entries(result.errors).forEach(([fieldName, errors]) => {
+            if (errors) {
+              form.setError(fieldName as keyof ContactFormValues, {
+                type: 'server',
+                message: errors.join(', '),
+              });
+            }
+          });
+        }
+        toast({
+          title: "Error Sending Message",
+          description: result.error || "An unexpected error occurred. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Failed to submit contact form:", error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
