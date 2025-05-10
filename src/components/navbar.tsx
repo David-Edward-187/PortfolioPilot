@@ -11,7 +11,6 @@ import * as React from "react";
 const navLinks = [
   { href: "#profile", label: "Profile" },
   { href: "#resume", label: "Resume" },
-  { href: "#ai-assistant", label: "AI Assistant" },
   { href: "#contact", label: "Contact" },
 ];
 

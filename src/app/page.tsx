@@ -3,7 +3,6 @@ import path from 'path';
 import { ProfileSection } from '@/components/profile-section';
 import { ResumeSection } from '@/components/resume-section';
 import { ContactForm } from '@/components/contact-form';
-import { ResumeAIAssistant } from '@/components/resume-ai-assistant';
 import type { ResumeData } from '@/types/resume';
 
 async function getResumeData(): Promise<ResumeData> {
@@ -34,8 +33,6 @@ export default async function PortfolioPage() {
             projects: resumeData.projects
           }}
         />
-        
-        <ResumeAIAssistant />
         
         <ContactForm />
       </div>
