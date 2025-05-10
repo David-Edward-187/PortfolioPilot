@@ -86,7 +86,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="shadow-lg" id="contact">
+    <Card className="shadow-lg scroll-mt-16" id="contact">
       <CardHeader className="text-center">
         <div className="flex items-center justify-center mb-2">
           <Send className="h-8 w-8 text-primary mr-3" />
@@ -172,3 +172,4 @@ export function ContactForm() {
     </Card>
   );
 }
+

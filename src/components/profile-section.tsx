@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,7 +11,7 @@ interface ProfileSectionProps {
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
-    <Card className="shadow-lg" id="profile">
+    <Card className="shadow-lg scroll-mt-16" id="profile">
       <CardHeader className="text-center">
         <div className="flex justify-center mb-6">
             <Image
@@ -54,3 +55,4 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
     </Card>
   );
 }
+

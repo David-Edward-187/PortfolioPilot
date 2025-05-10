@@ -12,7 +12,7 @@ interface ResumeSectionProps {
 
 export function ResumeSection({ resume }: ResumeSectionProps) {
   return (
-    <Card className="shadow-lg" id="resume">
+    <Card className="shadow-lg scroll-mt-16" id="resume">
       <CardHeader>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
           <div className="flex items-center mb-4 sm:mb-0">
@@ -91,7 +91,7 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
         </section>
 
         {/* Projects Section */}
-        <section id="projects">
+        <section id="projects" className="scroll-mt-16">
           <div className="flex items-center mb-6">
             <Lightbulb className="h-7 w-7 text-primary mr-3" />
             <h3 className="text-2xl font-semibold text-foreground">Projects</h3>
