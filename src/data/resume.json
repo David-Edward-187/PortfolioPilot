@@ -1,0 +1,87 @@
+
+{
+  "name": "Alex Johnson",
+  "title": "Full Stack Developer",
+  "bio": "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
+  "headshotUrl": "https://picsum.photos/seed/developer/200/200",
+  "contact": {
+    "email": "alex.johnson.dev@example.com",
+    "linkedin": "https://linkedin.com/in/alexjohnsondev",
+    "github": "https://github.com/alexjohnsondev"
+  },
+  "education": [
+    {
+      "degree": "Master of Science in Computer Science",
+      "institution": "Tech University",
+      "years": "2018 - 2020",
+      "details": "Specialized in Web Development and Cloud Computing. Thesis on scalable microservices."
+    },
+    {
+      "degree": "Bachelor of Science in Software Engineering",
+      "institution": "State College of Engineering",
+      "years": "2014 - 2018",
+      "details": "Graduated with Honors. Capstone project: A real-time collaborative coding platform."
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Software Engineer",
+      "company": "Innovate Solutions Ltd.",
+      "years": "2021 - Present",
+      "description": "Lead a team of 5 developers in building and maintaining a high-traffic e-commerce platform. Architected and implemented new features using React, Node.js, and AWS services. Improved application performance by 30% through code optimization and infrastructure upgrades. Mentored junior developers and conducted code reviews."
+    },
+    {
+      "role": "Software Developer",
+      "company": "Web Wizards Inc.",
+      "years": "2019 - 2021",
+      "description": "Developed responsive user interfaces for client projects using React and Next.js. Collaborated with designers and backend developers to deliver pixel-perfect applications. Contributed to API development using Express.js and MongoDB. Participated in agile development cycles and sprint planning."
+    },
+    {
+      "role": "Junior Developer Intern",
+      "company": "Code Crafters Co.",
+      "years": "Summer 2018",
+      "description": "Assisted senior developers in testing and debugging web applications. Gained hands-on experience with JavaScript, HTML, CSS, and version control systems (Git)."
+    }
+  ],
+  "skills": [
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "Python",
+    "Django",
+    "SQL (PostgreSQL, MySQL)",
+    "NoSQL (MongoDB, Firebase)",
+    "RESTful APIs",
+    "GraphQL",
+    "AWS (EC2, S3, Lambda, RDS)",
+    "Docker",
+    "Kubernetes",
+    "Git & GitHub",
+    "Agile Methodologies",
+    "Problem Solving",
+    "Team Collaboration"
+  ],
+  "projects": [
+    {
+      "name": "E-commerce Platform",
+      "description": "A full-featured e-commerce site with product listings, shopping cart, user authentication, and payment integration. Built with Next.js, Stripe, and PostgreSQL.",
+      "technologies": ["Next.js", "React", "Stripe", "PostgreSQL", "Tailwind CSS"],
+      "link": "https://github.com/alexjohnsondev/ecommerce-platform"
+    },
+    {
+      "name": "Task Management App",
+      "description": "A collaborative task management tool with real-time updates, drag-and-drop functionality, and notification system. Developed using React, Firebase, and Material UI.",
+      "technologies": ["React", "Firebase", "Material UI", "Node.js"],
+      "link": "https://github.com/alexjohnsondev/task-manager"
+    },
+    {
+      "name": "This Portfolio Website",
+      "description": "The portfolio you are currently viewing, built with Next.js, Tailwind CSS, and featuring a GenAI resume assistant.",
+      "technologies": ["Next.js", "React", "Tailwind CSS", "Genkit"],
+      "link": "#"
+    }
+  ]
+}
