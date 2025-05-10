@@ -1,7 +1,7 @@
 
 # PortfolioPilot
 
-This is a Next.js project bootstrapped with `create-next-app`, designed as a modern developer portfolio with AI-powered resume assistance.
+This is a Next.js project bootstrapped with `create-next-app`, designed as a modern developer portfolio.
 
 ## Getting Started
 
@@ -71,27 +71,6 @@ This will start the development server, typically on [http://localhost:9002](htt
 
 **Important for Contact Form:** Ensure your `.env.local` file is correctly set up with `RESEND_API_KEY` and `CONTACT_FORM_RECIPIENT_EMAIL` for the contact form to send emails.
 
-### Running Genkit Development Server
-
-If your project uses Genkit for AI functionalities, you can run the Genkit development server. This usually runs alongside your Next.js dev server.
-
-To start Genkit in development mode (rebuilds on file changes):
-
-```bash
-npm run genkit:watch
-# or
-yarn genkit:watch
-```
-
-Alternatively, to start it once:
-```bash
-npm run genkit:dev
-# or
-yarn genkit:dev
-```
-
-The Genkit development UI will typically be available on [http://localhost:4000](http://localhost:4000).
-
 ## Building for Production
 
 To build the application for production:
@@ -138,8 +117,6 @@ yarn typecheck
   - **`src/app/actions`**: Server Actions for form submissions and data mutations.
 - **`src/components`**: Reusable UI components.
   - **`src/components/ui`**: ShadCN UI components.
-- **`src/ai`**: Genkit related code, including flows and prompts.
-  - **`src/ai/flows`**: Genkit flows for AI functionalities.
 - **`src/data`**: Static data files, like `resume.ts`.
 - **`src/hooks`**: Custom React hooks.
 - **`src/lib`**: Utility functions and shared libraries.
@@ -152,7 +129,6 @@ yarn typecheck
 - **TypeScript**: Superset of JavaScript for type safety.
 - **Tailwind CSS**: Utility-first CSS framework for styling.
 - **ShadCN UI**: Reusable UI components built with Radix UI and Tailwind CSS.
-- **Genkit**: Toolkit for building AI-powered features.
 - **React Hook Form & Zod**: For form handling and validation.
 - **Resend**: Email sending service.
 - **Lucide React**: Icon library.
@@ -192,5 +168,3 @@ This application can be deployed to any platform that supports Next.js applicati
 - **Theme**: Modify `src/app/globals.css` to adjust the color palette and base styles. The theme uses HSL CSS variables.
 - **Resume Data**: Update `src/data/resume.ts` to personalize the portfolio content.
 - **Components**: Customize or add new components in the `src/components` directory.
-- **AI Features**: Extend or modify AI functionalities in the `src/ai` directory using Genkit.
-```

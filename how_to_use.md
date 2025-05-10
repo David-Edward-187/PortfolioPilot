@@ -5,7 +5,7 @@ This guide provides detailed instructions on how to set up, run, customize, and 
 
 ## 1. Introduction
 
-PortfolioPilot is a modern, AI-enhanced developer portfolio built with Next.js, TypeScript, Tailwind CSS, and ShadCN UI components. It allows developers to showcase their skills, experience, projects, and provide a way for potential employers or collaborators to get in touch via a contact form.
+PortfolioPilot is a modern developer portfolio built with Next.js, TypeScript, Tailwind CSS, and ShadCN UI components. It allows developers to showcase their skills, experience, projects, and provide a way for potential employers or collaborators to get in touch via a contact form.
 
 ## 2. Prerequisites
 
@@ -94,19 +94,6 @@ This will typically start the application on [http://localhost:9002](http://loca
 
 **Ensure your `.env.local` file is correctly configured before running the development server if you intend to test the contact form.**
 
-### 5.2. Genkit Development Server (If Applicable)
-
-This project does not currently have active Genkit AI features integrated beyond the basic setup files (`src/ai/genkit.ts`, `src/ai/dev.ts`). If AI features are added later that require Genkit flows to be running, you would start the Genkit development server with:
-
-```bash
-npm run genkit:watch
-```
-or
-```bash
-yarn genkit:watch
-```
-This usually runs on `http://localhost:4000` and allows testing and debugging AI flows.
-
 ## 6. Building and Starting for Production
 
 ### 6.1. Build the Application
@@ -146,10 +133,6 @@ Understanding the project structure will help you navigate and customize the app
         -   **`actions/`**: Server Actions, such as `contact-form-actions.ts` for handling contact form submissions.
         -   **`globals.css`**: Global stylesheets, including Tailwind CSS setup and ShadCN UI theme variables.
         -   **`layout.tsx`**: The root layout for the application.
-    -   **`ai/`**: Genkit related code.
-        -   **`dev.ts`**: Genkit development server configuration.
-        -   **`genkit.ts`**: Genkit core initialization.
-        -   **`flows/`**: (If AI features are added) Genkit flows defining AI logic.
     -   **`components/`**: Reusable React components.
         -   **`ui/`**: ShadCN UI components (e.g., Button, Card, Input).
         -   **`contact-form.tsx`**: The client-side contact form component.
@@ -282,13 +265,5 @@ This Next.js application can be deployed to various platforms that support Node.
 2.  **Build Command**: Set the build command to `npm run build` (or `yarn build`).
 3.  **Start Command**: Typically, the platform will detect it's a Next.js app. If manual configuration is needed, the start command is often `npm run start` (or `yarn start`).
 4.  **Node.js Version**: Ensure your deployment platform uses a compatible Node.js version (18.x or later).
-
-## 12. AI Features (Future Scope)
-
-While the project structure includes `src/ai/` for Genkit, AI-powered resume assistance features are not fully implemented in the current version. If these are developed:
-
--   AI logic would reside in Genkit flows within `src/ai/flows/`.
--   These flows would be invoked from server components or server actions.
--   You might need to configure additional environment variables for AI model API keys (e.g., Google AI Studio API Key if using Gemini models via Genkit).
 
 This guide should provide a comprehensive overview of how to work with PortfolioPilot. If you encounter any issues, refer to the Next.js and Resend documentation or open an issue in the project repository if applicable.
