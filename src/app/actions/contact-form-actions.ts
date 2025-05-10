@@ -72,15 +72,29 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
       subject: `New Contact Form Submission: ${subject}`,
       reply_to: email, // User's email as reply-to
       html: `
-        <h1>New Contact Form Submission</h1>
-        <p>You have received a new message from your portfolio contact form.</p>
-        <hr />
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <hr />
-        <p><strong>Message:</strong></p>
-        <p style="white-space: pre-wrap;">${message}</p>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 0;">
+          <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <div style="text-align: center; border-bottom: 1px solid #eeeeee; padding-bottom: 10px; margin-bottom: 20px;">
+              <h1 style="font-size: 24px; color: #008080; margin: 0;">New Contact Form Submission</h1>
+            </div>
+            <p style="margin-bottom: 15px;">You have received a new message from your portfolio contact form.</p>
+            
+            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+              <p style="margin: 5px 0;"><strong>Name:</strong> ${name}</p>
+              <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #008080; text-decoration: none;">${email}</a></p>
+              <p style="margin: 5px 0;"><strong>Subject:</strong> ${subject}</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+              <h2 style="font-size: 18px; color: #008080; border-bottom: 1px solid #eeeeee; padding-bottom: 5px; margin-bottom: 10px;">Message:</h2>
+              <p style="white-space: pre-wrap; background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin: 0;">${message}</p>
+            </div>
+            
+            <div style="text-align: center; font-size: 12px; color: #777777; margin-top: 20px; padding-top: 10px; border-top: 1px solid #eeeeee;">
+              <p>This email was sent from your PortfolioPilot website.</p>
+            </div>
+          </div>
+        </body>
       `,
     });
 
@@ -104,3 +118,4 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
     };
   }
 }
+
