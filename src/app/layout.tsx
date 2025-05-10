@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Navbar } from "@/components/navbar";
+import { DevtoolBlocker } from '@/components/devtool-blocker';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,6 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <DevtoolBlocker />
           <Navbar />
           <main>{children}</main>
           <Toaster />
