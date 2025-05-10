@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"; // Added SheetTitle
 import { Menu, CodeXml } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import * as React from "react";
@@ -47,6 +47,8 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              {/* Added SheetTitle for accessibility, visually hidden */}
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle> 
               <nav className="flex flex-col gap-4 mt-8">
                 <NavItems />
               </nav>
