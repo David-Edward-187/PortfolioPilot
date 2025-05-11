@@ -19,20 +19,20 @@ export function DesktopTopMenu() {
     <div
       className={cn(
         'fixed top-0 left-0 right-0 h-7 bg-[hsl(var(--toolbar-background))] backdrop-blur-md z-50',
-        'border-b border-border/70 flex items-center justify-between px-4 text-xs text-foreground select-none shadow-sm'
+        'border-b border-border/70 flex items-center justify-between px-3 sm:px-4 text-xs text-foreground select-none shadow-sm'
       )}
       role="menubar"
     >
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 sm:space-x-4">
         <CodeXml className="w-4 h-4 text-primary" />
         <span className="font-semibold">PortfolioPilot OS</span>
-        {/* Mock menu items - non-functional for now */}
-        <span className="hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">File</span>
-        <span className="hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">Edit</span>
-        <span className="hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">View</span>
-        <span className="hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">Help</span>
+        {/* Mock menu items - hidden on small screens */}
+        <span className="hidden sm:inline hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">File</span>
+        <span className="hidden sm:inline hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">Edit</span>
+        <span className="hidden sm:inline hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">View</span>
+        <span className="hidden sm:inline hover:bg-foreground/10 px-2 py-0.5 rounded-sm cursor-default">Help</span>
       </div>
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center space-x-2 sm:space-x-3">
         <ThemeToggle />
         <span>{currentTime}</span>
       </div>
