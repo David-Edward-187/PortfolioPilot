@@ -3,11 +3,11 @@
 import * as React from 'react';
 import { Dock } from './Dock';
 import { Window } from './Window';
-import { LandingPage } from '@/components/landing-page'; // To be used for Profile
-import { CaseStudyOverviewPage } from '@/components/case-study-overview-page'; // To be used for Projects
-import { ContactConnectPage } from '@/components/contact-connect-page'; // To be used for Contact
-import { ResumeDisplayPage } from '@/components/resume-display-page'; // New component for Resume
-import { CertificatesDisplayPage } from '@/components/certificates-display-page'; // New component for Certificates
+import { LandingPage } from '@/components/landing-page'; 
+import { CaseStudyOverviewPage } from '@/components/case-study-overview-page'; 
+import { ContactConnectPage } from '@/components/contact-connect-page'; 
+import { ResumeDisplayPage } from '@/components/resume-display-page'; 
+import { CertificatesDisplayPage } from '@/components/certificates-display-page'; 
 import { User, FileText, Briefcase, Award, MessageSquare } from 'lucide-react';
 import { DesktopTopMenu } from './DesktopTopMenu';
 
@@ -25,42 +25,57 @@ const defaultApps: AppDefinition[] = [
     name: 'Profile',
     icon: <User className="w-full h-full" />,
     component: LandingPage,
-    defaultSize: { width: 'w-[95vw] md:w-[800px]', height: 'h-[85vh] md:h-[600px]' },
+    defaultSize: { 
+      width: 'w-[95vw] md:w-[900px] lg:w-[1000px] xl:w-[1100px]', 
+      height: 'h-[85vh] md:h-[650px] lg:h-[700px] xl:h-[750px]' 
+    },
   },
   {
     id: 'resume',
     name: 'Resume',
     icon: <FileText className="w-full h-full" />,
     component: ResumeDisplayPage,
-    defaultSize: { width: 'w-[95vw] md:w-[900px]', height: 'h-[85vh] md:h-[700px]' },
+    defaultSize: { 
+      width: 'w-[95vw] md:w-[1000px] lg:w-[1150px] xl:w-[1300px]', 
+      height: 'h-[85vh] md:h-[750px] lg:h-[800px] xl:h-[850px]' 
+    },
   },
   {
     id: 'projects',
     name: 'Projects',
     icon: <Briefcase className="w-full h-full" />,
-    component: CaseStudyOverviewPage, // Existing CaseStudyOverviewPage for projects
-    defaultSize: { width: 'w-[95vw] md:w-[900px]', height: 'h-[85vh] md:h-[700px]' },
+    component: CaseStudyOverviewPage, 
+    defaultSize: { 
+      width: 'w-[95vw] md:w-[1000px] lg:w-[1150px] xl:w-[1300px]', 
+      height: 'h-[85vh] md:h-[750px] lg:h-[800px] xl:h-[850px]' 
+    },
   },
   {
     id: 'certificates',
     name: 'Certificates',
     icon: <Award className="w-full h-full" />,
     component: CertificatesDisplayPage,
-    defaultSize: { width: 'w-[95vw] md:w-[850px]', height: 'h-[85vh] md:h-[650px]' },
+    defaultSize: { 
+      width: 'w-[95vw] md:w-[950px] lg:w-[1100px] xl:w-[1250px]', 
+      height: 'h-[85vh] md:h-[700px] lg:h-[750px] xl:h-[800px]' 
+    },
   },
   {
     id: 'contact',
     name: 'Contact',
     icon: <MessageSquare className="w-full h-full" />,
     component: ContactConnectPage,
-    defaultSize: { width: 'w-[95vw] md:w-[850px]', height: 'h-[85vh] md:h-[650px]' },
+    defaultSize: { 
+      width: 'w-[95vw] md:w-[950px] lg:w-[1000px] xl:w-[1100px]', 
+      height: 'h-[85vh] md:h-[700px] lg:h-[700px] xl:h-[750px]' 
+    },
   },
 ];
 
 
 export function DesktopView() {
-  const [openApps, setOpenApps] = React.useState<{ [key: string]: boolean }>({ profile: true }); // Profile open by default
-  const [activeAppId, setActiveAppId] = React.useState<string | null>('profile'); // Profile active by default
+  const [openApps, setOpenApps] = React.useState<{ [key: string]: boolean }>({ profile: true }); 
+  const [activeAppId, setActiveAppId] = React.useState<string | null>('profile'); 
   const [appZIndexes, setAppZIndexes] = React.useState<{ [key: string]: number }>({ profile: 1 });
   const nextZIndex = React.useRef(2);
 
@@ -76,12 +91,12 @@ export function DesktopView() {
   const handleCloseApp = (appId: string) => {
     setOpenApps((prev) => ({ ...prev, [appId]: false }));
     if (activeAppId === appId) {
-      const remainingOpenApps = defaultApps.filter(app => app.id !== appId && openApps[app.id] && app.id !== appId); // ensure the closed app is not considered
+      const remainingOpenApps = defaultApps.filter(app => app.id !== appId && openApps[app.id] && app.id !== appId); 
       if (remainingOpenApps.length > 0) {
         let highestZ = 0;
         let nextActiveApp: string | null = null;
         remainingOpenApps.forEach(app => {
-          if (appZIndexes[app.id] > highestZ) {
+          if (openApps[app.id] && (appZIndexes[app.id] > highestZ)) { // Check if app is actually open
             highestZ = appZIndexes[app.id];
             nextActiveApp = app.id;
           }
@@ -114,7 +129,7 @@ export function DesktopView() {
             <div
               key={app.id}
               style={{ zIndex: appZIndexes[app.id] || 0 }}
-              onClick={() => handleWindowFocus(app.id)}
+              onClickCapture={() => handleWindowFocus(app.id)} // Use onClickCapture to ensure focus happens before child onClick
               className="absolute" 
             >
               <Window
@@ -135,4 +150,3 @@ export function DesktopView() {
     </div>
   );
 }
-
