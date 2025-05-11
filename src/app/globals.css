@@ -8,125 +8,84 @@ body {
 
 @layer base {
   :root {
-    /* Light Theme based on Teal, Light Gray, Coral */
-    --background: 210 20% 96%; /* Light Gray (#F0F0F0 equivalent - slightly bluish for coolness) */
-    --foreground: 215 25% 25%; /* Dark Slate Gray for text */
-    
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 215 25% 25%; /* Dark Slate Gray */
-    
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 215 25% 25%; /* Dark Slate Gray */
-    
-    --primary: 180 100% 25%; /* Teal (#008080) - Adjusted for WCAG on white text */
-    --primary-foreground: 0 0% 100%; /* White */
-    
-    --secondary: 210 20% 90%; /* Lighter Gray (#E6E6E6 equivalent) */
-    --secondary-foreground: 180 100% 20%; /* Darker Teal for text on secondary */
-    
-    --muted: 210 20% 94%; /* Very Light Gray */
-    --muted-foreground: 210 15% 45%; /* Medium Gray */
-    
-    --accent: 16 100% 60%; /* Coral (#FF7F50) - Adjusted for WCAG on dark text */
-    --accent-foreground: 0 0% 10%; /* Dark text for contrast on Coral */
-    
-    --destructive: 0 70% 50%; /* Standard Red */
-    --destructive-foreground: 0 0% 100%; /* White */
-    
-    --border: 210 15% 88%; /* Light Gray Border */
-    --input: 210 15% 92%; /* Slightly Lighter Gray for Input */
-    --ring: 180 100% 30%; /* Teal for focus rings - slightly brighter */
-    
-    --radius: 0.5rem;
-
-    --chart-1: 180 70% 40%; /* Teal shade 1 */
-    --chart-2: 16 80% 55%;  /* Coral shade 1 */
-    --chart-3: 200 60% 50%; /* Blue accent */
-    --chart-4: 45 70% 50%;  /* Yellow accent */
-    --chart-5: 270 60% 60%; /* Purple accent */
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 180 80% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 180 70% 25%;
+    --muted: 210 40% 90%;
+    --muted-foreground: 215 20% 45%;
+    --accent: 16 100% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 88%;
+    --input: 210 30% 92%;
+    --ring: 180 75% 45%;
+    --radius: 0.75rem;
+    --chart-1: 180 70% 45%;
+    --chart-2: 16 90% 60%;
+    --chart-3: 200 70% 55%;
+    --chart-4: 45 80% 55%;
+    --chart-5: 270 70% 65%;
   }
- 
+
   .dark {
-    --background: 220 18% 12%; /* Dark Blue/Gray */
-    --foreground: 210 20% 96%; /* Light text (near white) */
-    
-    --card: 220 18% 15%; /* Slightly lighter dark for cards */
-    --card-foreground: 210 20% 96%;
-    
-    --popover: 220 18% 12%;
-    --popover-foreground: 210 20% 96%;
-    
-    --primary: 180 100% 35%; /* Brighter Teal for dark mode */
-    --primary-foreground: 210 20% 96%; /* Light text on Teal */
-    
-    --secondary: 220 15% 25%; /* Darker secondary elements */
-    --secondary-foreground: 210 20% 90%;
-    
-    --muted: 220 15% 20%;
-    --muted-foreground: 210 15% 60%; /* Lighter muted text */
-    
-    --accent: 16 100% 65%; /* Brighter Coral for dark mode */
-    --accent-foreground: 220 18% 12%; /* Dark text on bright Coral */
-    
-    --destructive: 0 60% 45%; /* Slightly less intense red for dark mode */
-    --destructive-foreground: 210 20% 96%;
-    
-    --border: 220 15% 25%;
-    --input: 220 15% 25%;
-    --ring: 180 100% 40%; /* Brighter Teal for focus rings */
-
-    --chart-1: 180 70% 50%;
-    --chart-2: 16 80% 65%;
-    --chart-3: 200 60% 60%;
-    --chart-4: 45 70% 60%;
-    --chart-5: 270 60% 70%;
+    --background: 222 40% 10%;
+    --foreground: 210 40% 98%;
+    --card: 222 35% 13%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 40% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 180 70% 45%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 220 25% 20%;
+    --secondary-foreground: 210 40% 90%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 210 25% 65%;
+    --accent: 16 100% 60%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 20% 25%;
+    --input: 220 20% 22%;
+    --ring: 180 70% 50%;
+    --chart-1: 180 70% 55%;
+    --chart-2: 16 90% 70%;
+    --chart-3: 200 70% 65%;
+    --chart-4: 45 80% 65%;
+    --chart-5: 270 70% 75%;
   }
-}
- 
-@layer base {
+
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 100%; /* Ensure base font size is 16px for rem calculations */
   }
-  h1 { @apply text-2xl font-bold; } /* 1.25rem equivalent with default browser font size, typically text-2xl is 1.5rem */
-  h2 { @apply text-xl font-semibold; } /* 1rem equivalent (text-xl is 1.25rem) - Adjusting to proposal */
-  h3 { @apply text-lg font-semibold; } /* 0.875rem equivalent (text-lg is 1.125rem) - Adjusting to proposal */
-  
-  /* Revised type scale based on proposal */
-  h1, .text-h1 { @apply text-[1.25rem] font-bold leading-tight; } /* 20px */
-  h2, .text-h2 { @apply text-[1.125rem] font-semibold leading-snug; } /* 18px - for H2, or text-xl from tailwind defaults */
-  h3, .text-h3 { @apply text-[1rem] font-semibold leading-normal; }    /* 16px - for H3, or text-lg from tailwind defaults */
-  h4, .text-h4 { @apply text-[0.875rem] font-semibold leading-normal; } /* 14px - for H4 */
 
-  p, li, span, label, input, textarea, button, a { @apply text-[0.875rem]; } /* 14px - Body text */
-  small, .text-caption { @apply text-[0.75rem]; } /* 12px - Captions */
+  /* Refined type scale */
+  h1, .text-h1 { @apply text-[1.75rem] font-bold leading-tight tracking-tight md:text-[2rem]; } /* ~28px / 32px */
+  h2, .text-h2 { @apply text-[1.5rem] font-semibold leading-snug tracking-tight md:text-[1.75rem]; } /* ~24px / 28px */
+  h3, .text-h3 { @apply text-[1.25rem] font-semibold leading-normal tracking-tight md:text-[1.5rem]; }    /* ~20px / 24px */
+  h4, .text-h4 { @apply text-[1.125rem] font-semibold leading-normal tracking-tight md:text-[1.25rem]; } /* ~18px / 20px */
+
+  p, li, span, label, input, textarea, button, a { @apply text-[1rem] leading-relaxed; } /* 16px - Body text */
+  small, .text-caption { @apply text-[0.875rem]; } /* 14px - Captions */
 
 
   /* Ensure focus rings are visible on all interactive elements */
   button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex="0"]:focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
+
+  .card, .card-like { /* Applying a general style for card-like elements */
+    @apply rounded-lg border bg-card text-card-foreground shadow-lg; /* Added shadow-lg for more depth */
+  }
 }
-
-/* Apply 4-step type scale from guidelines */
-/* Tailwind's default text sizes (text-sm, text-base, text-lg, text-xl, text-2xl) often map well.
-   text-2xl (1.5rem / 24px) - H1
-   text-xl (1.25rem / 20px) - H2
-   text-lg (1.125rem / 18px) - H3
-   text-base (1rem / 16px) - Body / H4
-   text-sm (0.875rem / 14px) - Smaller body / Captions
-   text-xs (0.75rem / 12px) - Smallest text / Fine print
-   Using the provided scale: 1.25rem, 1rem, 0.875rem, 0.75rem
-   H1/H2: 1.25rem -> text-xl
-   H3/H4: 1rem -> text-base
-   Body: 0.875rem -> text-sm
-   Captions: 0.75rem -> text-xs
-   Overriding h1,h2,h3,p,li etc above with these values.
-*/
-
-/* Spacing: Use Tailwind's p-4 (1rem), p-6 (1.5rem), m-4, etc. These map to common design tokens.
-   No specific override needed here as it's about usage in components. */
-
-/* Icons: Standardize on 24px grid with 2px stroke. Achieved by using lucide-react icons with default size (24) or explicit sizing (h-6 w-6) and stroke-width where applicable. */

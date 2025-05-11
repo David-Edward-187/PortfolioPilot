@@ -3,7 +3,6 @@ import type { Config } from "tailwindcss";
 export default {
     darkMode: ["class"],
     content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -50,21 +49,21 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			},
-  			sidebar: {
-  				DEFAULT: 'hsl(var(--sidebar-background))',
-  				foreground: 'hsl(var(--sidebar-foreground))',
-  				primary: 'hsl(var(--sidebar-primary))',
-  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-  				accent: 'hsl(var(--sidebar-accent))',
-  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-  				border: 'hsl(var(--sidebar-border))',
-  				ring: 'hsl(var(--sidebar-ring))'
+  			sidebar: { // Ensure these use CSS variables if defined in :root or .dark
+  				DEFAULT: 'hsl(var(--card))', // Example: using card as sidebar background
+  				foreground: 'hsl(var(--card-foreground))', // Example: using card-foreground
+  				primary: 'hsl(var(--primary))',
+  				'primary-foreground': 'hsl(var(--primary-foreground))',
+  				accent: 'hsl(var(--accent))',
+  				'accent-foreground': 'hsl(var(--accent-foreground))',
+  				border: 'hsl(var(--border))',
+  				ring: 'hsl(var(--ring))'
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: 'var(--radius)', /* 0.75rem from globals.css */
+  			md: 'calc(var(--radius) - 0.25rem)', /* 0.5rem */
+  			sm: 'calc(var(--radius) - 0.375rem)' /* 0.375rem */
   		},
   		keyframes: {
   			'accordion-down': {
@@ -87,7 +86,11 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  		},
+      boxShadow: {
+        'input-focus': '0 0 0 2px hsl(var(--ring))',
+        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+      }
   	}
   },
   plugins: [require("tailwindcss-animate")],
