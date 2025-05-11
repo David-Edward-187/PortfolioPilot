@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Download, Briefcase, GraduationCap, Sparkles, FileText } from 'lucide-react';
 import type { ResumeData } from '@/types/resume';
-import { resumeData as appResumeData } from '@/data/resume'; // Renamed import to avoid conflict
+import { resumeData as appResumeData } from '@/data/resume'; 
 
 interface ResumeSectionProps {
   resume: Pick<ResumeData, 'education' | 'experience' | 'skills'>;
@@ -13,11 +13,11 @@ interface ResumeSectionProps {
 
 export function ResumeSection({ resume }: ResumeSectionProps) {
   return (
-    <Card className="scroll-mt-16 hover:shadow-xl transition-shadow duration-300 ease-in-out" id="resume"> {/* Added card-like class */}
-      <CardHeader className="pt-8"> {/* Added pt-8 */}
+    <Card className="scroll-mt-16 hover:shadow-xl transition-shadow duration-300 ease-in-out" id="resume">
+      <CardHeader className="pt-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div className="flex items-center mb-4 sm:mb-0">
-            <FileText className="h-10 w-10 text-primary mr-4" /> {/* Increased icon size & margin */}
+            <FileText className="h-10 w-10 text-primary mr-4" />
             <CardTitle asChild>
               <h2 className="text-h2 text-primary">My Resume</h2>
             </CardTitle>
@@ -30,17 +30,17 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="space-y-12"> {/* Increased space-y */}
+      <CardContent className="space-y-12">
         {/* Experience Section */}
         <section>
-          <div className="flex items-center mb-8"> {/* Increased mb */}
-            <Briefcase className="h-8 w-8 text-primary mr-3" /> {/* Increased icon size */}
+          <div className="flex items-center mb-8">
+            <Briefcase className="h-8 w-8 text-primary mr-3" />
             <h3 className="text-h3 text-foreground">Experience</h3>
           </div>
-          <div className="space-y-10"> {/* Increased space-y */}
+          <div className="space-y-10">
             {resume.experience.map((exp, index) => (
-              <div key={index} className="pl-8 border-l-4 border-primary/40 relative pb-4 last:pb-0"> {/* Increased pl, thicker border */}
-                <div className="absolute -left-[10.5px] top-1 w-5 h-5 bg-background border-4 border-primary rounded-full ring-4 ring-background"></div> {/* Improved timeline dot */}
+              <div key={index} className="pl-8 border-l-4 border-primary/40 relative pb-4 last:pb-0">
+                <div className="absolute -left-[10.5px] top-1 w-5 h-5 bg-background border-4 border-primary rounded-full ring-4 ring-background"></div>
                 <h4 className="text-h4 font-medium text-primary mb-1">{exp.role}</h4>
                 <p className="text-md text-muted-foreground mb-1">{exp.company} | {exp.years}</p>
                 <ul className="mt-3 space-y-1.5 list-disc list-outside ml-5 text-foreground/80 leading-relaxed">
@@ -55,11 +55,11 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
 
         {/* Education Section */}
         <section>
-          <div className="flex items-center mb-8"> {/* Increased mb */}
-            <GraduationCap className="h-8 w-8 text-primary mr-3" /> {/* Increased icon size */}
+          <div className="flex items-center mb-8">
+            <GraduationCap className="h-8 w-8 text-primary mr-3" />
             <h3 className="text-h3 text-foreground">Education</h3>
           </div>
-          <div className="space-y-8"> {/* Increased space-y */}
+          <div className="space-y-8">
             {resume.education.map((edu, index) => (
               <div key={index} className="pl-8 border-l-4 border-primary/40 relative pb-4 last:pb-0">
                  <div className="absolute -left-[10.5px] top-1 w-5 h-5 bg-background border-4 border-primary rounded-full ring-4 ring-background"></div>
@@ -73,17 +73,17 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
 
         {/* Skills Section */}
         <section>
-          <div className="flex items-center mb-8"> {/* Increased mb */}
-             <Sparkles className="h-8 w-8 text-primary mr-3" /> {/* Increased icon size */}
+          <div className="flex items-center mb-8">
+             <Sparkles className="h-8 w-8 text-primary mr-3" />
             <h3 className="text-h3 text-foreground">Skills</h3>
           </div>
-          <div className="space-y-6"> {/* Increased space-y */}
+          <div className="space-y-6">
             {Object.entries(resume.skills).map(([category, skillList]) => (
               <div key={category}>
-                <h4 className="text-md font-semibold text-primary mb-3">{category}</h4> {/* Increased mb */}
-                <div className="flex flex-wrap gap-2.5"> {/* Increased gap */}
+                <h4 className="text-md font-semibold text-primary mb-3">{category}</h4>
+                <div className="flex flex-wrap gap-2.5">
                   {skillList.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="text-sm bg-primary/10 text-primary hover:bg-primary/20 transition-colors px-3.5 py-1.5 rounded-md shadow-sm"> {/* Larger padding, rounded-md */}
+                    <Badge key={index} variant="secondary" className="text-sm bg-primary/10 text-primary hover:bg-primary/20 transition-colors px-3.5 py-1.5 rounded-md shadow-sm">
                       {skill}
                     </Badge>
                   ))}
@@ -96,4 +96,3 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
     </Card>
   );
 }
-```
