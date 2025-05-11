@@ -96,5 +96,31 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
       link: "#"
     }
+  ],
+  certificates: [
+    {
+      name: "The Complete Node.js Developer Course",
+      issuingOrganization: "Udemy",
+      issueDate: "Mar 2022",
+      credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1/",
+      imageUrl: "https://picsum.photos/seed/udemycourse1/300/200",
+      description: "Covered Node.js fundamentals, Express, MongoDB, Mongoose, and building RESTful APIs."
+    },
+    {
+      name: "React - The Complete Guide (incl Hooks, React Router, Redux)",
+      issuingOrganization: "Udemy",
+      issueDate: "Jul 2021",
+      credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-2/",
+      imageUrl: "https://picsum.photos/seed/udemycourse2/300/200",
+      description: "In-depth exploration of React, including hooks, context API, Redux, and React Router."
+    },
+    {
+      name: "AWS Certified Solutions Architect - Associate",
+      issuingOrganization: "Amazon Web Services",
+      issueDate: "Nov 2022",
+      credentialUrl: "https://www.credly.com/badges/example-aws-badge",
+      imageUrl: "https://picsum.photos/seed/awscert/300/200",
+      description: "Validated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS."
+    }
   ]
 };
