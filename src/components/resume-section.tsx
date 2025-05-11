@@ -96,7 +96,7 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
             <Lightbulb className="h-7 w-7 text-primary mr-3" />
             <h3 className="text-2xl font-semibold text-foreground">Projects</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-6"> {/* Changed from grid to space-y for vertical stacking */}
             {resume.projects.map((project, index) => (
               <Card key={index} className="bg-card hover:shadow-xl transition-shadow duration-300">
                 <CardHeader>
@@ -134,4 +134,3 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
     </Card>
   );
 }
-
