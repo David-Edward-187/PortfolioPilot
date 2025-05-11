@@ -1,8 +1,9 @@
+
 "use client";
 
 import Image from 'next/image';
 import * as React from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { XIcon } from 'lucide-react';
 
