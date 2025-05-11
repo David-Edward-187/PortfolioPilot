@@ -32,11 +32,12 @@ CardHeader.displayName = "CardHeader"
 const CardTitle = React.forwardRef<
   HTMLDivElement, // Changed to HTMLDivElement as it wraps h-tags from globals.css
   React.HTMLAttributes<HTMLHeadingElement> // Kept HTMLHeadingElement for props type
->(({ className, children, ...props }, ref) => (
+>(({ className, children, asChild, ...props }, ref) => {
+  const Comp = asChild ? "div" : "h3"; // Default to h3 or allow asChild prop
+  return (
   // Assuming CardTitle will be used with h2 or h3 from globals.css for semantic HTML
-  // The actual heading tag (h2, h3) should be used where CardTitle is implemented.
   // This component provides styling for that heading.
-  <div // Changed from h3 to div to allow flexible heading levels
+  <Comp // Changed from h3 to div to allow flexible heading levels
     ref={ref}
     className={cn(
       "font-semibold leading-none tracking-tight", // Base styles, specific text size (e.g. text-h3) comes from usage
@@ -45,20 +46,26 @@ const CardTitle = React.forwardRef<
     {...props}
   >
     {children}
-  </div>
-))
+  </Comp>
+  );
+})
 CardTitle.displayName = "CardTitle"
 
 const CardDescription = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p // Changed to p for semantic correctness
+  React.HTMLAttributes<HTMLParagraphElement> & { asChild?: boolean }
+>(({ className, asChild, children, ...props }, ref) => {
+  const Comp = asChild ? "div" : "p";
+  return (
+  <Comp // Changed to p for semantic correctness
     ref={ref}
     className={cn("text-muted-foreground", className)} // text-sm removed, will inherit from body or p
     {...props}
-  />
-))
+  >
+    {children}
+  </Comp>
+  );
+})
 CardDescription.displayName = "CardDescription"
 
 const CardContent = React.forwardRef<
@@ -82,4 +89,3 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
-```
