@@ -26,8 +26,8 @@ const defaultApps: AppDefinition[] = [
     icon: <User className="w-full h-full" />,
     component: LandingPage,
     defaultSize: { 
-      width: 'w-[95vw] md:w-[900px] lg:w-[1000px] xl:w-[1100px]', 
-      height: 'h-[85vh] md:h-[650px] lg:h-[700px] xl:h-[750px]' 
+      width: 'w-[95vw] md:w-[800px] lg:w-[900px] xl:w-[1000px]', 
+      height: 'h-[85vh] md:h-[600px] lg:h-[650px] xl:h-[700px]' 
     },
   },
   {
@@ -36,8 +36,8 @@ const defaultApps: AppDefinition[] = [
     icon: <FileText className="w-full h-full" />,
     component: ResumeDisplayPage,
     defaultSize: { 
-      width: 'w-[95vw] md:w-[1000px] lg:w-[1150px] xl:w-[1300px]', 
-      height: 'h-[85vh] md:h-[750px] lg:h-[800px] xl:h-[850px]' 
+      width: 'w-[95vw] md:w-[900px] lg:w-[1000px] xl:w-[1100px]', 
+      height: 'h-[85vh] md:h-[700px] lg:h-[750px] xl:h-[800px]' 
     },
   },
   {
@@ -46,8 +46,8 @@ const defaultApps: AppDefinition[] = [
     icon: <Briefcase className="w-full h-full" />,
     component: CaseStudyOverviewPage, 
     defaultSize: { 
-      width: 'w-[95vw] md:w-[1000px] lg:w-[1150px] xl:w-[1300px]', 
-      height: 'h-[85vh] md:h-[750px] lg:h-[800px] xl:h-[850px]' 
+      width: 'w-[95vw] md:w-[900px] lg:w-[1000px] xl:w-[1100px]', 
+      height: 'h-[85vh] md:h-[700px] lg:h-[750px] xl:h-[800px]' 
     },
   },
   {
@@ -56,8 +56,8 @@ const defaultApps: AppDefinition[] = [
     icon: <Award className="w-full h-full" />,
     component: CertificatesDisplayPage,
     defaultSize: { 
-      width: 'w-[95vw] md:w-[950px] lg:w-[1100px] xl:w-[1250px]', 
-      height: 'h-[85vh] md:h-[700px] lg:h-[750px] xl:h-[800px]' 
+      width: 'w-[95vw] md:w-[850px] lg:w-[950px] xl:w-[1050px]', 
+      height: 'h-[85vh] md:h-[650px] lg:h-[700px] xl:h-[750px]' 
     },
   },
   {
@@ -66,8 +66,8 @@ const defaultApps: AppDefinition[] = [
     icon: <MessageSquare className="w-full h-full" />,
     component: ContactConnectPage,
     defaultSize: { 
-      width: 'w-[95vw] md:w-[950px] lg:w-[1000px] xl:w-[1100px]', 
-      height: 'h-[85vh] md:h-[700px] lg:h-[700px] xl:h-[750px]' 
+      width: 'w-[95vw] md:w-[850px] lg:w-[900px] xl:w-[950px]', 
+      height: 'h-[85vh] md:h-[650px] lg:h-[650px] xl:h-[700px]' 
     },
   },
 ];
