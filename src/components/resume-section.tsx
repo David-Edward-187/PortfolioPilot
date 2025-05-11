@@ -3,11 +3,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Download, Briefcase, GraduationCap, Lightbulb, ExternalLink, FileText, Sparkles } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Sparkles, FileText } from 'lucide-react'; // Removed Lightbulb, ExternalLink
 import type { ResumeData } from '@/types/resume';
+import { resumeData } from '@/data/resume'; // Import resumeData
 
 interface ResumeSectionProps {
-  resume: Pick<ResumeData, 'education' | 'experience' | 'skills' | 'projects'>;
+  resume: Pick<ResumeData, 'education' | 'experience' | 'skills'>; // Removed 'projects'
 }
 
 export function ResumeSection({ resume }: ResumeSectionProps) {
@@ -20,7 +21,7 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
             <CardTitle className="text-3xl text-primary">Resume</CardTitle>
           </div>
           <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-            <a href="/mycv.pdf" download="AlexJohnson_Resume.pdf"> {/* Consider a more specific filename */}
+            <a href="/mycv.pdf" download={`${resumeData.name.replace(/\s+/g, '_')}_Resume.pdf`}> 
               <Download className="mr-2 h-5 w-5" />
               Download CV
             </a>
@@ -90,47 +91,10 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="scroll-mt-16">
-          <div className="flex items-center mb-6">
-            <Lightbulb className="h-7 w-7 text-primary mr-3" />
-            <h3 className="text-2xl font-semibold text-foreground">Projects</h3>
-          </div>
-          <div className="space-y-6"> {/* Changed from grid to space-y for vertical stacking */}
-            {resume.projects.map((project, index) => (
-              <Card key={index} className="bg-card hover:shadow-xl transition-shadow duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl text-primary">{project.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-1 list-disc list-outside ml-5 text-foreground/80 mb-4 leading-relaxed">
-                    {project.description.map((desc, i) => (
-                      <li key={i}>{desc}</li>
-                    ))}
-                  </ul>
-                  {project.technologies && project.technologies.length > 0 && (
-                    <div className="mb-3">
-                      <h5 className="text-xs font-semibold text-muted-foreground mb-1">Technologies:</h5>
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.map(tech => (
-                           <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  {project.link && project.link !== "#" && (
-                    <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-accent/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-                      <a href={project.link} target="_blank" rel="noopener noreferrer">
-                        View Project <ExternalLink className="ml-1.5 h-4 w-4" />
-                      </a>
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+        {/* Projects Section Removed from here */}
+
       </CardContent>
     </Card>
   );
 }
+

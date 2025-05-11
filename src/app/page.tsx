@@ -2,6 +2,7 @@
 
 import { ProfileSection } from '@/components/profile-section';
 import { ResumeSection } from '@/components/resume-section';
+import { ProjectsSection } from '@/components/projects-section'; // Added import
 import { CertificatesSection } from '@/components/certificates-section';
 import { ContactForm } from '@/components/contact-form';
 import { resumeData } from '@/data/resume'; 
@@ -22,10 +23,12 @@ export default async function PortfolioPage() {
         <ResumeSection resume={{
             education: resumeData.education,
             experience: resumeData.experience,
-            skills: resumeData.skills,
-            projects: resumeData.projects
+            skills: resumeData.skills
+            // Projects removed from here
           }}
         />
+
+        <ProjectsSection projects={resumeData.projects} /> {/* Added ProjectsSection */}
 
         <CertificatesSection certificates={resumeData.certificates} />
         
@@ -34,3 +37,4 @@ export default async function PortfolioPage() {
     </div>
   );
 }
+
