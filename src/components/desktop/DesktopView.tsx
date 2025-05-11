@@ -25,7 +25,7 @@ const defaultApps: AppDefinition[] = [
     name: 'Profile',
     icon: <User className="w-full h-full" />,
     component: LandingPage,
-    defaultSize: { width: 'w-[90vw] md:w-[800px]', height: 'h-[80vh] md:h-[600px]' },
+    defaultSize: { width: 'w-[95vw] md:w-[800px]', height: 'h-[85vh] md:h-[600px]' },
   },
   {
     id: 'resume',
@@ -46,14 +46,14 @@ const defaultApps: AppDefinition[] = [
     name: 'Certificates',
     icon: <Award className="w-full h-full" />,
     component: CertificatesDisplayPage,
-    defaultSize: { width: 'w-[90vw] md:w-[850px]', height: 'h-[80vh] md:h-[650px]' },
+    defaultSize: { width: 'w-[95vw] md:w-[850px]', height: 'h-[85vh] md:h-[650px]' },
   },
   {
     id: 'contact',
     name: 'Contact',
     icon: <MessageSquare className="w-full h-full" />,
     component: ContactConnectPage,
-    defaultSize: { width: 'w-[90vw] md:w-[850px]', height: 'h-[80vh] md:h-[650px]' },
+    defaultSize: { width: 'w-[95vw] md:w-[850px]', height: 'h-[85vh] md:h-[650px]' },
   },
 ];
 
@@ -135,3 +135,4 @@ export function DesktopView() {
     </div>
   );
 }
+
