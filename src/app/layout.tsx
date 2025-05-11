@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
-import { Navbar } from "@/components/navbar";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
 
 const geistSans = Geist({
@@ -17,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'PortfolioPilot',
-  description: 'A modern developer portfolio with AI-powered resume assistance.',
+  title: 'PortfolioPilot OS',
+  description: 'A modern developer portfolio with a macOS-inspired desktop interface.',
 };
 
 export default function RootLayout({
@@ -28,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased macos-desktop-bg overflow-hidden`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -36,8 +35,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <DevtoolBlocker />
-          <Navbar />
-          <main>{children}</main>
+          <main className="h-screen w-screen flex flex-col">{children}</main>
           <Toaster />
         </ThemeProvider>
       </body>
