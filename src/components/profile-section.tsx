@@ -62,4 +62,3 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
     </Card>
   );
 }
-```

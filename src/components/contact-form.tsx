@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Loader2 } from 'lucide-react'; // Added Loader2
+import { Send, Loader2 } from 'lucide-react'; 
 import * as React from 'react';
 import { sendContactEmail } from '@/app/actions/contact-form-actions';
 
@@ -85,10 +85,10 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="scroll-mt-16 hover:shadow-xl transition-shadow duration-300 ease-in-out" id="contact"> {/* Added card-like class */}
-      <CardHeader className="text-center pt-8"> {/* Added pt-8 */}
-        <div className="flex items-center justify-center mb-3"> {/* Increased mb */}
-          <Send className="h-10 w-10 text-primary mr-4" /> {/* Increased icon size and margin */}
+    <Card className="scroll-mt-16 hover:shadow-xl transition-shadow duration-300 ease-in-out" id="contact"> 
+      <CardHeader className="text-center pt-8"> 
+        <div className="flex items-center justify-center mb-3"> 
+          <Send className="h-10 w-10 text-primary mr-4" /> 
           <CardTitle asChild>
             <h2 className="text-h2 text-primary">Get In Touch</h2>
           </CardTitle>
@@ -97,9 +97,9 @@ export function ContactForm() {
           Have a question or want to work together? Send me a message!
         </CardDescription>
       </CardHeader>
-      <CardContent className="pb-8"> {/* Added pb-8 */}
+      <CardContent className="pb-8"> 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8"> {/* Increased space-y */}
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8"> 
             <FormField
               control={form.control}
               name="name"
@@ -152,10 +152,10 @@ export function ContactForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-base" disabled={isLoading}> {/* Increased py and text size */}
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-base" disabled={isLoading}> 
               {isLoading ? (
                 <>
-                  <Loader2 className="animate-spin -ml-1 mr-3 h-5 w-5" /> {/* Used Loader2 */}
+                  <Loader2 className="animate-spin -ml-1 mr-3 h-5 w-5" /> 
                   Sending...
                 </>
               ) : (
@@ -170,4 +170,3 @@ export function ContactForm() {
     </Card>
   );
 }
-```

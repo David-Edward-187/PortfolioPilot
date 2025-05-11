@@ -16,26 +16,26 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
 
   return (
     <section id="certificates" className="scroll-mt-16 py-8">
-      <div className="flex items-center mb-10"> {/* Increased mb */}
-        <Award className="h-10 w-10 text-primary mr-4" /> {/* Increased icon size & margin */}
+      <div className="flex items-center mb-10">
+        <Award className="h-10 w-10 text-primary mr-4" />
         <h2 className="text-h2 text-primary">Certificates & Achievements</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> {/* Increased gap */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {certificates.map((cert, index) => (
-          <Card key={index} className="hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col overflow-hidden"> {/* Added card-like class and overflow-hidden */}
+          <Card key={index} className="hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col overflow-hidden">
             {cert.imageUrl && (
-              <div className="relative w-full h-52"> {/* Increased height */}
+              <div className="relative w-full h-52 group">
                 <Image
                   src={cert.imageUrl}
                   alt={`${cert.name} certificate image`}
                   layout="fill"
                   objectFit="cover"
-                  className="transition-transform duration-300 group-hover:scale-105" // Removed rounded-t-lg, will be applied by card
+                  className="transition-transform duration-300 group-hover:scale-105"
                   data-ai-hint="certificate document"
                 />
               </div>
             )}
-            <CardHeader className="pt-6"> {/* Added pt-6 */}
+            <CardHeader className="pt-6">
               <CardTitle asChild>
                 <h3 className="text-h4 text-primary">{cert.name}</h3>
               </CardTitle>
@@ -47,9 +47,9 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
                 Issued: {cert.issueDate}
               </div>
             </CardHeader>
-            <CardContent className="flex-grow pb-6"> {/* Added pb-6 */}
+            <CardContent className="flex-grow pb-6 flex flex-col">
               {cert.description && (
-                <p className="text-sm text-foreground/80 mb-4 leading-relaxed">{cert.description}</p>
+                <p className="text-sm text-foreground/80 mb-4 leading-relaxed flex-grow">{cert.description}</p>
               )}
               {cert.credentialUrl && (
                 <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-accent/90 mt-auto self-start font-medium">
@@ -65,4 +65,3 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
     </section>
   );
 }
-```

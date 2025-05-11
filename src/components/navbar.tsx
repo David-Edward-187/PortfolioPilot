@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -52,9 +51,8 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px] sm:w-[320px]"> {/* Adjusted width */}
                 <SheetHeader className="mb-6 text-center">
-                  <SheetTitle asChild>
-                    <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
-                  </SheetTitle>
+                  {/* DialogTitle is required by Radix UI for accessibility, even if visually hidden */}
+                  <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
                    <h3 className="text-xl font-semibold text-primary">Navigation</h3>
                 </SheetHeader>
                 <nav className="flex flex-col gap-3"> {/* Adjusted gap */}
@@ -75,4 +73,3 @@ export function Navbar() {
     </header>
   );
 }
-```
