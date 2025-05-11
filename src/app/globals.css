@@ -8,60 +8,79 @@ body {
 
 @layer base {
   :root {
-    --background: 220 60% 97%; /* Lighter, slightly blueish white */
-    --foreground: 220 25% 25%; /* Dark cool gray */
-    --card: 0 0% 100%; /* White cards */
-    --card-foreground: 220 25% 20%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 20%;
-    --primary: 210 70% 45%; /* A strong, professional blue */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 60% 93%; /* Light blue-gray for secondary backgrounds */
-    --secondary-foreground: 210 60% 30%;
-    --muted: 210 40% 88%;
-    --muted-foreground: 215 20% 40%;
-    --accent: 30 90% 55%; /* A vibrant orange */
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 210 30% 80%; /* Softer border */
-    --input: 210 40% 95%; /* Lighter input background */
-    --ring: 210 70% 50%; /* Blue ring */
-    --radius: 0.5rem; /* Slightly less rounded */
+    --background: 0 0% 97%; /* #F8F8F8 */
+    --foreground: 0 0% 20%; /* #333333 */
+    
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 20%; /* #333333 */
+    
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 20%; /* #333333 */
+    
+    --primary: 0 100% 71%; /* #FF6B6B - Bold Accent */
+    --primary-foreground: 0 0% 20%; /* #333333 - Dark text on light accent */
+    
+    --secondary: 0 0% 90%; /* Lighter gray for secondary elements */
+    --secondary-foreground: 0 0% 20%; /* #333333 */
+    
+    --muted: 0 0% 85%; /* Muted gray */
+    --muted-foreground: 0 0% 40%; /* Slightly darker muted text */
+    
+    --accent: 0 100% 71%; /* #FF6B6B - Same as primary */
+    --accent-foreground: 0 0% 20%; /* #333333 */
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 88%; /* Light border */
+    --input: 0 0% 95%; /* Lighter input background */
+    --ring: 0 100% 71%; /* Accent color for ring */
+    
+    --radius: 0.5rem;
 
-    --chart-1: 210 70% 45%; /* primary */
-    --chart-2: 30 90% 55%;  /* accent */
-    --chart-3: 150 60% 45%; /* A complementary green */
-    --chart-4: 270 60% 60%; /* A complementary purple */
-    --chart-5: 0 60% 55%;   /* A complementary red */
+    /* Chart colors - can be updated if charts are used, for now using accent and grays */
+    --chart-1: 0 100% 71%; /* Accent */
+    --chart-2: 0 0% 50%;  /* Mid Gray */
+    --chart-3: 0 100% 80%; /* Lighter Accent */
+    --chart-4: 0 0% 70%;  /* Lighter Gray */
+    --chart-5: 0 100% 60%;   /* Darker Accent */
   }
 
   .dark {
-    --background: 220 30% 10%; /* Dark blue-gray */
-    --foreground: 210 30% 90%; /* Light gray text */
-    --card: 220 28% 15%; /* Slightly lighter card background */
-    --card-foreground: 210 30% 90%;
-    --popover: 220 30% 10%;
-    --popover-foreground: 210 30% 90%;
-    --primary: 210 70% 60%; /* Brighter blue for dark mode */
-    --primary-foreground: 220 20% 10%;
-    --secondary: 220 25% 22%; /* Darker secondary */
-    --secondary-foreground: 210 30% 80%;
-    --muted: 220 20% 20%;
-    --muted-foreground: 210 25% 60%;
-    --accent: 30 90% 65%; /* Brighter orange for dark mode */
-    --accent-foreground: 220 20% 10%;
-    --destructive: 0 60% 55%;
-    --destructive-foreground: 210 30% 90%;
-    --border: 220 20% 30%; /* Darker border */
-    --input: 220 20% 25%; /* Darker input */
-    --ring: 210 70% 65%;
+    --background: 0 0% 10%; /* Very dark gray (e.g. #1A1A1A) */
+    --foreground: 0 0% 97%; /* #F8F8F8 - Light gray text */
+    
+    --card: 0 0% 15%; /* Darker card background (e.g. #262626) */
+    --card-foreground: 0 0% 97%; /* #F8F8F8 */
+    
+    --popover: 0 0% 10%; /* Very dark gray */
+    --popover-foreground: 0 0% 97%; /* #F8F8F8 */
+    
+    --primary: 0 100% 71%; /* #FF6B6B - Accent remains bright */
+    --primary-foreground: 0 0% 10%; /* Very dark text on accent */
+    
+    --secondary: 0 0% 20%; /* #333333 */
+    --secondary-foreground: 0 0% 90%; /* Light gray for secondary text */
+    
+    --muted: 0 0% 25%; /* Darker muted (e.g. #404040) */
+    --muted-foreground: 0 0% 70%; /* Lighter muted text */
+    
+    --accent: 0 100% 71%; /* #FF6B6B */
+    --accent-foreground: 0 0% 10%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 30%; /* Darker border (e.g. #4D4D4D) */
+    --input: 0 0% 22%; /* Darker input (e.g. #383838) */
+    --ring: 0 100% 71%; /* Accent color for ring */
 
-    --chart-1: 210 70% 60%; /* primary dark */
-    --chart-2: 30 90% 65%;  /* accent dark */
-    --chart-3: 150 60% 55%;
-    --chart-4: 270 60% 70%;
-    --chart-5: 0 60% 65%;
+    /* Chart colors for dark mode */
+    --chart-1: 0 100% 71%; /* Accent */
+    --chart-2: 0 0% 60%;  /* Mid Gray */
+    --chart-3: 0 100% 75%; /* Lighter Accent */
+    --chart-4: 0 0% 40%;  /* Darker Gray */
+    --chart-5: 0 100% 65%;   /* Darker Accent */
   }
 
   * {
@@ -73,25 +92,59 @@ body {
 
   body {
     @apply bg-background text-foreground;
-    font-size: 100%; /* Ensure base font size is 16px for rem calculations */
+    font-size: 100%; /* Base 16px */
   }
 
-  /* Refined type scale */
-  h1, .text-h1 { @apply text-[2rem] font-extrabold leading-tight tracking-tight md:text-[2.5rem]; } /* ~32px / 40px */
-  h2, .text-h2 { @apply text-[1.75rem] font-bold leading-snug tracking-tight md:text-[2rem]; } /* ~28px / 32px */
-  h3, .text-h3 { @apply text-[1.5rem] font-semibold leading-normal tracking-tight md:text-[1.75rem]; }    /* ~24px / 28px */
-  h4, .text-h4 { @apply text-[1.25rem] font-semibold leading-normal tracking-tight md:text-[1.5rem]; } /* ~20px / 24px */
+  /* Visual Hierarchy Type Scale */
+  /* XL titles */
+  h1, .text-h1 { 
+    @apply text-4xl font-bold leading-tight tracking-tight md:text-5xl; /* approx 36px / 48px */
+  } 
+  /* MD subheads */
+  h2, .text-h2 { 
+    @apply text-2xl font-semibold leading-snug tracking-tight md:text-3xl; /* approx 24px / 30px */
+  } 
+  /* Smaller subheads / Section titles */
+  h3, .text-h3 { 
+    @apply text-xl font-semibold leading-normal tracking-tight md:text-2xl; /* approx 20px / 24px */
+  }    
+  /* Standard text for paragraphs, lists etc. */
+  p, li, span, label, input, textarea, button, a { 
+    @apply text-base leading-relaxed; /* 16px */
+  } 
+  /* SM captions */
+  small, .text-caption { 
+    @apply text-sm text-muted-foreground; /* 14px */
+  }
 
-  p, li, span, label, input, textarea, button, a { @apply text-[1rem] leading-relaxed; } /* 16px - Body text */
-  small, .text-caption { @apply text-[0.875rem]; } /* 14px - Captions */
-
-
-  /* Ensure focus rings are visible on all interactive elements */
-  button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex="0"]:focus-visible {
+  /* Consistent focus rings */
+  button:focus-visible, 
+  a:focus-visible, 
+  input:focus-visible, 
+  textarea:focus-visible, 
+  select:focus-visible, 
+  [tabindex="0"]:focus-visible,
+  [role="button"]:focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
   .card, .card-like { 
-    @apply rounded-xl border bg-card text-card-foreground shadow-lg; /* Updated to rounded-xl */
+    @apply rounded-lg border bg-card text-card-foreground shadow-md; /* Default card style */
   }
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Staggered fade-in for children */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
 }
