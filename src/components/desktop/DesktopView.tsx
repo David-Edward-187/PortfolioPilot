@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from 'react';
@@ -27,7 +28,7 @@ const defaultApps: AppDefinition[] = [
     component: LandingPage,
     defaultSize: { 
       width: 'w-[95vw] md:w-[800px] lg:w-[900px] xl:w-[1000px]', 
-      height: 'h-[85vh] md:h-[600px] lg:h-[650px] xl:h-[700px]' 
+      height: 'h-[80vh] md:h-[580px] lg:h-[640px] xl:h-[700px]' 
     },
   },
   {
@@ -37,7 +38,7 @@ const defaultApps: AppDefinition[] = [
     component: ResumeDisplayPage,
     defaultSize: { 
       width: 'w-[95vw] md:w-[900px] lg:w-[1000px] xl:w-[1100px]', 
-      height: 'h-[85vh] md:h-[700px] lg:h-[750px] xl:h-[800px]' 
+      height: 'h-[80vh] md:h-[600px] lg:h-[680px] xl:h-[760px]'
     },
   },
   {
@@ -47,7 +48,7 @@ const defaultApps: AppDefinition[] = [
     component: CaseStudyOverviewPage, 
     defaultSize: { 
       width: 'w-[95vw] md:w-[900px] lg:w-[1000px] xl:w-[1100px]', 
-      height: 'h-[85vh] md:h-[700px] lg:h-[750px] xl:h-[800px]' 
+      height: 'h-[80vh] md:h-[580px] lg:h-[640px] xl:h-[700px]'
     },
   },
   {
@@ -57,7 +58,7 @@ const defaultApps: AppDefinition[] = [
     component: CertificatesDisplayPage,
     defaultSize: { 
       width: 'w-[95vw] md:w-[850px] lg:w-[950px] xl:w-[1050px]', 
-      height: 'h-[85vh] md:h-[650px] lg:h-[700px] xl:h-[750px]' 
+      height: 'h-[80vh] md:h-[580px] lg:h-[640px] xl:h-[700px]' 
     },
   },
   {
@@ -67,7 +68,7 @@ const defaultApps: AppDefinition[] = [
     component: ContactConnectPage,
     defaultSize: { 
       width: 'w-[95vw] md:w-[850px] lg:w-[900px] xl:w-[950px]', 
-      height: 'h-[85vh] md:h-[650px] lg:h-[650px] xl:h-[700px]' 
+      height: 'h-[80vh] md:h-[580px] lg:h-[640px] xl:h-[700px]'
     },
   },
 ];
