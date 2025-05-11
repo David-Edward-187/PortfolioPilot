@@ -15,15 +15,18 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   }
 
   return (
-    <section id="projects" className="scroll-mt-16 py-12 bg-secondary/50 dark:bg-secondary/20">
+    <section id="projects" className="scroll-mt-20 py-16 bg-secondary/20 dark:bg-secondary/10 rounded-xl">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center mb-12">
-          <Lightbulb className="h-12 w-12 text-primary mr-5" />
+        <div className="flex items-center mb-12 text-center flex-col">
+          <Lightbulb className="h-14 w-14 text-primary mb-4" />
           <h2 className="text-h2 text-primary font-bold">My Projects</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
-            <Card key={index} className="bg-card hover:shadow-2xl transition-all duration-300 ease-in-out flex flex-col rounded-xl overflow-hidden group border-2 border-primary/10 hover:border-primary/30">
+            <Card 
+              key={index} 
+              className="bg-card shadow-lg hover:shadow-2xl transform hover:-translate-y-1.5 transition-all duration-300 ease-in-out flex flex-col rounded-xl overflow-hidden group border-border/70 hover:border-primary/50"
+            >
               <CardHeader className="pb-4 pt-6 px-6">
                 <CardTitle asChild>
                   <h3 className="text-h3 text-primary group-hover:text-accent transition-colors">{project.name}</h3>
@@ -37,18 +40,23 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </ul>
                 {project.technologies && project.technologies.length > 0 && (
                   <div className="mb-6">
-                    <h5 className="text-xs font-semibold text-muted-foreground mb-2.5 tracking-wider uppercase">Technologies Used:</h5>
+                    <h5 className="text-sm font-semibold text-muted-foreground mb-3 tracking-wide">Technologies Used:</h5>
                     <div className="flex flex-wrap gap-2.5">
                       {project.technologies.map(tech => (
-                         <Badge key={tech} variant="secondary" className="text-xs px-3 py-1 rounded-md shadow-sm border border-transparent group-hover:border-accent/50 group-hover:text-accent transition-colors">{tech}</Badge>
+                         <Badge key={tech} variant="outline" className="text-xs px-3 py-1.5 rounded-md shadow-sm border-accent/50 text-accent/90 group-hover:bg-accent/10 group-hover:text-accent transition-colors">{tech}</Badge>
                       ))}
                     </div>
                   </div>
                 )}
                 {project.link && project.link !== "#" && (
-                  <Button variant="outline" asChild className="p-0 h-auto text-accent hover:text-accent-foreground hover:bg-accent/10 border-accent/50 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 mt-auto self-start font-medium py-2 px-4 rounded-md text-sm">
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      View Project <ExternalLink className="ml-2 h-4 w-4" />
+                  <Button 
+                    variant="default" 
+                    asChild 
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 mt-auto self-start font-medium py-2.5 px-5 rounded-lg text-sm shadow-md hover:shadow-lg"
+                  >
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      View Project <ExternalLink className="ml-2 h-4.5 w-4.5" />
                     </a>
                   </Button>
                 )}

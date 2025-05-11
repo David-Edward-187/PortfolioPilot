@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Loader2 } from 'lucide-react'; 
+import { Send, Loader2, MailQuestion } from 'lucide-react'; 
 import * as React from 'react';
 import { sendContactEmail } from '@/app/actions/contact-form-actions';
 
@@ -52,7 +52,7 @@ export function ContactForm() {
         toast({
           title: "Message Sent!",
           description: "Thank you for reaching out. I'll get back to you soon.",
-          variant: "default",
+          variant: "default", // or "success" if you have a success variant
         });
         form.reset();
       } else {
@@ -85,29 +85,32 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="scroll-mt-16 hover:shadow-xl transition-shadow duration-300 ease-in-out" id="contact"> 
-      <CardHeader className="text-center pt-8"> 
-        <div className="flex items-center justify-center mb-3"> 
-          <Send className="h-10 w-10 text-primary mr-4" /> 
-          <CardTitle asChild>
-            <h2 className="text-h2 text-primary">Get In Touch</h2>
-          </CardTitle>
+    <Card 
+      className="scroll-mt-20 shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out" 
+      id="contact"
+    > 
+      <CardHeader className="text-center pt-10 pb-6"> 
+        <div className="flex items-center justify-center mb-4"> 
+          <MailQuestion className="h-14 w-14 text-primary mr-0" /> 
         </div>
-        <CardDescription className="text-md text-muted-foreground">
+        <CardTitle asChild>
+          <h2 className="text-h2 text-primary">Get In Touch</h2>
+        </CardTitle>
+        <CardDescription className="text-md text-muted-foreground mt-1.5">
           Have a question or want to work together? Send me a message!
         </CardDescription>
       </CardHeader>
-      <CardContent className="pb-8"> 
+      <CardContent className="pb-10 px-6 md:px-8"> 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8"> 
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6"> 
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium">Your Name</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-foreground/90">Your Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Jane Doe" {...field} />
+                    <Input placeholder="e.g. Jane Doe" {...field} className="py-3 px-4 text-base"/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -118,9 +121,9 @@ export function ContactForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium">Your Email</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-foreground/90">Your Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="e.g. jane.doe@example.com" {...field} />
+                    <Input type="email" placeholder="e.g. jane.doe@example.com" {...field} className="py-3 px-4 text-base"/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -131,9 +134,9 @@ export function ContactForm() {
               name="subject"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium">Subject</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-foreground/90">Subject</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Project Inquiry" {...field} />
+                    <Input placeholder="e.g. Project Inquiry" {...field} className="py-3 px-4 text-base"/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -144,15 +147,20 @@ export function ContactForm() {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium">Your Message</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-foreground/90">Your Message</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Hi Alex, I'd like to discuss..." {...field} rows={6} />
+                    <Textarea placeholder="Hi Alex, I'd like to discuss..." {...field} rows={6} className="py-3 px-4 text-base min-h-[150px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-base" disabled={isLoading}> 
+            <Button 
+              type="submit" 
+              size="lg"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3.5 text-base font-semibold shadow-md hover:shadow-lg transition-all" 
+              disabled={isLoading}
+            > 
               {isLoading ? (
                 <>
                   <Loader2 className="animate-spin -ml-1 mr-3 h-5 w-5" /> 
@@ -160,7 +168,7 @@ export function ContactForm() {
                 </>
               ) : (
                 <>
-                  <Send className="mr-2 h-5 w-5" /> Send Message
+                  <Send className="mr-2.5 h-5 w-5" /> Send Message
                 </>
               )}
             </Button>

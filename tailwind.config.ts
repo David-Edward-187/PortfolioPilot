@@ -49,9 +49,9 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			},
-  			sidebar: { // Ensure these use CSS variables if defined in :root or .dark
-  				DEFAULT: 'hsl(var(--card))', // Example: using card as sidebar background
-  				foreground: 'hsl(var(--card-foreground))', // Example: using card-foreground
+  			sidebar: { 
+  				DEFAULT: 'hsl(var(--card))', 
+  				foreground: 'hsl(var(--card-foreground))', 
   				primary: 'hsl(var(--primary))',
   				'primary-foreground': 'hsl(var(--primary-foreground))',
   				accent: 'hsl(var(--accent))',
@@ -61,9 +61,9 @@ export default {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)', /* 0.75rem from globals.css */
-  			md: 'calc(var(--radius) - 0.25rem)', /* 0.5rem */
-  			sm: 'calc(var(--radius) - 0.375rem)' /* 0.375rem */
+  			lg: 'var(--radius)', /* 0.5rem from globals.css */
+  			md: 'calc(var(--radius) - 0.125rem)', /* 0.375rem */
+  			sm: 'calc(var(--radius) - 0.25rem)' /* 0.25rem */
   		},
   		keyframes: {
   			'accordion-down': {
@@ -89,7 +89,10 @@ export default {
   		},
       boxShadow: {
         'input-focus': '0 0 0 2px hsl(var(--ring))',
-        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'card-hover': '0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.08)', // Enhanced shadow
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.05)', // Adjusted default lg shadow
+        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.05)', // Adjusted default xl shadow
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.15)', // Adjusted default 2xl shadow
       }
   	}
   },
