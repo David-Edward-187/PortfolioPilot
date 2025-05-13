@@ -1,9 +1,10 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 html {
@@ -12,179 +13,191 @@ html {
 
 @layer base {
   :root {
-    /* Neutral Grays + Accent Palette */
-    --background: 0 0% 97%; /* #f7f7f7, close to #F8F8F8 */
-    --foreground: 0 0% 20%; /* #333333 */
+    --background: 210 20% 98%; /* #f7f8fa - Very Light Gray */
+    --foreground: 210 10% 23%; /* #323539 - Dark Gray */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 20%; /* #333333 */
+    --card-foreground: 210 10% 23%; /* #323539 */
 
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 0 0% 20%; /* #333333 */
-
-    --primary: 206 90% 50%; /* macOS blue for primary actions/accent */
-    --primary-foreground: 0 0% 100%; /* White text on blue */
+    --popover-foreground: 210 10% 23%; /* #323539 */
     
-    --secondary: 0 0% 94%; /* Light Gray, e.g. #f0f0f0 */
-    --secondary-foreground: 0 0% 25%; /* Dark Gray, e.g. #404040 */
+    /* Primary Color: Teal */
+    --primary: 180 100% 25%; /* Teal - #008080 - Darker shade for better contrast on light bg */
+    --primary-foreground: 0 0% 100%; /* White text on Teal */
     
-    --muted: 0 0% 90%; /* Muted Gray, e.g. #e6e6e6 */
-    --muted-foreground: 0 0% 40%; /* Muted Text, e.g. #666666 */
+    /* Secondary Color: Light Gray (used for backgrounds or secondary elements) */
+    --secondary: 210 17% 95%; /* #f0f0f2 - Light Gray */
+    --secondary-foreground: 210 10% 35%; /* #4f5459 - Mid Gray */
     
-    --accent: 0 100% 71%; /* #FF6B6B - User's chosen accent */
-    --accent-foreground: 0 0% 10%; /* Dark text for #FF6B6B, e.g. #1a1a1a */
+    --muted: 210 15% 90%; /* #e1e3e6 - Muted Gray */
+    --muted-foreground: 210 10% 45%; /* #6c7278 - Muted Text */
     
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    /* Accent Color: Coral */
+    --accent: 16 100% 66%; /* Coral - #FF7F50 */
+    --accent-foreground: 0 0% 100%; /* White text on Coral for good contrast */
     
-    --border: 0 0% 87%; /* Light Gray Border, e.g. #dedede */
+    --destructive: 0 72% 51%; /* #e53e3e */
+    --destructive-foreground: 0 0% 98%; /* #fdfdfe */
+    
+    --border: 210 10% 87%; /* #d9dde0 - Light Gray Border */
     --input: 0 0% 100%; /* White input background */
-    --input-border: 0 0% 80%; /* Gray Input Border, e.g. #cccccc */
-    --ring: 206 90% 50%; /* macOS blue for focus rings */
+    --input-border: 210 10% 80%; /* #c8ccd0 - Gray Input Border */
+    --ring: 180 100% 35%; /* Teal (slightly lighter for focus ring) */
     
-    --radius: 0.375rem; /* 6px, common in macOS */
-    --window-radius: 0.625rem; /* 10px for windows */
-
-    /* macOS specific - adjusted to new neutral grays */
-    --toolbar-background: hsl(0 0% 97% / 0.85); /* Semi-transparent light gray toolbar */
-    --sidebar-background: hsl(0 0% 95% / 0.75); /* Semi-transparent slightly darker gray sidebar */
-    --desktop-bg-image: linear-gradient(to bottom right, hsl(200 80% 70%), hsl(280 70% 80%)); /* Default gradient */
-    
-    --window-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-    --dock-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --radius: 0.5rem; /* 8px */
+    --window-radius: 0.75rem; /* 12px for windows, increased from macOS example for a softer feel */
 
     /* Chart colors - can be updated if charts are used, for now using accent and grays */
-    --chart-1: var(--primary);
-    --chart-2: 0 0% 50%;
-    --chart-3: var(--accent);
-    --chart-4: 0 0% 70%;
-    --chart-5: 206 90% 60%;
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--accent));
+    --chart-3: 180 100% 40%; /* Lighter Teal */
+    --chart-4: 16 100% 75%; /* Lighter Coral */
+    --chart-5: 210 10% 60%; /* Mid Gray */
+
+    /* macOS Desktop specific, adjusted to current theme */
+    --toolbar-background: hsl(var(--background) / 0.85); 
+    --sidebar-background: hsl(var(--secondary) / 0.75); 
+    --desktop-bg-image: linear-gradient(to bottom right, hsl(180 20% 90%), hsl(210 30% 92%)); /* Lighter, more neutral gradient */
+    
+    --window-shadow: 0 10px 30px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+    --dock-shadow: 0 5px 15px rgba(0,0,0,0.08);
   }
 
   .dark {
-    /* macOS Dark Mode Inspired - Kept as is, focuses on neutral dark grays */
-    --background: 220 15% 12%; /* Dark gray desktop */
-    --foreground: 220 10% 90%; /* Light gray text */
+    /* Dark Mode: Corresponding dark shades */
+    --background: 210 10% 12%; /* #1a1d21 - Very Dark Gray/Blue */
+    --foreground: 210 15% 90%; /* #dde1e6 - Light Gray Text */
     
-    --card: 220 15% 18%; /* Window background - dark */
-    --card-foreground: 220 10% 90%;
+    --card: 210 10% 18%; /* #262a2e - Dark Card */
+    --card-foreground: 210 15% 90%; /* #dde1e6 */
     
-    --popover: 220 15% 15%;
-    --popover-foreground: 220 10% 90%;
+    --popover: 210 10% 15%; /* #1f2327 */
+    --popover-foreground: 210 15% 90%; /* #dde1e6 */
     
-    --primary: 206 90% 55%; /* macOS blue for primary actions/accent */
-    --primary-foreground: 0 0% 100%;
+    /* Primary Color: Teal (Dark Mode) */
+    --primary: 180 80% 45%; /* #29b7b7 - Brighter Teal for Dark Mode */
+    --primary-foreground: 210 10% 10%; /* Darker text on brighter Teal for dark mode */
     
-    --secondary: 220 15% 25%;
-    --secondary-foreground: 220 10% 80%;
+    /* Secondary Color: Dark Gray (Dark Mode) */
+    --secondary: 210 10% 25%; /* #363b40 */
+    --secondary-foreground: 210 15% 80%; /* #c4c8cc */
     
-    --muted: 220 15% 22%; 
-    --muted-foreground: 220 10% 55%;
+    --muted: 210 10% 22%;  /* #2e3236 */
+    --muted-foreground: 210 15% 55%; /* #838991 */
     
-    --accent: 0 100% 71%; /* Accent remains bright #FF6B6B */
-    --accent-foreground: 0 0% 10%; /* Dark text on accent */
+    /* Accent Color: Coral (Dark Mode) */
+    --accent: 16 100% 70%; /* #ff8c66 - Slightly brighter Coral for Dark Mode */
+    --accent-foreground: 210 10% 10%; /* Darker text on Accent */
     
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 45%; /* #cc3333 */
+    --destructive-foreground: 0 0% 98%; /* #fdfdfe */
     
-    --border: 220 15% 28%;
-    --input: 220 15% 16%; 
-    --input-border: 220 15% 35%;
-    --ring: 206 90% 55%;
+    --border: 210 10% 28%; /* #3e4347 */
+    --input: 210 10% 16%;  /* #222529 */
+    --input-border: 210 10% 35%; /* #4f5459 */
+    --ring: 180 80% 55%; /* Brighter Teal for focus rings in dark mode */
     
-    /* macOS specific dark */
-    --toolbar-background: hsl(220 15% 15% / 0.85);
-    --sidebar-background: hsl(220 15% 18% / 0.75);
-    --desktop-bg-image: linear-gradient(to bottom right, hsl(220 50% 30%), hsl(260 40% 20%));
+    /* macOS Desktop specific dark, adjusted to current theme */
+    --toolbar-background: hsl(var(--card) / 0.85);
+    --sidebar-background: hsl(var(--secondary) / 0.75);
+    --desktop-bg-image: linear-gradient(to bottom right, hsl(180 30% 20%), hsl(210 40% 15%));
 
-    --window-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.1);
-    --dock-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    --window-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.1);
+    --dock-shadow: 0 5px 15px rgba(0,0,0,0.12);
 
-    /* Chart colors for dark mode */
-    --chart-1: var(--primary);
-    --chart-2: 0 0% 60%;
-    --chart-3: var(--accent);
-    --chart-4: 0 0% 40%;
-    --chart-5: 206 90% 65%;
+     /* Chart colors for dark mode */
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--accent));
+    --chart-3: 180 80% 60%; /* Lighter Teal */
+    --chart-4: 16 100% 78%; /* Lighter Coral */
+    --chart-5: 210 15% 50%; /* Mid Gray */
   }
 
   * {
     @apply border-border;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms; /* Faster transitions for snappy UI */
+    transition-duration: 200ms; 
   }
 
   body {
     @apply bg-background text-foreground;
     font-size: 100%; /* Base 16px */
-    line-height: 1.625; /* Default line-height for readability (1.625 = 26px if base is 16px) */
+    line-height: 1.625; /* Default line-height (approx 26px for 16px base) */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Visual Hierarchy Type Scale - macOS like */
+  /* Consistent Type Scale */
   h1, .text-h1 { 
-    @apply text-2xl font-semibold leading-tight tracking-tight md:text-3xl; /* XL titles */
+    @apply text-2xl font-bold leading-tight tracking-tight md:text-3xl lg:text-4xl; /* XL titles */
   } 
   h2, .text-h2 { 
-    @apply text-xl font-medium leading-snug tracking-tight md:text-2xl; /* MD subheads */
+    @apply text-xl font-semibold leading-snug tracking-tight md:text-2xl lg:text-3xl; /* Large subheads */
   } 
   h3, .text-h3 { 
-    @apply text-lg font-medium leading-normal tracking-tight md:text-xl; /* SM subheads/captions (can also be .text-caption) */
+    @apply text-lg font-semibold leading-normal tracking-tight md:text-xl lg:text-2xl; /* Medium subheads */
   }    
+  h4, .text-h4 {
+    @apply text-base font-medium leading-normal md:text-lg; /* Small subheads / Section titles */
+  }
   p, li, span, label, input, textarea, button, a { 
-    @apply text-sm leading-relaxed md:text-base; /* Base text size (1.625 line height via body) */
+    @apply text-sm leading-relaxed md:text-base; /* Base text size */
   } 
   small, .text-caption { 
     @apply text-xs text-muted-foreground; /* SM captions */
   }
 
-  /* Consistent focus rings */
+
+  /* Consistent focus rings for accessibility */
   button:focus-visible, 
   a:focus-visible, 
   input:focus-visible, 
   textarea:focus-visible, 
   select:focus-visible, 
-  [tabindex="0"]:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible, /* Includes elements with tabindex="0" */
   [role="button"]:focus-visible {
-    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
-
+  
+  /* Base card styling using CSS variables for easy theming */
   .card, .card-like { 
     @apply rounded-[var(--window-radius)] border bg-card text-card-foreground shadow-[var(--window-shadow)];
   }
 }
 
-/* Animation for fade-in */
+/* Animation for fade-in (can be applied with .animate-fadeIn) */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  from { opacity: 0; transform: translateY(8px) scale(0.99); } /* Slightly less movement */
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fadeIn 0.4s ease-out forwards; /* Slightly slower for smoother effect */
 }
 
 /* Staggered fade-in for children */
 .stagger-children > * {
   opacity: 0;
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px; /* Slightly thicker for better grab */
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(var(--muted) / 0.2);
-  border-radius: 3px;
+  background: hsl(var(--background)); /* Match background */
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.5);
-  border-radius: 3px;
+  background: hsl(var(--muted-foreground) / 0.4); /* Softer thumb */
+  border-radius: 4px;
+  border: 2px solid transparent; /* Creates padding around thumb */
+  background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.7);
+  background: hsl(var(--muted-foreground) / 0.6);
 }

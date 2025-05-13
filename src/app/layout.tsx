@@ -1,19 +1,18 @@
+
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google'; // Changed from Geist to Inter
 import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+// Configure Inter font
+const inter = Inter({
+  variable: '--font-inter', // CSS variable for Inter
   subsets: ['latin'],
+  display: 'swap', // Improves font loading performance
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: 'PortfolioPilot OS',
@@ -27,7 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased macos-desktop-bg overflow-hidden`}>
+      {/* Apply Inter font variable to body */}
+      <body className={`${inter.variable} antialiased macos-desktop-bg overflow-hidden`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

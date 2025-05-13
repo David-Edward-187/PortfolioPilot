@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import type { ResumeData } from '@/types/resume';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Mail, Linkedin, Github } from 'lucide-react';
 
@@ -13,42 +13,40 @@ interface ProfileSectionProps {
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
-    <Card id="profile" className="w-full max-w-2xl mx-auto card-like animate-fadeIn">
-      <CardContent className="p-6 md:p-8 text-center">
-        <div className="flex justify-center mb-6">
-          <div className="relative w-32 h-32 md:w-40 md:h-40">
-            <Image
-              src={profile.headshotUrl}
-              alt={profile.name}
-              width={160}
-              height={160}
-              className="rounded-full object-cover border-4 border-primary shadow-md"
-              data-ai-hint="professional headshot"
-              priority
-            />
-          </div>
+    <Card id="profile" className="w-full max-w-xl mx-auto bg-transparent border-none shadow-none animate-fadeIn">
+      <CardContent className="p-6 md:p-8 text-center flex flex-col items-center">
+        <div className="relative w-32 h-32 md:w-36 md:h-36 mb-6">
+          <Image
+            src={profile.headshotUrl}
+            alt={profile.name}
+            width={144} 
+            height={144}
+            className="rounded-full object-cover border-4 border-teal-500 shadow-md"
+            data-ai-hint="professional headshot"
+            priority
+          />
         </div>
 
-        <h1 className="text-3xl font-semibold text-primary mb-1">{profile.name}</h1>
-        <p className="text-lg text-muted-foreground mb-6">{profile.title}</p>
-        <p className="text-sm md:text-base text-foreground/80 mb-8 leading-relaxed max-w-xl mx-auto">
+        <h1 className="text-3xl font-semibold text-teal-600 dark:text-teal-400 mb-1">{profile.name}</h1>
+        <p className="text-md text-muted-foreground mb-6">{profile.title}</p>
+        <p className="text-sm text-foreground/90 dark:text-foreground/80 mb-8 leading-relaxed max-w-md text-center">
           {profile.bio}
         </p>
 
         <div className="flex justify-center space-x-3">
-          <Button variant="outline" size="icon" asChild className="hover:bg-accent/20 hover:border-accent transition-colors group">
+          <Button variant="outline" size="icon" asChild className="rounded-lg border-gray-300 dark:border-gray-700 hover:bg-teal-50 dark:hover:bg-teal-900/50 hover:border-teal-400 dark:hover:border-teal-600 transition-colors group">
             <a href={`mailto:${profile.contact.email}`} aria-label="Email">
-              <Mail className="h-5 w-5 text-primary group-hover:text-accent-foreground transition-colors" />
+              <Mail className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
             </a>
           </Button>
-          <Button variant="outline" size="icon" asChild className="hover:bg-accent/20 hover:border-accent transition-colors group">
+          <Button variant="outline" size="icon" asChild className="rounded-lg border-gray-300 dark:border-gray-700 hover:bg-teal-50 dark:hover:bg-teal-900/50 hover:border-teal-400 dark:hover:border-teal-600 transition-colors group">
             <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5 text-primary group-hover:text-accent-foreground transition-colors" />
+              <Linkedin className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
             </a>
           </Button>
-          <Button variant="outline" size="icon" asChild className="hover:bg-accent/20 hover:border-accent transition-colors group">
+          <Button variant="outline" size="icon" asChild className="rounded-lg border-gray-300 dark:border-gray-700 hover:bg-teal-50 dark:hover:bg-teal-900/50 hover:border-teal-400 dark:hover:border-teal-600 transition-colors group">
             <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github className="h-5 w-5 text-primary group-hover:text-accent-foreground transition-colors" />
+              <Github className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
             </a>
           </Button>
         </div>
@@ -56,3 +54,4 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
     </Card>
   );
 }
+
