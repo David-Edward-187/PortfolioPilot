@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -11,6 +12,7 @@ import { Mail, Linkedin, Github, Send, Loader2 } from 'lucide-react';
 import * as React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { sendContactEmail as serverSendContactEmail, type ContactFormData } from '@/app/actions/contact-form-actions';
+import { resumeData } from '@/data/resume';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -21,9 +23,9 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const socialLinks = [
-  { name: "Email", Icon: Mail, href: "mailto:your-email@example.com", color: "hover:text-primary" },
-  { name: "LinkedIn", Icon: Linkedin, href: "https://linkedin.com/in/yourprofile", color: "hover:text-[#0A66C2]" },
-  { name: "GitHub", Icon: Github, href: "https://github.com/yourprofile", color: "hover:text-muted-foreground dark:hover:text-primary-foreground" },
+  { name: "Email", Icon: Mail, href: `mailto:${resumeData.contact.email}`, color: "hover:text-primary" },
+  { name: "LinkedIn", Icon: Linkedin, href: resumeData.contact.linkedin, color: "hover:text-[#0A66C2]" },
+  { name: "GitHub", Icon: Github, href: resumeData.contact.github, color: "hover:text-muted-foreground dark:hover:text-primary-foreground" },
 ];
 
 export function ContactConnectPage() {
@@ -39,7 +41,7 @@ export function ContactConnectPage() {
   async function onSubmit(data: ContactFormValues) {
     setIsLoading(true);
     try {
-      const result = await serverSendContactEmail(data as ContactFormData); // Cast to actual type for server action
+      const result = await serverSendContactEmail(data as ContactFormData); 
       if (result.success) {
         setShowSuccessModal(true);
         form.reset();
@@ -152,3 +154,4 @@ export function ContactConnectPage() {
     </>
   );
 }
+

@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from 'react';
@@ -7,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Download, Briefcase, BookOpen, Wrench, Users, CheckSquare } from 'lucide-react';
 
 export function ResumeDisplayPage() {
+  const cvFileName = `${resumeData.name.replace(/\s+/g, '_')}_CV.pdf`;
   return (
     <section id="resume-display" className="bg-transparent py-4 md:py-6 space-y-6 md:space-y-8">
       <div className="container mx-auto px-2 md:px-4">
@@ -17,7 +19,7 @@ export function ResumeDisplayPage() {
             size="lg" 
             className="bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 transform transition-all duration-150 ease-in-out px-8 py-3 text-base"
           >
-            <a href="/mycv.pdf" download="Alex_Johnson_CV.pdf">
+            <a href="/mycv.pdf" download={cvFileName}>
               <Download className="mr-2 h-5 w-5" /> Download CV
             </a>
           </Button>
@@ -90,3 +92,4 @@ export function ResumeDisplayPage() {
     </section>
   );
 }
+
