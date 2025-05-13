@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { DockItem } from './DockItem';
-import type { AppDefinition } from './DesktopView'; // Assuming AppDefinition is defined here or passed
+import type { AppDefinition } from './DesktopView'; 
 
 type DockProps = {
   apps: AppDefinition[];
@@ -15,8 +15,8 @@ export function Dock({ apps, activeAppId, onAppSelect, className }: DockProps) {
     <nav
       className={cn(
         'fixed bottom-4 left-1/2 -translate-x-1/2 z-50',
-        'bg-black/20 backdrop-blur-md border border-white/20 shadow-[var(--dock-shadow)]',
-        'p-2 rounded-xl flex space-x-2 items-end',
+        'bg-[hsl(var(--toolbar-background))] backdrop-blur-lg border border-border/70 shadow-[var(--dock-shadow)]',
+        'p-1.5 rounded-2xl flex space-x-1.5 items-end',
         className
       )}
       role="menubar"
