@@ -1,16 +1,16 @@
-
 "use client";
 
-import * as React from 'react';
+import React from 'react';
 import { Dock } from './Dock';
 import { Window } from './Window';
-import { LandingPage } from '@/components/landing-page'; 
+import { ProfileSection } from '@/components/profile-section'; // Changed from LandingPage
 import { CaseStudyOverviewPage } from '@/components/case-study-overview-page'; 
 import { ContactConnectPage } from '@/components/contact-connect-page'; 
 import { ResumeDisplayPage } from '@/components/resume-display-page'; 
 import { CertificatesDisplayPage } from '@/components/certificates-display-page'; 
 import { User, FileText, Briefcase, Award, MessageSquare } from 'lucide-react';
 import { DesktopTopMenu } from './DesktopTopMenu';
+import { resumeData } from '@/data/resume'; // Import resumeData
 
 export type AppDefinition = {
   id: string;
@@ -18,6 +18,7 @@ export type AppDefinition = {
   icon: React.ReactNode;
   component: React.ComponentType<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   defaultSize?: { width: string; height: string };
+  props?: Record<string, any>; // Added to pass props to components
 };
 
 const defaultApps: AppDefinition[] = [
@@ -25,7 +26,8 @@ const defaultApps: AppDefinition[] = [
     id: 'profile',
     name: 'Profile',
     icon: <User className="w-full h-full" />,
-    component: LandingPage,
+    component: ProfileSection, // Changed from LandingPage
+    props: { profile: resumeData }, // Pass resumeData to ProfileSection
     defaultSize: { 
       width: 'w-[95vw] md:w-[800px] lg:w-[900px] xl:w-[1000px]', 
       height: 'h-[80vh] md:h-[580px] lg:h-[640px] xl:h-[700px]' 
@@ -126,7 +128,6 @@ export function DesktopView() {
         const appToOpen = defaultApps.find(app => app.id === customEvent.detail.appId);
         if (appToOpen) {
           handleAppSelect(customEvent.detail.appId);
-          // console.log(`Opening app: ${customEvent.detail.appId} with context:`, customEvent.detail.context);
         } else {
           console.warn(`App with ID "${customEvent.detail.appId}" not found.`);
         }
@@ -161,7 +162,7 @@ export function DesktopView() {
                 defaultSize={app.defaultSize}
                 icon={React.cloneElement(app.icon as React.ReactElement, { className: 'w-4 h-4' })}
               >
-                <app.component />
+                <app.component {...app.props} /> {/* Spread app.props here */}
               </Window>
             </div>
           ) : null
@@ -172,4 +173,3 @@ export function DesktopView() {
     </div>
   );
 }
-

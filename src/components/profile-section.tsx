@@ -1,14 +1,13 @@
-
 "use client";
 
 import Image from 'next/image';
-import type { ResumeData } from '@/types/resume';
+import type { ResumeData } from '@/types/resume'; // Ensure this uses the full ResumeData
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Mail, Linkedin, Github } from 'lucide-react';
 
 interface ProfileSectionProps {
-  profile: Pick<ResumeData, 'name' | 'title' | 'bio' | 'headshotUrl' | 'contact'>;
+  profile: ResumeData; // Using full ResumeData type
 }
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
