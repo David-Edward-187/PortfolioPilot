@@ -1,13 +1,15 @@
+
 "use client";
 
 import Image from 'next/image';
-import type { ResumeData } from '@/types/resume'; // Ensure this uses the full ResumeData
+import type { ResumeData } from '@/types/resume'; 
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Mail, Linkedin, Github } from 'lucide-react';
+// Button and icon imports are no longer needed if all buttons are removed.
+// import { Button } from '@/components/ui/button';
+// import { Mail, Linkedin, Github } from 'lucide-react';
 
 interface ProfileSectionProps {
-  profile: ResumeData; // Using full ResumeData type
+  profile: ResumeData; 
 }
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
@@ -32,6 +34,8 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
           {profile.bio}
         </p>
 
+        {/* Social media buttons removed as per request */}
+        {/* 
         <div className="flex justify-center space-x-3">
           <Button variant="outline" size="icon" asChild className="rounded-lg border-border hover:bg-primary/10 hover:border-primary transition-colors group">
             <a href={`mailto:${profile.contact.email}`} aria-label="Email">
@@ -49,7 +53,9 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
             </a>
           </Button>
         </div>
+        */}
       </CardContent>
     </Card>
   );
 }
+
