@@ -1,22 +1,21 @@
 
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google'; // Changed from Geist to Inter
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
+import { Navbar } from '@/components/navbar'; // Added Navbar import
 
-// Configure Inter font
 const inter = Inter({
-  variable: '--font-inter', // CSS variable for Inter
+  variable: '--font-inter',
   subsets: ['latin'],
-  display: 'swap', // Improves font loading performance
+  display: 'swap',
 });
 
-
 export const metadata: Metadata = {
-  title: 'PortfolioPilot OS',
-  description: 'A modern developer portfolio with a macOS-inspired desktop interface.',
+  title: 'Alex Johnson | Full Stack Developer', // Updated title
+  description: 'Portfolio of Alex Johnson, a passionate Full Stack Developer specializing in modern web technologies.', // Updated description
 };
 
 export default function RootLayout({
@@ -26,8 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Apply Inter font variable to body */}
-      <body className={`${inter.variable} antialiased macos-desktop-bg overflow-hidden`}>
+      <body className={`${inter.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -35,7 +33,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <DevtoolBlocker />
-          <main className="h-screen w-screen flex flex-col">{children}</main>
+          <Navbar /> {/* Added Navbar */}
+          <main className="pt-16"> {/* Added padding-top for fixed navbar */}
+            {children}
+          </main>
           <Toaster />
         </ThemeProvider>
       </body>

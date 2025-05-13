@@ -9,7 +9,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "card", // This class now applies base card styling from globals.css
+      "rounded-lg border bg-card text-card-foreground shadow-md", // Uses new --radius via rounded-lg and standard shadow
       className
     )}
     {...props}
@@ -23,24 +23,22 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-2 p-6", className)} // Increased space-y for better header spacing
+    className={cn("flex flex-col space-y-1.5 p-6", className)} 
     {...props}
   />
 ))
 CardHeader.displayName = "CardHeader"
 
 const CardTitle = React.forwardRef<
-  HTMLDivElement, // Changed to HTMLDivElement as it wraps h-tags from globals.css
-  React.HTMLAttributes<HTMLHeadingElement> // Kept HTMLHeadingElement for props type
+  HTMLParagraphElement, // Changed to HTMLParagraphElement to align with h-tags usage
+  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
 >(({ className, children, asChild, ...props }, ref) => {
-  const Comp = asChild ? "div" : "h3"; // Default to h3 or allow asChild prop
+  const Comp = asChild ? "div" : "h3"; 
   return (
-  // Assuming CardTitle will be used with h2 or h3 from globals.css for semantic HTML
-  // This component provides styling for that heading.
-  <Comp // Changed from h3 to div to allow flexible heading levels
+  <Comp 
     ref={ref}
     className={cn(
-      "font-semibold leading-none tracking-tight", // Base styles, specific text size (e.g. text-h3) comes from usage
+      "font-semibold leading-none tracking-tight", 
       className
     )}
     {...props}
@@ -57,9 +55,9 @@ const CardDescription = React.forwardRef<
 >(({ className, asChild, children, ...props }, ref) => {
   const Comp = asChild ? "div" : "p";
   return (
-  <Comp // Changed to p for semantic correctness
+  <Comp 
     ref={ref}
-    className={cn("text-muted-foreground", className)} // text-sm removed, will inherit from body or p
+    className={cn("text-sm text-muted-foreground", className)} 
     {...props}
   >
     {children}
@@ -82,7 +80,7 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-6 pt-4", className)} // Adjusted padding
+    className={cn("flex items-center p-6 pt-0", className)} 
     {...props}
   />
 ))

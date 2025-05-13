@@ -49,22 +49,13 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			},
-        'toolbar-background': 'var(--toolbar-background)', // For macOS like toolbars
-        'sidebar-background': 'var(--sidebar-background)', // For macOS like sidebars
-  			sidebar: { // This seems to be from a previous 'sidebar' component, might need review if that component is still used
-  				DEFAULT: 'hsl(var(--card))', 
-  				foreground: 'hsl(var(--card-foreground))', 
-  				border: 'hsl(var(--border))',
-          accent: 'hsl(var(--accent))',
-          'accent-foreground': 'hsl(var(--accent-foreground))',
-          ring: 'hsl(var(--ring))',
   			}
   		},
   		borderRadius: { 
-  			lg: 'var(--window-radius)', // For windows
-  			md: 'var(--radius)',  // Default for most elements
-  			sm: 'calc(var(--radius) - 2px)' 
+  			xl: 'calc(var(--radius) + 4px)', // For larger cards, dialogs
+        lg: 'var(--radius)', // Default for most elements like cards, inputs
+        md: 'calc(var(--radius) - 2px)', // For smaller elements like buttons, badges
+        sm: 'calc(var(--radius) - 4px)'  // For very small elements
   		},
   		keyframes: {
   			'accordion-down': {
@@ -75,29 +66,32 @@ export default {
   				from: { height: 'var(--radix-accordion-content-height)' },
   				to: { height: '0' }
   			},
-        'fade-in': { /* Updated in globals.css for consistency */
+        'fade-in': { 
           '0%': { opacity: '0', transform: 'translateY(10px) scale(0.98)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
         'pulse-once': {
           '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.03)' }, // Slightly less pulse
+          '50%': { transform: 'scale(1.03)' }, 
         }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fadeIn 0.3s ease-out forwards', // Matched globals.css
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
         'pulse-once': 'pulse-once 0.4s ease-in-out',
   		},
       boxShadow: {
         'input-focus': '0 0 0 2px hsl(var(--ring))',
-        'window': 'var(--window-shadow)', // Centralized window shadow
-        'dock': 'var(--dock-shadow)',     // Centralized dock shadow
-        'lg': '0 8px 25px -5px rgba(0,0,0,0.07), 0 3px 5px -3px rgba(0,0,0,0.05)', 
-        'xl': '0 15px 35px -5px rgba(0,0,0,0.08), 0 8px 15px -5px rgba(0,0,0,0.04)',
+        // Standard shadows
+        'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        'inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
       },
-      spacing: { // Consistent 24px spacing system (example: 1.5rem = 24px, values are illustrative)
+      spacing: { 
         '0.5': '0.125rem', // 2px
         '1': '0.25rem',   // 4px
         '1.5': '0.375rem',// 6px

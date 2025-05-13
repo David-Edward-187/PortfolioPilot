@@ -3,9 +3,9 @@
 
 import Image from 'next/image';
 import * as React from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog'; // Removed DialogTrigger
 import { Button } from '@/components/ui/button';
-import { XIcon } from 'lucide-react';
+import { XIcon, Layers } from 'lucide-react'; // Added Layers icon
 
 const timelineStages = [
   { name: "Research", image: "https://picsum.photos/seed/research/800/600", dataAiHint: "research notes" },
@@ -23,94 +23,101 @@ export function DeepDiveCaseStudyPage() {
     setOpenLightbox(true);
   };
 
-  return (
-    <section id="deep-dive-case-study" className="bg-transparent py-4 md:py-6">
-      <div className="container mx-auto px-2 md:px-4">
-        <h2 className="text-h2 md:text-h1 text-center text-foreground mb-6">Deep Dive: Project X</h2>
-        <p className="text-base text-center text-muted-foreground max-w-2xl mx-auto mb-10">
-          Exploring the challenges, process, and solutions for Project X.
-        </p>
+  // This component is a placeholder and might not be used if Projects are shown in CaseStudyOverviewPage
+  // It's kept here for potential future use or if a single project deep-dive is desired.
+  // For now, it's not directly linked from the main navigation.
 
+  return (
+    <div className="py-8 md:py-12">
+      <div className="flex items-center justify-center mb-8 md:mb-12 animate-fadeIn">
+        <Layers className="w-10 h-10 md:w-12 md:h-12 mr-4 text-primary" />
+        <h2 className="text-h2 md:text-h1 text-primary text-center">Deep Dive: Project X</h2>
+      </div>
+      <p className="text-base md:text-lg text-center text-muted-foreground max-w-2xl mx-auto mb-10 md:mb-12">
+        Exploring the challenges, process, and solutions for Project X. This is a sample deep-dive page.
+      </p>
+
+      <div className="space-y-10 md:space-y-12">
         {/* Before/After Showcase */}
-        <div className="mb-10 bg-card/70 backdrop-blur-sm p-4 md:p-8 rounded-lg shadow-md">
-          <h3 className="text-h3 md:text-h2 text-foreground mb-5 text-center">Transformation Showcase</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
+        <div className="bg-card/70 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-xl border-border animate-fadeIn" style={{animationDelay: '0.1s'}}>
+          <h3 className="text-h3 md:text-h2 text-foreground mb-6 text-center">Transformation Showcase</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
             <div>
-              <h4 className="text-lg font-medium text-primary mb-2 text-center md:text-left">Before</h4>
+              <h4 className="text-lg font-semibold text-primary mb-3 text-center md:text-left">Before</h4>
               <Image
                 src="https://picsum.photos/seed/beforeimg/600/400"
                 alt="Before Project X"
                 width={600}
                 height={400}
-                className="rounded-md shadow-sm object-cover w-full"
+                className="rounded-lg shadow-md object-cover w-full"
                 data-ai-hint="old interface design"
               />
-              <p className="text-xs text-muted-foreground mt-2 text-center md:text-left">Initial state highlighting pain points.</p>
+              <p className="text-sm text-muted-foreground mt-3 text-center md:text-left">Initial state highlighting pain points.</p>
             </div>
             <div>
-              <h4 className="text-lg font-medium text-primary mb-2 text-center md:text-left">After</h4>
+              <h4 className="text-lg font-semibold text-primary mb-3 text-center md:text-left">After</h4>
               <Image
                 src="https://picsum.photos/seed/afterimg/600/400"
                 alt="After Project X"
                 width={600}
                 height={400}
-                className="rounded-md shadow-sm object-cover w-full"
+                className="rounded-lg shadow-md object-cover w-full"
                 data-ai-hint="new interface design"
               />
-              <p className="text-xs text-muted-foreground mt-2 text-center md:text-left">Redesigned interface with improvements.</p>
+              <p className="text-sm text-muted-foreground mt-3 text-center md:text-left">Redesigned interface with improvements.</p>
             </div>
           </div>
-           <p className="text-center mt-6 text-xs text-muted-foreground italic">
-            (Interactive "Before/After" slider here)
+           <p className="text-center mt-8 text-sm text-muted-foreground italic">
+            (Placeholder for an interactive "Before/After" slider component)
           </p>
         </div>
 
         {/* Horizontal Timeline */}
-        <div className="bg-card/70 backdrop-blur-sm p-4 md:p-8 rounded-lg shadow-md">
-          <h3 className="text-h3 md:text-h2 text-foreground mb-6 text-center">Project Timeline & Milestones</h3>
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 sm:space-x-3">
-            {timelineStages.map((stage) => (
-              <Dialog key={stage.name} onOpenChange={open => !open && setCurrentImage(null)}>
-                <DialogTrigger asChild>
-                  <Button 
-                    variant="outline" 
-                    className="flex-1 py-2.5 text-sm hover:bg-primary/10 hover:text-primary hover:border-primary focus:bg-primary/10 focus:text-primary focus:border-primary w-full sm:w-auto"
-                    onClick={() => handleStageClick(stage)}
-                    aria-label={`View details for ${stage.name} stage`}
-                  >
-                    {stage.name}
-                  </Button>
-                </DialogTrigger>
-              </Dialog>
+        <div className="bg-card/70 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-xl border-border animate-fadeIn" style={{animationDelay: '0.2s'}}>
+          <h3 className="text-h3 md:text-h2 text-foreground mb-8 text-center">Project Timeline & Milestones</h3>
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            {timelineStages.map((stage, index) => (
+              <Button 
+                key={stage.name}
+                variant="outline" 
+                className="flex-1 py-3 text-base hover:bg-primary/10 hover:text-primary hover:border-primary focus:bg-primary/10 focus:text-primary focus:border-primary w-full sm:w-auto shadow-sm hover:shadow-md"
+                onClick={() => handleStageClick(stage)}
+                aria-label={`View details for ${stage.name} stage`}
+                style={{animationDelay: `${0.2 + index * 0.05}s`}}
+              >
+                {stage.name}
+              </Button>
             ))}
           </div>
         </div>
+      </div>
 
         {/* Lightbox Dialog */}
         <Dialog open={openLightbox} onOpenChange={setOpenLightbox}>
-          <DialogContent className="max-w-2xl p-0 bg-card border-border shadow-xl rounded-lg">
-            <DialogHeader className="p-3 border-b border-border flex flex-row justify-between items-center">
-              <DialogTitle className="text-base font-medium text-primary">{currentImage?.alt || "Screenshot"}</DialogTitle>
-               <DialogClose className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-                <XIcon className="h-4 w-4" />
-                <span className="sr-only">Close</span>
+          <DialogContent className="max-w-3xl p-0 bg-card border-border shadow-xl rounded-xl">
+            <DialogHeader className="p-4 border-b border-border flex flex-row justify-between items-center">
+              <DialogTitle className="text-lg font-medium text-primary">{currentImage?.alt || "Screenshot"}</DialogTitle>
+               <DialogClose asChild>
+                 <Button variant="ghost" size="icon" className="rounded-full">
+                    <XIcon className="h-5 w-5" />
+                    <span className="sr-only">Close</span>
+                 </Button>
               </DialogClose>
             </DialogHeader>
-            <div className="p-1 bg-black/10"> {/* Reduced padding around image container */}
+            <div className="p-2 bg-black/5 max-h-[80vh] overflow-auto">
               {currentImage && (
                 <Image
                   src={currentImage.src}
                   alt={currentImage.alt}
-                  width={800}
-                  height={600}
-                  className="rounded-b-md object-contain max-h-[75vh] w-full"
+                  width={1200} 
+                  height={900} 
+                  className="rounded-lg object-contain w-full h-auto"
                   data-ai-hint={currentImage.hint}
                 />
               )}
             </div>
           </DialogContent>
         </Dialog>
-      </div>
-    </section>
+    </div>
   );
 }
