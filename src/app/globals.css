@@ -13,7 +13,7 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - Modern & Professional */
+    /* Light Theme - Refined Modern & Professional */
     --background: 210 40% 98%; /* Very Light Blue-Gray */
     --foreground: 210 20% 25%; /* Dark Slate Blue */
 
@@ -23,8 +23,8 @@ html {
     --popover: 0 0% 100%; /* White */
     --popover-foreground: 210 20% 25%; /* Dark Slate Blue */
     
-    /* Primary Color: Steel Blue */
-    --primary: 200 70% 45%; /* Steel Blue */
+    /* Primary Color: Vibrant Blue */
+    --primary: 210 60% 50%; /* Vibrant Blue */
     --primary-foreground: 0 0% 100%; /* White text on Primary */
     
     /* Secondary Color: Light Gray */
@@ -34,8 +34,8 @@ html {
     --muted: 210 25% 90%; /* #dde1e6 - Muted Gray */
     --muted-foreground: 210 15% 45%; /* #656f7b - Muted Text */
     
-    /* Accent Color: Warm Orange */
-    --accent: 30 90% 60%; /* #fcaf4a - Warm Orange */
+    /* Accent Color: Vibrant Orange/Gold */
+    --accent: 35 95% 58%; /* #fca937 - Vibrant Orange/Gold */
     --accent-foreground: 210 20% 15%; /* Dark text on Accent for contrast */
     
     --destructive: 0 72% 51%; /* #e53e3e */
@@ -44,57 +44,57 @@ html {
     --border: 210 20% 88%; /* #dbe0e3 - Light Gray Border */
     --input: 0 0% 100%; /* White input background */
     --input-border: 210 20% 80%; /* #c4ccd1 - Gray Input Border */
-    --ring: 200 70% 55%; /* Brighter Steel Blue for focus ring */
+    --ring: 210 60% 60%; /* Brighter Vibrant Blue for focus ring */
     
     --radius: 0.5rem; /* 8px */
 
     /* Chart colors */
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
-    --chart-3: 200 70% 60%; /* Lighter Steel Blue */
-    --chart-4: 30 90% 70%; /* Lighter Warm Orange */
+    --chart-3: 210 60% 65%; /* Lighter Vibrant Blue */
+    --chart-4: 35 95% 68%;  /* Lighter Vibrant Orange/Gold */
     --chart-5: 210 20% 60%; /* Mid Gray */
   }
 
   .dark {
-    /* Dark Theme - Modern & Professional */
-    --background: 210 20% 12%; /* #1a1d24 - Very Dark Blue-Gray */
-    --foreground: 210 30% 88%; /* #d5dde4 - Light Gray-Blue Text */
+    /* Dark Theme - Refined Modern & Professional */
+    --background: 210 25% 10%; /* #10141a - Very Dark Desaturated Blue */
+    --foreground: 210 30% 90%; /* #dbe0e6 - Light Gray-Blue Text */
     
-    --card: 210 20% 18%; /* #242830 - Dark Card */
-    --card-foreground: 210 30% 88%; /* #d5dde4 */
+    --card: 210 25% 15%; /* #181c24 - Darker Card */
+    --card-foreground: 210 30% 90%; /* #dbe0e6 */
     
-    --popover: 210 20% 15%; /* #1e2229 */
-    --popover-foreground: 210 30% 88%; /* #d5dde4 */
+    --popover: 210 25% 12%; /* #14181f - Darker Popover */
+    --popover-foreground: 210 30% 90%; /* #dbe0e6 */
     
-    /* Primary Color: Steel Blue (Dark Mode) */
-    --primary: 200 70% 55%; /* #5c9cce - Brighter Steel Blue */
-    --primary-foreground: 210 20% 10%; /* #15171a - Darker text on brighter Primary */
+    /* Primary Color: Vibrant Blue (Dark Mode) */
+    --primary: 210 60% 60%; /* #6aa9de - Brighter Vibrant Blue */
+    --primary-foreground: 210 25% 5%; /* #0a0c0f - Very Dark text on brighter Primary */
     
     /* Secondary Color: Darker Gray (Dark Mode) */
-    --secondary: 210 20% 22%; /* #2d323b */
-    --secondary-foreground: 210 30% 80%; /* #bfc8d1 */
+    --secondary: 210 25% 20%; /* #202630 */
+    --secondary-foreground: 210 30% 85%; /* #cdd4db */
     
-    --muted: 210 20% 20%;  /* #292d35 */
-    --muted-foreground: 210 20% 55%; /* #7a8491 */
+    --muted: 210 25% 18%;  /* #1c212b */
+    --muted-foreground: 210 25% 60%; /* #818c9b */
     
-    /* Accent Color: Warm Orange (Dark Mode) */
-    --accent: 30 90% 65%; /* #fda133 - Slightly brighter Warm Orange */
-    --accent-foreground: 210 20% 10%; /* #15171a - Darker text on Accent */
+    /* Accent Color: Vibrant Orange/Gold (Dark Mode) */
+    --accent: 35 95% 65%; /* #fdad48 - Slightly brighter Vibrant Orange/Gold */
+    --accent-foreground: 210 25% 5%; /* #0a0c0f - Very dark text on Accent */
     
-    --destructive: 0 63% 45%; /* #cc3333 */
+    --destructive: 0 63% 50%; /* #df3030 */
     --destructive-foreground: 0 0% 98%; /* #fdfdfe */
     
-    --border: 210 20% 28%; /* #3a404a */
-    --input: 210 20% 16%;  /* #20242b */
-    --input-border: 210 20% 35%; /* #4d5661 */
-    --ring: 200 70% 65%; /* Brighter Steel Blue for focus rings in dark mode */
+    --border: 210 25% 25%; /* #2d3440 */
+    --input: 210 25% 13%;  /* #161a21 */
+    --input-border: 210 25% 30%; /* #3a4353 */
+    --ring: 210 60% 70%; /* Brighter Vibrant Blue for focus rings in dark mode */
     
      /* Chart colors for dark mode */
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
-    --chart-3: 200 70% 70%; /* Lighter Steel Blue */
-    --chart-4: 30 90% 75%; /* Lighter Warm Orange */
+    --chart-3: 210 60% 75%; /* Lighter Vibrant Blue */
+    --chart-4: 35 95% 75%;  /* Lighter Vibrant Orange/Gold */
     --chart-5: 210 20% 50%; /* Mid Gray */
   }
 
