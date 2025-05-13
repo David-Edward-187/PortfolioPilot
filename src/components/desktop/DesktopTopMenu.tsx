@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -18,7 +19,7 @@ export function DesktopTopMenu() {
   return (
     <div
       className={cn(
-        'fixed top-0 left-0 right-0 h-7 bg-[hsl(var(--toolbar-background))] backdrop-blur-md z-50',
+        'fixed top-0 left-0 right-0 h-7 bg-[hsl(var(--toolbar-background))] backdrop-blur-md z-[60]', // Changed z-50 to z-[60]
         'border-b border-border/70 flex items-center justify-between px-3 sm:px-4 text-xs text-foreground select-none shadow-sm'
       )}
       role="menubar"
