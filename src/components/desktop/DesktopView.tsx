@@ -80,14 +80,14 @@ export function DesktopView() {
   const [appZIndexes, setAppZIndexes] = React.useState<{ [key: string]: number }>({ profile: 1 });
   const nextZIndex = React.useRef(2);
 
-  const handleAppSelect = (appId: string) => {
+  const handleAppSelect = React.useCallback((appId: string) => {
     setOpenApps((prev) => ({ ...prev, [appId]: true }));
     setActiveAppId(appId);
-    setAppZIndexes((prev) => ({
-      ...prev,
+    setAppZIndexes((prevZIndexes) => ({
+      ...prevZIndexes,
       [appId]: nextZIndex.current++,
     }));
-  };
+  }, []); // Empty dependency array as it only uses setters and refs
 
   const handleCloseApp = (appId: string) => {
     setOpenApps((prev) => ({ ...prev, [appId]: false }));
@@ -97,7 +97,7 @@ export function DesktopView() {
         let highestZ = 0;
         let nextActiveApp: string | null = null;
         remainingOpenApps.forEach(app => {
-          if (openApps[app.id] && (appZIndexes[app.id] > highestZ)) { // Check if app is actually open
+          if (openApps[app.id] && (appZIndexes[app.id] > highestZ)) { 
             highestZ = appZIndexes[app.id];
             nextActiveApp = app.id;
           }
@@ -119,6 +119,27 @@ export function DesktopView() {
     }
   };
 
+  React.useEffect(() => {
+    const handleOpenAppEvent = (event: Event) => {
+      const customEvent = event as CustomEvent<{ appId: string; context?: any }>;
+      if (customEvent.detail && customEvent.detail.appId) {
+        const appToOpen = defaultApps.find(app => app.id === customEvent.detail.appId);
+        if (appToOpen) {
+          handleAppSelect(customEvent.detail.appId);
+          // console.log(`Opening app: ${customEvent.detail.appId} with context:`, customEvent.detail.context);
+        } else {
+          console.warn(`App with ID "${customEvent.detail.appId}" not found.`);
+        }
+      }
+    };
+  
+    window.addEventListener('openApp', handleOpenAppEvent);
+  
+    return () => {
+      window.removeEventListener('openApp', handleOpenAppEvent);
+    };
+  }, [handleAppSelect]);
+
 
   return (
     <div className="h-full w-full bg-[var(--desktop-bg-image)] bg-cover bg-center flex flex-col items-center justify-center relative overflow-hidden">
@@ -130,7 +151,7 @@ export function DesktopView() {
             <div
               key={app.id}
               style={{ zIndex: appZIndexes[app.id] || 0 }}
-              onClickCapture={() => handleWindowFocus(app.id)} // Use onClickCapture to ensure focus happens before child onClick
+              onClickCapture={() => handleWindowFocus(app.id)} 
               className="absolute" 
             >
               <Window
@@ -151,3 +172,4 @@ export function DesktopView() {
     </div>
   );
 }
+

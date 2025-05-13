@@ -1,13 +1,14 @@
+
 "use client";
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Zap, PenTool, ScreenShare } from 'lucide-react';
+import { Zap, PenTool, ScreenShare } from 'lucide-react'; // Corrected icon import for Zap
 import * as React from 'react';
 
 const skills = [
   { name: "React Native", Icon: Zap, description: "Cross-platform mobile apps." },
-  { name: "Design Tools", Icon: PenTool, description: "UI/UX Prototyping." },
+  { name: "Design Tools", Icon: PenTool, description: "UI/UX Prototyping." }, // Assuming PenTool is for Figma-like tools
   { name: "User Testing", Icon: ScreenShare, description: "Valuable user feedback." },
 ];
 
@@ -19,12 +20,11 @@ export function LandingPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // In a real app, this would likely be passed via props or context
   const handleViewWorkClick = () => {
-    // This function would ideally trigger an action in DesktopView
-    // e.g., open the 'caseStudies' app. For now, it's a placeholder.
-    console.log("View Work clicked - integrate with DesktopView to open Case Studies");
-    const event = new CustomEvent('dockitemselect', { detail: 'caseStudies' });
+    console.log("View Work clicked - attempting to open 'projects' app.");
+    // Dispatch an event that DesktopView can listen to.
+    // The detail should contain the ID of the app to open.
+    const event = new CustomEvent('openApp', { detail: { appId: 'projects' } });
     window.dispatchEvent(event);
   };
 
@@ -77,3 +77,4 @@ export function LandingPage() {
     </div>
   );
 }
+
