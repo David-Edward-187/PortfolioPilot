@@ -21,32 +21,32 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
             alt={profile.name}
             width={144} 
             height={144}
-            className="rounded-full object-cover border-4 border-teal-500 shadow-md"
+            className="rounded-full object-cover border-4 border-primary shadow-md"
             data-ai-hint="professional headshot"
             priority
           />
         </div>
 
-        <h1 className="text-3xl font-semibold text-teal-600 dark:text-teal-400 mb-1">{profile.name}</h1>
+        <h1 className="text-3xl font-semibold text-primary mb-1">{profile.name}</h1>
         <p className="text-md text-muted-foreground mb-6">{profile.title}</p>
         <p className="text-sm text-foreground/90 dark:text-foreground/80 mb-8 leading-relaxed max-w-md text-center">
           {profile.bio}
         </p>
 
         <div className="flex justify-center space-x-3">
-          <Button variant="outline" size="icon" asChild className="rounded-lg border-gray-300 dark:border-gray-700 hover:bg-teal-50 dark:hover:bg-teal-900/50 hover:border-teal-400 dark:hover:border-teal-600 transition-colors group">
+          <Button variant="outline" size="icon" asChild className="rounded-lg border-border hover:bg-primary/10 hover:border-primary transition-colors group">
             <a href={`mailto:${profile.contact.email}`} aria-label="Email">
-              <Mail className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
+              <Mail className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
           </Button>
-          <Button variant="outline" size="icon" asChild className="rounded-lg border-gray-300 dark:border-gray-700 hover:bg-teal-50 dark:hover:bg-teal-900/50 hover:border-teal-400 dark:hover:border-teal-600 transition-colors group">
+          <Button variant="outline" size="icon" asChild className="rounded-lg border-border hover:bg-primary/10 hover:border-primary transition-colors group">
             <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
+              <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
           </Button>
-          <Button variant="outline" size="icon" asChild className="rounded-lg border-gray-300 dark:border-gray-700 hover:bg-teal-50 dark:hover:bg-teal-900/50 hover:border-teal-400 dark:hover:border-teal-600 transition-colors group">
+          <Button variant="outline" size="icon" asChild className="rounded-lg border-border hover:bg-primary/10 hover:border-primary transition-colors group">
             <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
+              <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
           </Button>
         </div>
