@@ -9,7 +9,7 @@ import { ContactConnectPage } from '@/components/contact-connect-page';
 export default function HomePage() {
   return (
     <div className="flex flex-col">
-      <ProfileSection profile={resumeData} />
+      <ProfileSection />
       
       <section id="resume" className="container mx-auto">
         <ResumeDisplayPage />
