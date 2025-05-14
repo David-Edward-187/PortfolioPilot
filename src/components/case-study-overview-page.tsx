@@ -26,7 +26,7 @@ export function CaseStudyOverviewPage() {
     <div className="py-12 md:py-16">
       <div className="flex items-center justify-center mb-10 md:mb-14 animate-fadeIn">
          <Briefcase className="section-icon" />
-         <h2 className="section-title text-left ml-0 pl-0">My Projects</h2>
+         <h2 className="section-title">My Projects</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 animate-fadeIn">
         {resumeData.projects.map((project: ProjectEntry, index: number) => (

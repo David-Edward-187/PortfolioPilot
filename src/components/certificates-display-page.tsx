@@ -22,7 +22,7 @@ export function CertificatesDisplayPage() {
     <div className="py-12 md:py-16">
       <div className="flex items-center justify-center mb-10 md:mb-14 animate-fadeIn">
         <Award className="section-icon" />
-        <h2 className="section-title text-left ml-0 pl-0">Certifications</h2>
+        <h2 className="section-title">Certifications</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {resumeData.certificates.map((cert, index) => (

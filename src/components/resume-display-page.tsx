@@ -13,7 +13,7 @@ export function ResumeDisplayPage() {
       <div className="animate-fadeIn" style={{animationDelay: '0.1s'}}>
         <div className="flex items-center justify-center mb-6 md:mb-8">
             <Briefcase className="section-icon" />
-            <h2 className="section-title text-left ml-0 pl-0">Experience</h2>
+            <h2 className="section-title">Experience</h2>
         </div>
         <Card className="shadow-xl bg-card border-border">
           <CardContent className="space-y-6 pt-6">
@@ -34,7 +34,7 @@ export function ResumeDisplayPage() {
       <div className="animate-fadeIn" style={{animationDelay: '0.2s'}}>
         <div className="flex items-center justify-center mb-6 md:mb-8">
             <BookOpen className="section-icon" />
-            <h2 className="section-title text-left ml-0 pl-0">Education</h2>
+            <h2 className="section-title">Education</h2>
         </div>
         <Card className="shadow-xl bg-card border-border">
           <CardContent className="space-y-6 pt-6">
@@ -53,7 +53,7 @@ export function ResumeDisplayPage() {
       <div className="animate-fadeIn" style={{animationDelay: '0.3s'}}>
         <div className="flex items-center justify-center mb-6 md:mb-8">
             <Wrench className="section-icon" />
-            <h2 className="section-title text-left ml-0 pl-0">Skills</h2>
+            <h2 className="section-title">Skills</h2>
         </div>
         <Card className="shadow-xl bg-card border-border">
           <CardContent className="space-y-6 pt-6">

@@ -68,7 +68,7 @@ export function ContactConnectPage() {
       <div className="py-12 md:py-16">
         <div className="flex items-center justify-center mb-10 md:mb-14 animate-fadeIn">
            <MessageCircle className="section-icon" />
-           <h2 className="section-title text-left ml-0 pl-0">Get in Touch</h2>
+           <h2 className="section-title">Get in Touch</h2>
         </div>
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start bg-card/90 backdrop-blur-sm p-8 md:p-12 rounded-xl shadow-2xl border-border">
           {/* Left Half: Contact Form */}
