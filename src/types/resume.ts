@@ -1,5 +1,4 @@
 
-
 export interface Contact {
   email: string;
   linkedin: string;
@@ -25,15 +24,18 @@ export interface ProjectEntry {
   description: string[];
   technologies?: string[];
   link: string;
+  imageUrl?: string; // Optional image URL for the project
+  dataAiHint?: string; // Optional AI hint for image generation
 }
 
 export interface CertificateEntry {
   name: string;
   issuingOrganization: string;
-  issueDate: string; // e.g., "Jan 2023" or "2023"
-  credentialUrl?: string; // Link to the certificate
-  imageUrl?: string; // URL for an image/logo of the certificate or organization
-  description?: string; // Optional short description or key learnings
+  issueDate: string; 
+  credentialUrl?: string; 
+  imageUrl?: string; 
+  description?: string;
+  dataAiHint?: string; // Optional AI hint for image generation
 }
 
 export interface ResumeData {
@@ -46,5 +48,5 @@ export interface ResumeData {
   experience: ExperienceEntry[];
   skills: Record<string, string[]>;
   projects: ProjectEntry[];
-  certificates?: CertificateEntry[]; // Added certificates
+  certificates?: CertificateEntry[];
 }

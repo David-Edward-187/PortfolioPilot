@@ -13,89 +13,89 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - Neutral Grays + Bold Accent */
-    --background: 0 0% 97.3%; /* #F8F8F8 */
-    --foreground: 0 0% 20%;   /* #333333 */
+    /* Light Theme - Cool Slate & Vibrant Teal */
+    --background: 220 20% 97%; /* Light Slate Gray #F5F7F9 */
+    --foreground: 220 10% 25%; /* Dark Slate Gray #3A4047 */
 
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 20%; /* #333333 */
+    --card: 220 20% 100%; /* White #FFFFFF */
+    --card-foreground: 220 10% 25%; /* Dark Slate Gray */
 
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 0 0% 20%; /* #333333 */
+    --popover: 220 20% 100%; /* White */
+    --popover-foreground: 220 10% 25%; /* Dark Slate Gray */
     
-    /* Primary Color: Bold Accent - Adjusted */
-    --primary: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
-    --primary-foreground: 0 0% 100%; /* White text on Primary for contrast */
+    /* Primary Color: Vibrant Teal */
+    --primary: 170 70% 45%; /* #26A69A */
+    --primary-foreground: 0 0% 100%; /* White */
     
-    /* Secondary Color: Light Gray */
-    --secondary: 0 0% 93.3%; /* Lighter shade of #F8F8F8 or slightly darker */
-    --secondary-foreground: 0 0% 25%; /* Darker gray for text on secondary */
+    /* Secondary Color: Lighter Slate Gray for subtle backgrounds */
+    --secondary: 220 15% 94%; /* #EDEFF2 */
+    --secondary-foreground: 220 10% 35%; /* Slightly Lighter Dark Slate #4D545C */
     
-    --muted: 0 0% 90%; /* Muted Gray */
-    --muted-foreground: 0 0% 40%; /* Muted Text */
+    --muted: 220 15% 88%; /* #DCE0E6 */
+    --muted-foreground: 220 10% 45%; /* #67707B */
     
-    /* Accent Color: Same as Primary (one bold accent) - Adjusted */
-    --accent: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
-    --accent-foreground: 0 0% 100%; /* White text on Accent */
+    /* Accent Color: Same as Primary or a slightly different shade if needed */
+    --accent: 170 70% 45%; /* #26A69A */
+    --accent-foreground: 0 0% 100%; /* White */
     
-    --destructive: 0 72% 51%; /* #e53e3e - Kept for error states */
+    --destructive: 0 72% 51%; /* #e53e3e - Standard Red for errors */
     --destructive-foreground: 0 0% 98%; /* #fdfdfe */
     
-    --border: 0 0% 85%; /* Gray border, slightly darker than background */
-    --input: 0 0% 100%; /* White input background */
-    --input-border: 0 0% 80%; /* Gray Input Border */
-    --ring: 0 95% 70%; /* Accent color for focus ring - Adjusted */
+    --border: 220 15% 88%; /* #DCE0E6 - Subtle border */
+    --input: 220 20% 99%; /* Very Light Gray/Off-white #FCFCFD */
+    --input-border: 220 15% 80%; /* #C4C9D1 */
+    --ring: 170 70% 45%; /* Teal for focus ring */
     
-    --radius: 0.5rem; /* 8px */
+    --radius: 0.75rem; /* 12px - slightly larger default radius */
 
-    /* Chart colors - adjust if charts are used, keeping primary/accent in mind */
+    /* Chart colors - adjust if charts are used */
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(var(--accent)); 
-    --chart-3: 0 95% 78%; /* Lighter Accent - Adjusted related to primary */
-    --chart-4: 0 0% 50%;  /* Mid Gray */
-    --chart-5: 0 0% 70%; /* Light Gray */
+    --chart-2: hsl(190 70% 50%); /* A complementary blue/cyan */
+    --chart-3: hsl(var(--primary) / 0.6); 
+    --chart-4: hsl(220 10% 60%);  /* Mid Gray */
+    --chart-5: hsl(220 10% 75%); /* Light Gray */
   }
 
   .dark {
-    /* Dark Theme - Neutral Grays + Bold Accent */
-    --background: 0 0% 13.3%; /* Darker version of #333333 -> #222222 */
-    --foreground: 0 0% 90%;   /* Lighter version of #F8F8F8 -> #E6E6E6 */
+    /* Dark Theme - Cool Slate & Vibrant Teal */
+    --background: 220 15% 10%; /* Very Dark Slate #171A1C */
+    --foreground: 220 10% 85%; /* Light Grayish Slate #D2D7DE */
     
-    --card: 0 0% 10%; /* Darker Card */
-    --card-foreground: 0 0% 90%; 
+    --card: 220 15% 15%; /* Dark Slate Card #212529 */
+    --card-foreground: 220 10% 85%; /* Light Grayish Slate */
     
-    --popover: 0 0% 8%; /* Darker Popover */
-    --popover-foreground: 0 0% 90%;
+    --popover: 220 15% 12%; /* Darker Popover #1C1F22 */
+    --popover-foreground: 220 10% 85%;
     
-    /* Primary Color: Bold Accent (Dark Mode) - Adjusted */
-    --primary: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
-    --primary-foreground: 0 0% 100%; /* White text on Primary */
+    /* Primary Color: Vibrant Teal (slightly adjusted for dark mode) */
+    --primary: 170 65% 55%; /* #4DB6AC */
+    --primary-foreground: 220 20% 10%; /* Dark text on primary for contrast if needed, or white */
     
-    /* Secondary Color: Darker Gray (Dark Mode) */
-    --secondary: 0 0% 18%; 
-    --secondary-foreground: 0 0% 85%; 
+    /* Secondary Color: Darker Slate for subtle backgrounds */
+    --secondary: 220 15% 20%; /* #2C3136 */
+    --secondary-foreground: 220 10% 75%; /* #B9BFC6 */
     
-    --muted: 0 0% 20%; 
-    --muted-foreground: 0 0% 60%; 
+    --muted: 220 15% 25%; /* #363C42 */
+    --muted-foreground: 220 10% 55%; /* #818A96 */
     
-    /* Accent Color: Same as Primary (one bold accent) - Adjusted */
-    --accent: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
-    --accent-foreground: 0 0% 100%;
+    /* Accent Color: Same as Primary (dark mode) */
+    --accent: 170 65% 55%; /* #4DB6AC */
+    --accent-foreground: 220 20% 10%;
     
-    --destructive: 0 63% 50%; 
+    --destructive: 0 63% 50%; /* #D32F2F */
     --destructive-foreground: 0 0% 98%; 
     
-    --border: 0 0% 25%; 
-    --input: 0 0% 12%;  
-    --input-border: 0 0% 30%; 
-    --ring: 0 95% 70%; /* Accent color for focus ring - Adjusted */
+    --border: 220 15% 30%; /* #424950 - Darker border */
+    --input: 220 15% 18%;  /* #262B2F */
+    --input-border: 220 15% 35%; /* #4D545C */
+    --ring: 170 65% 55%; /* Teal for focus ring */
     
-     /* Chart colors for dark mode - adjust if charts are used */
+     /* Chart colors for dark mode */
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(var(--accent));
-    --chart-3: 0 95% 78%; /* Lighter Accent - Adjusted */
-    --chart-4: 0 0% 60%;  /* Mid Gray */
-    --chart-5: 0 0% 40%; /* Dark Gray */
+    --chart-2: hsl(190 65% 60%);
+    --chart-3: hsl(var(--primary) / 0.6);
+    --chart-4: hsl(220 10% 50%);  
+    --chart-5: hsl(220 10% 35%); 
   }
 
   * {
@@ -115,22 +115,30 @@ html {
 
   /* Consistent Type Scale - XL titles, MD subheads, SM captions */
   h1, .text-h1 { 
-    @apply text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl; /* XL titles */
+    @apply text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl; /* XL titles */
   } 
   h2, .text-h2 { 
-    @apply text-2xl font-semibold leading-snug tracking-tight md:text-3xl lg:text-4xl; /* Large subheads / MD subheads */
+    @apply text-2xl font-semibold leading-snug tracking-tight text-foreground md:text-3xl lg:text-4xl; /* Large subheads / MD subheads */
   } 
   h3, .text-h3 { 
-    @apply text-xl font-semibold leading-normal tracking-tight md:text-2xl lg:text-3xl; /* Medium subheads / MD subheads */
+    @apply text-xl font-semibold leading-normal tracking-tight text-foreground md:text-2xl lg:text-3xl; /* Medium subheads / MD subheads */
   }    
   h4, .text-h4 {
-    @apply text-lg font-medium leading-normal md:text-xl; /* Small subheads / MD subheads */
+    @apply text-lg font-medium leading-normal text-foreground md:text-xl; /* Small subheads / MD subheads */
   }
   p, li, span, label, input, textarea, button, a { 
     @apply text-base leading-relaxed md:text-lg; /* Base text size */
   } 
   small, .text-caption { 
     @apply text-sm text-muted-foreground; /* SM captions */
+  }
+
+  .section-title {
+    @apply text-h1 text-primary mb-8 md:mb-12 text-center;
+  }
+  
+  .section-icon {
+    @apply w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4 text-primary;
   }
 
 
@@ -147,7 +155,7 @@ html {
   
   /* Base card styling using CSS variables for easy theming */
   .card, .card-like { 
-    @apply rounded-xl border bg-card text-card-foreground shadow-lg; 
+    @apply rounded-xl border bg-card text-card-foreground shadow-xl; /* Default shadow-xl */
   }
 }
 
@@ -173,24 +181,25 @@ html {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background)); 
+  background: hsl(var(--secondary)); 
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.5); 
+  background: hsl(var(--muted-foreground) / 0.6); 
   border-radius: 5px;
   border: 2px solid transparent; 
   background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.7);
+  background: hsl(var(--muted-foreground) / 0.8);
 }
 
 /* Section specific padding - using multiples of 24px (1.5rem if base is 16px) */
 section {
-  @apply py-12 md:py-16 lg:py-20 scroll-mt-20; /* 48px, 64px, 80px are multiples of 16, also work with 24px concept */
+  @apply py-16 md:py-20 lg:py-24 scroll-mt-20; /* Increased padding slightly */
 }
 
 .container {
   @apply px-4 sm:px-6 lg:px-8; /* Standard container padding (16px, 24px, 32px) */
 }
+

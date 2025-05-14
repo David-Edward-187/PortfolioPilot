@@ -11,40 +11,40 @@ import { Award, ExternalLink, CalendarDays } from 'lucide-react';
 export function CertificatesDisplayPage() {
   if (!resumeData.certificates || resumeData.certificates.length === 0) {
     return (
-      <div className="py-8 md:py-12 text-center">
-        <Award className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
+      <div className="py-12 md:py-16 text-center">
+        <Award className="section-icon text-muted-foreground mb-4" />
         <p className="text-lg text-muted-foreground">No certificates to display at the moment.</p>
       </div>
     );
   }
 
   return (
-    <div className="py-8 md:py-12">
-      <div className="flex items-center justify-center mb-8 md:mb-12 animate-fadeIn">
-        <Award className="w-10 h-10 md:w-12 md:h-12 mr-4 text-primary" />
-        <h2 className="text-h2 md:text-h1 text-primary text-center">Certifications</h2>
+    <div className="py-12 md:py-16">
+      <div className="flex items-center justify-center mb-10 md:mb-14 animate-fadeIn">
+        <Award className="section-icon" />
+        <h2 className="section-title text-left ml-0 pl-0">Certifications</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {resumeData.certificates.map((cert, index) => (
           <Card 
             key={index} 
-            className="flex flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 bg-card rounded-xl animate-fadeIn border-border"
+            className="flex flex-col overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 bg-card rounded-xl animate-fadeIn border-border"
             style={{animationDelay: `${index * 0.1}s`}}
           >
             {cert.imageUrl && (
-              <div className="relative w-full h-48 md:h-56">
+              <div className="relative w-full h-48 md:h-56 group overflow-hidden">
                 <Image
                   src={cert.imageUrl}
                   alt={`${cert.name} certificate image`}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-t-xl"
-                  data-ai-hint="certificate document"
+                  className="rounded-t-xl group-hover:scale-105 transition-transform duration-300"
+                  data-ai-hint={cert.dataAiHint || "certificate document"}
                 />
               </div>
             )}
             <CardHeader className="pb-3 pt-5">
-              <CardTitle className="text-lg md:text-xl text-foreground leading-tight">{cert.name}</CardTitle>
+              <CardTitle className="text-lg md:text-xl text-foreground group-hover:text-primary transition-colors leading-tight">{cert.name}</CardTitle>
               <CardDescription className="text-sm text-muted-foreground pt-1">
                 {cert.issuingOrganization}
               </CardDescription>
@@ -55,10 +55,10 @@ export function CertificatesDisplayPage() {
             </CardHeader>
             <CardContent className="flex-grow flex flex-col justify-between pt-0 pb-5 px-5">
               {cert.description && (
-                <p className="text-sm text-foreground/80 mb-4 leading-relaxed">{cert.description}</p>
+                <p className="text-sm text-foreground/80 mb-4 leading-relaxed line-clamp-3">{cert.description}</p>
               )}
               {cert.credentialUrl && (
-                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-accent/90 mt-auto self-start text-sm font-medium">
+                <Button variant="link" asChild className="p-0 h-auto text-primary hover:text-primary/80 mt-auto self-start text-sm font-medium group-hover:underline">
                   <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
                     View Credential <ExternalLink className="ml-1.5 h-4 w-4" />
                   </a>

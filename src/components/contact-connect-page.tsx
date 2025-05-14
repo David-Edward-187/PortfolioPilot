@@ -65,37 +65,37 @@ export function ContactConnectPage() {
 
   return (
     <>
-      <div className="py-8 md:py-12">
-        <div className="flex items-center justify-center mb-8 md:mb-12 animate-fadeIn">
-           <MessageCircle className="w-10 h-10 md:w-12 md:h-12 mr-4 text-primary" />
-           <h2 className="text-h2 md:text-h1 text-primary text-center">Get in Touch</h2>
+      <div className="py-12 md:py-16">
+        <div className="flex items-center justify-center mb-10 md:mb-14 animate-fadeIn">
+           <MessageCircle className="section-icon" />
+           <h2 className="section-title text-left ml-0 pl-0">Get in Touch</h2>
         </div>
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-start bg-card/80 backdrop-blur-sm p-6 md:p-10 rounded-xl shadow-xl border-border">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start bg-card/90 backdrop-blur-sm p-8 md:p-12 rounded-xl shadow-2xl border-border">
           {/* Left Half: Contact Form */}
           <div className="space-y-6 animate-fadeIn" style={{animationDelay: '0.1s'}}>
-            <h3 className="text-h3 text-foreground">Send me a message</h3>
+            <h3 className="text-h3 text-foreground font-semibold">Send me a message</h3>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1.5">Name</label>
-                <Input id="name" {...form.register("name")} placeholder="Your Name" className="bg-input border-input-border focus:border-primary focus:ring-primary text-base" />
+                <Input id="name" {...form.register("name")} placeholder="Your Name" className="bg-input border-input-border focus:border-primary focus:ring-primary text-base py-2.5" />
                 {form.formState.errors.name && <p className="text-xs text-destructive mt-1.5">{form.formState.errors.name.message}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-1.5">Email</label>
-                <Input id="email" type="email" {...form.register("email")} placeholder="your.email@example.com" className="bg-input border-input-border focus:border-primary focus:ring-primary text-base" />
+                <Input id="email" type="email" {...form.register("email")} placeholder="your.email@example.com" className="bg-input border-input-border focus:border-primary focus:ring-primary text-base py-2.5" />
                 {form.formState.errors.email && <p className="text-xs text-destructive mt-1.5">{form.formState.errors.email.message}</p>}
               </div>
                <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-muted-foreground mb-1.5">Subject</label>
-                <Input id="subject" {...form.register("subject")} placeholder="Inquiry about..." className="bg-input border-input-border focus:border-primary focus:ring-primary text-base" />
+                <Input id="subject" {...form.register("subject")} placeholder="Inquiry about..." className="bg-input border-input-border focus:border-primary focus:ring-primary text-base py-2.5" />
                 {form.formState.errors.subject && <p className="text-xs text-destructive mt-1.5">{form.formState.errors.subject.message}</p>}
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-1.5">Message</label>
-                <Textarea id="message" {...form.register("message")} placeholder="How can I help you?" rows={5} className="bg-input border-input-border focus:border-primary focus:ring-primary text-base min-h-[100px]" />
+                <Textarea id="message" {...form.register("message")} placeholder="How can I help you?" rows={5} className="bg-input border-input-border focus:border-primary focus:ring-primary text-base min-h-[120px]" />
                 {form.formState.errors.message && <p className="text-xs text-destructive mt-1.5">{form.formState.errors.message.message}</p>}
               </div>
-              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base shadow-md hover:shadow-lg" disabled={isLoading}>
+              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-base shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300" disabled={isLoading}>
                 {isLoading ? (
                   <Loader2 className="animate-spin h-5 w-5 mr-2.5" />
                 ) : (
@@ -107,11 +107,11 @@ export function ContactConnectPage() {
           </div>
 
           {/* Right Half: Social Icons & Tagline */}
-          <div className="flex flex-col items-center justify-center text-center space-y-8 md:pt-8 animate-fadeIn" style={{animationDelay: '0.2s'}}>
+          <div className="flex flex-col items-center justify-center text-center space-y-8 md:pt-10 animate-fadeIn" style={{animationDelay: '0.2s'}}>
              <h3 className="text-h3 text-primary font-semibold">
-              Let&apos;s build the next <span className="text-accent">great thing</span>.
+              Let&apos;s build the next <span className="text-accent font-bold">great thing</span>.
             </h3>
-            <p className="text-base text-muted-foreground max-w-sm">
+            <p className="text-base md:text-lg text-muted-foreground max-w-md">
               Connect with me on social media or drop a line. I&apos;m always open to new ideas and collaborations.
             </p>
             <div className="flex space-x-6 pt-4">
@@ -122,9 +122,9 @@ export function ContactConnectPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Connect on ${link.name}`}
-                  className={`text-muted-foreground ${link.color} transform transition-all duration-300 hover:scale-110 active:scale-95 focus-visible:ring-2 ring-ring ring-offset-background rounded-md p-2`}
+                  className={`text-muted-foreground ${link.color} p-2.5 rounded-full hover:bg-primary/10 transform transition-all duration-300 hover:scale-110 active:scale-95 focus-visible:ring-2 ring-ring ring-offset-background`}
                 >
-                  <link.Icon className="w-8 h-8 md:w-9 md:h-9" />
+                  <link.Icon className="w-7 h-7 md:w-8 md:h-8" />
                 </a>
               ))}
             </div>
@@ -136,11 +136,11 @@ export function ContactConnectPage() {
         <DialogContent className="sm:max-w-md p-6 bg-card rounded-xl shadow-xl border-border">
           <DialogHeader className="text-center">
             <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
-              <svg className="h-10 w-10 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+               <svg className="h-10 w-10 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <DialogTitle className="text-xl font-medium text-foreground">Message Sent!</DialogTitle>
+            <DialogTitle className="text-xl font-semibold text-foreground">Message Sent!</DialogTitle>
             <DialogDescription className="text-base text-muted-foreground mt-2">
               Thank you for your message. I&apos;ll get back to you as soon as possible.
             </DialogDescription>
@@ -155,4 +155,3 @@ export function ContactConnectPage() {
     </>
   );
 }
-

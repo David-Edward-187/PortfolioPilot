@@ -5,7 +5,7 @@ export const resumeData: ResumeData = {
   name: "Alex Johnson",
   title: "Full Stack Developer",
   bio: "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
-  headshotUrl: "https://picsum.photos/seed/developer/200/200",
+  headshotUrl: "https://placehold.co/200x200.png", // Placeholder, data-ai-hint will be in component
   contact: {
     email: "alex.johnson.dev@example.com",
     linkedin: "https://linkedin.com/in/alexjohnsondev",
@@ -15,13 +15,13 @@ export const resumeData: ResumeData = {
     {
       degree: "Master of Science in Computer Science",
       institution: "Tech University",
-      years: "Aug 2018 - May 2020", // Consistent date format
+      years: "Aug 2018 - May 2020",
       details: "Specialized in Web Development and Cloud Computing. Thesis on scalable microservices."
     },
     {
       degree: "Bachelor of Science in Software Engineering",
       institution: "State College of Engineering",
-      years: "Sep 2014 - May 2018", // Consistent date format
+      years: "Sep 2014 - May 2018",
       details: "Graduated with Honors. Capstone project: A real-time collaborative coding platform."
     }
   ],
@@ -29,7 +29,7 @@ export const resumeData: ResumeData = {
     {
       role: "Senior Software Engineer",
       company: "Innovate Solutions Ltd.",
-      years: "Jan 2021 - Present", // Consistent date format
+      years: "Jan 2021 - Present",
       description: [
         "Led a team of 5 developers in building and maintaining a high-traffic e-commerce platform, successfully handling over 10,000 daily active users.",
         "Architected and implemented new features using React, Node.js, and AWS services, resulting in a 15% increase in user engagement.",
@@ -40,7 +40,7 @@ export const resumeData: ResumeData = {
     {
       role: "Software Developer",
       company: "Web Wizards Inc.",
-      years: "Jun 2019 - Dec 2020", // Consistent date format
+      years: "Jun 2019 - Dec 2020",
       description: [
         "Developed responsive and pixel-perfect user interfaces for 5+ diverse client projects using React and Next.js, consistently meeting project deadlines.",
         "Collaborated effectively with cross-functional teams of designers and backend developers in an agile environment to deliver high-quality web applications.",
@@ -52,7 +52,7 @@ export const resumeData: ResumeData = {
     {
       role: "Junior Developer Intern",
       company: "Code Crafters Co.",
-      years: "Jun 2018 - Aug 2018", // Consistent date format
+      years: "Jun 2018 - Aug 2018",
       description: [
         "Assisted senior developers in testing and debugging web applications, contributing to a 10% reduction in pre-release bugs for two projects by implementing automated test scripts with Jest, which reduced manual QA time by approximately 15%."
       ]
@@ -75,7 +75,9 @@ export const resumeData: ResumeData = {
         "Engineered to support up to 1,000 concurrent users during peak shopping times, maintaining an average response time under 200ms."
       ],
       technologies: ["Next.js", "React", "Stripe", "PostgreSQL", "Tailwind CSS", "AWS"],
-      link: "https://github.com/alexjohnsondev/ecommerce-platform"
+      link: "https://github.com/alexjohnsondev/ecommerce-platform",
+      imageUrl: "https://placehold.co/600x400.png",
+      dataAiHint: "ecommerce shopping"
     },
     {
       name: "Task Management App",
@@ -85,7 +87,9 @@ export const resumeData: ResumeData = {
         "Achieved 99.9% uptime through robust Firebase backend infrastructure and Firestore data persistence."
       ],
       technologies: ["React", "Firebase (Firestore, Auth)", "Material UI", "Node.js (for Cloud Functions)"],
-      link: "https://github.com/alexjohnsondev/task-manager"
+      link: "https://github.com/alexjohnsondev/task-manager",
+      imageUrl: "https://placehold.co/600x400.png",
+      dataAiHint: "task management"
     },
     {
       name: "This Portfolio Website",
@@ -95,7 +99,9 @@ export const resumeData: ResumeData = {
         "Features dynamically rendered resume content from a TypeScript data file, ensuring easy updates and maintenance."
       ],
       technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
-      link: "#"
+      link: "#", // Link to the current site or repo if public
+      imageUrl: "https://placehold.co/600x400.png",
+      dataAiHint: "portfolio website"
     }
   ],
   certificates: [
@@ -104,7 +110,8 @@ export const resumeData: ResumeData = {
       issuingOrganization: "Udemy",
       issueDate: "Mar 2022",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1/",
-      imageUrl: "https://picsum.photos/seed/udemycourse1/300/200",
+      imageUrl: "https://placehold.co/400x300.png",
+      dataAiHint: "nodejs certificate",
       description: "Covered Node.js fundamentals, Express, MongoDB, Mongoose, and building RESTful APIs. Completed all modules and projects."
     },
     {
@@ -112,7 +119,8 @@ export const resumeData: ResumeData = {
       issuingOrganization: "Udemy",
       issueDate: "Jul 2021",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-2/",
-      imageUrl: "https://picsum.photos/seed/udemycourse2/300/200",
+      imageUrl: "https://placehold.co/400x300.png",
+      dataAiHint: "react course",
       description: "In-depth exploration of React, including hooks, context API, Redux, and React Router. Built multiple complex applications."
     },
     {
@@ -120,7 +128,8 @@ export const resumeData: ResumeData = {
       issuingOrganization: "Amazon Web Services",
       issueDate: "Nov 2022",
       credentialUrl: "https://www.credly.com/badges/example-aws-badge",
-      imageUrl: "https://picsum.photos/seed/awscert/300/200",
+      imageUrl: "https://placehold.co/400x300.png",
+      dataAiHint: "aws certification",
       description: "Validated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS. Passed with a score of 850/1000."
     }
   ]
