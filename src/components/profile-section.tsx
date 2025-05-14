@@ -30,15 +30,15 @@ export function ProfileSection() {
             alt={profile.name}
             width={192} 
             height={192}
-            className="rounded-full object-cover border-4 border-primary shadow-2xl" // Primary border (Teal)
+            className="rounded-full object-cover border-4 border-primary shadow-2xl" 
             data-ai-hint="professional headshot"
             priority
           />
         </div>
 
         <h1 className="text-h1 text-foreground mb-3">{profile.name}</h1>
-        <p className="text-2xl md:text-3xl text-primary font-semibold mb-6">{profile.title}</p> {/* Primary text color (Teal) */}
-        <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-2xl md:text-3xl text-primary font-semibold mb-6">{profile.title}</p> 
+        <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
           {profile.bio}
         </p>
         
@@ -46,7 +46,7 @@ export function ProfileSection() {
           <Button
             size="lg"
             onClick={handleViewWorkClick}
-            className="bg-accent text-accent-foreground hover:bg-accent/80 px-8 py-3 text-base shadow-lg hover:shadow-accent/50 transform hover:scale-105 transition-transform duration-300 group" // Accent color (Coral) for main CTA
+            className="bg-accent text-accent-foreground hover:bg-accent/80 px-8 py-3 text-base shadow-lg hover:shadow-accent/50 transform hover:scale-105 transition-transform duration-300 group" 
             aria-label="View my work"
           >
             View Work <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -55,24 +55,14 @@ export function ProfileSection() {
             variant="outline"
             size="lg"
             asChild
-            className="border-primary/70 text-primary hover:bg-primary/10 hover:text-primary px-8 py-3 text-base shadow-md hover:shadow-primary/30 transform hover:scale-105 transition-transform duration-300" // Primary outline (Teal)
+            className="border-primary/70 text-primary hover:bg-primary/10 hover:text-primary px-8 py-3 text-base shadow-md hover:shadow-primary/30 transform hover:scale-105 transition-transform duration-300" 
           >
             <a href="/mycv.pdf" download={cvFileName}>
-              <Download className="mr-2 h-5 w-5" /> Download CV
+              <>
+                <Download className="mr-2 h-5 w-5" /> Download CV
+              </>
             </a>
           </Button>
-        </div>
-
-        <div className="flex justify-center space-x-6">
-          <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-accent transition-colors"> {/* Accent hover (Coral) */}
-            <Github className="h-7 w-7" />
-          </a>
-          <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-accent transition-colors"> {/* Accent hover (Coral) */}
-            <Linkedin className="h-7 w-7" />
-          </a>
-          <a href={`mailto:${profile.contact.email}`} aria-label="Email" className="text-muted-foreground hover:text-accent transition-colors"> {/* Accent hover (Coral) */}
-            <Mail className="h-7 w-7" />
-          </a>
         </div>
       </div>
     </section>

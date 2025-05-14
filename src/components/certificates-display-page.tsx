@@ -6,13 +6,13 @@ import Image from 'next/image';
 import { resumeData } from '@/data/resume';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Award, ExternalLink, CalendarDays } from 'lucide-react'; // Removed ShieldCheck
+import { Award, ExternalLink, CalendarDays } from 'lucide-react';
 
 export function CertificatesDisplayPage() {
   if (!resumeData.certificates || resumeData.certificates.length === 0) {
     return (
       <div className="py-12 md:py-16 text-center">
-        <Award className="section-icon text-muted-foreground mb-4" />
+        <Award className="section-icon text-muted-foreground mb-4 mx-auto" />
         <p className="text-lg text-muted-foreground">No certificates to display at the moment.</p>
       </div>
     );
@@ -21,8 +21,8 @@ export function CertificatesDisplayPage() {
   return (
     <div className="py-12 md:py-16">
       <div className="flex items-center justify-center mb-10 md:mb-14 animate-fadeIn">
-        <Award className="section-icon" /> {/* Icon color uses --primary from globals.css */}
-        <h2 className="section-title">Certifications</h2> {/* Title color uses --primary from globals.css */}
+        <Award className="section-icon" />
+        <h2 className="section-title">Certifications</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {resumeData.certificates.map((cert, index) => (
@@ -36,34 +36,36 @@ export function CertificatesDisplayPage() {
                 <Image
                   src={cert.imageUrl}
                   alt={`${cert.name} certificate image`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="group-hover:scale-105 transition-transform duration-300"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
                   data-ai-hint={cert.dataAiHint || "certificate document"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-300"></div>
               </div>
             )}
             <CardHeader className="p-5 md:p-6 pb-2">
-              <CardTitle className="text-lg md:text-xl text-primary group-hover:text-primary/90 transition-colors leading-tight">{cert.name}</CardTitle> {/* Cert title uses primary color */}
-              <CardDescription className="text-xs text-muted-foreground pt-1.5"> {/* Adjusted text size */}
+              <CardTitle className="text-lg md:text-xl text-primary group-hover:text-primary/90 transition-colors leading-tight">{cert.name}</CardTitle>
+              <CardDescription className="text-xs text-muted-foreground pt-1.5">
                 Issued by: {cert.issuingOrganization}
               </CardDescription>
             </CardHeader>
             <CardContent className="p-5 md:p-6 pt-2 flex-grow">
-               <div className="flex items-center text-xs text-muted-foreground mb-3"> {/* Adjusted text size */}
-                <CalendarDays className="h-3.5 w-3.5 mr-1.5 opacity-80" /> {/* Adjusted icon size */}
+               <div className="flex items-center text-xs text-muted-foreground mb-3">
+                <CalendarDays className="h-3.5 w-3.5 mr-1.5 opacity-80" />
                 {cert.issueDate}
               </div>
               {cert.description && (
-                <p className="text-xs text-foreground/80 mb-4 leading-relaxed line-clamp-3">{cert.description}</p> /* Adjusted text size */
+                <p className="text-xs text-foreground/80 mb-4 leading-relaxed line-clamp-3">{cert.description}</p>
               )}
             </CardContent>
             <CardFooter className="p-5 md:p-6 pt-0">
               {cert.credentialUrl && (
-                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-accent/80 self-start text-xs font-medium group-hover:underline"> {/* Link uses accent color, adjusted text size */}
+                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-accent/80 self-start text-xs font-medium group-hover:underline">
                   <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
-                    View Credential <ExternalLink className="ml-1.5 h-3.5 w-3.5" /> {/* Adjusted icon size */}
+                    <>
+                      View Credential <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
+                    </>
                   </a>
                 </Button>
               )}
