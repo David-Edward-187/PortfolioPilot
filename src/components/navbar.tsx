@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Code2 } from 'lucide-react'; // Added Code2 for logo
+import { Menu, X, Code2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -19,15 +19,18 @@ const navLinks = [
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(); // This hook might need adjustment if not working as expected
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   React.useEffect(() => {
-    if (!isMobile && isMobileMenuOpen) {
-      setIsMobileMenuOpen(false);
+    // Ensure isMobile is resolved before using it
+    if (typeof window !== 'undefined') {
+      if (!isMobile && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
     }
   }, [isMobile, isMobileMenuOpen]);
   
@@ -37,29 +40,19 @@ export function Navbar() {
     }
   };
 
+  // This Navbar is now primarily for mobile.
+  // It will be hidden on desktop (md screens and up) by the `md:hidden` class.
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md shadow-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between">
+    <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md shadow-sm">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
           <Code2 className="h-7 w-7 text-primary" />
-          <span className="text-xl font-bold text-foreground">PortfolioPilot</span>
+          <span className="text-xl font-bold text-foreground">Portfolio</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-2">
-          {navLinks.map((link) => (
-            <Button key={link.href} variant="ghost" asChild>
-              <Link href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary">
-                {link.label}
-              </Link>
-            </Button>
-          ))}
-          <ThemeToggle />
-        </nav>
-
-        {/* Mobile Navigation Trigger */}
-        <div className="md:hidden">
-          <Button variant="ghost" size="icon" onClick={toggleMobileMenu} aria-label="Toggle menu">
+        <div className="flex items-center">
+          <ThemeToggle /> {/* Theme toggle can be here for mobile too */}
+          <Button variant="ghost" size="icon" onClick={toggleMobileMenu} aria-label="Toggle menu" className="ml-2">
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
@@ -69,20 +62,17 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div
           className={cn(
-            "md:hidden absolute top-16 left-0 right-0 bg-background shadow-lg py-4 animate-fadeIn",
-            "flex flex-col items-center space-y-4" 
+            "absolute top-16 left-0 right-0 bg-card shadow-lg py-4 animate-fadeIn",
+            "flex flex-col items-center space-y-2" 
           )}
         >
           {navLinks.map((link) => (
             <Button key={link.href} variant="ghost" asChild className="w-full text-center">
-              <Link href={link.href} className="text-base font-medium text-muted-foreground hover:text-primary py-2" onClick={closeMobileMenu}>
+              <Link href={link.href} className="text-base font-medium text-muted-foreground hover:text-primary py-2.5" onClick={closeMobileMenu}>
                 {link.label}
               </Link>
             </Button>
           ))}
-          <div className="mt-4">
-            <ThemeToggle />
-          </div>
         </div>
       )}
     </header>

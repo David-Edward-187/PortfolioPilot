@@ -5,7 +5,8 @@ import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
-import { Navbar } from '@/components/navbar'; // Added Navbar import
+import { Navbar } from '@/components/navbar'; 
+import { SidebarNav } from '@/components/sidebar-nav'; // New Sidebar
 
 const inter = Inter({
   variable: '--font-inter',
@@ -14,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Alex Johnson | Full Stack Developer', // Updated title
-  description: 'Portfolio of Alex Johnson, a passionate Full Stack Developer specializing in modern web technologies.', // Updated description
+  title: 'Alex Johnson | Full Stack Developer', 
+  description: 'Portfolio of Alex Johnson, a passionate Full Stack Developer specializing in modern web technologies.', 
 };
 
 export default function RootLayout({
@@ -25,16 +26,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark" // Set default to dark to match example
           enableSystem
           disableTransitionOnChange
         >
           <DevtoolBlocker />
-          <Navbar /> {/* Added Navbar */}
-          <main className="pt-16"> {/* Added padding-top for fixed navbar */}
+          <SidebarNav /> {/* Desktop Sidebar */}
+          <Navbar /> {/* Mobile Navbar */}
+          <main className="md:pl-64"> {/* Add padding for desktop sidebar */}
             {children}
           </main>
           <Toaster />
