@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { User, FileText, Package, Award, Mail, Code2, Briefcase, GraduationCap, Star, MessageSquare } from 'lucide-react';
+import { User, FileText, Package, Award, Mail, Code2 } from 'lucide-react'; // Removed Briefcase, GraduationCap, Star, MessageSquare
 import { resumeData } from '@/data/resume';
 
 interface NavLink {
@@ -25,14 +25,14 @@ const navLinks: NavLink[] = [
 ];
 
 export function SidebarNav() {
-  const pathname = usePathname(); // In a single-page app, this won't change much, active state might need scrollspy
+  const pathname = usePathname(); 
   const [activeSection, setActiveSection] = React.useState('');
 
   React.useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.4, // Adjust this threshold as needed
+      threshold: 0.4, 
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -59,10 +59,10 @@ export function SidebarNav() {
 
 
   return (
-    <aside className="hidden md:flex fixed top-0 left-0 z-40 w-64 h-screen flex-col justify-between border-r border-border bg-card/80 backdrop-blur-lg p-6 shadow-2xl">
+    <aside className="hidden md:flex fixed top-0 left-0 z-40 w-64 h-screen flex-col justify-between border-r border-border bg-card backdrop-blur-lg p-6 shadow-xl"> {/* bg-card for sidebar, increased shadow */}
       <div>
         <Link href="/" className="flex items-center gap-2.5 mb-10">
-          <Code2 className="h-8 w-8 text-primary" />
+          <Code2 className="h-8 w-8 text-primary" /> {/* Icon uses primary color (Teal) */}
           <span className="text-2xl font-bold text-foreground">{resumeData.name.split(' ')[0]}</span>
         </Link>
         <nav className="flex flex-col space-y-2">
@@ -71,11 +71,12 @@ export function SidebarNav() {
             return (
               <Button
                 key={link.href}
-                variant={isActive ? "secondary" : "ghost"}
+                variant={isActive ? "secondary" : "ghost"} // Active uses secondary variant (defined by theme)
                 asChild
                 className={cn(
-                  "justify-start text-base py-3 px-4 rounded-md transition-all duration-200",
+                  "justify-start text-sm py-3 px-4 rounded-md transition-all duration-200", // text-sm as per PRD body
                   isActive ? "text-primary font-semibold bg-primary/10" : "text-muted-foreground hover:text-foreground hover:bg-secondary/70",
+                  isActive && "ring-2 ring-accent" // Active link has accent ring (Coral)
                 )}
               >
                 <Link href={link.href} className="flex items-center gap-3">

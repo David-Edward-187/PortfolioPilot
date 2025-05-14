@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
 import { Navbar } from '@/components/navbar'; 
-import { SidebarNav } from '@/components/sidebar-nav'; // New Sidebar
+import { SidebarNav } from '@/components/sidebar-nav';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark" // Set default to dark to match example
+          defaultTheme="light" // Set default to light as per PRD
           enableSystem
           disableTransitionOnChange
         >

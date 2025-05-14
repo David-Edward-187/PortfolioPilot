@@ -4,7 +4,7 @@
 import * as React from 'react';
 import { resumeData } from '@/data/resume';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, BookOpen, Wrench, Star } from 'lucide-react';
+import { Briefcase, BookOpen, Wrench } from 'lucide-react'; // Removed Star, using Wrench for Skills
 
 export function ResumeDisplayPage() {
   return (
@@ -12,18 +12,18 @@ export function ResumeDisplayPage() {
       {/* Experience Section */}
       <div className="animate-fadeIn" style={{animationDelay: '0.1s'}}>
         <div className="flex items-center justify-center mb-8 md:mb-10">
-            <Briefcase className="section-icon" />
-            <h2 className="section-title">Experience</h2>
+            <Briefcase className="section-icon" /> {/* Icon color uses --primary from globals.css */}
+            <h2 className="section-title">Experience</h2> {/* Title color uses --primary from globals.css */}
         </div>
         <div className="space-y-8">
           {resumeData.experience.map((exp, index) => (
             <Card 
               key={index} 
-              className="shadow-xl bg-card/70 border-border/70 backdrop-blur-md overflow-hidden hover:border-primary/50 transition-all duration-300"
+              className="shadow-xl bg-card border-border backdrop-blur-md overflow-hidden hover:border-primary/50 transition-all duration-300" // Ensure bg-card and border-border are used
             >
-              <CardHeader className="pb-3 pt-5 px-5 md:px-6 bg-secondary/20">
+              <CardHeader className="pb-3 pt-5 px-5 md:px-6 bg-secondary/20"> {/* Using secondary for subtle header background */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                  <CardTitle className="text-lg md:text-xl text-primary font-semibold mb-1 sm:mb-0">{exp.role}</CardTitle>
+                  <CardTitle className="text-lg md:text-xl text-primary font-semibold mb-1 sm:mb-0">{exp.role}</CardTitle> {/* Role uses primary color */}
                   <p className="text-xs md:text-sm text-muted-foreground font-medium">{exp.years}</p>
                 </div>
                 <p className="text-sm md:text-base text-foreground font-medium">{exp.company}</p>
@@ -48,7 +48,7 @@ export function ResumeDisplayPage() {
           {resumeData.education.map((edu, index) => (
             <Card 
               key={index} 
-              className="shadow-xl bg-card/70 border-border/70 backdrop-blur-md overflow-hidden hover:border-primary/50 transition-all duration-300"
+              className="shadow-xl bg-card border-border backdrop-blur-md overflow-hidden hover:border-primary/50 transition-all duration-300"
             >
               <CardHeader className="pb-3 pt-5 px-5 md:px-6 bg-secondary/20">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
@@ -73,16 +73,16 @@ export function ResumeDisplayPage() {
             <Wrench className="section-icon" />
             <h2 className="section-title">Skills</h2>
         </div>
-        <Card className="shadow-xl bg-card/70 border-border/70 backdrop-blur-md p-6 md:p-8">
+        <Card className="shadow-xl bg-card border-border backdrop-blur-md p-6 md:p-8">
           <CardContent className="space-y-8 pt-0">
             {Object.entries(resumeData.skills).map(([category, skillsList]) => (
               <div key={category}>
-                <h4 className="font-semibold text-lg md:text-xl text-primary mb-4">{category}</h4>
+                <h4 className="font-semibold text-md md:text-lg text-primary mb-4">{category}</h4> {/* Category title uses primary color */}
                 <div className="flex flex-wrap gap-3">
                   {skillsList.map((skill, index) => (
                     <span 
                       key={index} 
-                      className="bg-secondary/50 text-foreground/90 px-4 py-2.5 rounded-md text-sm shadow-sm hover:bg-primary/20 hover:text-primary transition-colors cursor-default font-medium border border-border hover:border-primary/30"
+                      className="bg-secondary text-secondary-foreground px-3 py-2 rounded-md text-xs shadow-sm hover:bg-accent/20 hover:text-accent-foreground transition-colors cursor-default font-medium border border-border hover:border-accent/30" // Skill tags use secondary bg, hover with accent
                     >
                       {skill}
                     </span>

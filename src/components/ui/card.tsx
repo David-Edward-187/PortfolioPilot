@@ -30,12 +30,11 @@ const CardHeader = React.forwardRef<
 CardHeader.displayName = "CardHeader"
 
 const CardTitle = React.forwardRef<
-  HTMLParagraphElement, // Changed to HTMLParagraphElement to align with h-tags usage
-  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
->(({ className, children, asChild, ...props }, ref) => {
-  const Comp = asChild ? "div" : "h3"; 
+  HTMLHeadingElement, // Changed from HTMLParagraphElement
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, children, ...props }, ref) => {
   return (
-  <Comp 
+  <h3 // Default to h3, removed asChild and Comp logic
     ref={ref}
     className={cn(
       "font-semibold leading-none tracking-tight", 
@@ -44,24 +43,23 @@ const CardTitle = React.forwardRef<
     {...props}
   >
     {children}
-  </Comp>
+  </h3>
   );
 })
 CardTitle.displayName = "CardTitle"
 
 const CardDescription = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement> & { asChild?: boolean }
->(({ className, asChild, children, ...props }, ref) => {
-  const Comp = asChild ? "div" : "p";
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, children, ...props }, ref) => {
   return (
-  <Comp 
+  <p // Default to p, removed asChild and Comp logic
     ref={ref}
     className={cn("text-sm text-muted-foreground", className)} 
     {...props}
   >
     {children}
-  </Comp>
+  </p>
   );
 })
 CardDescription.displayName = "CardDescription"

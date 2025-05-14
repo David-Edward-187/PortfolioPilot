@@ -13,101 +13,81 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme (Kept for theme toggling, but default will be dark) */
-    /* Primary: Vibrant Cyan-Blue, Secondary: Cool Gray, Accent: Bright Pink/Purple */
-    --background-light: 220 20% 97%; /* Light Slate Gray #F5F7F9 */
-    --foreground-light: 220 10% 25%; /* Dark Slate Gray #3A4047 */
-    --card-light: 220 20% 100%; /* White #FFFFFF */
-    --card-foreground-light: 220 10% 25%;
-    --popover-light: 220 20% 100%;
-    --popover-foreground-light: 220 10% 25%;
-    --primary-light: 190 75% 55%; /* Bright Cyan */
-    --primary-foreground-light: 220 25% 10%; 
-    --secondary-light: 220 15% 94%; 
-    --secondary-foreground-light: 220 10% 35%;
-    --muted-light: 220 15% 88%;
-    --muted-foreground-light: 220 10% 45%;
-    --accent-light: 190 75% 55%; /* Same as primary for consistency */
-    --accent-foreground-light: 220 25% 10%;
-    --destructive-light: 0 72% 51%;
-    --destructive-foreground-light: 0 0% 98%;
-    --border-light: 220 15% 80%; /* #C4C9D1 */
-    --input-light: 220 20% 99%;
-    --input-border-light: 220 15% 75%; /* Slightly softer input border */
-    --ring-light: 190 75% 60%; /* Cyan focus ring */
+    /* Light Theme (PRD Specified) */
+    --background: 0 0% 94.1%; /* #F0F0F0 Light Gray */
+    --foreground: 0 0% 20%;   /* #333333 Dark Gray */
     
-    --radius: 0.5rem; /* 8px base radius for a modern look */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 20%; /* Dark Gray */
+    
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 20%; /* Dark Gray */
+    
+    --primary: 180 100% 25.1%; /* #008080 Teal */
+    --primary-foreground: 0 0% 98%; /* #FAFAFA Off-white for text on Teal */
+    
+    --secondary: 0 0% 97.3%; /* #F8F8F8 Lighter Gray for secondary elements */
+    --secondary-foreground: 0 0% 25%; /* #404040 */
+    
+    --muted: 0 0% 90%; /* #E6E6E6 */
+    --muted-foreground: 0 0% 40%; /* #666666 */
+    
+    --accent: 16 100% 65.7%; /* #FF7F50 Coral */
+    --accent-foreground: 0 0% 10%; /* #1A1A1A Dark text for Coral */
+    
+    --destructive: 0 72% 51%; /* Standard red */
+    --destructive-foreground: 0 0% 98%; /* Light text on red */
+    
+    --border: 0 0% 87%; /* #DEDEDE */
+    --input: 0 0% 100%; /* White */
+    --input-border: 0 0% 80%; /* #CCCCCC */
+    --ring: 16 100% 70%; /* Brighter Coral for focus ring on light mode */ /* Example: var(--accent) */
+    
+    --radius: 0.5rem; /* 8px base radius */
 
-    --chart-1-light: hsl(var(--primary-light));
-    --chart-2-light: hsl(220 70% 60%); 
-    --chart-3-light: hsl(var(--primary-light) / 0.7);
-    --chart-4-light: hsl(0 0% 50%);
-    --chart-5-light: hsl(0 0% 70%);
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(16 100% 55%); /* Darker Coral */
+    --chart-3: hsl(var(--primary) / 0.7);
+    --chart-4: hsl(0 0% 50%);
+    --chart-5: hsl(0 0% 70%);
+  }
 
-    /* Dark Theme (Inspired by ariel.me) */
-    --background: 220 25% 10%; /* Very Dark Blue/Gray */
-    --foreground: 220 15% 88%; /* Light Gray/Off-white */
+  .dark {
+    --background: 0 0% 13%; /* Near #212121 */
+    --foreground: 0 0% 87%; /* Near #DEDEDE */
 
-    --card: 220 20% 13%; /* Slightly lighter than background for cards */
-    --card-foreground: 220 15% 85%;
+    --card: 0 0% 18%; /* Near #2E2E2E */
+    --card-foreground: 0 0% 87%;
 
-    --popover: 220 20% 10%; /* Darker for popovers */
-    --popover-foreground: 220 15% 85%;
+    --popover: 0 0% 15%; /* Slightly darker for popovers */
+    --popover-foreground: 0 0% 87%;
     
-    --primary: 190 80% 58%; /* Bright Cyan - Main Accent */
-    --primary-foreground: 220 25% 10%; /* Dark text on bright cyan */
+    --primary: 180 70% 50%; /* Brighter Teal #19E6E6 */
+    --primary-foreground: 180 100% 10%; /* Dark text on bright Teal */
     
-    --secondary: 220 20% 18%; /* Slightly lighter dark for secondary elements */
-    --secondary-foreground: 220 15% 70%;
+    --secondary: 0 0% 22%; /* #383838 */
+    --secondary-foreground: 0 0% 75%; /* #BFBFBF */
     
-    --muted: 220 15% 25%; /* Darker muted */
-    --muted-foreground: 220 15% 55%; /* Lighter muted text */
+    --muted: 0 0% 25%; /* #404040 */
+    --muted-foreground: 0 0% 55%; /* #8C8C8C */
     
-    --accent: 190 80% 58%; /* Same as Primary */
-    --accent-foreground: 220 25% 10%;
+    --accent: 16 100% 70%; /* Brighter Coral #FF8C66 */
+    --accent-foreground: 0 0% 10%; /* Dark text on Coral */
     
     --destructive: 0 65% 55%; /* Slightly brighter red for dark mode */
     --destructive-foreground: 0 0% 98%; 
     
-    --border: 220 15% 22%; /* Subtle dark border */
-    --input: 220 15% 16%;  /* Dark input background */
-    --input-border: 220 15% 30%; /* Input border */
-    --ring: 190 75% 60%; /* Cyan focus ring */
+    --border: 0 0% 25%; /* #404040 */
+    --input: 0 0% 20%;  /* #333333 */
+    --input-border: 0 0% 30%; /* #4D4D4D */
+    --ring: 16 100% 75%; /* Even Brighter Coral for focus ring on dark mode */ /* Example: var(--accent-dark) */
     
     /* Chart colors for dark mode */
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(210 75% 65%);
+    --chart-2: hsl(16 90% 60%); /* Brighter Coral variant */
     --chart-3: hsl(var(--primary) / 0.7);
     --chart-4: hsl(0 0% 45%);  
     --chart-5: hsl(0 0% 25%); 
-  }
-
-  .light {
-    --background: var(--background-light);
-    --foreground: var(--foreground-light);
-    --card: var(--card-light);
-    --card-foreground: var(--card-foreground-light);
-    --popover: var(--popover-light);
-    --popover-foreground: var(--popover-foreground-light);
-    --primary: var(--primary-light);
-    --primary-foreground: var(--primary-foreground-light);
-    --secondary: var(--secondary-light);
-    --secondary-foreground: var(--secondary-foreground-light);
-    --muted: var(--muted-light);
-    --muted-foreground: var(--muted-foreground-light);
-    --accent: var(--accent-light);
-    --accent-foreground: var(--accent-foreground-light);
-    --destructive: var(--destructive-light);
-    --destructive-foreground: var(--destructive-foreground-light);
-    --border: var(--border-light);
-    --input: var(--input-light);
-    --input-border: var(--input-border-light);
-    --ring: var(--ring-light);
-    --chart-1: var(--chart-1-light);
-    --chart-2: var(--chart-2-light);
-    --chart-3: var(--chart-3-light);
-    --chart-4: var(--chart-4-light);
-    --chart-5: var(--chart-5-light);
   }
 
   * {
@@ -119,45 +99,50 @@ html {
 
   body {
     @apply bg-background text-foreground;
-    font-size: 100%; /* Base 16px */
+    font-size: 100%; /* Base 16px for calculations, actual body text smaller */
     line-height: 1.7; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Consistent Type Scale - XL titles, MD subheads, SM captions */
+  /* PRD Type Scale: H1/H2 at 1.25rem, H3/H4 at 1rem, body 0.875rem, caption 0.75rem */
+  /* Adjusted for Tailwind defaults: text-xl (1.25rem), text-lg (1.125rem), text-base (1rem), text-sm (0.875rem), text-xs (0.75rem) */
   h1, .text-h1 { 
-    @apply text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl; /* XL titles */
+    @apply text-2xl font-bold leading-tight tracking-tight md:text-3xl; /* PRD H1/H2 -> closest is text-xl/text-2xl. Using larger for impact */
   } 
   h2, .text-h2 { 
-    @apply text-3xl font-semibold leading-snug tracking-tight md:text-4xl; /* Large subheads */
+    @apply text-xl font-semibold leading-snug tracking-tight md:text-2xl;
   } 
   h3, .text-h3 { 
-    @apply text-2xl font-semibold leading-normal tracking-tight md:text-3xl; /* Medium subheads */
+    @apply text-lg font-semibold leading-normal tracking-tight md:text-xl; /* PRD H3/H4 -> text-base/text-lg */
   }    
   h4, .text-h4 {
-    @apply text-xl font-medium leading-normal md:text-2xl; /* Small subheads */
+    @apply text-base font-medium leading-normal md:text-lg;
   }
+  /* Body text as per PRD: 0.875rem (text-sm) */
   p, li, span, label, input, textarea, button, a { 
-    @apply text-base leading-relaxed md:text-lg; /* Base text size */
+    @apply text-sm leading-relaxed md:text-base; 
   } 
+  /* Caption text as per PRD: 0.75rem (text-xs) */
   small, .text-caption { 
-    @apply text-sm text-muted-foreground; /* SM captions */
+    @apply text-xs text-muted-foreground; 
   }
 
   .section-title {
-    @apply text-h2 text-primary mb-10 md:mb-12 text-center;
+    @apply text-2xl md:text-3xl font-bold text-primary mb-10 md:mb-12 text-center;
   }
   
   .section-icon {
-    @apply w-8 h-8 md:w-10 md:h-10 mr-3 text-primary;
+    @apply w-8 h-8 md:w-10 md:h-10 mr-3 text-primary; /* Icon color changed to primary (Teal) */
   }
 
   .card, .card-like { 
-    @apply rounded-lg border bg-card text-card-foreground shadow-xl backdrop-blur-sm bg-opacity-80; 
+    /* background will be var(--card) from theme */
+    @apply rounded-lg border bg-card text-card-foreground shadow-lg; 
+    /* Using shadow-lg for a bit more depth, can be adjusted. PRD mentions shadows */
   }
 
-  /* Consistent focus rings for accessibility */
+  /* Consistent focus rings for accessibility - using accent color (Coral) */
   button:focus-visible, 
   a:focus-visible, 
   input:focus-visible, 
@@ -184,13 +169,13 @@ html {
     animation: fadeIn 0.5s ease-out forwards;
   }
 
-  /* Custom scrollbar for webkit browsers - Dark theme scrollbar */
+  /* Custom scrollbar (optional, keeping subtle dark theme style) */
   ::-webkit-scrollbar {
     width: 8px; 
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background) / 0.5); 
+    background: hsl(var(--muted) / 0.5); 
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb {
@@ -203,12 +188,12 @@ html {
     background: hsl(var(--muted-foreground) / 0.6);
   }
 
-  /* Section specific padding */
+  /* Section specific padding based on 24px grid (1.5rem = 24px) */
   section {
-    @apply py-20 md:py-24 lg:py-28 scroll-mt-16; /* scroll-mt for fixed nav */
+    @apply py-16 md:py-20 lg:py-24 scroll-mt-16; /* p-16 is 4rem, p-20 is 5rem. PRD p-6 (1.5rem) is small for sections. Using larger values. */
   }
 
   .container {
-    @apply px-6 sm:px-8 lg:px-10; /* Slightly increased container padding */
+    @apply px-6 sm:px-8 lg:px-10; /* p-6 for container padding */
   }
 }

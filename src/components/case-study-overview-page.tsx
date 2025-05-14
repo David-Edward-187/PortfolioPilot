@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Briefcase, Package } from 'lucide-react';
+import { ExternalLink, Package } from 'lucide-react'; // Removed Briefcase
 import { resumeData } from '@/data/resume';
 import type { ProjectEntry } from '@/types/resume';
 import { Badge } from '@/components/ui/badge';
@@ -24,14 +24,14 @@ export function CaseStudyOverviewPage() {
   return (
     <div className="py-12 md:py-16">
       <div className="flex items-center justify-center mb-10 md:mb-14 animate-fadeIn">
-         <Package className="section-icon" />
-         <h2 className="section-title">Projects</h2>
+         <Package className="section-icon" /> {/* Icon color uses --primary from globals.css */}
+         <h2 className="section-title">Projects</h2> {/* Title color uses --primary from globals.css */}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {resumeData.projects.map((project: ProjectEntry, index: number) => (
           <Card
             key={project.name}
-            className="bg-card/70 border-border/70 backdrop-blur-md rounded-xl shadow-xl overflow-hidden group flex flex-col transition-all duration-300 hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-1 animate-fadeIn"
+            className="bg-card border-border backdrop-blur-md rounded-xl shadow-xl overflow-hidden group flex flex-col transition-all duration-300 hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-1 animate-fadeIn"
             style={{animationDelay: `${index * 0.07}s`}}
             onMouseEnter={() => setHoveredProject(project.name)}
             onMouseLeave={() => setHoveredProject(null)}
@@ -49,10 +49,10 @@ export function CaseStudyOverviewPage() {
                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
             </div>
             <CardHeader className="p-5 md:p-6">
-              <CardTitle className="text-lg md:text-xl font-semibold text-primary group-hover:text-primary/90 transition-colors">{project.name}</CardTitle>
+              <CardTitle className="text-lg md:text-xl font-semibold text-primary group-hover:text-primary/90 transition-colors">{project.name}</CardTitle> {/* Project title uses primary color */}
             </CardHeader>
             <CardContent className="p-5 md:p-6 pt-0 flex-grow">
-              <ul className="text-sm text-muted-foreground mt-1 space-y-1.5 list-disc list-outside ml-4 line-clamp-4">
+              <ul className="text-xs text-muted-foreground mt-1 space-y-1.5 list-disc list-outside ml-4 line-clamp-4"> {/* Adjusted text size for PRD */}
                  {project.description.map((desc, i) => <li key={i}>{desc}</li>)}
               </ul>
             </CardContent>
@@ -71,9 +71,9 @@ export function CaseStudyOverviewPage() {
                   </div>
               )}
               {project.link && project.link !== "#" && (
-                  <Button variant="link" asChild className="text-primary p-0 h-auto text-sm group-hover:underline self-start font-medium">
+                  <Button variant="link" asChild className="text-accent p-0 h-auto text-xs group-hover:underline self-start font-medium"> {/* Link uses accent color */}
                       <a href={project.link} target="_blank" rel="noopener noreferrer">
-                          View Project <ExternalLink className="w-4 h-4 ml-1.5" />
+                          View Project <ExternalLink className="w-3.5 h-3.5 ml-1.5" /> {/* Adjusted icon size */}
                       </a>
                   </Button>
               )}
