@@ -13,89 +13,89 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - Refined Modern & Professional */
-    --background: 210 40% 98%; /* Very Light Blue-Gray */
-    --foreground: 210 20% 25%; /* Dark Slate Blue */
+    /* Light Theme - Neutral Grays + Bold Accent */
+    --background: 0 0% 97.3%; /* #F8F8F8 */
+    --foreground: 0 0% 20%;   /* #333333 */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 210 20% 25%; /* Dark Slate Blue */
+    --card-foreground: 0 0% 20%; /* #333333 */
 
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 210 20% 25%; /* Dark Slate Blue */
+    --popover-foreground: 0 0% 20%; /* #333333 */
     
-    /* Primary Color: Vibrant Blue */
-    --primary: 210 60% 50%; /* Vibrant Blue */
-    --primary-foreground: 0 0% 100%; /* White text on Primary */
+    /* Primary Color: Bold Accent */
+    --primary: 0 100% 71%; /* #FF6B6B */
+    --primary-foreground: 0 0% 100%; /* White text on Primary for contrast */
     
     /* Secondary Color: Light Gray */
-    --secondary: 210 30% 95%; /* #eff2f5 - Light Gray */
-    --secondary-foreground: 210 15% 35%; /* #4d5661 - Mid Gray */
+    --secondary: 0 0% 93.3%; /* Lighter shade of #F8F8F8 or slightly darker */
+    --secondary-foreground: 0 0% 25%; /* Darker gray for text on secondary */
     
-    --muted: 210 25% 90%; /* #dde1e6 - Muted Gray */
-    --muted-foreground: 210 15% 45%; /* #656f7b - Muted Text */
+    --muted: 0 0% 90%; /* Muted Gray */
+    --muted-foreground: 0 0% 40%; /* Muted Text */
     
-    /* Accent Color: Vibrant Orange/Gold */
-    --accent: 35 95% 58%; /* #fca937 - Vibrant Orange/Gold */
-    --accent-foreground: 210 20% 15%; /* Dark text on Accent for contrast */
+    /* Accent Color: Same as Primary (one bold accent) */
+    --accent: 0 100% 71%; /* #FF6B6B */
+    --accent-foreground: 0 0% 100%; /* White text on Accent */
     
-    --destructive: 0 72% 51%; /* #e53e3e */
+    --destructive: 0 72% 51%; /* #e53e3e - Kept for error states */
     --destructive-foreground: 0 0% 98%; /* #fdfdfe */
     
-    --border: 210 20% 88%; /* #dbe0e3 - Light Gray Border */
+    --border: 0 0% 85%; /* Gray border, slightly darker than background */
     --input: 0 0% 100%; /* White input background */
-    --input-border: 210 20% 80%; /* #c4ccd1 - Gray Input Border */
-    --ring: 210 60% 60%; /* Brighter Vibrant Blue for focus ring */
+    --input-border: 0 0% 80%; /* Gray Input Border */
+    --ring: 0 100% 71%; /* Accent color for focus ring */
     
     --radius: 0.5rem; /* 8px */
 
-    /* Chart colors */
+    /* Chart colors - adjust if charts are used, keeping primary/accent in mind */
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(var(--accent));
-    --chart-3: 210 60% 65%; /* Lighter Vibrant Blue */
-    --chart-4: 35 95% 68%;  /* Lighter Vibrant Orange/Gold */
-    --chart-5: 210 20% 60%; /* Mid Gray */
+    --chart-2: hsl(var(--accent)); /* Might be same as chart-1 */
+    --chart-3: 0 100% 80%; /* Lighter Accent */
+    --chart-4: 0 0% 50%;  /* Mid Gray */
+    --chart-5: 0 0% 70%; /* Light Gray */
   }
 
   .dark {
-    /* Dark Theme - Refined Modern & Professional */
-    --background: 210 25% 10%; /* #10141a - Very Dark Desaturated Blue */
-    --foreground: 210 30% 90%; /* #dbe0e6 - Light Gray-Blue Text */
+    /* Dark Theme - Neutral Grays + Bold Accent */
+    --background: 0 0% 13.3%; /* Darker version of #333333 -> #222222 */
+    --foreground: 0 0% 90%;   /* Lighter version of #F8F8F8 -> #E6E6E6 */
     
-    --card: 210 25% 15%; /* #181c24 - Darker Card */
-    --card-foreground: 210 30% 90%; /* #dbe0e6 */
+    --card: 0 0% 10%; /* Darker Card */
+    --card-foreground: 0 0% 90%; 
     
-    --popover: 210 25% 12%; /* #14181f - Darker Popover */
-    --popover-foreground: 210 30% 90%; /* #dbe0e6 */
+    --popover: 0 0% 8%; /* Darker Popover */
+    --popover-foreground: 0 0% 90%;
     
-    /* Primary Color: Vibrant Blue (Dark Mode) */
-    --primary: 210 60% 60%; /* #6aa9de - Brighter Vibrant Blue */
-    --primary-foreground: 210 25% 5%; /* #0a0c0f - Very Dark text on brighter Primary */
+    /* Primary Color: Bold Accent (Dark Mode) */
+    --primary: 0 100% 71%; /* #FF6B6B - Can keep same or make slightly brighter if needed */
+    --primary-foreground: 0 0% 100%; /* White text on Primary */
     
     /* Secondary Color: Darker Gray (Dark Mode) */
-    --secondary: 210 25% 20%; /* #202630 */
-    --secondary-foreground: 210 30% 85%; /* #cdd4db */
+    --secondary: 0 0% 18%; 
+    --secondary-foreground: 0 0% 85%; 
     
-    --muted: 210 25% 18%;  /* #1c212b */
-    --muted-foreground: 210 25% 60%; /* #818c9b */
+    --muted: 0 0% 20%; 
+    --muted-foreground: 0 0% 60%; 
     
-    /* Accent Color: Vibrant Orange/Gold (Dark Mode) */
-    --accent: 35 95% 65%; /* #fdad48 - Slightly brighter Vibrant Orange/Gold */
-    --accent-foreground: 210 25% 5%; /* #0a0c0f - Very dark text on Accent */
+    /* Accent Color: Same as Primary (one bold accent) */
+    --accent: 0 100% 71%; /* #FF6B6B */
+    --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 63% 50%; /* #df3030 */
-    --destructive-foreground: 0 0% 98%; /* #fdfdfe */
+    --destructive: 0 63% 50%; 
+    --destructive-foreground: 0 0% 98%; 
     
-    --border: 210 25% 25%; /* #2d3440 */
-    --input: 210 25% 13%;  /* #161a21 */
-    --input-border: 210 25% 30%; /* #3a4353 */
-    --ring: 210 60% 70%; /* Brighter Vibrant Blue for focus rings in dark mode */
+    --border: 0 0% 25%; 
+    --input: 0 0% 12%;  
+    --input-border: 0 0% 30%; 
+    --ring: 0 100% 71%; /* Accent color for focus ring */
     
-     /* Chart colors for dark mode */
+     /* Chart colors for dark mode - adjust if charts are used */
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
-    --chart-3: 210 60% 75%; /* Lighter Vibrant Blue */
-    --chart-4: 35 95% 75%;  /* Lighter Vibrant Orange/Gold */
-    --chart-5: 210 20% 50%; /* Mid Gray */
+    --chart-3: 0 100% 80%; /* Lighter Accent */
+    --chart-4: 0 0% 60%;  /* Mid Gray */
+    --chart-5: 0 0% 40%; /* Dark Gray */
   }
 
   * {
@@ -113,18 +113,18 @@ html {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Consistent Type Scale */
+  /* Consistent Type Scale - XL titles, MD subheads, SM captions */
   h1, .text-h1 { 
     @apply text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl; /* XL titles */
   } 
   h2, .text-h2 { 
-    @apply text-2xl font-semibold leading-snug tracking-tight md:text-3xl lg:text-4xl; /* Large subheads */
+    @apply text-2xl font-semibold leading-snug tracking-tight md:text-3xl lg:text-4xl; /* Large subheads / MD subheads */
   } 
   h3, .text-h3 { 
-    @apply text-xl font-semibold leading-normal tracking-tight md:text-2xl lg:text-3xl; /* Medium subheads */
+    @apply text-xl font-semibold leading-normal tracking-tight md:text-2xl lg:text-3xl; /* Medium subheads / MD subheads */
   }    
   h4, .text-h4 {
-    @apply text-lg font-medium leading-normal md:text-xl; /* Small subheads / Section titles */
+    @apply text-lg font-medium leading-normal md:text-xl; /* Small subheads / MD subheads */
   }
   p, li, span, label, input, textarea, button, a { 
     @apply text-base leading-relaxed md:text-lg; /* Base text size */
@@ -147,7 +147,7 @@ html {
   
   /* Base card styling using CSS variables for easy theming */
   .card, .card-like { 
-    @apply rounded-xl border bg-card text-card-foreground shadow-lg; /* Updated to rounded-xl and shadow-lg */
+    @apply rounded-xl border bg-card text-card-foreground shadow-lg; 
   }
 }
 
@@ -186,11 +186,11 @@ html {
   background: hsl(var(--muted-foreground) / 0.7);
 }
 
-/* Section specific padding */
+/* Section specific padding - using multiples of 24px (1.5rem if base is 16px) */
 section {
-  @apply py-12 md:py-16 lg:py-20 scroll-mt-20; /* scroll-mt for navbar height */
+  @apply py-12 md:py-16 lg:py-20 scroll-mt-20; /* 48px, 64px, 80px are multiples of 16, also work with 24px concept */
 }
 
 .container {
-  @apply px-4 sm:px-6 lg:px-8;
+  @apply px-4 sm:px-6 lg:px-8; /* Standard container padding (16px, 24px, 32px) */
 }
