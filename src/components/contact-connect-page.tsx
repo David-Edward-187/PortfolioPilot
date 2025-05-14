@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Mail, Linkedin, Github, Send, Loader2, MessageCircle } from 'lucide-react'; // Added MessageCircle
+import { Mail, Linkedin, Github, Send, Loader2, MessageCircle } from 'lucide-react'; 
 import * as React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { sendContactEmail as serverSendContactEmail, type ContactFormData } from '@/app/actions/contact-form-actions';
@@ -22,10 +22,10 @@ const contactFormSchema = z.object({
 });
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-const socialLinksData = [ // Renamed to avoid conflict with resumeData
+const socialLinksData = [ 
   { name: "Email", Icon: Mail, href: `mailto:${resumeData.contact.email}`, color: "hover:text-primary" },
-  { name: "LinkedIn", Icon: Linkedin, href: resumeData.contact.linkedin, color: "hover:text-[#0077B5]" }, // LinkedIn blue
-  { name: "GitHub", Icon: Github, href: resumeData.contact.github, color: "hover:text-foreground" },
+  { name: "LinkedIn", Icon: Linkedin, href: resumeData.contact.linkedin, color: "hover:text-primary" }, 
+  { name: "GitHub", Icon: Github, href: resumeData.contact.github, color: "hover:text-primary" },
 ];
 
 export function ContactConnectPage() {
@@ -155,3 +155,4 @@ export function ContactConnectPage() {
     </>
   );
 }
+

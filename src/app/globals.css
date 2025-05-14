@@ -23,8 +23,8 @@ html {
     --popover: 0 0% 100%; /* White */
     --popover-foreground: 0 0% 20%; /* #333333 */
     
-    /* Primary Color: Bold Accent */
-    --primary: 0 100% 71%; /* #FF6B6B */
+    /* Primary Color: Bold Accent - Adjusted */
+    --primary: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
     --primary-foreground: 0 0% 100%; /* White text on Primary for contrast */
     
     /* Secondary Color: Light Gray */
@@ -34,8 +34,8 @@ html {
     --muted: 0 0% 90%; /* Muted Gray */
     --muted-foreground: 0 0% 40%; /* Muted Text */
     
-    /* Accent Color: Same as Primary (one bold accent) */
-    --accent: 0 100% 71%; /* #FF6B6B */
+    /* Accent Color: Same as Primary (one bold accent) - Adjusted */
+    --accent: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
     --accent-foreground: 0 0% 100%; /* White text on Accent */
     
     --destructive: 0 72% 51%; /* #e53e3e - Kept for error states */
@@ -44,14 +44,14 @@ html {
     --border: 0 0% 85%; /* Gray border, slightly darker than background */
     --input: 0 0% 100%; /* White input background */
     --input-border: 0 0% 80%; /* Gray Input Border */
-    --ring: 0 100% 71%; /* Accent color for focus ring */
+    --ring: 0 95% 70%; /* Accent color for focus ring - Adjusted */
     
     --radius: 0.5rem; /* 8px */
 
     /* Chart colors - adjust if charts are used, keeping primary/accent in mind */
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(var(--accent)); /* Might be same as chart-1 */
-    --chart-3: 0 100% 80%; /* Lighter Accent */
+    --chart-2: hsl(var(--accent)); 
+    --chart-3: 0 95% 78%; /* Lighter Accent - Adjusted related to primary */
     --chart-4: 0 0% 50%;  /* Mid Gray */
     --chart-5: 0 0% 70%; /* Light Gray */
   }
@@ -67,8 +67,8 @@ html {
     --popover: 0 0% 8%; /* Darker Popover */
     --popover-foreground: 0 0% 90%;
     
-    /* Primary Color: Bold Accent (Dark Mode) */
-    --primary: 0 100% 71%; /* #FF6B6B - Can keep same or make slightly brighter if needed */
+    /* Primary Color: Bold Accent (Dark Mode) - Adjusted */
+    --primary: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
     --primary-foreground: 0 0% 100%; /* White text on Primary */
     
     /* Secondary Color: Darker Gray (Dark Mode) */
@@ -78,8 +78,8 @@ html {
     --muted: 0 0% 20%; 
     --muted-foreground: 0 0% 60%; 
     
-    /* Accent Color: Same as Primary (one bold accent) */
-    --accent: 0 100% 71%; /* #FF6B6B */
+    /* Accent Color: Same as Primary (one bold accent) - Adjusted */
+    --accent: 0 95% 70%; /* Was 0 100% 71% (#FF6B6B) -> Now #FF6262 */
     --accent-foreground: 0 0% 100%;
     
     --destructive: 0 63% 50%; 
@@ -88,12 +88,12 @@ html {
     --border: 0 0% 25%; 
     --input: 0 0% 12%;  
     --input-border: 0 0% 30%; 
-    --ring: 0 100% 71%; /* Accent color for focus ring */
+    --ring: 0 95% 70%; /* Accent color for focus ring - Adjusted */
     
      /* Chart colors for dark mode - adjust if charts are used */
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
-    --chart-3: 0 100% 80%; /* Lighter Accent */
+    --chart-3: 0 95% 78%; /* Lighter Accent - Adjusted */
     --chart-4: 0 0% 60%;  /* Mid Gray */
     --chart-5: 0 0% 40%; /* Dark Gray */
   }
