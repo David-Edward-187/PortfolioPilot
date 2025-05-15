@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
 import { Navbar } from '@/components/navbar'; 
-import { SidebarNav } from '@/components/sidebar-nav';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -29,14 +28,15 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light" // Set default to light as per PRD
+          defaultTheme="light" 
           enableSystem
           disableTransitionOnChange
         >
           <DevtoolBlocker />
-          <SidebarNav /> {/* Desktop Sidebar */}
-          <Navbar /> {/* Mobile Navbar */}
-          <main className="md:pl-64"> {/* Add padding for desktop sidebar */}
+          {/* SidebarNav removed, Navbar is now the primary navigation */}
+          <Navbar /> 
+          {/* md:pl-64 removed as sidebar is gone */}
+          <main className="pt-16"> {/* Added pt-16 to account for fixed top navbar height */}
             {children}
           </main>
           <Toaster />
