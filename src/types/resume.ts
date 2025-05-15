@@ -24,8 +24,8 @@ export interface ProjectEntry {
   description: string[];
   technologies?: string[];
   link: string;
-  imageUrl?: string; // Optional image URL for the project
-  dataAiHint?: string; // Optional AI hint for image generation
+  imageUrl?: string; 
+  dataAiHint?: string; 
 }
 
 export interface CertificateEntry {
@@ -35,7 +35,7 @@ export interface CertificateEntry {
   credentialUrl?: string; 
   imageUrl?: string; 
   description?: string;
-  dataAiHint?: string; // Optional AI hint for image generation
+  dataAiHint?: string; 
 }
 
 export interface ResumeData {
@@ -43,6 +43,7 @@ export interface ResumeData {
   title: string;
   bio: string;
   headshotUrl: string;
+  dataAiHint?: string; // Added for profile headshot
   contact: Contact;
   education: EducationEntry[];
   experience: ExperienceEntry[];

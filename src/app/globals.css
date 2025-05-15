@@ -13,136 +13,131 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme (PRD Specified) */
-    --background: 0 0% 94.1%; /* #F0F0F0 Light Gray */
-    --foreground: 0 0% 20%;   /* #333333 Dark Gray */
+    /* Light Theme - Modern Minimalist & Professional Polish */
+    --background: 220 25% 97%; /* #F5F7F9 - Very Light Cool Gray */
+    --foreground: 220 20% 20%;   /* #2A3036 - Dark Charcoal */
     
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 20%; /* Dark Gray */
+    --card: 0 0% 100%;           /* #FFFFFF - White */
+    --card-foreground: 220 20% 20%; /* Dark Charcoal */
     
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 0 0% 20%; /* Dark Gray */
+    --popover: 0 0% 100%;        /* White */
+    --popover-foreground: 220 20% 20%; /* Dark Charcoal */
     
-    --primary: 180 100% 25.1%; /* #008080 Teal */
-    --primary-foreground: 0 0% 98%; /* #FAFAFA Off-white for text on Teal */
+    --primary: 180 50% 40%;     /* #339999 - Refined Teal */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - White for text on Teal */
     
-    --secondary: 0 0% 97.3%; /* #F8F8F8 Lighter Gray for secondary elements */
-    --secondary-foreground: 0 0% 25%; /* #404040 */
+    --secondary: 220 20% 92%;   /* #E3E7EB - Light Cool Gray for secondary elements */
+    --secondary-foreground: 220 15% 35%; /* #4F5964 - Medium Dark Gray */
     
-    --muted: 0 0% 90%; /* #E6E6E6 */
-    --muted-foreground: 0 0% 40%; /* #666666 */
+    --muted: 220 20% 88%;       /* #DDE1E6 - Muted Cool Gray */
+    --muted-foreground: 220 15% 45%; /* #68707A - Muted Text Gray */
     
-    --accent: 16 100% 65.7%; /* #FF7F50 Coral */
-    --accent-foreground: 0 0% 10%; /* #1A1A1A Dark text for Coral */
+    --accent: 25 95% 60%;       /* #FF8A4D - Warm Coral/Orange */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF - White for text on Accent */
     
-    --destructive: 0 72% 51%; /* Standard red */
+    --destructive: 0 72% 51%;   /* Standard red */
     --destructive-foreground: 0 0% 98%; /* Light text on red */
     
-    --border: 0 0% 87%; /* #DEDEDE */
-    --input: 0 0% 100%; /* White */
-    --input-border: 0 0% 80%; /* #CCCCCC */
-    --ring: 16 100% 70%; /* Brighter Coral for focus ring on light mode */ /* Example: var(--accent) */
+    --border: 220 20% 85%;      /* #D2D8DE - Light Border Gray */
+    --input: 0 0% 100%;          /* White */
+    --input-border: 220 20% 80%; /* #C8CED4 - Input Border Gray */
+    --ring: 25 90% 65%;         /* Brighter Coral for focus ring on light mode */
     
     --radius: 0.5rem; /* 8px base radius */
 
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(16 100% 55%); /* Darker Coral */
+    --chart-2: hsl(25 90% 55%); /* Darker Coral */
     --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(0 0% 50%);
-    --chart-5: hsl(0 0% 70%);
+    --chart-4: hsl(220 10% 50%);
+    --chart-5: hsl(220 10% 70%);
   }
 
   .dark {
-    --background: 0 0% 13%; /* Near #212121 */
-    --foreground: 0 0% 87%; /* Near #DEDEDE */
+    /* Dark Theme - Modern Minimalist & Professional Polish */
+    --background: 220 20% 10%;   /* #14171A - Very Dark Charcoal/Blue */
+    --foreground: 220 15% 85%;   /* #D1D6DB - Light Soft Gray */
 
-    --card: 0 0% 18%; /* Near #2E2E2E */
-    --card-foreground: 0 0% 87%;
+    --card: 220 20% 15%;         /* #1E2226 - Darker Card Background */
+    --card-foreground: 220 15% 85%; /* Light Soft Gray */
 
-    --popover: 0 0% 15%; /* Slightly darker for popovers */
-    --popover-foreground: 0 0% 87%;
+    --popover: 220 20% 13%;      /* Slightly darker for popovers */
+    --popover-foreground: 220 15% 85%;
     
-    --primary: 180 70% 50%; /* Brighter Teal #19E6E6 */
-    --primary-foreground: 180 100% 10%; /* Dark text on bright Teal */
+    --primary: 180 60% 55%;     /* #5CD6D6 - Brighter Teal */
+    --primary-foreground: 220 20% 10%; /* Dark text on bright Teal */
     
-    --secondary: 0 0% 22%; /* #383838 */
-    --secondary-foreground: 0 0% 75%; /* #BFBFBF */
+    --secondary: 220 20% 20%;   /* #2A3036 - Dark Secondary Background */
+    --secondary-foreground: 220 15% 75%; /* #B7BEC4 - Lighter Muted Text */
     
-    --muted: 0 0% 25%; /* #404040 */
-    --muted-foreground: 0 0% 55%; /* #8C8C8C */
+    --muted: 220 20% 25%;       /* #353C43 - Muted Dark Background */
+    --muted-foreground: 220 15% 55%; /* #828C96 - Dark Muted Text */
     
-    --accent: 16 100% 70%; /* Brighter Coral #FF8C66 */
-    --accent-foreground: 0 0% 10%; /* Dark text on Coral */
+    --accent: 25 95% 65%;       /* #FF9A63 - Brighter Warm Coral/Orange */
+    --accent-foreground: 220 20% 10%; /* Dark text on Accent */
     
-    --destructive: 0 65% 55%; /* Slightly brighter red for dark mode */
+    --destructive: 0 65% 55%;   /* Slightly brighter red for dark mode */
     --destructive-foreground: 0 0% 98%; 
     
-    --border: 0 0% 25%; /* #404040 */
-    --input: 0 0% 20%;  /* #333333 */
-    --input-border: 0 0% 30%; /* #4D4D4D */
-    --ring: 16 100% 75%; /* Even Brighter Coral for focus ring on dark mode */ /* Example: var(--accent-dark) */
+    --border: 220 20% 25%;      /* #353C43 - Dark Border */
+    --input: 220 20% 18%;        /* #252A2E - Dark Input Background */
+    --input-border: 220 20% 30%; /* #414A52 - Dark Input Border */
+    --ring: 25 90% 70%;         /* Even Brighter Coral for focus ring on dark mode */
     
-    /* Chart colors for dark mode */
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(16 90% 60%); /* Brighter Coral variant */
+    --chart-2: hsl(25 90% 60%); /* Brighter Coral variant */
     --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(0 0% 45%);  
-    --chart-5: hsl(0 0% 25%); 
+    --chart-4: hsl(220 10% 45%);  
+    --chart-5: hsl(220 10% 25%); 
   }
 
   * {
     @apply border-border;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms; 
+    transition-duration: 200ms; /* Slightly slower for smoother transitions */
   }
 
   body {
     @apply bg-background text-foreground;
-    font-size: 100%; /* Base 16px for calculations, actual body text smaller */
+    font-size: 100%; 
     line-height: 1.7; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* PRD Type Scale: H1/H2 at 1.25rem, H3/H4 at 1rem, body 0.875rem, caption 0.75rem */
-  /* Adjusted for Tailwind defaults: text-xl (1.25rem), text-lg (1.125rem), text-base (1rem), text-sm (0.875rem), text-xs (0.75rem) */
+  /* Type Scale (PRD based, adjusted for Tailwind defaults) */
   h1, .text-h1 { 
-    @apply text-2xl font-bold leading-tight tracking-tight md:text-3xl; /* PRD H1/H2 -> closest is text-xl/text-2xl. Using larger for impact */
+    @apply text-3xl font-bold leading-tight tracking-tight md:text-4xl; /* Slightly larger for impact */
   } 
   h2, .text-h2 { 
-    @apply text-xl font-semibold leading-snug tracking-tight md:text-2xl;
+    @apply text-2xl font-semibold leading-snug tracking-tight md:text-3xl; /* Matches PRD H1/H2 mapping */
   } 
   h3, .text-h3 { 
-    @apply text-lg font-semibold leading-normal tracking-tight md:text-xl; /* PRD H3/H4 -> text-base/text-lg */
+    @apply text-xl font-semibold leading-normal tracking-tight md:text-2xl; /* Matches PRD H3/H4 mapping */
   }    
   h4, .text-h4 {
-    @apply text-base font-medium leading-normal md:text-lg;
+    @apply text-lg font-medium leading-normal md:text-xl; /* For sub-subheads */
   }
-  /* Body text as per PRD: 0.875rem (text-sm) */
   p, li, span, label, input, textarea, button, a { 
-    @apply text-sm leading-relaxed md:text-base; 
+    @apply text-sm leading-relaxed md:text-base; /* Body text as per PRD (0.875rem -> text-sm) */
   } 
-  /* Caption text as per PRD: 0.75rem (text-xs) */
   small, .text-caption { 
-    @apply text-xs text-muted-foreground; 
+    @apply text-xs text-muted-foreground; /* Caption text as per PRD (0.75rem -> text-xs) */
   }
 
   .section-title {
-    @apply text-2xl md:text-3xl font-bold text-primary mb-10 md:mb-12 text-center;
+    @apply text-3xl md:text-4xl font-bold text-primary mb-12 md:mb-16 text-center; /* Larger, more margin */
   }
   
   .section-icon {
-    @apply w-8 h-8 md:w-10 md:h-10 mr-3 text-primary; /* Icon color changed to primary (Teal) */
+    @apply w-10 h-10 md:w-12 md:h-12 mr-4 text-primary; /* Slightly larger icon */
   }
 
   .card, .card-like { 
-    /* background will be var(--card) from theme */
-    @apply rounded-lg border bg-card text-card-foreground shadow-lg; 
-    /* Using shadow-lg for a bit more depth, can be adjusted. PRD mentions shadows */
+    @apply rounded-xl border bg-card text-card-foreground shadow-lg hover:shadow-xl transition-shadow duration-300; 
+    /* Using rounded-xl for modern feel, more distinct shadow on hover */
   }
 
-  /* Consistent focus rings for accessibility - using accent color (Coral) */
   button:focus-visible, 
   a:focus-visible, 
   input:focus-visible, 
@@ -153,47 +148,43 @@ html {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
   
-  /* Animation for fade-in (can be applied with .animate-fadeIn) */
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px) scale(0.98); } 
+    from { opacity: 0; transform: translateY(15px) scale(0.97); } 
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .animate-fadeIn {
-    animation: fadeIn 0.5s ease-out forwards; 
+    animation: fadeIn 0.6s ease-out forwards; 
   }
 
-  /* Staggered fade-in for children */
   .stagger-children > * {
     opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
-  /* Custom scrollbar (optional, keeping subtle dark theme style) */
   ::-webkit-scrollbar {
-    width: 8px; 
-    height: 8px;
+    width: 10px; 
+    height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(var(--muted) / 0.5); 
-    border-radius: 4px;
+    background: hsl(var(--muted) / 0.3); 
+    border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground) / 0.4); 
-    border-radius: 4px;
+    background: hsl(var(--muted-foreground) / 0.5); 
+    border-radius: 5px;
     border: 2px solid transparent; 
     background-clip: content-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground) / 0.6);
+    background: hsl(var(--muted-foreground) / 0.7);
   }
 
-  /* Section specific padding based on 24px grid (1.5rem = 24px) */
   section {
-    @apply py-16 md:py-20 lg:py-24 scroll-mt-16; /* p-16 is 4rem, p-20 is 5rem. PRD p-6 (1.5rem) is small for sections. Using larger values. */
+    @apply py-20 md:py-24 lg:py-28 scroll-mt-20; /* Increased padding (p-20 to p-24 is ~5-6rem), increased scroll-mt */
   }
 
   .container {
-    @apply px-6 sm:px-8 lg:px-10; /* p-6 for container padding */
+    @apply px-6 sm:px-8 lg:px-10; /* Consistent container padding based on 24px units (p-6) */
   }
 }

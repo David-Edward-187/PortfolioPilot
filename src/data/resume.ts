@@ -5,7 +5,8 @@ export const resumeData: ResumeData = {
   name: "Alex Johnson",
   title: "Full Stack Developer",
   bio: "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
-  headshotUrl: "https://placehold.co/200x200.png", // Placeholder, data-ai-hint will be in component
+  headshotUrl: "https://placehold.co/200x200.png", 
+  dataAiHint: "professional headshot", // Added for profile section
   contact: {
     email: "alex.johnson.dev@example.com",
     linkedin: "https://linkedin.com/in/alexjohnsondev",
@@ -99,7 +100,7 @@ export const resumeData: ResumeData = {
         "Features dynamically rendered resume content from a TypeScript data file, ensuring easy updates and maintenance."
       ],
       technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
-      link: "#", // Link to the current site or repo if public
+      link: "#", 
       imageUrl: "https://placehold.co/600x400.png",
       dataAiHint: "portfolio website"
     }
