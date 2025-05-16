@@ -32,7 +32,7 @@ html {
     --muted: 220 20% 88%;       /* #DDE1E6 - Muted Cool Gray */
     --muted-foreground: 220 15% 45%; /* #68707A - Muted Text Gray */
     
-    --accent: 25 95% 60%;       /* #FF8A4D - Warm Coral/Orange */
+    --accent: 16 80% 55%;      /* #EF6C3A - Coral */
     --accent-foreground: 0 0% 100%; /* #FFFFFF - White for text on Accent */
     
     --destructive: 0 72% 51%;   /* Standard red */
@@ -41,12 +41,12 @@ html {
     --border: 220 20% 85%;      /* #D2D8DE - Light Border Gray */
     --input: 0 0% 100%;          /* White */
     --input-border: 220 20% 80%; /* #C8CED4 - Input Border Gray */
-    --ring: 25 90% 65%;         /* Brighter Coral for focus ring on light mode */
+    --ring: 16 75% 60%;         /* Brighter Coral for focus ring on light mode */
     
     --radius: 0.5rem; /* 8px base radius */
 
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(25 90% 55%); /* Darker Coral */
+    --chart-2: hsl(16 75% 50%); /* Darker Coral */
     --chart-3: hsl(var(--primary) / 0.7);
     --chart-4: hsl(220 10% 50%);
     --chart-5: hsl(220 10% 70%);
@@ -72,7 +72,7 @@ html {
     --muted: 220 20% 25%;       /* #353C43 - Muted Dark Background */
     --muted-foreground: 220 15% 55%; /* #828C96 - Dark Muted Text */
     
-    --accent: 25 95% 65%;       /* #FF9A63 - Brighter Warm Coral/Orange */
+    --accent: 16 85% 65%;       /* #FF8A63 - Brighter Warm Coral/Orange */
     --accent-foreground: 220 20% 10%; /* Dark text on Accent */
     
     --destructive: 0 65% 55%;   /* Slightly brighter red for dark mode */
@@ -81,10 +81,10 @@ html {
     --border: 220 20% 25%;      /* #353C43 - Dark Border */
     --input: 220 20% 18%;        /* #252A2E - Dark Input Background */
     --input-border: 220 20% 30%; /* #414A52 - Dark Input Border */
-    --ring: 25 90% 70%;         /* Even Brighter Coral for focus ring on dark mode */
+    --ring: 16 80% 70%;         /* Even Brighter Coral for focus ring on dark mode */
     
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(25 90% 60%); /* Brighter Coral variant */
+    --chart-2: hsl(16 80% 60%); /* Brighter Coral variant */
     --chart-3: hsl(var(--primary) / 0.7);
     --chart-4: hsl(220 10% 45%);  
     --chart-5: hsl(220 10% 25%); 
@@ -94,7 +94,7 @@ html {
     @apply border-border;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms; /* Slightly slower for smoother transitions */
+    transition-duration: 200ms; /* Subtle transitions */
   }
 
   body {
@@ -105,37 +105,36 @@ html {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Type Scale (PRD based, adjusted for Tailwind defaults) */
+  /* Adjusted Type Scale based on PRD */
   h1, .text-h1 { 
-    @apply text-3xl font-bold leading-tight tracking-tight md:text-4xl; /* Slightly larger for impact */
+    @apply text-2xl font-bold tracking-tight md:text-3xl; /* Main page title / Profile Name */
   } 
-  h2, .text-h2 { 
-    @apply text-2xl font-semibold leading-snug tracking-tight md:text-3xl; /* Matches PRD H1/H2 mapping */
+  h2, .text-h2 { /* Section Titles */
+    @apply text-xl font-semibold tracking-tight md:text-2xl; /* PRD: H1/H2 at 1.25rem -> text-xl */
   } 
-  h3, .text-h3 { 
-    @apply text-xl font-semibold leading-normal tracking-tight md:text-2xl; /* Matches PRD H3/H4 mapping */
+  h3, .text-h3 { /* Card Titles / Sub-section heads */
+    @apply text-lg font-medium md:text-xl; /* PRD: H3/H4 at 1rem -> text-lg */
   }    
-  h4, .text-h4 {
-    @apply text-lg font-medium leading-normal md:text-xl; /* For sub-subheads */
+  h4, .text-h4 { /* Smaller subheads */
+    @apply text-base font-medium md:text-lg; /* PRD: H3/H4 at 1rem -> text-base */
   }
-  p, li, span, label, input, textarea, button, a { 
-    @apply text-sm leading-relaxed md:text-base; /* Body text as per PRD (0.875rem -> text-sm) */
+  p, li, span, label, input, textarea, button, a { /* Body text */
+    @apply text-sm leading-relaxed; /* PRD: 0.875rem -> text-sm */
   } 
-  small, .text-caption { 
-    @apply text-xs text-muted-foreground; /* Caption text as per PRD (0.75rem -> text-xs) */
+  small, .text-caption { /* Captions */
+    @apply text-xs text-muted-foreground; /* PRD: 0.75rem -> text-xs */
   }
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold text-primary mb-12 md:mb-16 text-center; /* Larger, more margin */
+  .section-title { /* For h2 used as section titles */
+    @apply text-2xl md:text-3xl font-bold text-primary mb-10 md:mb-12 text-center; 
   }
   
-  .section-icon {
-    @apply w-10 h-10 md:w-12 md:h-12 mr-4 text-primary; /* Slightly larger icon */
+  .section-icon { /* For icons accompanying section titles */
+    @apply w-8 h-8 md:w-10 md:h-10 mr-3 text-primary; /* Standardized size */
   }
 
   .card, .card-like { 
     @apply rounded-xl border bg-card text-card-foreground shadow-lg hover:shadow-xl transition-shadow duration-300; 
-    /* Using rounded-xl for modern feel, more distinct shadow on hover */
   }
 
   button:focus-visible, 
@@ -149,7 +148,7 @@ html {
   }
   
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px) scale(0.97); } 
+    from { opacity: 0; transform: translateY(10px) scale(0.98); } 
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
@@ -180,11 +179,14 @@ html {
     background: hsl(var(--muted-foreground) / 0.7);
   }
 
-  section {
-    @apply py-20 md:py-24 lg:py-28 scroll-mt-20; /* Increased padding (p-20 to p-24 is ~5-6rem), increased scroll-mt */
+  section { /* Adjusted section padding */
+    @apply py-16 md:py-20 lg:py-24 scroll-mt-16; /* Using 4rem, 5rem, 6rem; adjusted scroll-mt */
   }
 
   .container {
-    @apply px-6 sm:px-8 lg:px-10; /* Consistent container padding based on 24px units (p-6) */
+    @apply px-6 sm:px-8 lg:px-10; 
   }
 }
+
+
+  
