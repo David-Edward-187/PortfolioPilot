@@ -5,7 +5,6 @@ import { ResumeDisplayPage } from '@/components/resume-display-page';
 import { CaseStudyOverviewPage } from '@/components/case-study-overview-page';
 import { CertificatesDisplayPage } from '@/components/certificates-display-page'; 
 import { ContactConnectPage } from '@/components/contact-connect-page'; 
-import { IconExportSection } from '@/components/icon-export-section'; // New import
 
 export default function HomePage() {
   return (
@@ -24,11 +23,6 @@ export default function HomePage() {
         
         <section id="certificates">
           <CertificatesDisplayPage />
-        </section>
-
-        {/* New Section for Icon Export Utility */}
-        <section id="icon-utility" className="bg-background">
-          <IconExportSection />
         </section>
         
         <section id="contact">
