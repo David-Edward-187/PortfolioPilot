@@ -31,47 +31,47 @@ export function CaseStudyOverviewPage() {
         {resumeData.projects.map((project: ProjectEntry, index: number) => (
           <Card
             key={project.name}
-            className="bg-card border-border backdrop-blur-md rounded-xl shadow-xl overflow-hidden group flex flex-col transition-all duration-300 hover:shadow-primary/30 hover:border-primary/70 hover:-translate-y-1.5 animate-fadeIn"
+            className="bg-card border-border/50 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden group flex flex-col transition-all duration-300 hover:shadow-primary/40 hover:border-primary/80 hover:-translate-y-2 animate-fadeIn"
             style={{animationDelay: `${index * 0.07}s`}}
             onMouseEnter={() => setHoveredProject(project.name)}
             onMouseLeave={() => setHoveredProject(null)}
             role="article"
           >
-            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-lg">
               <Image
-                src={project.imageUrl || `https://placehold.co/600x400.png`}
+                src={project.imageUrl || `https://placehold.co/600x338.png`}
                 alt={project.name}
                 fill 
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className={`object-cover transform transition-transform duration-500 ease-in-out ${hoveredProject === project.name ? 'scale-110' : 'scale-100'}`}
                 data-ai-hint={project.dataAiHint || project.name.toLowerCase().split(' ').slice(0,2).join(' ') || 'application interface'}
               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-300"></div>
+               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-300"></div>
             </div>
             <CardHeader className="p-6 md:p-7">
-              <CardTitle className="text-xl md:text-2xl font-semibold text-primary group-hover:text-primary/90 transition-colors">{project.name}</CardTitle>
+              <CardTitle className="text-xl md:text-2xl font-bold text-primary group-hover:text-accent transition-colors">{project.name}</CardTitle>
             </CardHeader>
             <CardContent className="p-6 md:p-7 pt-0 flex-grow">
-              <ul className="text-sm text-muted-foreground mt-1 space-y-2 list-disc list-outside ml-4 line-clamp-4">
+              <ul className="text-base text-muted-foreground mt-1 space-y-2 list-disc list-outside ml-4 line-clamp-4 group-hover:text-foreground/90 transition-colors">
                  {project.description.map((desc, i) => <li key={i}>{desc}</li>)}
               </ul>
             </CardContent>
             <CardFooter className="p-6 md:p-7 pt-4 flex flex-col items-start">
               {project.technologies && project.technologies.length > 0 && (
                   <div className="mb-5 w-full">
-                      <h4 className="text-xs font-semibold text-muted-foreground mb-2.5 uppercase tracking-wider">Technologies:</h4>
+                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Technologies:</h4>
                       <div className="flex flex-wrap gap-2.5">
                           {project.technologies.slice(0, 5).map(tech => ( 
-                              <Badge key={tech} variant="secondary" className="text-xs px-3 py-1.5 bg-secondary/90 text-secondary-foreground shadow-md">
+                              <Badge key={tech} variant="secondary" className="text-xs px-3 py-1.5 bg-secondary/90 text-secondary-foreground shadow-md border-border/30">
                                 {tech}
                               </Badge>
                           ))}
-                          {project.technologies.length > 5 && <Badge variant="secondary" className="text-xs px-3 py-1.5 shadow-md">...</Badge>}
+                          {project.technologies.length > 5 && <Badge variant="secondary" className="text-xs px-3 py-1.5 shadow-md border-border/30">...</Badge>}
                       </div>
                   </div>
               )}
               {project.link && project.link !== "#" && (
-                  <Button variant="link" asChild className="text-accent p-0 h-auto text-sm group-hover:underline self-start font-semibold">
+                  <Button variant="link" asChild className="text-accent p-0 h-auto text-sm group-hover:underline self-start font-semibold hover:text-primary transition-colors">
                       <a href={project.link} target="_blank" rel="noopener noreferrer">
                           <>
                               View Project <ExternalLink className="w-4 h-4 ml-1.5" />
@@ -86,3 +86,5 @@ export function CaseStudyOverviewPage() {
     </div>
   );
 }
+
+    

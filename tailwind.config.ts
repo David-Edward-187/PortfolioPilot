@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,10 +53,10 @@ export default {
   			}
   		},
   		borderRadius: { 
-  			xl: 'calc(var(--radius) + 4px)', // For larger cards, dialogs
-        lg: 'var(--radius)', // Default for most elements like cards, inputs
-        md: 'calc(var(--radius) - 2px)', // For smaller elements like buttons, badges
-        sm: 'calc(var(--radius) - 4px)'  // For very small elements
+  			xl: 'calc(var(--radius) + 4px)', 
+        lg: 'var(--radius)', 
+        md: 'calc(var(--radius) - 2px)', 
+        sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
   			'accordion-down': {
@@ -67,7 +68,7 @@ export default {
   				to: { height: '0' }
   			},
         'fade-in': { 
-          '0%': { opacity: '0', transform: 'translateY(10px) scale(0.98)' },
+          '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' }, // Updated transform
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
         'pulse-once': {
@@ -78,40 +79,46 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'fade-in': 'fadeIn 0.7s ease-out forwards', // Slower fade-in
         'pulse-once': 'pulse-once 0.4s ease-in-out',
   		},
       boxShadow: {
         'input-focus': '0 0 0 2px hsl(var(--ring))',
-        // Standard shadows
-        'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
-        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-        'inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
+        'sm': '0 1px 2px 0 hsl(var(--foreground) / 0.03)',
+        'md': '0 4px 6px -1px hsl(var(--foreground) / 0.05), 0 2px 4px -2px hsl(var(--foreground) / 0.05)',
+        'lg': '0 10px 15px -3px hsl(var(--foreground) / 0.07), 0 4px 6px -4px hsl(var(--foreground) / 0.07)',
+        'xl': '0 20px 25px -5px hsl(var(--foreground) / 0.1), 0 8px 10px -6px hsl(var(--foreground) / 0.1)',
+        '2xl': '0 25px 50px -12px hsl(var(--foreground) / 0.15)',
+        'inner': 'inset 0 2px 4px 0 hsl(var(--foreground) / 0.03)',
+        // GTA Style Glows (can be applied selectively)
+        'glow-primary-sm': '0 0 8px hsl(var(--primary) / 0.5)',
+        'glow-primary-md': '0 0 15px hsl(var(--primary) / 0.6)',
+        'glow-accent-sm': '0 0 8px hsl(var(--accent) / 0.5)',
+        'glow-accent-md': '0 0 15px hsl(var(--accent) / 0.6)',
       },
       spacing: { 
-        '0.5': '0.125rem', // 2px
-        '1': '0.25rem',   // 4px
-        '1.5': '0.375rem',// 6px
-        '2': '0.5rem',    // 8px
-        '2.5': '0.625rem',// 10px
-        '3': '0.75rem',   // 12px
-        '3.5': '0.875rem',// 14px
-        '4': '1rem',      // 16px
-        '5': '1.25rem',   // 20px
-        '6': '1.5rem',    // 24px
-        '7': '1.75rem',   // 28px
-        '8': '2rem',      // 32px
-        '9': '2.25rem',   // 36px
-        '10': '2.5rem',   // 40px
-        '12': '3rem',     // 48px
-        '16': '4rem',     // 64px
-        '20': '5rem',     // 80px
-        '24': '6rem',     // 96px
+        '0.5': '0.125rem',
+        '1': '0.25rem',
+        '1.5': '0.375rem',
+        '2': '0.5rem',
+        '2.5': '0.625rem',
+        '3': '0.75rem',
+        '3.5': '0.875rem',
+        '4': '1rem',
+        '5': '1.25rem',
+        '6': '1.5rem',
+        '7': '1.75rem',
+        '8': '2rem',
+        '9': '2.25rem',
+        '10': '2.5rem',
+        '12': '3rem',
+        '16': '4rem',
+        '20': '5rem',
+        '24': '6rem',
       }
   	}
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
+    

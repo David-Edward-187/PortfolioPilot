@@ -19,17 +19,17 @@ export function ResumeDisplayPage() {
           {resumeData.experience.map((exp, index) => (
             <Card 
               key={index} 
-              className="shadow-xl bg-card border-border backdrop-blur-md overflow-hidden hover:border-primary/60 hover:shadow-2xl transition-all duration-300 rounded-xl"
+              className="bg-card border-border/50 backdrop-blur-sm overflow-hidden hover:border-primary/70 hover:shadow-primary/20 transition-all duration-300 rounded-lg"
             >
-              <CardHeader className="pb-4 pt-6 px-6 md:px-7 bg-card"> 
+              <CardHeader className="pb-4 pt-6 px-6 md:px-7 bg-card/80"> 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
                   <CardTitle className="text-xl md:text-2xl text-primary font-semibold mb-1 sm:mb-0">{exp.role}</CardTitle>
                   <p className="text-sm md:text-base text-muted-foreground font-medium">{exp.years}</p>
                 </div>
-                <p className="text-base md:text-lg text-foreground font-medium">{exp.company}</p>
+                <p className="text-lg md:text-xl text-foreground font-medium">{exp.company}</p>
               </CardHeader>
-              <CardContent className="px-6 md:px-7 pt-2 pb-6">
-                <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm md:text-base text-foreground/90">
+              <CardContent className="px-6 md:px-7 pt-3 pb-6">
+                <ul className="list-disc list-outside ml-5 space-y-3 text-base text-foreground/80">
                   {exp.description.map((desc, i) => <li key={i}>{desc}</li>)}
                 </ul>
               </CardContent>
@@ -48,18 +48,18 @@ export function ResumeDisplayPage() {
           {resumeData.education.map((edu, index) => (
             <Card 
               key={index} 
-              className="shadow-xl bg-card border-border backdrop-blur-md overflow-hidden hover:border-primary/60 hover:shadow-2xl transition-all duration-300 rounded-xl"
+              className="bg-card border-border/50 backdrop-blur-sm overflow-hidden hover:border-primary/70 hover:shadow-primary/20 transition-all duration-300 rounded-lg"
             >
-              <CardHeader className="pb-4 pt-6 px-6 md:px-7 bg-card">
+              <CardHeader className="pb-4 pt-6 px-6 md:px-7 bg-card/80">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
                   <CardTitle className="text-xl md:text-2xl text-primary font-semibold mb-1 sm:mb-0">{edu.degree}</CardTitle>
                   <p className="text-sm md:text-base text-muted-foreground font-medium">{edu.years}</p>
                 </div>
-                <p className="text-base md:text-lg text-foreground font-medium">{edu.institution}</p>
+                <p className="text-lg md:text-xl text-foreground font-medium">{edu.institution}</p>
               </CardHeader>
               {edu.details && (
-                <CardContent className="px-6 md:px-7 pt-2 pb-6">
-                  <p className="text-sm md:text-base text-foreground/90">{edu.details}</p>
+                <CardContent className="px-6 md:px-7 pt-3 pb-6">
+                  <p className="text-base text-foreground/80">{edu.details}</p>
                 </CardContent>
               )}
             </Card>
@@ -73,8 +73,8 @@ export function ResumeDisplayPage() {
             <Wrench className="section-icon" />
             <h2 className="section-title">Skills</h2>
         </div>
-        <Card className="shadow-xl bg-card border-border backdrop-blur-md p-6 md:p-8 rounded-xl">
-          <CardContent className="space-y-10 pt-0">
+        <Card className="bg-card border-border/50 backdrop-blur-sm p-6 md:p-8 rounded-lg shadow-lg">
+          <CardContent className="space-y-10 pt-2">
             {Object.entries(resumeData.skills).map(([category, skillsList]) => (
               <div key={category}>
                 <h4 className="font-semibold text-lg md:text-xl text-primary mb-5">{category}</h4>
@@ -82,7 +82,7 @@ export function ResumeDisplayPage() {
                   {skillsList.map((skill, index) => (
                     <span 
                       key={index} 
-                      className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm shadow-sm hover:bg-accent/20 hover:text-accent-foreground transition-colors cursor-default font-medium border border-border hover:border-accent/40"
+                      className="bg-secondary text-secondary-foreground px-4 py-2.5 rounded-md text-sm shadow-sm hover:bg-accent/80 hover:text-accent-foreground transition-colors cursor-default font-medium border border-border/30 hover:border-accent/70"
                     >
                       {skill}
                     </span>
@@ -96,3 +96,5 @@ export function ResumeDisplayPage() {
     </div>
   );
 }
+
+    

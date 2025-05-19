@@ -5,8 +5,8 @@ export const resumeData: ResumeData = {
   name: "Alex Johnson",
   title: "Full Stack Developer",
   bio: "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
-  headshotUrl: "https://placehold.co/200x200.png", 
-  dataAiHint: "professional headshot", // Added for profile section
+  headshotUrl: "https://placehold.co/224x224.png", 
+  dataAiHint: "professional headshot urban neon", 
   contact: {
     email: "alex.johnson.dev@example.com",
     linkedin: "https://linkedin.com/in/alexjohnsondev",
@@ -77,8 +77,8 @@ export const resumeData: ResumeData = {
       ],
       technologies: ["Next.js", "React", "Stripe", "PostgreSQL", "Tailwind CSS", "AWS"],
       link: "https://github.com/alexjohnsondev/ecommerce-platform",
-      imageUrl: "https://placehold.co/600x400.png",
-      dataAiHint: "ecommerce shopping"
+      imageUrl: "https://placehold.co/600x338.png",
+      dataAiHint: "ecommerce urban night"
     },
     {
       name: "Task Management App",
@@ -89,8 +89,8 @@ export const resumeData: ResumeData = {
       ],
       technologies: ["React", "Firebase (Firestore, Auth)", "Material UI", "Node.js (for Cloud Functions)"],
       link: "https://github.com/alexjohnsondev/task-manager",
-      imageUrl: "https://placehold.co/600x400.png",
-      dataAiHint: "task management"
+      imageUrl: "https://placehold.co/600x338.png",
+      dataAiHint: "task list neon"
     },
     {
       name: "This Portfolio Website",
@@ -101,8 +101,8 @@ export const resumeData: ResumeData = {
       ],
       technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
       link: "#", 
-      imageUrl: "https://placehold.co/600x400.png",
-      dataAiHint: "portfolio website"
+      imageUrl: "https://placehold.co/600x338.png",
+      dataAiHint: "portfolio website dark"
     }
   ],
   certificates: [
@@ -112,7 +112,7 @@ export const resumeData: ResumeData = {
       issueDate: "Mar 2022",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "nodejs certificate",
+      dataAiHint: "nodejs certificate dark",
       description: "Covered Node.js fundamentals, Express, MongoDB, Mongoose, and building RESTful APIs. Completed all modules and projects."
     },
     {
@@ -121,7 +121,7 @@ export const resumeData: ResumeData = {
       issueDate: "Jul 2021",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-2/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "react course",
+      dataAiHint: "react course dark",
       description: "In-depth exploration of React, including hooks, context API, Redux, and React Router. Built multiple complex applications."
     },
     {
@@ -130,8 +130,10 @@ export const resumeData: ResumeData = {
       issueDate: "Nov 2022",
       credentialUrl: "https://www.credly.com/badges/example-aws-badge",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "aws certification",
+      dataAiHint: "aws certification dark",
       description: "Validated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS. Passed with a score of 850/1000."
     }
   ]
 };
+
+    

@@ -13,7 +13,7 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - Modern Minimalist & Professional Polish */
+    /* Light Theme - Kept as a fallback, but dark is default */
     --background: 220 25% 97%; /* #F5F7F9 - Very Light Cool Gray */
     --foreground: 220 20% 20%;   /* #2A3036 - Dark Charcoal */
     
@@ -23,8 +23,8 @@ html {
     --popover: 0 0% 100%;        /* White */
     --popover-foreground: 220 20% 20%; /* Dark Charcoal */
     
-    --primary: 180 50% 40%;     /* #339999 - Refined Teal */
-    --primary-foreground: 0 0% 100%; /* #FFFFFF - White for text on Teal */
+    --primary: 330 100% 55%;    /* #FF1F8B - GTA Neon Pink/Magenta (used as primary in light too) */
+    --primary-foreground: 0 0% 100%; /* White for text on Neon Pink */
     
     --secondary: 220 20% 92%;   /* #E3E7EB - Light Cool Gray for secondary elements */
     --secondary-foreground: 220 15% 35%; /* #4F5964 - Medium Dark Gray */
@@ -32,8 +32,8 @@ html {
     --muted: 220 20% 88%;       /* #DDE1E6 - Muted Cool Gray */
     --muted-foreground: 220 15% 45%; /* #68707A - Muted Text Gray */
     
-    --accent: 16 80% 55%;      /* #EF6C3A - Coral */
-    --accent-foreground: 0 0% 100%; /* #FFFFFF - White for text on Accent */
+    --accent: 330 100% 60%;      /* Brighter Neon Pink/Magenta for accents */
+    --accent-foreground: 0 0% 100%; /* White for text on Accent */
     
     --destructive: 0 72% 51%;   /* Standard red */
     --destructive-foreground: 0 0% 98%; /* Light text on red */
@@ -41,60 +41,60 @@ html {
     --border: 220 20% 85%;      /* #D2D8DE - Light Border Gray */
     --input: 0 0% 100%;          /* White */
     --input-border: 220 20% 80%; /* #C8CED4 - Input Border Gray */
-    --ring: 16 75% 60%;         /* Brighter Coral for focus ring on light mode */
+    --ring: 330 90% 50%;         /* GTA Neon Pink for focus ring */
     
-    --radius: 0.5rem; /* 8px base radius */
+    --radius: 0.375rem; /* 6px base radius - slightly sharper for GTA style */
 
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(16 75% 50%); /* Darker Coral */
+    --chart-2: hsl(var(--accent));
     --chart-3: hsl(var(--primary) / 0.7);
     --chart-4: hsl(220 10% 50%);
     --chart-5: hsl(220 10% 70%);
   }
 
   .dark {
-    /* Dark Theme - Modern Minimalist & Professional Polish */
-    --background: 220 20% 10%;   /* #14171A - Very Dark Charcoal/Blue */
-    --foreground: 220 15% 85%;   /* #D1D6DB - Light Soft Gray */
+    /* Dark Theme - GTA 6 Inspired */
+    --background: 240 10% 4%;    /* #08090B - Very Dark, almost black */
+    --foreground: 240 5% 90%;    /* #E2E3E6 - Light Gray/Off-white text */
 
-    --card: 220 20% 15%;         /* #1E2226 - Darker Card Background */
-    --card-foreground: 220 15% 85%; /* Light Soft Gray */
+    --card: 240 10% 8%;          /* #101114 - Slightly lighter dark for cards */
+    --card-foreground: 240 5% 85%; /* #D0D1D5 - Light text on cards */
 
-    --popover: 220 20% 13%;      /* Slightly darker for popovers */
-    --popover-foreground: 220 15% 85%;
+    --popover: 240 10% 7%;       /* Even darker for popovers */
+    --popover-foreground: 240 5% 90%;
     
-    --primary: 180 60% 55%;     /* #5CD6D6 - Brighter Teal */
-    --primary-foreground: 220 20% 10%; /* Dark text on bright Teal */
+    --primary: 330 100% 55%;     /* #FF1F8B - GTA Neon Pink/Magenta */
+    --primary-foreground: 0 0% 100%;  /* White text on Neon Pink */
     
-    --secondary: 220 20% 20%;   /* #2A3036 - Dark Secondary Background */
-    --secondary-foreground: 220 15% 75%; /* #B7BEC4 - Lighter Muted Text */
+    --secondary: 240 10% 15%;    /* #1E1F26 - Darker secondary elements */
+    --secondary-foreground: 240 5% 70%; /* #A9AAB6 - Muted light gray text */
     
-    --muted: 220 20% 25%;       /* #353C43 - Muted Dark Background */
-    --muted-foreground: 220 15% 55%; /* #828C96 - Dark Muted Text */
+    --muted: 240 10% 20%;        /* #2A2B33 - Muted dark backgrounds */
+    --muted-foreground: 240 5% 55%;  /* #838592 - Darker muted text */
     
-    --accent: 16 85% 65%;       /* #FF8A63 - Brighter Warm Coral/Orange */
-    --accent-foreground: 220 20% 10%; /* Dark text on Accent */
+    --accent: 330 100% 60%;       /* #FF3EA3 - Brighter Neon Pink/Magenta for accents */
+    --accent-foreground: 0 0% 100%; /* White text on Accent */
     
-    --destructive: 0 65% 55%;   /* Slightly brighter red for dark mode */
-    --destructive-foreground: 0 0% 98%; 
+    --destructive: 0 80% 60%;   /* Brighter red for dark mode */
+    --destructive-foreground: 0 0% 100%; 
     
-    --border: 220 20% 25%;      /* #353C43 - Dark Border */
-    --input: 220 20% 18%;        /* #252A2E - Dark Input Background */
-    --input-border: 220 20% 30%; /* #414A52 - Dark Input Border */
-    --ring: 16 80% 70%;         /* Even Brighter Coral for focus ring on dark mode */
+    --border: 330 80% 35%;       /* Neon Pink/Magenta border for a subtle glow/edge */
+    --input: 240 10% 12%;        /* #181A1F - Dark input background */
+    --input-border: 240 10% 25%;  /* #383A47 - Slightly lighter dark input border */
+    --ring: 330 100% 65%;         /* Bright Neon Pink for focus ring */
     
     --chart-1: hsl(var(--primary));
-    --chart-2: hsl(16 80% 60%); /* Brighter Coral variant */
+    --chart-2: hsl(var(--accent));
     --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(220 10% 45%);  
-    --chart-5: hsl(220 10% 25%); 
+    --chart-4: hsl(240 5% 60%);  
+    --chart-5: hsl(240 5% 40%); 
   }
 
   * {
     @apply border-border;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms; /* Subtle transitions */
+    transition-duration: 250ms; 
   }
 
   body {
@@ -105,36 +105,41 @@ html {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Adjusted Type Scale based on PRD */
+  /* GTA Style Typography - Bolder headings, neon glow */
   h1, .text-h1 { 
-    @apply text-2xl font-bold tracking-tight md:text-3xl; /* Main page title / Profile Name */
+    @apply text-3xl font-extrabold tracking-tight md:text-5xl; 
+    text-shadow: 0 0 5px hsl(var(--accent) / 0.5), 0 0 10px hsl(var(--accent) / 0.3);
   } 
-  h2, .text-h2 { /* Section Titles */
-    @apply text-xl font-semibold tracking-tight md:text-2xl; /* PRD: H1/H2 at 1.25rem -> text-xl */
+  h2, .text-h2 { 
+    @apply text-2xl font-bold tracking-tight md:text-4xl;
+    text-shadow: 0 0 4px hsl(var(--accent) / 0.4);
   } 
-  h3, .text-h3 { /* Card Titles / Sub-section heads */
-    @apply text-lg font-medium md:text-xl; /* PRD: H3/H4 at 1rem -> text-lg */
+  h3, .text-h3 { 
+    @apply text-xl font-semibold md:text-2xl;
   }    
-  h4, .text-h4 { /* Smaller subheads */
-    @apply text-base font-medium md:text-lg; /* PRD: H3/H4 at 1rem -> text-base */
+  h4, .text-h4 { 
+    @apply text-lg font-semibold md:text-xl; /* Adjusted to be slightly larger than body */
   }
-  p, li, span, label, input, textarea, button, a { /* Body text */
-    @apply text-sm leading-relaxed; /* PRD: 0.875rem -> text-sm */
+  p, li, span, label, input, textarea, button, a { 
+    @apply text-base leading-relaxed; /* Base body text larger for GTA feel */
   } 
-  small, .text-caption { /* Captions */
-    @apply text-xs text-muted-foreground; /* PRD: 0.75rem -> text-xs */
+  small, .text-caption { 
+    @apply text-sm text-muted-foreground; 
   }
 
-  .section-title { /* For h2 used as section titles */
-    @apply text-2xl md:text-3xl font-bold text-primary mb-10 md:mb-12 text-center; 
+  .section-title { 
+    @apply text-3xl md:text-4xl font-bold text-primary mb-10 md:mb-12 text-center; 
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.6), 0 0 15px hsl(var(--primary) / 0.4);
   }
   
-  .section-icon { /* For icons accompanying section titles */
-    @apply w-8 h-8 md:w-10 md:h-10 mr-3 text-primary; /* Standardized size */
+  .section-icon { 
+    @apply w-8 h-8 md:w-10 md:h-10 mr-3 text-primary;
   }
 
+  /* Edgy cards for GTA style */
   .card, .card-like { 
-    @apply rounded-xl border bg-card text-card-foreground shadow-lg hover:shadow-xl transition-shadow duration-300; 
+    @apply rounded-md border bg-card text-card-foreground shadow-lg hover:shadow-primary/30 transition-all duration-300;
+    /* box-shadow: 0 0 15px hsl(var(--primary) / 0.1), 0 0 5px hsl(var(--primary) / 0.2); */
   }
 
   button:focus-visible, 
@@ -148,45 +153,44 @@ html {
   }
   
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px) scale(0.98); } 
+    from { opacity: 0; transform: translateY(20px) scale(0.95); } 
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .animate-fadeIn {
-    animation: fadeIn 0.6s ease-out forwards; 
+    animation: fadeIn 0.7s ease-out forwards; 
   }
 
   .stagger-children > * {
     opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.7s ease-out forwards;
   }
 
   ::-webkit-scrollbar {
-    width: 10px; 
-    height: 10px;
+    width: 8px; 
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(var(--muted) / 0.3); 
-    border-radius: 5px;
+    background: hsl(var(--background) / 0.5); 
+    border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground) / 0.5); 
-    border-radius: 5px;
+    background: hsl(var(--muted) / 0.7); 
+    border-radius: 4px;
     border: 2px solid transparent; 
     background-clip: content-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground) / 0.7);
+    background: hsl(var(--primary) / 0.8);
   }
 
-  section { /* Adjusted section padding */
-    @apply py-16 md:py-20 lg:py-24 scroll-mt-16; /* Using 4rem, 5rem, 6rem; adjusted scroll-mt */
+  section { 
+    @apply py-20 md:py-24 lg:py-28 scroll-mt-20; /* Increased padding for more impact */
   }
 
   .container {
-    @apply px-6 sm:px-8 lg:px-10; 
+    @apply px-4 sm:px-6 lg:px-8; /* Standard container padding */
   }
 }
 
-
-  
+    

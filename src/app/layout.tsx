@@ -28,14 +28,12 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light" 
+          defaultTheme="dark" 
           enableSystem
           disableTransitionOnChange
         >
           <DevtoolBlocker />
-          {/* SidebarNav removed, Navbar is now the primary navigation */}
           <Navbar /> 
-          {/* md:pl-64 removed as sidebar is gone */}
           <main className="pt-16"> {/* Added pt-16 to account for fixed top navbar height */}
             {children}
           </main>
@@ -45,3 +43,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

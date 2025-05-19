@@ -28,11 +28,11 @@ export function CertificatesDisplayPage() {
         {resumeData.certificates.map((cert, index) => (
           <Card 
             key={index} 
-            className="flex flex-col bg-card border-border backdrop-blur-md rounded-xl shadow-xl overflow-hidden group transition-all duration-300 hover:shadow-primary/30 hover:border-primary/70 hover:-translate-y-1.5 animate-fadeIn"
+            className="flex flex-col bg-card border-border/50 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden group transition-all duration-300 hover:shadow-primary/40 hover:border-primary/80 hover:-translate-y-2 animate-fadeIn"
             style={{animationDelay: `${index * 0.1}s`}}
           >
             {cert.imageUrl && (
-              <div className="relative w-full h-52 md:h-56 group overflow-hidden rounded-t-xl">
+              <div className="relative w-full h-56 md:h-60 group overflow-hidden rounded-t-lg">
                 <Image
                   src={cert.imageUrl}
                   alt={`${cert.name} certificate image`}
@@ -41,27 +41,27 @@ export function CertificatesDisplayPage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   data-ai-hint={cert.dataAiHint || "certificate document"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-300"></div>
               </div>
             )}
             <CardHeader className="p-6 md:p-7 pb-3">
-              <CardTitle className="text-xl md:text-2xl text-primary group-hover:text-primary/90 transition-colors leading-tight">{cert.name}</CardTitle>
-              <CardDescription className="text-sm text-muted-foreground pt-2">
+              <CardTitle className="text-xl md:text-2xl text-primary group-hover:text-accent transition-colors leading-tight font-bold">{cert.name}</CardTitle>
+              <CardDescription className="text-base text-muted-foreground pt-2 group-hover:text-foreground/80 transition-colors">
                 Issued by: {cert.issuingOrganization}
               </CardDescription>
             </CardHeader>
             <CardContent className="p-6 md:p-7 pt-2 flex-grow">
-               <div className="flex items-center text-sm text-muted-foreground mb-4">
+               <div className="flex items-center text-sm text-muted-foreground mb-4 group-hover:text-foreground/70 transition-colors">
                 <CalendarDays className="h-4 w-4 mr-2 opacity-80" />
                 {cert.issueDate}
               </div>
               {cert.description && (
-                <p className="text-sm text-foreground/90 mb-4 leading-relaxed line-clamp-3">{cert.description}</p>
+                <p className="text-base text-foreground/80 mb-4 leading-relaxed line-clamp-3 group-hover:text-foreground/90 transition-colors">{cert.description}</p>
               )}
             </CardContent>
             <CardFooter className="p-6 md:p-7 pt-0">
               {cert.credentialUrl && (
-                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-accent/80 self-start text-sm font-semibold group-hover:underline">
+                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-primary transition-colors self-start text-sm font-semibold group-hover:underline">
                   <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
                     <>
                       View Credential <ExternalLink className="ml-1.5 h-4 w-4" />
@@ -76,3 +76,5 @@ export function CertificatesDisplayPage() {
     </div>
   );
 }
+
+    
