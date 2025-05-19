@@ -11,16 +11,16 @@ import { Award, ExternalLink, CalendarDays } from 'lucide-react';
 export function CertificatesDisplayPage() {
   if (!resumeData.certificates || resumeData.certificates.length === 0) {
     return (
-      <div className="py-16 md:py-20 text-center">
-        <Award className="section-icon text-muted-foreground mb-6 mx-auto" />
-        <p className="text-lg text-muted-foreground">No certificates to display at the moment.</p>
+      <div className="py-20 md:py-24 text-center">
+        <Award className="section-icon text-muted-foreground mb-8 mx-auto" />
+        <p className="text-xl text-muted-foreground">No certificates to display at the moment.</p>
       </div>
     );
   }
 
   return (
-    <div className="py-16 md:py-20">
-      <div className="flex items-center justify-center mb-12 md:mb-16 animate-fadeIn">
+    <div className="py-20 md:py-24">
+      <div className="flex items-center justify-center mb-14 md:mb-20 animate-fadeIn">
         <Award className="section-icon" />
         <h2 className="section-title">Certifications</h2>
       </div>
@@ -28,20 +28,20 @@ export function CertificatesDisplayPage() {
         {resumeData.certificates.map((cert, index) => (
           <Card 
             key={index} 
-            className="flex flex-col bg-card border-border/50 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden group transition-all duration-300 hover:shadow-primary/40 hover:border-primary/80 hover:-translate-y-2 animate-fadeIn"
+            className="flex flex-col bg-card border-border/50 backdrop-blur-sm rounded-lg shadow-2xl overflow-hidden group transition-all duration-300 hover:border-primary/90 hover:shadow-primary/50 hover:-translate-y-2.5 animate-fadeIn"
             style={{animationDelay: `${index * 0.1}s`}}
           >
             {cert.imageUrl && (
-              <div className="relative w-full h-56 md:h-60 group overflow-hidden rounded-t-lg">
+              <div className="relative w-full h-60 md:h-64 group overflow-hidden rounded-t-lg">
                 <Image
                   src={cert.imageUrl}
                   alt={`${cert.name} certificate image`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  data-ai-hint={cert.dataAiHint || "certificate document"}
+                  data-ai-hint={cert.dataAiHint || "certificate document dark neon"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-300"></div>
               </div>
             )}
             <CardHeader className="p-6 md:p-7 pb-3">
@@ -52,7 +52,7 @@ export function CertificatesDisplayPage() {
             </CardHeader>
             <CardContent className="p-6 md:p-7 pt-2 flex-grow">
                <div className="flex items-center text-sm text-muted-foreground mb-4 group-hover:text-foreground/70 transition-colors">
-                <CalendarDays className="h-4 w-4 mr-2 opacity-80" />
+                <CalendarDays className="h-4 w-4 mr-2.5 opacity-80" />
                 {cert.issueDate}
               </div>
               {cert.description && (
@@ -61,10 +61,10 @@ export function CertificatesDisplayPage() {
             </CardContent>
             <CardFooter className="p-6 md:p-7 pt-0">
               {cert.credentialUrl && (
-                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-primary transition-colors self-start text-sm font-semibold group-hover:underline">
+                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-primary transition-colors self-start text-base font-semibold group-hover:underline duration-300">
                   <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
                     <>
-                      View Credential <ExternalLink className="ml-1.5 h-4 w-4" />
+                      View Credential <ExternalLink className="ml-2 h-4 w-4" />
                     </>
                   </a>
                 </Button>
@@ -76,5 +76,3 @@ export function CertificatesDisplayPage() {
     </div>
   );
 }
-
-    

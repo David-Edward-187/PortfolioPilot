@@ -5,8 +5,8 @@ export const resumeData: ResumeData = {
   name: "Alex Johnson",
   title: "Full Stack Developer",
   bio: "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
-  headshotUrl: "https://placehold.co/224x224.png", 
-  dataAiHint: "professional headshot urban neon", 
+  headshotUrl: "https://placehold.co/256x256.png", 
+  dataAiHint: "professional headshot urban neon city night", 
   contact: {
     email: "alex.johnson.dev@example.com",
     linkedin: "https://linkedin.com/in/alexjohnsondev",
@@ -69,7 +69,7 @@ export const resumeData: ResumeData = {
   },
   projects: [
     {
-      name: "E-commerce Platform",
+      name: "E-commerce Platform X",
       description: [
         "Built a full-featured e-commerce site with product listings, shopping cart, user authentication, and payment integration using Next.js and Stripe.",
         "Successfully processed over $50,000 in transactions within the first 6 months of launch.",
@@ -78,62 +78,60 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "React", "Stripe", "PostgreSQL", "Tailwind CSS", "AWS"],
       link: "https://github.com/alexjohnsondev/ecommerce-platform",
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "ecommerce urban night"
+      dataAiHint: "ecommerce urban night neon"
     },
     {
-      name: "Task Management App",
+      name: "TaskForce Zero",
       description: [
         "Developed a collaborative task management tool with real-time updates, drag-and-drop functionality, and an intuitive notification system using React and Firebase.",
         "Users reported a 20% average reduction in task completion time due to real-time collaboration features and streamlined UI.",
         "Achieved 99.9% uptime through robust Firebase backend infrastructure and Firestore data persistence."
       ],
-      technologies: ["React", "Firebase (Firestore, Auth)", "Material UI", "Node.js (for Cloud Functions)"],
+      technologies: ["React", "Firebase", "Material UI", "Node.js"],
       link: "https://github.com/alexjohnsondev/task-manager",
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "task list neon"
+      dataAiHint: "task list neon futuristic"
     },
     {
-      name: "This Portfolio Website",
+      name: "PortfolioPilot (This Site)",
       description: [
-        "Designed and developed the portfolio you are currently viewing, showcasing skills and projects effectively.",
+        "Designed and developed the portfolio you are currently viewing, showcasing skills and projects effectively in a GTA-inspired theme.",
         "Built with Next.js for optimal performance (Lighthouse score: 95+) and SEO, and styled with Tailwind CSS for a modern, responsive design.",
         "Features dynamically rendered resume content from a TypeScript data file, ensuring easy updates and maintenance."
       ],
       technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
       link: "#", 
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "portfolio website dark"
+      dataAiHint: "portfolio website dark code"
     }
   ],
   certificates: [
     {
-      name: "The Complete Node.js Developer Course",
+      name: "Node.js Master Course",
       issuingOrganization: "Udemy",
       issueDate: "Mar 2022",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "nodejs certificate dark",
+      dataAiHint: "nodejs certificate dark neon tech",
       description: "Covered Node.js fundamentals, Express, MongoDB, Mongoose, and building RESTful APIs. Completed all modules and projects."
     },
     {
-      name: "React - The Complete Guide (incl Hooks, React Router, Redux)",
+      name: "Advanced React & Redux",
       issuingOrganization: "Udemy",
       issueDate: "Jul 2021",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-2/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "react course dark",
+      dataAiHint: "react course dark screen code",
       description: "In-depth exploration of React, including hooks, context API, Redux, and React Router. Built multiple complex applications."
     },
     {
-      name: "AWS Certified Solutions Architect - Associate",
+      name: "AWS Cloud Architect Pro",
       issuingOrganization: "Amazon Web Services",
       issueDate: "Nov 2022",
       credentialUrl: "https://www.credly.com/badges/example-aws-badge",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "aws certification dark",
+      dataAiHint: "aws certification dark server",
       description: "Validated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS. Passed with a score of 850/1000."
     }
   ]
 };
-
-    

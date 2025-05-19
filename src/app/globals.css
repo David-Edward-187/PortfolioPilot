@@ -13,7 +13,7 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - Kept as a fallback, but dark is default */
+    /* Light Theme - Kept as a fallback, but dark is default and primary focus */
     --background: 220 25% 97%; /* #F5F7F9 - Very Light Cool Gray */
     --foreground: 220 20% 20%;   /* #2A3036 - Dark Charcoal */
     
@@ -53,95 +53,96 @@ html {
   }
 
   .dark {
-    /* Dark Theme - GTA 6 Inspired */
-    --background: 240 10% 4%;    /* #08090B - Very Dark, almost black */
-    --foreground: 240 5% 90%;    /* #E2E3E6 - Light Gray/Off-white text */
+    /* Dark Theme - GTA 6 Inspired - DEEPENED & REFINED */
+    --background: 240 10% 3%;    /* #06070A - Even Deeper Dark, almost pure black */
+    --foreground: 240 5% 95%;    /* #F0F1F3 - Brighter Light Gray/Off-white text for better contrast */
 
-    --card: 240 10% 8%;          /* #101114 - Slightly lighter dark for cards */
-    --card-foreground: 240 5% 85%; /* #D0D1D5 - Light text on cards */
+    --card: 240 10% 6%;          /* #0C0D10 - Very dark gray for cards, subtle distinction */
+    --card-foreground: 240 5% 90%; /* #E2E3E6 - Light text on cards */
 
-    --popover: 240 10% 7%;       /* Even darker for popovers */
-    --popover-foreground: 240 5% 90%;
+    --popover: 240 10% 5%;       /* #0A0B0D - Deepest dark for popovers */
+    --popover-foreground: 240 5% 95%; /* Brighter popover text */
     
-    --primary: 330 100% 55%;     /* #FF1F8B - GTA Neon Pink/Magenta */
+    --primary: 330 100% 58%;     /* #FF2994 - Slightly brighter Neon Pink/Magenta */
     --primary-foreground: 0 0% 100%;  /* White text on Neon Pink */
     
-    --secondary: 240 10% 15%;    /* #1E1F26 - Darker secondary elements */
-    --secondary-foreground: 240 5% 70%; /* #A9AAB6 - Muted light gray text */
+    --secondary: 240 10% 12%;    /* #181A1F - Darker secondary elements */
+    --secondary-foreground: 240 5% 75%; /* #B9BAC0 - Muted light gray text */
     
-    --muted: 240 10% 20%;        /* #2A2B33 - Muted dark backgrounds */
-    --muted-foreground: 240 5% 55%;  /* #838592 - Darker muted text */
+    --muted: 240 10% 15%;        /* #1E1F26 - Muted dark backgrounds */
+    --muted-foreground: 240 5% 60%;  /* #9294A0 - Darker muted text */
     
-    --accent: 330 100% 60%;       /* #FF3EA3 - Brighter Neon Pink/Magenta for accents */
+    --accent: 330 100% 62%;       /* #FF47A9 - Even brighter Neon Pink/Magenta for accents */
     --accent-foreground: 0 0% 100%; /* White text on Accent */
     
-    --destructive: 0 80% 60%;   /* Brighter red for dark mode */
+    --destructive: 0 85% 65%;   /* Brighter, more saturated red for dark mode */
     --destructive-foreground: 0 0% 100%; 
     
-    --border: 330 80% 35%;       /* Neon Pink/Magenta border for a subtle glow/edge */
-    --input: 240 10% 12%;        /* #181A1F - Dark input background */
-    --input-border: 240 10% 25%;  /* #383A47 - Slightly lighter dark input border */
-    --ring: 330 100% 65%;         /* Bright Neon Pink for focus ring */
+    --border: 330 90% 45%;       /* #E60073 - More saturated Neon Pink/Magenta border for glow/edge */
+    --input: 240 10% 10%;        /* #131519 - Dark input background */
+    --input-border: 330 80% 40%;  /* #CC0069 - Neon Pink input border for edgy feel */
+    --ring: 330 100% 70%;         /* #FF66B8 - Very Bright Neon Pink for focus ring */
     
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
     --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(240 5% 60%);  
-    --chart-5: hsl(240 5% 40%); 
+    --chart-4: hsl(240 5% 65%);  
+    --chart-5: hsl(240 5% 45%); 
   }
 
   * {
     @apply border-border;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 250ms; 
+    transition-duration: 200ms; /* Slightly faster transitions for a snappier feel */
   }
 
   body {
     @apply bg-background text-foreground;
     font-size: 100%; 
-    line-height: 1.7; 
+    line-height: 1.65; /* Adjusted for readability with potentially bolder fonts */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* GTA Style Typography - Bolder headings, neon glow */
+  /* GTA Style Typography - Bolder headings, stronger neon glow */
   h1, .text-h1 { 
-    @apply text-3xl font-extrabold tracking-tight md:text-5xl; 
-    text-shadow: 0 0 5px hsl(var(--accent) / 0.5), 0 0 10px hsl(var(--accent) / 0.3);
+    @apply text-4xl font-extrabold tracking-tight md:text-6xl lg:text-7xl; /* Larger headings */
+    text-shadow: 0 0 8px hsl(var(--accent) / 0.6), 0 0 15px hsl(var(--accent) / 0.4), 0 0 25px hsl(var(--accent) / 0.2);
   } 
   h2, .text-h2 { 
-    @apply text-2xl font-bold tracking-tight md:text-4xl;
-    text-shadow: 0 0 4px hsl(var(--accent) / 0.4);
+    @apply text-3xl font-bold tracking-tight md:text-5xl; /* Larger headings */
+    text-shadow: 0 0 6px hsl(var(--accent) / 0.5), 0 0 12px hsl(var(--accent) / 0.3);
   } 
   h3, .text-h3 { 
-    @apply text-xl font-semibold md:text-2xl;
+    @apply text-2xl font-semibold md:text-3xl;
+    text-shadow: 0 0 4px hsl(var(--accent) / 0.3);
   }    
   h4, .text-h4 { 
-    @apply text-lg font-semibold md:text-xl; /* Adjusted to be slightly larger than body */
+    @apply text-xl font-semibold md:text-2xl; 
   }
   p, li, span, label, input, textarea, button, a { 
-    @apply text-base leading-relaxed; /* Base body text larger for GTA feel */
+    @apply text-base leading-relaxed; 
   } 
   small, .text-caption { 
     @apply text-sm text-muted-foreground; 
   }
 
   .section-title { 
-    @apply text-3xl md:text-4xl font-bold text-primary mb-10 md:mb-12 text-center; 
-    text-shadow: 0 0 8px hsl(var(--primary) / 0.6), 0 0 15px hsl(var(--primary) / 0.4);
+    @apply text-4xl md:text-5xl font-extrabold text-primary mb-12 md:mb-16 text-center; 
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.5), 0 0 30px hsl(var(--primary) / 0.3);
   }
   
   .section-icon { 
-    @apply w-8 h-8 md:w-10 md:h-10 mr-3 text-primary;
+    @apply w-10 h-10 md:w-12 md:h-12 mr-3 text-primary; /* Slightly larger icons */
   }
 
   /* Edgy cards for GTA style */
   .card, .card-like { 
-    @apply rounded-md border bg-card text-card-foreground shadow-lg hover:shadow-primary/30 transition-all duration-300;
-    /* box-shadow: 0 0 15px hsl(var(--primary) / 0.1), 0 0 5px hsl(var(--primary) / 0.2); */
+    @apply rounded-md border border-card-foreground/20 bg-card text-card-foreground shadow-xl hover:shadow-primary/40 transition-all duration-300;
+    /* Neon edge on hover/focus within components */
   }
-
+  
   button:focus-visible, 
   a:focus-visible, 
   input:focus-visible, 
@@ -153,44 +154,43 @@ html {
   }
   
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px) scale(0.95); } 
+    from { opacity: 0; transform: translateY(15px) scale(0.98); } 
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .animate-fadeIn {
-    animation: fadeIn 0.7s ease-out forwards; 
+    animation: fadeIn 0.6s ease-out forwards; 
   }
 
   .stagger-children > * {
     opacity: 0;
-    animation: fadeIn 0.7s ease-out forwards;
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
   ::-webkit-scrollbar {
-    width: 8px; 
-    height: 8px;
+    width: 10px; 
+    height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background) / 0.5); 
-    border-radius: 4px;
+    background: hsl(var(--background)); 
+    border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted) / 0.7); 
-    border-radius: 4px;
-    border: 2px solid transparent; 
-    background-clip: content-box;
+    background: hsl(var(--muted)); 
+    border-radius: 5px;
+    border: 2px solid hsl(var(--background)); 
+    background-clip: padding-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.8);
+    background: hsl(var(--primary));
   }
 
   section { 
-    @apply py-20 md:py-24 lg:py-28 scroll-mt-20; /* Increased padding for more impact */
+    @apply py-24 md:py-32 lg:py-36 scroll-mt-24; /* Increased padding and scroll-margin */
   }
 
   .container {
-    @apply px-4 sm:px-6 lg:px-8; /* Standard container padding */
+    @apply px-4 sm:px-6 lg:px-8; 
   }
 }
-
     
