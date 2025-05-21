@@ -129,12 +129,12 @@ html {
   }
 
   .section-title { 
-    @apply text-4xl md:text-5xl font-extrabold text-primary mb-12 md:mb-16 text-center; 
+    @apply text-4xl md:text-5xl font-extrabold text-primary text-center; /* Removed mb-12 md:mb-16 */
     text-shadow: 0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.5), 0 0 30px hsl(var(--primary) / 0.3);
   }
   
   .section-icon { 
-    @apply w-10 h-10 md:w-12 md:h-12 mr-3 text-primary; /* Slightly larger icons */
+    @apply w-10 h-10 md:w-12 md:h-12 mr-3 text-primary relative -top-0.5 md:-top-1; /* Slightly larger icons and position adjustment */
   }
 
   /* Edgy cards for GTA style */
