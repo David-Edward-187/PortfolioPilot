@@ -28,11 +28,11 @@ export function CertificatesDisplayPage() {
         {resumeData.certificates.map((cert, index) => (
           <Card 
             key={index} 
-            className="flex flex-col bg-card border-border/50 backdrop-blur-sm rounded-lg shadow-2xl overflow-hidden group transition-all duration-300 hover:border-primary/90 hover:shadow-primary/50 hover:-translate-y-2.5 animate-fadeIn"
+            className="flex flex-col bg-card border-border/50 backdrop-blur-sm rounded-md shadow-2xl overflow-hidden group transition-all duration-300 hover:border-primary/90 hover:shadow-primary/50 hover:-translate-y-2.5 animate-fadeIn"
             style={{animationDelay: `${index * 0.1}s`}}
           >
             {cert.imageUrl && (
-              <div className="relative w-full h-60 md:h-64 group overflow-hidden rounded-t-lg">
+              <div className="relative w-full h-60 md:h-64 group overflow-hidden rounded-t-md">
                 <Image
                   src={cert.imageUrl}
                   alt={`${cert.name} certificate image`}
@@ -76,3 +76,4 @@ export function CertificatesDisplayPage() {
     </div>
   );
 }
+

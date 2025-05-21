@@ -31,13 +31,13 @@ export function CaseStudyOverviewPage() {
         {resumeData.projects.map((project: ProjectEntry, index: number) => (
           <Card
             key={project.name}
-            className="bg-card border-border/50 backdrop-blur-sm rounded-lg shadow-2xl overflow-hidden group flex flex-col transition-all duration-300 hover:border-primary/90 hover:shadow-primary/50 hover:-translate-y-2.5 animate-fadeIn"
+            className="bg-card border-border/50 backdrop-blur-sm rounded-md shadow-2xl overflow-hidden group flex flex-col transition-all duration-300 hover:border-primary/90 hover:shadow-primary/50 hover:-translate-y-2.5 animate-fadeIn"
             style={{animationDelay: `${index * 0.08}s`}}
             onMouseEnter={() => setHoveredProject(project.name)}
             onMouseLeave={() => setHoveredProject(null)}
             role="article"
           >
-            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-lg">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-md">
               <Image
                 src={project.imageUrl || `https://placehold.co/600x338.png`}
                 alt={project.name}
@@ -86,3 +86,4 @@ export function CaseStudyOverviewPage() {
     </div>
   );
 }
+

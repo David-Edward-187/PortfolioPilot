@@ -19,7 +19,7 @@ export function ResumeDisplayPage() {
           {resumeData.experience.map((exp, index) => (
             <Card 
               key={index} 
-              className="bg-card border-border/50 backdrop-blur-sm overflow-hidden hover:border-primary/80 hover:shadow-primary/30 transition-all duration-300 rounded-lg shadow-xl"
+              className="bg-card border-border/50 backdrop-blur-sm overflow-hidden hover:border-primary/80 hover:shadow-primary/30 transition-all duration-300 rounded-md shadow-xl"
             >
               <CardHeader className="pb-4 pt-6 px-6 md:px-8 bg-card/90 backdrop-blur-sm border-b border-border/30"> 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-3">
@@ -48,7 +48,7 @@ export function ResumeDisplayPage() {
           {resumeData.education.map((edu, index) => (
             <Card 
               key={index} 
-              className="bg-card border-border/50 backdrop-blur-sm overflow-hidden hover:border-primary/80 hover:shadow-primary/30 transition-all duration-300 rounded-lg shadow-xl"
+              className="bg-card border-border/50 backdrop-blur-sm overflow-hidden hover:border-primary/80 hover:shadow-primary/30 transition-all duration-300 rounded-md shadow-xl"
             >
               <CardHeader className="pb-4 pt-6 px-6 md:px-8 bg-card/90 backdrop-blur-sm border-b border-border/30">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-3">
@@ -73,7 +73,7 @@ export function ResumeDisplayPage() {
             <Wrench className="section-icon" />
             <h2 className="section-title">Skills</h2>
         </div>
-        <Card className="bg-card border-border/50 backdrop-blur-sm p-6 md:p-10 rounded-lg shadow-xl">
+        <Card className="bg-card border-border/50 backdrop-blur-sm p-6 md:p-10 rounded-md shadow-xl">
           <CardContent className="space-y-10 md:space-y-12 pt-4">
             {Object.entries(resumeData.skills).map(([category, skillsList]) => (
               <div key={category}>
@@ -96,3 +96,4 @@ export function ResumeDisplayPage() {
     </div>
   );
 }
+

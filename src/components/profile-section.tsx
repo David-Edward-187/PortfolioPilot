@@ -23,6 +23,7 @@ export function ProfileSection() {
       id="profile" 
       className="min-h-screen flex flex-col justify-center items-center text-center bg-background text-foreground py-24 md:py-32 animate-fadeIn px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
+      {/* Subtle grid pattern for GTA feel */}
       <div 
         className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" 
         style={{
@@ -43,6 +44,7 @@ export function ProfileSection() {
             data-ai-hint={profile.dataAiHint || "professional headshot urban neon"}
             priority
           />
+           {/* Decorative accent for GTA style */}
            <div className="absolute inset-0 rounded-full border-2 border-accent opacity-0 group-hover:opacity-100 group-hover:animate-pulse-once transition-opacity duration-300" style={{animationDelay: '0.2s'}}></div>
            <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:animate-ping group-hover:opacity-70 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--primary-foreground))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code-xml">
@@ -83,4 +85,5 @@ export function ProfileSection() {
     </section>
   );
 }
+
 

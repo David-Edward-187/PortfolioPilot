@@ -74,7 +74,7 @@ export function ContactConnectPage() {
            <Mail className="section-icon" />
            <h2 className="section-title">Contact Me</h2>
         </div>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-start bg-card/80 border-border/50 backdrop-blur-md p-8 md:p-12 rounded-lg shadow-2xl">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-start bg-card/80 border-border/50 backdrop-blur-md p-8 md:p-12 rounded-md shadow-2xl">
           <div className="space-y-7 animate-fadeIn" style={{animationDelay: '0.1s'}}>
             <h3 className="text-2xl md:text-3xl text-foreground font-bold">Send a Message</h3>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -157,3 +157,4 @@ export function ContactConnectPage() {
     </>
   );
 }
+

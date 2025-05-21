@@ -42,7 +42,7 @@ export default {
   			},
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
-        'input-border': 'hsl(var(--input-border))',
+        'input-border': 'hsl(var(--input-border))', // Renamed from input to input-border for clarity
   			ring: 'hsl(var(--ring))',
   			chart: {
   				'1': 'hsl(var(--chart-1))',
@@ -55,7 +55,7 @@ export default {
   		borderRadius: { 
   			xl: 'calc(var(--radius) + 4px)', 
         lg: 'var(--radius)', 
-        md: 'calc(var(--radius) - 2px)', 
+        md: 'calc(var(--radius) - 2px)', // Changed from 'var(--radius)' to 'calc(var(--radius) - 2px)' to match var(--radius) = 0.375rem
         sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
@@ -68,33 +68,33 @@ export default {
   				to: { height: '0' }
   			},
         'fade-in': { 
-          '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' }, // Updated transform
+          '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' }, 
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
-        'pulse-once': {
+        'pulse-once': { // Used for subtle button/icon emphasis
           '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.03)' }, 
+          '50%': { transform: 'scale(1.03)' }, // Slightly less intense pulse
         }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fadeIn 0.7s ease-out forwards', // Slower fade-in
+        'fade-in': 'fadeIn 0.7s ease-out forwards',
         'pulse-once': 'pulse-once 0.4s ease-in-out',
   		},
       boxShadow: {
-        'input-focus': '0 0 0 2px hsl(var(--ring))',
+        'input-focus': '0 0 0 2px hsl(var(--ring))', // Standard focus shadow
         'sm': '0 1px 2px 0 hsl(var(--foreground) / 0.03)',
         'md': '0 4px 6px -1px hsl(var(--foreground) / 0.05), 0 2px 4px -2px hsl(var(--foreground) / 0.05)',
         'lg': '0 10px 15px -3px hsl(var(--foreground) / 0.07), 0 4px 6px -4px hsl(var(--foreground) / 0.07)',
         'xl': '0 20px 25px -5px hsl(var(--foreground) / 0.1), 0 8px 10px -6px hsl(var(--foreground) / 0.1)',
         '2xl': '0 25px 50px -12px hsl(var(--foreground) / 0.15)',
         'inner': 'inset 0 2px 4px 0 hsl(var(--foreground) / 0.03)',
-        // GTA Style Glows (can be applied selectively)
-        'glow-primary-sm': '0 0 8px hsl(var(--primary) / 0.5)',
-        'glow-primary-md': '0 0 15px hsl(var(--primary) / 0.6)',
-        'glow-accent-sm': '0 0 8px hsl(var(--accent) / 0.5)',
-        'glow-accent-md': '0 0 15px hsl(var(--accent) / 0.6)',
+        // GTA Style Glows - more pronounced
+        'glow-primary-sm': '0 0 10px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--primary) / 0.4)',
+        'glow-primary-md': '0 0 18px hsl(var(--primary) / 0.7), 0 0 30px hsl(var(--primary) / 0.5)',
+        'glow-accent-sm': '0 0 10px hsl(var(--accent) / 0.6), 0 0 20px hsl(var(--accent) / 0.4)',
+        'glow-accent-md': '0 0 18px hsl(var(--accent) / 0.7), 0 0 30px hsl(var(--accent) / 0.5)',
       },
       spacing: { 
         '0.5': '0.125rem',
