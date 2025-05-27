@@ -108,19 +108,15 @@ html {
   /* Typography - Clear and Professional */
   h1, .text-h1 { 
     @apply text-5xl font-extrabold tracking-tight md:text-6xl lg:text-7xl; 
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.3);
   } 
   h2, .text-h2 { 
     @apply text-4xl font-bold tracking-tight md:text-5xl; 
-    text-shadow: 0 0 8px hsl(var(--primary) / 0.4);
   } 
   h3, .text-h3 { 
     @apply text-3xl font-semibold md:text-4xl;
-    text-shadow: 0 0 6px hsl(var(--primary) / 0.3);
   }    
   h4, .text-h4 { 
     @apply text-2xl font-semibold md:text-3xl; 
-    text-shadow: 0 0 4px hsl(var(--primary) / 0.2);
   }
   p, li, span, label, input, textarea, button, a { 
     @apply text-base leading-relaxed; 
@@ -131,7 +127,6 @@ html {
 
   .section-title { 
     @apply text-4xl md:text-5xl font-extrabold text-primary text-center;
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2);
   }
   
   .section-icon { 
