@@ -13,117 +13,117 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - GTA 6 Inspired - DEEPENED & REFINED, "Rockstar" polish */
-    --background: 220 25% 97%; /* #F5F7F9 - Very Light Cool Gray */
-    --foreground: 220 20% 10%;   /* #1A1F24 - Deeper Charcoal for max contrast */
+    /* Light Theme - Oceanic Breeze & Warm Sand */
+    --background: 210 40% 98%; /* #F7FAFC - Very Light Cool Blue */
+    --foreground: 210 30% 20%;   /* #2A3240 - Dark Slate Blue */
     
     --card: 0 0% 100%;           /* #FFFFFF - White */
-    --card-foreground: 220 20% 12%; /* #1C2126 - Slightly darker card text */
+    --card-foreground: 210 30% 20%; /* #2A3240 - Dark Slate Blue on cards */
     
     --popover: 0 0% 100%;        /* White */
-    --popover-foreground: 220 20% 12%; 
+    --popover-foreground: 210 30% 20%; 
     
-    --primary: 330 100% 60%;    /* #FF33A1 - Unified Brighter Neon Pink/Magenta */
-    --primary-foreground: 0 0% 100%; /* White for text on Neon Pink */
+    --primary: 205 70% 50%;    /* #3B82F6 - Ocean Blue */
+    --primary-foreground: 0 0% 100%; /* White for text on Ocean Blue */
     
-    --secondary: 220 20% 93%;   /* #E7EAED - Light Cool Gray for secondary elements */
-    --secondary-foreground: 220 15% 25%; /* #39414A - Darker Medium Gray for secondary text */
+    --secondary: 210 30% 94%;   /* #E9ECF2 - Light Cool Gray-Blue for secondary elements */
+    --secondary-foreground: 210 20% 35%; /* #4A5568 - Medium Slate Blue for secondary text */
     
-    --muted: 220 20% 90%;       /* #E0E3E8 - Muted Cool Gray */
-    --muted-foreground: 220 15% 35%; /* #4E5863 - Muted Text Gray */
+    --muted: 210 30% 90%;       /* #DDE3EA - Soft Cool Gray-Blue */
+    --muted-foreground: 210 20% 45%; /* #616E80 - Muted Slate Blue */
     
-    --accent: 330 100% 65%;      /* #FF4DB8 - Unified Brighter Neon Pink/Magenta for accents */
-    --accent-foreground: 0 0% 100%; /* White for text on Accent */
+    --accent: 30 90% 65%;      /* #F9A826 - Warm Sand/Orange */
+    --accent-foreground: 210 30% 15%; /* #1D232E - Dark Slate Blue for text on Warm Sand */
     
-    --destructive: 0 75% 55%;   /* Standard red, slightly more vibrant */
+    --destructive: 0 75% 55%;   /* Standard red */
     --destructive-foreground: 0 0% 100%; 
     
-    --border: 330 100% 60%;      /* #FF33A1 - Primary Neon Pink/Magenta border for glow/edge */
-    --input: 0 0% 98%;           /* #FAFAFA - Slightly off-white for inputs */
-    --input-border: 330 100% 55%;  /* #FF1A9C - Sharper Neon Pink input border for edgy feel */
-    --ring: 330 100% 70%;         /* #FF66B8 - Very Bright Neon Pink for focus ring */
+    --border: 210 20% 85%;      /* #CED4DB - Light Blue-Gray Border */
+    --input: 210 20% 96%;           /* #F0F3F7 - Very Light Blue-Gray for inputs */
+    --input-border: 205 70% 50%;  /* #3B82F6 - Ocean Blue input border for edgy feel */
+    --ring: 205 70% 55%;         /* #4B8DF7 - Slightly Brighter Ocean Blue for focus ring */
     
-    --radius: 0.375rem; /* 6px base radius - slightly sharper for GTA style */
+    --radius: 0.375rem; /* 6px base radius */
 
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
     --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(220 10% 50%);
-    --chart-5: hsl(220 10% 70%);
+    --chart-4: hsl(210 10% 50%);
+    --chart-5: hsl(210 10% 70%);
   }
 
   .dark {
-    /* Dark Theme - GTA 6 Inspired - "Rockstar" Polish - DEEPER AND MORE VIBRANT */
-    --background: 240 10% 2%;    /* #040507 - Even Deeper Black */
-    --foreground: 240 5% 96%;    /* #F3F4F6 - Brighter Off-white text */
+    /* Dark Theme - Oceanic Breeze & Warm Sand */
+    --background: 220 25% 6%;    /* #0C0F14 - Very Dark Navy Blue */
+    --foreground: 210 30% 95%;    /* #EDF0F2 - Light Off-White Blue Tint */
 
-    --card: 240 10% 5%;          /* #0A0B0D - Very dark gray for cards, almost black */
-    --card-foreground: 240 5% 92%; /* #E7E8EB - Light text on cards */
+    --card: 220 25% 10%;          /* #13171F - Dark Navy Card */
+    --card-foreground: 210 30% 90%; /* #DDE3EA - Light text on cards */
 
-    --popover: 240 10% 4%;       /* #07080A - Deepest dark for popovers */
-    --popover-foreground: 240 5% 96%; 
+    --popover: 220 25% 8%;       /* #0F131A - Deepest dark for popovers */
+    --popover-foreground: 210 30% 90%; 
     
-    --primary: 330 100% 62%;     /* #FF3DAE - Slightly brighter Neon Pink/Magenta */
+    --primary: 205 75% 60%;     /* #4A90E2 - Brighter Ocean Blue for Dark Mode */
     --primary-foreground: 0 0% 100%; 
     
-    --secondary: 240 10% 10%;    /* #131519 - Darker secondary elements */
-    --secondary-foreground: 240 5% 80%; /* #C8CACC - Muted light gray text */
+    --secondary: 220 20% 15%;    /* #1C212B - Darker secondary elements */
+    --secondary-foreground: 210 25% 75%; /* #A7B4C6 - Muted light gray text */
     
-    --muted: 240 10% 13%;        /* #1B1D23 - Muted dark backgrounds */
-    --muted-foreground: 240 5% 65%;  /* #9FA1AB - Darker muted text */
+    --muted: 220 20% 12%;        /* #161A22 - Muted dark backgrounds */
+    --muted-foreground: 210 25% 60%;  /* #8191A5 - Darker muted text */
     
-    --accent: 330 100% 68%;       /* #FF5CC5 - Slightly brighter Neon Pink/Magenta for accents */
-    --accent-foreground: 0 0% 100%; 
+    --accent: 30 95% 70%;       /* #FBAF41 - Brighter Warm Sand/Orange for Dark Mode */
+    --accent-foreground: 220 25% 10%; /* #13171F - Dark Navy for text on Warm Sand */
     
-    --destructive: 0 90% 70%;   /* Brighter, more saturated red for dark mode */
+    --destructive: 0 70% 65%;   /* Brighter red for dark mode */
     --destructive-foreground: 0 0% 100%; 
     
-    --border: 330 100% 62%;       /* #FF3DAE - Primary Neon Pink/Magenta border (matches new primary) */
-    --input: 240 10% 8%;        /* #0F1114 - Dark input background */
-    --input-border: 330 100% 60%;  /* #FF33A1 - Sharper Neon Pink input border for edgy feel */
-    --ring: 330 100% 75%;         /* #FF80CC - Extremely Bright Neon Pink for focus ring */
+    --border: 220 20% 25%;       /* #323B4D - Medium Dark Blue-Gray Border */
+    --input: 220 20% 12%;        /* #161A22 - Dark input background */
+    --input-border: 205 75% 60%;  /* #4A90E2 - Primary Ocean Blue input border */
+    --ring: 205 75% 65%;         /* #5AA0E8 - Bright Ocean Blue for focus ring */
     
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
     --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(240 5% 70%);  
-    --chart-5: hsl(240 5% 50%); 
+    --chart-4: hsl(210 5% 70%);  
+    --chart-5: hsl(210 5% 50%); 
   }
 
   * {
     @apply border-border;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms; /* Snappier transitions for Rockstar feel */
+    transition-duration: 150ms;
   }
 
   body {
     @apply bg-background text-foreground;
     font-size: 100%; 
-    line-height: 1.7; /* Increased for readability */
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* GTA Style Typography - Bolder headings, stronger neon glow, larger base */
+  /* Typography - Clear and Professional */
   h1, .text-h1 { 
     @apply text-5xl font-extrabold tracking-tight md:text-6xl lg:text-7xl; 
-    text-shadow: 0 0 12px hsl(var(--primary) / 0.75), 0 0 25px hsl(var(--primary) / 0.55), 0 0 40px hsl(var(--primary) / 0.35);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.3);
   } 
   h2, .text-h2 { 
     @apply text-4xl font-bold tracking-tight md:text-5xl; 
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.65), 0 0 20px hsl(var(--primary) / 0.45);
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.4);
   } 
   h3, .text-h3 { 
     @apply text-3xl font-semibold md:text-4xl;
-    text-shadow: 0 0 8px hsl(var(--primary) / 0.45);
+    text-shadow: 0 0 6px hsl(var(--primary) / 0.3);
   }    
   h4, .text-h4 { 
     @apply text-2xl font-semibold md:text-3xl; 
-    text-shadow: 0 0 6px hsl(var(--primary) / 0.35);
+    text-shadow: 0 0 4px hsl(var(--primary) / 0.2);
   }
   p, li, span, label, input, textarea, button, a { 
-    @apply text-base leading-relaxed; /* Base size for readability */
+    @apply text-base leading-relaxed; 
   } 
   small, .text-caption { 
     @apply text-sm text-muted-foreground; 
@@ -131,19 +131,19 @@ html {
 
   .section-title { 
     @apply text-4xl md:text-5xl font-extrabold text-primary text-center;
-    text-shadow: 0 0 12px hsl(var(--primary) / 0.8), 0 0 25px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.4);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2);
   }
   
   .section-icon { 
     @apply w-10 h-10 md:w-12 md:h-12 mr-3 text-primary relative -top-0.5 md:-top-1;
   }
 
-  /* Edgy cards for Rockstar style - sharper, more defined interactions */
+  /* Card Styling - Clean and Modern */
   .card, .card-like { 
-    @apply rounded-md border-card-foreground/10 bg-card text-card-foreground shadow-xl hover:shadow-primary/30 transition-all duration-200;
+    @apply rounded-md border-border/60 bg-card text-card-foreground shadow-xl hover:shadow-primary/20 transition-all duration-200;
   }
   .dark .card, .dark .card-like {
-     @apply border-border/30 hover:border-primary hover:shadow-primary/50; /* Neon edge on hover/focus for dark cards */
+     @apply border-border/40 hover:border-primary hover:shadow-primary/30;
   }
   
   button:focus-visible, 
@@ -162,7 +162,7 @@ html {
   }
 
   .animate-fadeIn {
-    animation: fadeIn 0.5s ease-out forwards; /* Slightly faster fadeIn */
+    animation: fadeIn 0.5s ease-out forwards;
   }
 
   .stagger-children > * {
@@ -170,34 +170,33 @@ html {
     animation: fadeIn 0.5s ease-out forwards;
   }
 
-  /* Custom Scrollbar Styling for Rockstar Feel */
+  /* Custom Scrollbar Styling */
   ::-webkit-scrollbar {
-    width: 12px; 
-    height: 12px;
+    width: 10px; 
+    height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background) / 0.5); 
-    border-radius: 6px;
+    background: hsl(var(--background) / 0.7); 
+    border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted) / 0.8); 
-    border-radius: 6px;
-    border: 3px solid transparent; /* Make border transparent to use padding as spacing */
-    background-clip: padding-box; /* Ensures border doesn't overlap thumb */
+    background: hsl(var(--muted) / 0.7); 
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary));
   }
   .dark ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground) / 0.5);
+    background: hsl(var(--muted-foreground) / 0.4);
   }
   .dark ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary));
   }
 
-
   section { 
-    @apply py-28 md:py-36 lg:py-40 scroll-mt-28; /* Increased padding and scroll-margin */
+    @apply py-24 md:py-32 lg:py-36 scroll-mt-24; /* Generous section padding */
   }
 
   .container {

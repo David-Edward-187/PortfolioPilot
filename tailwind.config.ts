@@ -79,8 +79,8 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fadeIn 0.5s ease-out forwards', /* Faster fade-in */
-        'pulse-once': 'pulse-once 0.6s ease-in-out', /* Slightly adjusted pulse */
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'pulse-once': 'pulse-once 0.6s ease-in-out',
   		},
       boxShadow: {
         'input-focus': '0 0 0 2px hsl(var(--ring))', 
@@ -90,11 +90,11 @@ export default {
         'xl': '0 20px 25px -5px hsl(var(--foreground) / 0.1), 0 8px 10px -6px hsl(var(--foreground) / 0.1)',
         '2xl': '0 25px 50px -12px hsl(var(--foreground) / 0.15)',
         'inner': 'inset 0 2px 4px 0 hsl(var(--foreground) / 0.03)',
-        // GTA Style Glows - more pronounced
-        'glow-primary-sm': '0 0 12px hsl(var(--primary) / 0.7), 0 0 22px hsl(var(--primary) / 0.5)',
-        'glow-primary-md': '0 0 20px hsl(var(--primary) / 0.8), 0 0 35px hsl(var(--primary) / 0.6)',
-        'glow-accent-sm': '0 0 12px hsl(var(--accent) / 0.7), 0 0 22px hsl(var(--accent) / 0.5)',
-        'glow-accent-md': '0 0 20px hsl(var(--accent) / 0.8), 0 0 35px hsl(var(--accent) / 0.6)',
+        // Updated Glows for new theme
+        'glow-primary-sm': '0 0 10px hsl(var(--primary) / 0.6), 0 0 18px hsl(var(--primary) / 0.4)',
+        'glow-primary-md': '0 0 18px hsl(var(--primary) / 0.7), 0 0 30px hsl(var(--primary) / 0.5)',
+        'glow-accent-sm': '0 0 10px hsl(var(--accent) / 0.6), 0 0 18px hsl(var(--accent) / 0.4)',
+        'glow-accent-md': '0 0 18px hsl(var(--accent) / 0.7), 0 0 30px hsl(var(--accent) / 0.5)',
       },
       spacing: { 
         '0.5': '0.125rem',
@@ -124,3 +124,4 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
