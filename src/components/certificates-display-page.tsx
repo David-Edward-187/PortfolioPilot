@@ -41,7 +41,7 @@ export function CertificatesDisplayPage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   data-ai-hint={cert.dataAiHint || "certificate document dark neon"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-90 group-hover:opacity-50 transition-opacity duration-300"></div>
               </div>
             )}
             <CardHeader className="p-6 md:p-7 pb-3">
@@ -76,4 +76,3 @@ export function CertificatesDisplayPage() {
     </div>
   );
 }
-

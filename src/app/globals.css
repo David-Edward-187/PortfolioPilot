@@ -13,35 +13,35 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - GTA 6 Inspired - DEEPENED & REFINED, then adjusted for "Rockstar" polish */
-    --background: 220 25% 97%; /* #F5F7F9 - Very Light Cool Gray (Keeping light theme background light) */
-    --foreground: 220 20% 15%;   /* #1E242A - Darker Charcoal for better contrast on light bg */
+    /* Light Theme - GTA 6 Inspired - DEEPENED & REFINED, "Rockstar" polish */
+    --background: 220 25% 97%; /* #F5F7F9 - Very Light Cool Gray */
+    --foreground: 220 20% 10%;   /* #1A1F24 - Deeper Charcoal for max contrast */
     
     --card: 0 0% 100%;           /* #FFFFFF - White */
-    --card-foreground: 220 20% 15%; /* Darker Charcoal for card text */
+    --card-foreground: 220 20% 12%; /* #1C2126 - Slightly darker card text */
     
     --popover: 0 0% 100%;        /* White */
-    --popover-foreground: 220 20% 15%; /* Darker Charcoal */
+    --popover-foreground: 220 20% 12%; 
     
     --primary: 330 100% 60%;    /* #FF33A1 - Unified Brighter Neon Pink/Magenta */
     --primary-foreground: 0 0% 100%; /* White for text on Neon Pink */
     
-    --secondary: 220 20% 92%;   /* #E3E7EB - Light Cool Gray for secondary elements */
-    --secondary-foreground: 220 15% 30%; /* #414A54 - Darker Medium Gray for secondary text */
+    --secondary: 220 20% 93%;   /* #E7EAED - Light Cool Gray for secondary elements */
+    --secondary-foreground: 220 15% 25%; /* #39414A - Darker Medium Gray for secondary text */
     
-    --muted: 220 20% 88%;       /* #DDE1E6 - Muted Cool Gray */
-    --muted-foreground: 220 15% 40%; /* #5A636E - Muted Text Gray */
+    --muted: 220 20% 90%;       /* #E0E3E8 - Muted Cool Gray */
+    --muted-foreground: 220 15% 35%; /* #4E5863 - Muted Text Gray */
     
     --accent: 330 100% 65%;      /* #FF4DB8 - Unified Brighter Neon Pink/Magenta for accents */
     --accent-foreground: 0 0% 100%; /* White for text on Accent */
     
-    --destructive: 0 72% 51%;   /* Standard red */
-    --destructive-foreground: 0 0% 98%; /* Light text on red */
+    --destructive: 0 75% 55%;   /* Standard red, slightly more vibrant */
+    --destructive-foreground: 0 0% 100%; 
     
-    --border: 220 20% 85%;      /* #D2D8DE - Light Border Gray */
+    --border: 330 100% 60%;      /* #FF33A1 - Primary Neon Pink/Magenta border for glow/edge */
     --input: 0 0% 98%;           /* #FAFAFA - Slightly off-white for inputs */
-    --input-border: 220 20% 80%; /* #C8CED4 - Input Border Gray */
-    --ring: 330 100% 60%;         /* Unified Neon Pink for focus ring (matches new primary) */
+    --input-border: 330 100% 55%;  /* #FF1A9C - Sharper Neon Pink input border for edgy feel */
+    --ring: 330 100% 70%;         /* #FF66B8 - Very Bright Neon Pink for focus ring */
     
     --radius: 0.375rem; /* 6px base radius - slightly sharper for GTA style */
 
@@ -53,74 +53,74 @@ html {
   }
 
   .dark {
-    /* Dark Theme - GTA 6 Inspired - "Rockstar" Polish */
-    --background: 240 10% 3%;    /* #06070A - Almost pure black */
-    --foreground: 240 5% 95%;    /* #F0F1F3 - Brighter Light Gray/Off-white text */
+    /* Dark Theme - GTA 6 Inspired - "Rockstar" Polish - DEEPER AND MORE VIBRANT */
+    --background: 240 10% 2%;    /* #040507 - Even Deeper Black */
+    --foreground: 240 5% 96%;    /* #F3F4F6 - Brighter Off-white text */
 
-    --card: 240 10% 6%;          /* #0C0D10 - Very dark gray for cards */
-    --card-foreground: 240 5% 90%; /* #E2E3E6 - Light text on cards */
+    --card: 240 10% 5%;          /* #0A0B0D - Very dark gray for cards, almost black */
+    --card-foreground: 240 5% 92%; /* #E7E8EB - Light text on cards */
 
-    --popover: 240 10% 5%;       /* #0A0B0D - Deepest dark for popovers */
-    --popover-foreground: 240 5% 95%; /* Brighter popover text */
+    --popover: 240 10% 4%;       /* #07080A - Deepest dark for popovers */
+    --popover-foreground: 240 5% 96%; 
     
-    --primary: 330 100% 60%;     /* #FF33A1 - Unified Brighter Neon Pink/Magenta */
-    --primary-foreground: 0 0% 100%;  /* White text on Neon Pink */
+    --primary: 330 100% 62%;     /* #FF3DAE - Slightly brighter Neon Pink/Magenta */
+    --primary-foreground: 0 0% 100%; 
     
-    --secondary: 240 10% 12%;    /* #181A1F - Darker secondary elements */
-    --secondary-foreground: 240 5% 75%; /* #B9BAC0 - Muted light gray text */
+    --secondary: 240 10% 10%;    /* #131519 - Darker secondary elements */
+    --secondary-foreground: 240 5% 80%; /* #C8CACC - Muted light gray text */
     
-    --muted: 240 10% 15%;        /* #1E1F26 - Muted dark backgrounds */
-    --muted-foreground: 240 5% 60%;  /* #9294A0 - Darker muted text */
+    --muted: 240 10% 13%;        /* #1B1D23 - Muted dark backgrounds */
+    --muted-foreground: 240 5% 65%;  /* #9FA1AB - Darker muted text */
     
-    --accent: 330 100% 65%;       /* #FF4DB8 - Unified Brighter Neon Pink/Magenta for accents */
-    --accent-foreground: 0 0% 100%; /* White text on Accent */
+    --accent: 330 100% 68%;       /* #FF5CC5 - Slightly brighter Neon Pink/Magenta for accents */
+    --accent-foreground: 0 0% 100%; 
     
-    --destructive: 0 85% 65%;   /* Brighter, more saturated red for dark mode */
+    --destructive: 0 90% 70%;   /* Brighter, more saturated red for dark mode */
     --destructive-foreground: 0 0% 100%; 
     
-    --border: 330 100% 60%;       /* #FF33A1 - Primary Neon Pink/Magenta border for glow/edge (matches new primary) */
-    --input: 240 10% 10%;        /* #131519 - Dark input background */
-    --input-border: 330 100% 55%;  /* #FF1A9C - Sharper Neon Pink input border for edgy feel */
-    --ring: 330 100% 70%;         /* #FF66B8 - Very Bright Neon Pink for focus ring (can be brighter than primary) */
+    --border: 330 100% 62%;       /* #FF3DAE - Primary Neon Pink/Magenta border (matches new primary) */
+    --input: 240 10% 8%;        /* #0F1114 - Dark input background */
+    --input-border: 330 100% 60%;  /* #FF33A1 - Sharper Neon Pink input border for edgy feel */
+    --ring: 330 100% 75%;         /* #FF80CC - Extremely Bright Neon Pink for focus ring */
     
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
     --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(240 5% 65%);  
-    --chart-5: hsl(240 5% 45%); 
+    --chart-4: hsl(240 5% 70%);  
+    --chart-5: hsl(240 5% 50%); 
   }
 
   * {
     @apply border-border;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms; /* Snappy transitions */
+    transition-duration: 150ms; /* Snappier transitions for Rockstar feel */
   }
 
   body {
     @apply bg-background text-foreground;
     font-size: 100%; 
-    line-height: 1.65;
+    line-height: 1.7; /* Increased for readability */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* GTA Style Typography - Bolder headings, stronger neon glow */
+  /* GTA Style Typography - Bolder headings, stronger neon glow, larger base */
   h1, .text-h1 { 
-    @apply text-5xl font-extrabold tracking-tight md:text-6xl lg:text-7xl; /* Larger headings */
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.5), 0 0 30px hsl(var(--primary) / 0.2);
+    @apply text-5xl font-extrabold tracking-tight md:text-6xl lg:text-7xl; 
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.75), 0 0 25px hsl(var(--primary) / 0.55), 0 0 40px hsl(var(--primary) / 0.35);
   } 
   h2, .text-h2 { 
-    @apply text-4xl font-bold tracking-tight md:text-5xl; /* Larger headings */
-    text-shadow: 0 0 8px hsl(var(--primary) / 0.6), 0 0 15px hsl(var(--primary) / 0.4);
+    @apply text-4xl font-bold tracking-tight md:text-5xl; 
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.65), 0 0 20px hsl(var(--primary) / 0.45);
   } 
   h3, .text-h3 { 
     @apply text-3xl font-semibold md:text-4xl;
-    text-shadow: 0 0 6px hsl(var(--primary) / 0.4);
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.45);
   }    
   h4, .text-h4 { 
     @apply text-2xl font-semibold md:text-3xl; 
-    text-shadow: 0 0 4px hsl(var(--primary) / 0.3);
+    text-shadow: 0 0 6px hsl(var(--primary) / 0.35);
   }
   p, li, span, label, input, textarea, button, a { 
     @apply text-base leading-relaxed; /* Base size for readability */
@@ -131,19 +131,19 @@ html {
 
   .section-title { 
     @apply text-4xl md:text-5xl font-extrabold text-primary text-center;
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.5), 0 0 30px hsl(var(--primary) / 0.3);
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.8), 0 0 25px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.4);
   }
   
   .section-icon { 
     @apply w-10 h-10 md:w-12 md:h-12 mr-3 text-primary relative -top-0.5 md:-top-1;
   }
 
-  /* Edgy cards for GTA style */
+  /* Edgy cards for Rockstar style - sharper, more defined interactions */
   .card, .card-like { 
-    @apply rounded-md border-card-foreground/20 bg-card text-card-foreground shadow-xl hover:shadow-primary/40 transition-all duration-300;
+    @apply rounded-md border-card-foreground/10 bg-card text-card-foreground shadow-xl hover:shadow-primary/30 transition-all duration-200;
   }
   .dark .card, .dark .card-like {
-     @apply border-primary/30 hover:border-primary hover:shadow-primary/50; /* Neon edge on hover/focus for dark cards */
+     @apply border-border/30 hover:border-primary hover:shadow-primary/50; /* Neon edge on hover/focus for dark cards */
   }
   
   button:focus-visible, 
@@ -162,34 +162,42 @@ html {
   }
 
   .animate-fadeIn {
-    animation: fadeIn 0.6s ease-out forwards; 
+    animation: fadeIn 0.5s ease-out forwards; /* Slightly faster fadeIn */
   }
 
   .stagger-children > * {
     opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.5s ease-out forwards;
   }
 
+  /* Custom Scrollbar Styling for Rockstar Feel */
   ::-webkit-scrollbar {
-    width: 10px; 
-    height: 10px;
+    width: 12px; 
+    height: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background)); 
-    border-radius: 5px;
+    background: hsl(var(--background) / 0.5); 
+    border-radius: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted)); 
-    border-radius: 5px;
-    border: 2px solid hsl(var(--background)); 
-    background-clip: padding-box;
+    background: hsl(var(--muted) / 0.8); 
+    border-radius: 6px;
+    border: 3px solid transparent; /* Make border transparent to use padding as spacing */
+    background-clip: padding-box; /* Ensures border doesn't overlap thumb */
   }
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary));
   }
+  .dark ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+
 
   section { 
-    @apply py-24 md:py-32 lg:py-36 scroll-mt-24; /* Increased padding and scroll-margin */
+    @apply py-28 md:py-36 lg:py-40 scroll-mt-28; /* Increased padding and scroll-margin */
   }
 
   .container {

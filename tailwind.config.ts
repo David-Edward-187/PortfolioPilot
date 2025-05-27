@@ -42,7 +42,7 @@ export default {
   			},
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
-        'input-border': 'hsl(var(--input-border))', // Renamed from input to input-border for clarity
+        'input-border': 'hsl(var(--input-border))', 
   			ring: 'hsl(var(--ring))',
   			chart: {
   				'1': 'hsl(var(--chart-1))',
@@ -55,7 +55,7 @@ export default {
   		borderRadius: { 
   			xl: 'calc(var(--radius) + 4px)', 
         lg: 'var(--radius)', 
-        md: 'calc(var(--radius) - 2px)', // Changed from 'var(--radius)' to 'calc(var(--radius) - 2px)' to match var(--radius) = 0.375rem
+        md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
@@ -68,22 +68,22 @@ export default {
   				to: { height: '0' }
   			},
         'fade-in': { 
-          '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' }, 
+          '0%': { opacity: '0', transform: 'translateY(15px) scale(0.98)' }, 
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
-        'pulse-once': { // Used for subtle button/icon emphasis
-          '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.03)' }, // Slightly less intense pulse
+        'pulse-once': { 
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.05)', opacity: '0.7' }, 
         }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fadeIn 0.7s ease-out forwards',
-        'pulse-once': 'pulse-once 0.4s ease-in-out',
+        'fade-in': 'fadeIn 0.5s ease-out forwards', /* Faster fade-in */
+        'pulse-once': 'pulse-once 0.6s ease-in-out', /* Slightly adjusted pulse */
   		},
       boxShadow: {
-        'input-focus': '0 0 0 2px hsl(var(--ring))', // Standard focus shadow
+        'input-focus': '0 0 0 2px hsl(var(--ring))', 
         'sm': '0 1px 2px 0 hsl(var(--foreground) / 0.03)',
         'md': '0 4px 6px -1px hsl(var(--foreground) / 0.05), 0 2px 4px -2px hsl(var(--foreground) / 0.05)',
         'lg': '0 10px 15px -3px hsl(var(--foreground) / 0.07), 0 4px 6px -4px hsl(var(--foreground) / 0.07)',
@@ -91,10 +91,10 @@ export default {
         '2xl': '0 25px 50px -12px hsl(var(--foreground) / 0.15)',
         'inner': 'inset 0 2px 4px 0 hsl(var(--foreground) / 0.03)',
         // GTA Style Glows - more pronounced
-        'glow-primary-sm': '0 0 10px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--primary) / 0.4)',
-        'glow-primary-md': '0 0 18px hsl(var(--primary) / 0.7), 0 0 30px hsl(var(--primary) / 0.5)',
-        'glow-accent-sm': '0 0 10px hsl(var(--accent) / 0.6), 0 0 20px hsl(var(--accent) / 0.4)',
-        'glow-accent-md': '0 0 18px hsl(var(--accent) / 0.7), 0 0 30px hsl(var(--accent) / 0.5)',
+        'glow-primary-sm': '0 0 12px hsl(var(--primary) / 0.7), 0 0 22px hsl(var(--primary) / 0.5)',
+        'glow-primary-md': '0 0 20px hsl(var(--primary) / 0.8), 0 0 35px hsl(var(--primary) / 0.6)',
+        'glow-accent-sm': '0 0 12px hsl(var(--accent) / 0.7), 0 0 22px hsl(var(--accent) / 0.5)',
+        'glow-accent-md': '0 0 20px hsl(var(--accent) / 0.8), 0 0 35px hsl(var(--accent) / 0.6)',
       },
       spacing: { 
         '0.5': '0.125rem',
@@ -115,10 +115,12 @@ export default {
         '16': '4rem',
         '20': '5rem',
         '24': '6rem',
+        '28': '7rem', 
+        '32': '8rem',
+        '36': '9rem',
+        '40': '10rem',
       }
   	}
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
-    

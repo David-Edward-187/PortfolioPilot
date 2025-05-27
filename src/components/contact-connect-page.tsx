@@ -110,7 +110,7 @@ export function ContactConnectPage() {
           </div>
 
           <div className="flex flex-col items-center justify-center text-center space-y-12 md:pt-10 animate-fadeIn" style={{animationDelay: '0.2s'}}>
-             <h3 className="text-3xl md:text-4xl text-primary font-extrabold" style={{ textShadow: '0 0 8px hsl(var(--primary) / 0.6)' }}>
+             <h3 className="text-3xl md:text-4xl text-primary font-extrabold" style={{ textShadow: '0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.5)' }}>
               Let&apos;s Connect.
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-md leading-relaxed">
@@ -124,7 +124,7 @@ export function ContactConnectPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Connect on ${link.name}`}
-                  className={`text-muted-foreground p-4 rounded-full border-2 border-transparent hover:border-primary/70 transform transition-all duration-300 hover:scale-110 active:scale-95 focus-visible:ring-2 ring-ring ring-offset-background ${link.color}`}
+                  className={`text-muted-foreground p-4 rounded-full border-2 border-transparent hover:border-primary/70 transform transition-all duration-300 hover:scale-110 active:scale-95 focus-visible:ring-2 ring-ring ring-offset-background ${link.color} hover:text-accent hover:bg-accent/20`}
                 >
                   <link.Icon className="w-8 h-8 md:w-9 md:h-9" />
                 </a>
@@ -157,4 +157,3 @@ export function ContactConnectPage() {
     </>
   );
 }
-

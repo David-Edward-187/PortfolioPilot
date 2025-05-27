@@ -52,12 +52,12 @@ export function Navbar() {
           <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" 
                className="transform group-hover:scale-110 transition-transform duration-300">
             <path d="M20 80L35 20L50 80L65 20L80 80" stroke="hsl(var(--primary))" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" 
-                  style={{ filter: 'drop-shadow(0 0 8px hsl(var(--primary)/0.8)) drop-shadow(0 0 15px hsl(var(--primary)/0.5))' }}/>
+                  style={{ filter: 'drop-shadow(0 0 10px hsl(var(--primary)/0.9)) drop-shadow(0 0 20px hsl(var(--primary)/0.6))' }}/>
             <path d="M27.5 50H72.5" stroke="hsl(var(--primary))" strokeWidth="8" strokeLinecap="round" 
-                  style={{ filter: 'drop-shadow(0 0 8px hsl(var(--primary)/0.8))' }}/>
+                  style={{ filter: 'drop-shadow(0 0 8px hsl(var(--primary)/0.9))' }}/>
           </svg>
           <span className="text-2xl md:text-3xl font-extrabold text-foreground group-hover:text-primary transition-colors duration-300"
-                style={{ textShadow: '0 0 5px hsl(var(--primary) / 0.6), 0 0 10px hsl(var(--primary) / 0.3)' }}>
+                style={{ textShadow: '0 0 6px hsl(var(--primary) / 0.7), 0 0 12px hsl(var(--primary) / 0.4)' }}>
             Portfolio
           </span>
         </Link>
@@ -68,7 +68,7 @@ export function Navbar() {
               key={link.href} 
               variant="ghost" 
               asChild 
-              className="text-base lg:text-lg font-semibold text-muted-foreground hover:text-primary hover:bg-primary/15 px-4 py-3 rounded-md transition-all duration-200"
+              className="text-base lg:text-lg font-semibold text-muted-foreground hover:text-primary hover:bg-primary/15 px-4 py-3 rounded-md transition-all duration-200 focus-visible:text-primary focus-visible:bg-primary/20"
             >
               <Link href={link.href}>
                 {link.label}
@@ -110,7 +110,7 @@ export function Navbar() {
             >
               <Link 
                 href={link.href} 
-                className="text-lg font-semibold text-muted-foreground hover:text-primary hover:bg-primary/15 py-4 px-4 rounded-md transition-all duration-200" 
+                className="text-lg font-semibold text-muted-foreground hover:text-primary hover:bg-primary/15 py-4 px-4 rounded-md transition-all duration-200 focus-visible:text-primary focus-visible:bg-primary/20" 
                 onClick={closeMobileMenu}
               >
                 {link.label}

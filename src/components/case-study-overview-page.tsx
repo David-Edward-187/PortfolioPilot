@@ -46,7 +46,7 @@ export function CaseStudyOverviewPage() {
                 className={`object-cover transform transition-transform duration-500 ease-in-out ${hoveredProject === project.name ? 'scale-110' : 'scale-100'}`}
                 data-ai-hint={project.dataAiHint || 'application interface urban night'}
               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-100 group-hover:opacity-70 transition-opacity duration-300"></div>
+               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-100 group-hover:opacity-50 transition-opacity duration-300"></div>
             </div>
             <CardHeader className="p-6 md:p-7">
               <CardTitle className="text-2xl md:text-3xl font-bold text-primary group-hover:text-accent transition-colors">{project.name}</CardTitle>
@@ -86,4 +86,3 @@ export function CaseStudyOverviewPage() {
     </div>
   );
 }
-
