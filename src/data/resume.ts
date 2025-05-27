@@ -6,7 +6,7 @@ export const resumeData: ResumeData = {
   title: "Full Stack Developer",
   bio: "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
   headshotUrl: "https://placehold.co/288x288.png", 
-  dataAiHint: "professional headshot urban neon city night studio lighting", 
+  dataAiHint: "professional headshot oceanic breeze warm sand", 
   contact: {
     email: "alex.johnson.dev@example.com",
     linkedin: "https://linkedin.com/in/alexjohnsondev",
@@ -78,7 +78,7 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "React", "Stripe", "PostgreSQL", "Tailwind CSS", "AWS"],
       link: "https://github.com/alexjohnsondev/ecommerce-platform",
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "ecommerce platform neon urban night interface"
+      dataAiHint: "ecommerce platform ocean sunset tech"
     },
     {
       name: "TaskForce Zero",
@@ -90,7 +90,7 @@ export const resumeData: ResumeData = {
       technologies: ["React", "Firebase", "Material UI", "Node.js"],
       link: "https://github.com/alexjohnsondev/task-manager",
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "task management app futuristic neon dark interface"
+      dataAiHint: "task management app beach warm sand interface"
     },
     {
       name: "PortfolioPilot (This Site)",
@@ -102,7 +102,7 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
       link: "#", 
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "portfolio website code screen dark neon"
+      dataAiHint: "portfolio website code screen ocean waves"
     }
   ],
   certificates: [
@@ -112,7 +112,7 @@ export const resumeData: ResumeData = {
       issueDate: "Mar 2022",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "nodejs certificate dark tech screen code",
+      dataAiHint: "nodejs certificate beach sand document",
       description: "Covered Node.js fundamentals, Express, MongoDB, Mongoose, and building RESTful APIs. Completed all modules and projects."
     },
     {
@@ -121,7 +121,7 @@ export const resumeData: ResumeData = {
       issueDate: "Jul 2021",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-2/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "react course dark neon screen code",
+      dataAiHint: "react course modern office ocean view",
       description: "In-depth exploration of React, including hooks, context API, Redux, and React Router. Built multiple complex applications."
     },
     {
@@ -130,7 +130,7 @@ export const resumeData: ResumeData = {
       issueDate: "Nov 2022",
       credentialUrl: "https://www.credly.com/badges/example-aws-badge",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "aws certification dark server room neon",
+      dataAiHint: "aws certification document warm lighting",
       description: "Validated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS. Passed with a score of 850/1000."
     }
   ]
