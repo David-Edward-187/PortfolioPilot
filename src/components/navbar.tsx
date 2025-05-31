@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Component } from 'lucide-react'; // Added Component import
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -32,37 +32,32 @@ export function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setHasScrolled(window.scrollY > 20); // Trigger sooner
+      setHasScrolled(window.scrollY > 20); 
     };
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-in-out", // Faster transition
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-in-out", 
         hasScrolled || isMobileMenuOpen 
-          ? "bg-card/85 backdrop-blur-lg shadow-lg border-b border-border/60" // More blur, stronger shadow
+          ? "bg-card/85 backdrop-blur-lg shadow-lg border-b border-border/60" 
           : "bg-transparent border-b border-transparent"
       )}
     >
-      <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6"> {/* Slightly shorter navbar */}
+      <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 group" onClick={closeMobileMenu}>
-          {/* Simplified professional logo */}
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-               className="transform group-hover:scale-105 transition-transform duration-300 text-primary">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          {/* Replaced SVG with Component icon */}
+          <Component className="h-8 w-8 text-primary transform group-hover:scale-105 transition-transform duration-300" />
           <span className="text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
             Portfolio
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5"> {/* Reduced spacing */}
+        <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5">
           {navLinks.map((link) => (
             <Button 
               key={link.href} 
