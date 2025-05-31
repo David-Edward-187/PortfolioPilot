@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Component } from 'lucide-react'; // Added Component import
+import { Menu, X, Code2 } from 'lucide-react'; // Changed Component to Code2
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -50,8 +50,8 @@ export function Navbar() {
     >
       <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 group" onClick={closeMobileMenu}>
-          {/* Replaced SVG with Component icon */}
-          <Component className="h-8 w-8 text-primary transform group-hover:scale-105 transition-transform duration-300" />
+          {/* Replaced Component icon with Code2 icon */}
+          <Code2 className="h-8 w-8 text-primary transform group-hover:scale-105 transition-transform duration-300" />
           <span className="text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
             Portfolio
           </span>
