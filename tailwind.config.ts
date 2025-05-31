@@ -54,7 +54,7 @@ export default {
   		},
   		borderRadius: { 
   			xl: 'calc(var(--radius) + 4px)', 
-        lg: 'var(--radius)', /* Uses CSS variable for consistency: 0.5rem */
+        lg: 'var(--radius)', 
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
   		},
@@ -67,13 +67,13 @@ export default {
   				from: { height: 'var(--radix-accordion-content-height)' },
   				to: { height: '0' }
   			},
-        'fade-in': { /* Simplified fade-in */
+        'fade-in': { 
           '0%': { opacity: '0', transform: 'translateY(10px)' }, 
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'pulse-once': { /* Kept for potential subtle uses, but not primary glow */
+        'pulse-once': { 
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
-          '50%': { transform: 'scale(1.02)', opacity: '0.8' }, /* Softer pulse */
+          '50%': { transform: 'scale(1.02)', opacity: '0.8' }, 
         }
   		},
   		animation: {
@@ -82,7 +82,7 @@ export default {
         'fade-in': 'fadeIn 0.4s ease-out forwards',
         'pulse-once': 'pulse-once 0.5s ease-in-out',
   		},
-      boxShadow: { // More professional, subtle shadows
+      boxShadow: { 
         'input-focus': '0 0 0 2px hsl(var(--ring))', 
         'sm': '0 1px 2px 0 hsl(var(--foreground) / 0.04)',
         'md': '0 3px 5px -1px hsl(var(--foreground) / 0.05), 0 2px 3px -2px hsl(var(--foreground) / 0.05)',
@@ -90,7 +90,6 @@ export default {
         'xl': '0 15px 20px -5px hsl(var(--foreground) / 0.07), 0 6px 8px -6px hsl(var(--foreground) / 0.07)',
         '2xl': '0 20px 30px -12px hsl(var(--foreground) / 0.1)',
         'inner': 'inset 0 1px 2px 0 hsl(var(--foreground) / 0.03)',
-        // Removed glow shadows, can be added if specific neon highlights are desired later
       },
       spacing: { 
         '0.5': '0.125rem',
