@@ -5,8 +5,8 @@ export const resumeData: ResumeData = {
   name: "Alex Johnson",
   title: "Full Stack Developer",
   bio: "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
-  headshotUrl: "https://placehold.co/288x288.png", 
-  dataAiHint: "professional headshot oceanic breeze warm sand", 
+  headshotUrl: "https://placehold.co/240x240.png", 
+  dataAiHint: "professional headshot tech abstract", 
   contact: {
     email: "alex.johnson.dev@example.com",
     linkedin: "https://linkedin.com/in/alexjohnsondev",
@@ -78,7 +78,7 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "React", "Stripe", "PostgreSQL", "Tailwind CSS", "AWS"],
       link: "https://github.com/alexjohnsondev/ecommerce-platform",
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "ecommerce platform ocean sunset tech"
+      dataAiHint: "ecommerce ui modern tech"
     },
     {
       name: "TaskForce Zero",
@@ -90,19 +90,19 @@ export const resumeData: ResumeData = {
       technologies: ["React", "Firebase", "Material UI", "Node.js"],
       link: "https://github.com/alexjohnsondev/task-manager",
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "task management app beach warm sand interface"
+      dataAiHint: "task manager app professional clean"
     },
     {
       name: "PortfolioPilot (This Site)",
       description: [
-        "Designed and developed the portfolio you are currently viewing, showcasing skills and projects effectively in a GTA-inspired theme.",
-        "Built with Next.js for optimal performance (Lighthouse score: 95+) and SEO, and styled with Tailwind CSS for a modern, responsive design.",
+        "Designed and developed this portfolio to showcase skills and projects effectively with a professional tech aesthetic.",
+        "Built with Next.js for optimal performance and SEO, and styled with Tailwind CSS for a modern, responsive design.",
         "Features dynamically rendered resume content from a TypeScript data file, ensuring easy updates and maintenance."
       ],
       technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
       link: "#", 
       imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "portfolio website code screen ocean waves"
+      dataAiHint: "portfolio website code screen tech"
     }
   ],
   certificates: [
@@ -112,7 +112,7 @@ export const resumeData: ResumeData = {
       issueDate: "Mar 2022",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "nodejs certificate beach sand document",
+      dataAiHint: "nodejs certificate tech document",
       description: "Covered Node.js fundamentals, Express, MongoDB, Mongoose, and building RESTful APIs. Completed all modules and projects."
     },
     {
@@ -121,7 +121,7 @@ export const resumeData: ResumeData = {
       issueDate: "Jul 2021",
       credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-2/",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "react course modern office ocean view",
+      dataAiHint: "react course modern tech abstract",
       description: "In-depth exploration of React, including hooks, context API, Redux, and React Router. Built multiple complex applications."
     },
     {
@@ -130,7 +130,7 @@ export const resumeData: ResumeData = {
       issueDate: "Nov 2022",
       credentialUrl: "https://www.credly.com/badges/example-aws-badge",
       imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "aws certification document warm lighting",
+      dataAiHint: "aws certification professional design",
       description: "Validated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS. Passed with a score of 850/1000."
     }
   ]

@@ -31,50 +31,50 @@ export function CaseStudyOverviewPage() {
         {resumeData.projects.map((project: ProjectEntry, index: number) => (
           <Card
             key={project.name}
-            className="bg-card border-border/50 backdrop-blur-sm rounded-md shadow-2xl overflow-hidden group flex flex-col transition-all duration-300 hover:border-primary/90 hover:shadow-primary/50 hover:-translate-y-2.5 animate-fadeIn"
+            className="bg-card border-border flex flex-col overflow-hidden group transition-all duration-300 hover:border-primary/80 hover:shadow-xl hover:-translate-y-1 animate-fadeIn rounded-lg" // Standard rounded-lg
             style={{animationDelay: `${index * 0.08}s`}}
             onMouseEnter={() => setHoveredProject(project.name)}
             onMouseLeave={() => setHoveredProject(null)}
             role="article"
           >
-            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-md">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-lg"> {/* Match card radius */}
               <Image
                 src={project.imageUrl || `https://placehold.co/600x338.png`}
                 alt={project.name}
                 fill 
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className={`object-cover transform transition-transform duration-500 ease-in-out ${hoveredProject === project.name ? 'scale-110' : 'scale-100'}`}
-                data-ai-hint={project.dataAiHint || 'application interface urban night'}
+                className={`object-cover transform transition-transform duration-300 ease-in-out ${hoveredProject === project.name ? 'scale-105' : 'scale-100'}`} // Softer scale
+                data-ai-hint={project.dataAiHint || 'tech project interface abstract'}
               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-100 group-hover:opacity-50 transition-opacity duration-300"></div>
+               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-100 group-hover:opacity-60 transition-opacity duration-300"></div>
             </div>
             <CardHeader className="p-6 md:p-7">
-              <CardTitle className="text-2xl md:text-3xl font-bold text-primary group-hover:text-accent transition-colors">{project.name}</CardTitle>
+              <CardTitle className="text-xl md:text-2xl font-semibold text-primary group-hover:text-accent transition-colors">{project.name}</CardTitle> {/* Slightly smaller title */}
             </CardHeader>
             <CardContent className="p-6 md:p-7 pt-0 flex-grow">
-              <ul className="text-base text-muted-foreground mt-1 space-y-2.5 list-disc list-outside ml-4 line-clamp-4 group-hover:text-foreground/90 transition-colors">
+              <ul className="text-sm text-muted-foreground mt-1 space-y-2 list-disc list-outside ml-4 line-clamp-4 group-hover:text-foreground/90 transition-colors"> {/* Smaller text */}
                  {project.description.map((desc, i) => <li key={i}>{desc}</li>)}
               </ul>
             </CardContent>
             <CardFooter className="p-6 md:p-7 pt-4 flex flex-col items-start">
               {project.technologies && project.technologies.length > 0 && (
-                  <div className="mb-6 w-full">
-                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Built With:</h4>
-                      <div className="flex flex-wrap gap-2.5">
+                  <div className="mb-5 w-full">
+                      <h4 className="text-xs font-medium text-muted-foreground mb-2.5 uppercase tracking-wider">Technologies:</h4>
+                      <div className="flex flex-wrap gap-2">
                           {project.technologies.slice(0, 5).map(tech => ( 
-                              <Badge key={tech} variant="secondary" className="text-xs px-3.5 py-2 bg-secondary/80 border-primary/30 text-secondary-foreground shadow-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200 cursor-default">
+                              <Badge key={tech} variant="secondary" className="text-xs px-3 py-1.5 bg-secondary border-border text-secondary-foreground shadow-sm hover:bg-secondary/80">
                                 {tech}
                               </Badge>
                           ))}
-                          {project.technologies.length > 5 && <Badge variant="secondary" className="text-xs px-3.5 py-2 shadow-lg border-primary/30">...</Badge>}
+                          {project.technologies.length > 5 && <Badge variant="secondary" className="text-xs px-3 py-1.5 shadow-sm border-border">...</Badge>}
                       </div>
                   </div>
               )}
               {project.link && project.link !== "#" && (
-                  <Button variant="link" asChild className="text-accent p-0 h-auto text-base group-hover:underline self-start font-semibold hover:text-primary transition-colors duration-300">
+                  <Button variant="link" asChild className="text-accent p-0 h-auto text-sm group-hover:underline self-start font-medium hover:text-primary transition-colors duration-300">
                       <a href={project.link} target="_blank" rel="noopener noreferrer">
                           <>
-                              View Project <ExternalLink className="w-4 h-4 ml-2" />
+                              View Project <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
                           </>
                       </a>
                   </Button>

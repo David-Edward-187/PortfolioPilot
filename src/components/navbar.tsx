@@ -32,64 +32,64 @@ export function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setHasScrolled(window.scrollY > 30); 
+      setHasScrolled(window.scrollY > 20); // Trigger sooner
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-in-out", // Faster transition
         hasScrolled || isMobileMenuOpen 
-          ? "bg-card/90 backdrop-blur-xl shadow-2xl border-b border-border/50" 
+          ? "bg-card/85 backdrop-blur-lg shadow-lg border-b border-border/60" // More blur, stronger shadow
           : "bg-transparent border-b border-transparent"
       )}
     >
-      <div className="container mx-auto flex h-20 md:h-24 items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5 group" onClick={closeMobileMenu}>
-          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" 
-               className="transform group-hover:scale-110 transition-transform duration-300">
-            <path d="M20 80L35 20L50 80L65 20L80 80" stroke="hsl(var(--primary))" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" 
-                  style={{ filter: 'drop-shadow(0 0 10px hsl(var(--primary)/0.9)) drop-shadow(0 0 20px hsl(var(--primary)/0.6))' }}/>
-            <path d="M27.5 50H72.5" stroke="hsl(var(--primary))" strokeWidth="8" strokeLinecap="round" 
-                  style={{ filter: 'drop-shadow(0 0 8px hsl(var(--primary)/0.9))' }}/>
+      <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6"> {/* Slightly shorter navbar */}
+        <Link href="/" className="flex items-center gap-2 group" onClick={closeMobileMenu}>
+          {/* Simplified professional logo */}
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+               className="transform group-hover:scale-105 transition-transform duration-300 text-primary">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="text-2xl md:text-3xl font-extrabold text-foreground group-hover:text-primary transition-colors duration-300"
-                style={{ textShadow: '0 0 6px hsl(var(--primary) / 0.7), 0 0 12px hsl(var(--primary) / 0.4)' }}>
+          <span className="text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
             Portfolio
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center space-x-1.5 lg:space-x-2">
+        <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5"> {/* Reduced spacing */}
           {navLinks.map((link) => (
             <Button 
               key={link.href} 
               variant="ghost" 
               asChild 
-              className="text-base lg:text-lg font-semibold text-muted-foreground hover:text-primary hover:bg-primary/15 px-4 py-3 rounded-md transition-all duration-200 focus-visible:text-primary focus-visible:bg-primary/20"
+              className="text-sm lg:text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/10 px-3.5 py-2.5 rounded-md transition-all duration-200 focus-visible:text-primary focus-visible:bg-primary/15"
             >
               <Link href={link.href}>
                 {link.label}
               </Link>
             </Button>
           ))}
-          <div className="pl-3 md:pl-4">
+          <div className="pl-2 md:pl-3">
             <ThemeToggle />
           </div>
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-1.5 md:hidden">
           <ThemeToggle />
           <Button 
             variant="ghost" 
             size="icon" 
             onClick={toggleMobileMenu} 
             aria-label="Toggle menu" 
-            className="ml-1.5 text-foreground hover:text-primary focus-visible:ring-ring h-10 w-10"
+            className="ml-1 text-foreground hover:text-primary focus-visible:ring-ring h-9 w-9"
           >
-            {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </div>
@@ -97,8 +97,8 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div
           className={cn(
-            "md:hidden absolute top-full left-0 right-0 bg-card shadow-2xl py-4 animate-fadeIn border-t border-border/50", 
-            "flex flex-col items-stretch space-y-1 px-4 pb-6" 
+            "md:hidden absolute top-full left-0 right-0 bg-card shadow-xl py-3 animate-fadeIn border-t border-border/60", 
+            "flex flex-col items-stretch space-y-0.5 px-3 pb-4" 
           )}
         >
           {navLinks.map((link) => (
@@ -110,7 +110,7 @@ export function Navbar() {
             >
               <Link 
                 href={link.href} 
-                className="text-lg font-semibold text-muted-foreground hover:text-primary hover:bg-primary/15 py-4 px-4 rounded-md transition-all duration-200 focus-visible:text-primary focus-visible:bg-primary/20" 
+                className="text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/10 py-3.5 px-3 rounded-md transition-all duration-200 focus-visible:text-primary focus-visible:bg-primary/15" 
                 onClick={closeMobileMenu}
               >
                 {link.label}

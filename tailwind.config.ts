@@ -54,7 +54,7 @@ export default {
   		},
   		borderRadius: { 
   			xl: 'calc(var(--radius) + 4px)', 
-        lg: 'var(--radius)', 
+        lg: 'var(--radius)', /* Uses CSS variable for consistency: 0.5rem */
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
   		},
@@ -67,34 +67,30 @@ export default {
   				from: { height: 'var(--radix-accordion-content-height)' },
   				to: { height: '0' }
   			},
-        'fade-in': { 
-          '0%': { opacity: '0', transform: 'translateY(15px) scale(0.98)' }, 
-          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        'fade-in': { /* Simplified fade-in */
+          '0%': { opacity: '0', transform: 'translateY(10px)' }, 
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'pulse-once': { 
+        'pulse-once': { /* Kept for potential subtle uses, but not primary glow */
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
-          '50%': { transform: 'scale(1.05)', opacity: '0.7' }, 
+          '50%': { transform: 'scale(1.02)', opacity: '0.8' }, /* Softer pulse */
         }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fadeIn 0.5s ease-out forwards',
-        'pulse-once': 'pulse-once 0.6s ease-in-out',
+        'fade-in': 'fadeIn 0.4s ease-out forwards',
+        'pulse-once': 'pulse-once 0.5s ease-in-out',
   		},
-      boxShadow: {
+      boxShadow: { // More professional, subtle shadows
         'input-focus': '0 0 0 2px hsl(var(--ring))', 
-        'sm': '0 1px 2px 0 hsl(var(--foreground) / 0.03)',
-        'md': '0 4px 6px -1px hsl(var(--foreground) / 0.05), 0 2px 4px -2px hsl(var(--foreground) / 0.05)',
-        'lg': '0 10px 15px -3px hsl(var(--foreground) / 0.07), 0 4px 6px -4px hsl(var(--foreground) / 0.07)',
-        'xl': '0 20px 25px -5px hsl(var(--foreground) / 0.1), 0 8px 10px -6px hsl(var(--foreground) / 0.1)',
-        '2xl': '0 25px 50px -12px hsl(var(--foreground) / 0.15)',
-        'inner': 'inset 0 2px 4px 0 hsl(var(--foreground) / 0.03)',
-        // Updated Glows for new theme
-        'glow-primary-sm': '0 0 10px hsl(var(--primary) / 0.6), 0 0 18px hsl(var(--primary) / 0.4)',
-        'glow-primary-md': '0 0 18px hsl(var(--primary) / 0.7), 0 0 30px hsl(var(--primary) / 0.5)',
-        'glow-accent-sm': '0 0 10px hsl(var(--accent) / 0.6), 0 0 18px hsl(var(--accent) / 0.4)',
-        'glow-accent-md': '0 0 18px hsl(var(--accent) / 0.7), 0 0 30px hsl(var(--accent) / 0.5)',
+        'sm': '0 1px 2px 0 hsl(var(--foreground) / 0.04)',
+        'md': '0 3px 5px -1px hsl(var(--foreground) / 0.05), 0 2px 3px -2px hsl(var(--foreground) / 0.05)',
+        'lg': '0 8px 12px -3px hsl(var(--foreground) / 0.06), 0 3px 5px -4px hsl(var(--foreground) / 0.06)',
+        'xl': '0 15px 20px -5px hsl(var(--foreground) / 0.07), 0 6px 8px -6px hsl(var(--foreground) / 0.07)',
+        '2xl': '0 20px 30px -12px hsl(var(--foreground) / 0.1)',
+        'inner': 'inset 0 1px 2px 0 hsl(var(--foreground) / 0.03)',
+        // Removed glow shadows, can be added if specific neon highlights are desired later
       },
       spacing: { 
         '0.5': '0.125rem',
@@ -124,4 +120,3 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-

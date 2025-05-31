@@ -28,43 +28,43 @@ export function CertificatesDisplayPage() {
         {resumeData.certificates.map((cert, index) => (
           <Card 
             key={index} 
-            className="flex flex-col bg-card border-border/50 backdrop-blur-sm rounded-md shadow-2xl overflow-hidden group transition-all duration-300 hover:border-primary/90 hover:shadow-primary/50 hover:-translate-y-2.5 animate-fadeIn"
+            className="flex flex-col bg-card border-border group transition-all duration-300 hover:border-primary/80 hover:shadow-xl hover:-translate-y-1 animate-fadeIn rounded-lg" // Standard rounded-lg
             style={{animationDelay: `${index * 0.1}s`}}
           >
             {cert.imageUrl && (
-              <div className="relative w-full h-60 md:h-64 group overflow-hidden rounded-t-md">
+              <div className="relative w-full h-52 md:h-56 group overflow-hidden rounded-t-lg"> {/* Match card radius */}
                 <Image
                   src={cert.imageUrl}
                   alt={`${cert.name} certificate image`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  data-ai-hint={cert.dataAiHint || "certificate document dark neon"}
+                  data-ai-hint={cert.dataAiHint || "certificate tech professional abstract"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-90 group-hover:opacity-50 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-90 group-hover:opacity-40 transition-opacity duration-300"></div>
               </div>
             )}
-            <CardHeader className="p-6 md:p-7 pb-3">
-              <CardTitle className="text-xl md:text-2xl text-primary group-hover:text-accent transition-colors leading-tight font-bold">{cert.name}</CardTitle>
-              <CardDescription className="text-base text-muted-foreground pt-2 group-hover:text-foreground/80 transition-colors">
+            <CardHeader className="p-6 md:p-7 pb-2.5">
+              <CardTitle className="text-lg md:text-xl text-primary group-hover:text-accent transition-colors leading-tight font-semibold">{cert.name}</CardTitle> {/* Slightly smaller title */}
+              <CardDescription className="text-sm text-muted-foreground pt-1.5 group-hover:text-foreground/80 transition-colors">
                 Issued by: {cert.issuingOrganization}
               </CardDescription>
             </CardHeader>
             <CardContent className="p-6 md:p-7 pt-2 flex-grow">
-               <div className="flex items-center text-sm text-muted-foreground mb-4 group-hover:text-foreground/70 transition-colors">
-                <CalendarDays className="h-4 w-4 mr-2.5 opacity-80" />
+               <div className="flex items-center text-xs text-muted-foreground mb-3 group-hover:text-foreground/70 transition-colors">
+                <CalendarDays className="h-3.5 w-3.5 mr-2 opacity-80" />
                 {cert.issueDate}
               </div>
               {cert.description && (
-                <p className="text-base text-foreground/80 mb-4 leading-relaxed line-clamp-3 group-hover:text-foreground/90 transition-colors">{cert.description}</p>
+                <p className="text-sm text-foreground/80 mb-4 leading-relaxed line-clamp-3 group-hover:text-foreground/90 transition-colors">{cert.description}</p>
               )}
             </CardContent>
             <CardFooter className="p-6 md:p-7 pt-0">
               {cert.credentialUrl && (
-                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-primary transition-colors self-start text-base font-semibold group-hover:underline duration-300">
+                <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-primary transition-colors self-start text-sm font-medium group-hover:underline duration-300">
                   <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
                     <>
-                      View Credential <ExternalLink className="ml-2 h-4 w-4" />
+                      View Credential <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
                     </>
                   </a>
                 </Button>
