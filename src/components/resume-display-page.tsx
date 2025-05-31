@@ -82,7 +82,7 @@ export function ResumeDisplayPage() {
                   {skillsList.map((skill, index) => (
                     <span 
                       key={index} 
-                      className="bg-secondary text-secondary-foreground px-3.5 py-2 rounded-md text-xs md:text-sm shadow-sm hover:bg-secondary/80 transition-all duration-200 cursor-default font-medium border border-border"
+                      className="bg-secondary text-secondary-foreground px-3.5 py-2 rounded-md text-xs md:text-sm shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200 cursor-default font-medium border border-border"
                     >
                       {skill}
                     </span>
