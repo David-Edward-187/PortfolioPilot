@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Alex Johnson | Full Stack Developer', 
+  title: 'Alex Johnson | Portfolio', 
   description: 'Portfolio of Alex Johnson, a passionate Full Stack Developer specializing in modern web technologies.', 
 };
 
@@ -25,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+      </head>
       <body className={`${inter.variable} antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
