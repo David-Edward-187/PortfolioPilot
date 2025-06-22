@@ -5,7 +5,7 @@ import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
-import { Navbar } from '@/components/navbar'; 
+import { SidebarNav } from '@/components/sidebar-nav';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -36,8 +36,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <DevtoolBlocker />
-          <Navbar /> 
-          <main className="pt-16"> {/* Added pt-16 to account for fixed top navbar height */}
+          <SidebarNav />
+          <main className="md:ml-64">
             {children}
           </main>
           <Toaster />
@@ -46,5 +46,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-    
