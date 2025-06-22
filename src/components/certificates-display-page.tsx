@@ -3,7 +3,18 @@
 
 import { resumeData } from '@/data/resume';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Wrench } from 'lucide-react';
+import { Wrench, Code, Library, Database, Cloud, Workflow, Sparkles } from 'lucide-react';
+import type { ElementType } from 'react';
+
+const categoryIcons: { [key: string]: ElementType } = {
+  "Languages": Code,
+  "Frameworks & Libraries": Library,
+  "Datastores": Database,
+  "Cloud & DevOps": Cloud,
+  "Methodologies & APIs": Workflow,
+  "Other": Sparkles
+};
+
 
 export function SkillsSection() {
   return (
@@ -14,21 +25,27 @@ export function SkillsSection() {
           <p className="text-lg text-muted-foreground mt-2">My technical toolbox.</p>
         </div>
         <div className="max-w-4xl mx-auto space-y-8">
-          {Object.entries(resumeData.skills).map(([category, skillsList], index) => (
-            <div key={category} className="animate-fadeIn" style={{animationDelay: `${0.1 * (index + 1)}s`}}>
-              <h3 className="text-xl font-semibold text-foreground mb-4">{category}</h3>
-              <div className="flex flex-wrap gap-2.5 md:gap-3">
-                {skillsList.map((skill) => (
-                  <span
-                    key={skill}
-                    className="bg-secondary text-secondary-foreground px-4 py-2 rounded-md text-sm font-medium shadow-sm border border-transparent hover:border-primary transition-colors duration-200 cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
+          {Object.entries(resumeData.skills).map(([category, skillsList], index) => {
+            const Icon = categoryIcons[category] || Wrench; // Fallback icon
+            return (
+              <div key={category} className="animate-fadeIn" style={{animationDelay: `${0.1 * (index + 1)}s`}}>
+                <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center">
+                  <Icon className="w-6 h-6 mr-3 text-primary"/>
+                  {category}
+                </h3>
+                <div className="flex flex-wrap gap-2.5 md:gap-3">
+                  {skillsList.map((skill) => (
+                    <span
+                      key={skill}
+                      className="bg-secondary text-secondary-foreground px-4 py-2 rounded-md text-sm font-medium shadow-sm border border-transparent hover:border-primary transition-colors duration-200 cursor-default"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
