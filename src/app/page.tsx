@@ -17,16 +17,16 @@ export default function HomePage() {
           <AboutSection />
         </section>
 
-        <section id="projects">
-          <CaseStudyOverviewPage />
+        <section id="skills">
+          <SkillsSection />
         </section>
 
         <section id="experience">
           <ExperienceSection />
         </section>
         
-        <section id="skills">
-          <SkillsSection />
+        <section id="projects">
+          <CaseStudyOverviewPage />
         </section>
         
         <section id="contact">
