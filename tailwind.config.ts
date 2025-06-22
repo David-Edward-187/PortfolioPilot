@@ -74,13 +74,19 @@ export default {
         'pulse-once': { 
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
           '50%': { transform: 'scale(1.02)', opacity: '0.8' }, 
-        }
+        },
+        'tilt': {
+          '0%, 50%, 100%': { transform: 'rotate(0deg)' },
+          '25%': { transform: 'rotate(0.5deg)' },
+          '75%': { transform: 'rotate(-0.5deg)' },
+        },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fadeIn 0.4s ease-out forwards',
         'pulse-once': 'pulse-once 0.5s ease-in-out',
+        'tilt': 'tilt 10s infinite linear',
   		},
       boxShadow: { 
         'input-focus': '0 0 0 2px hsl(var(--ring))', 
