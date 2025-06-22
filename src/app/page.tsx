@@ -2,6 +2,7 @@
 import { ProfileSection } from '@/components/profile-section';
 import { AboutSection } from '@/components/about-section';
 import { CaseStudyOverviewPage } from '@/components/case-study-overview-page';
+import { ExperienceSection } from '@/components/experience-section';
 import { SkillsSection } from '@/components/skills-section';
 import { ContactConnectPage } from '@/components/contact-connect-page'; 
 
@@ -18,6 +19,10 @@ export default function HomePage() {
 
         <section id="projects">
           <CaseStudyOverviewPage />
+        </section>
+
+        <section id="experience">
+          <ExperienceSection />
         </section>
         
         <section id="skills">
