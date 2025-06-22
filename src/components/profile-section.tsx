@@ -8,6 +8,7 @@ import { resumeData } from '@/data/resume';
 export function ProfileSection() {
   const profile = resumeData;
   const shortBio = profile.bio.split('.')[0] + '.';
+  const titleWords = profile.title.split(' ');
   
   const handleContactClick = () => {
     const contactSection = document.getElementById('contact');
@@ -27,7 +28,7 @@ export function ProfileSection() {
   return (
     <section 
       id="profile" 
-      className="min-h-screen w-full flex items-center bg-background text-foreground animate-fadeIn relative overflow-hidden"
+      className="min-h-screen w-full flex items-center bg-background text-foreground relative overflow-hidden"
     >
       <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(hsl(var(--muted)/0.2)_1px,transparent_1px)]"></div>
       
@@ -49,14 +50,22 @@ export function ProfileSection() {
             </div>
           </div>
           
-          <div className="md:order-1 text-center md:text-left space-y-6 animate-fadeIn">
-            <h1 className="text-h1 text-foreground font-extrabold">{profile.name}</h1>
-            <p className="text-2xl md:text-4xl text-primary font-semibold tracking-tight">{profile.title}</p> 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0">
+          <div className="md:order-1 text-center md:text-left space-y-6">
+            <h1 className="text-h1 text-foreground font-extrabold animate-fadeIn" style={{ opacity: 0 }}>{profile.name}</h1>
+
+            <h2 className="text-2xl md:text-4xl text-primary font-semibold tracking-tight flex flex-wrap justify-center md:justify-start gap-x-2.5">
+              {titleWords.map((word, i) => (
+                <span key={i} className="animate-fadeIn" style={{ animationDelay: `${0.1 + i * 0.1}s`, opacity: 0 }}>
+                  {word}
+                </span>
+              ))}
+            </h2>
+            
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0 animate-fadeIn" style={{ animationDelay: `${0.1 + titleWords.length * 0.1}s`, opacity: 0 }}>
               {shortBio}
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-5 md:gap-6 pt-4">
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-5 md:gap-6 pt-4 animate-fadeIn" style={{ animationDelay: `${0.2 + titleWords.length * 0.1}s`, opacity: 0 }}>
               <Button
                 size="lg"
                 onClick={handleContactClick}
@@ -77,7 +86,7 @@ export function ProfileSection() {
               </Button>
             </div>
 
-            <div className="flex justify-center md:justify-start space-x-5 pt-6">
+            <div className="flex justify-center md:justify-start space-x-5 pt-6 animate-fadeIn" style={{ animationDelay: `${0.3 + titleWords.length * 0.1}s`, opacity: 0 }}>
               {socialLinks.map(link => (
                 <a 
                   key={link.name} 
