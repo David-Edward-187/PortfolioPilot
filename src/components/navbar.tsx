@@ -9,10 +9,10 @@ import { Menu, X, Code2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: "#profile", label: "Profile" },
-  { href: "#resume", label: "Resume" },
+  { href: "#profile", label: "Home" },
+  { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
-  { href: "#certificates", label: "Certificates" },
+  { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -48,7 +48,7 @@ export function Navbar() {
           : "bg-transparent border-b border-transparent"
       )}
     >
-      <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-2 sm:px-4"> {/* MODIFIED: Reduced padding */}
+      <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-2 sm:px-4">
         <Link href="/" className="flex items-center gap-2 group" onClick={closeMobileMenu}>
           <Code2 className="h-8 w-8 text-primary transform group-hover:scale-105 transition-transform duration-300" />
           <span className="text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">

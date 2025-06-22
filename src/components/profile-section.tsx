@@ -9,24 +9,23 @@ import { resumeData } from '@/data/resume';
 export function ProfileSection() {
   const profile = resumeData;
 
-  const handleViewWorkClick = () => {
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
+  const handleContactClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
   
-  const cvFileName = `${profile.name.replace(/\s+/g, '_')}_CV.pdf`;
+  const resumeFileName = `${profile.name.replace(/\s+/g, '_')}_Resume.pdf`;
 
   return (
     <section 
       id="profile" 
       className="min-h-screen flex flex-col justify-center items-center text-center bg-background text-foreground py-24 md:py-32 animate-fadeIn px-4 sm:px-6 lg:px-8 relative"
     >
-      {/* Removed GTA-style background pattern */}
       
-      <div className="relative z-10 max-w-3xl mx-auto"> {/* Reduced max-width slightly for tighter comp */}
-        <div className="relative w-48 h-48 md:w-60 md:h-60 mb-10 mx-auto group"> {/* Slightly smaller headshot */}
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <div className="relative w-48 h-48 md:w-60 md:h-60 mb-10 mx-auto group">
           <Image
             src={profile.headshotUrl}
             alt={profile.name}
@@ -36,7 +35,6 @@ export function ProfileSection() {
             data-ai-hint={profile.dataAiHint || "professional headshot tech abstract"}
             priority
           />
-           {/* Removed Rockstar style decorative accent */}
         </div>
 
         <h1 className="text-h1 text-foreground mb-3 md:mb-4">{profile.name}</h1>
@@ -48,11 +46,11 @@ export function ProfileSection() {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-5 md:gap-6">
           <Button
             size="lg"
-            onClick={handleViewWorkClick}
+            onClick={handleContactClick}
             className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-3 text-base font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 group active:scale-95" 
-            aria-label="View my work"
+            aria-label="Contact Me"
           >
-            View Work <ArrowRight className="ml-2.5 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            Contact Me <ArrowRight className="ml-2.5 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button
             variant="outline"
@@ -60,9 +58,9 @@ export function ProfileSection() {
             asChild
             className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-10 py-3 text-base font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 group active:scale-95" 
           >
-            <a href="/mycv.pdf" download={cvFileName}>
+            <a href="/mycv.pdf" download={resumeFileName}>
               <>
-                <Download className="mr-2.5 h-5 w-5 group-hover:animate-pulse-once" /> Download CV
+                <Download className="mr-2.5 h-5 w-5 group-hover:animate-pulse-once" /> Download Resume
               </>
             </a>
           </Button>
