@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -38,19 +37,16 @@ export function ProfileSection() {
         </div>
 
         <h1 className="text-h1 text-foreground mb-3 md:mb-4">{profile.name}</h1>
-        <p className="text-2xl md:text-4xl text-primary font-semibold mb-8 tracking-tight">{profile.title}</p> 
-        <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto">
-          {profile.bio}
-        </p>
+        <p className="text-2xl md:text-4xl text-primary font-semibold mb-12 tracking-tight">{profile.title}</p> 
         
         <div className="flex flex-col sm:flex-row justify-center items-center gap-5 md:gap-6">
           <Button
             size="lg"
             onClick={handleContactClick}
             className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-3 text-base font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 group active:scale-95" 
-            aria-label="Contact Me"
+            aria-label="Let's Connect"
           >
-            Contact Me <ArrowRight className="ml-2.5 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            Let's Connect <ArrowRight className="ml-2.5 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button
             variant="outline"
