@@ -104,34 +104,5 @@ export const resumeData: ResumeData = {
       imageUrl: "https://placehold.co/600x338.png",
       dataAiHint: "portfolio website code screen tech"
     }
-  ],
-  certificates: [
-    {
-      name: "Node.js Master Course",
-      issuingOrganization: "Udemy",
-      issueDate: "Mar 2022",
-      credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1/",
-      imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "nodejs certificate tech document",
-      description: "Covered Node.js fundamentals, Express, MongoDB, Mongoose, and building RESTful APIs. Completed all modules and projects."
-    },
-    {
-      name: "Advanced React & Redux",
-      issuingOrganization: "Udemy",
-      issueDate: "Jul 2021",
-      credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-2/",
-      imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "react course modern tech abstract",
-      description: "In-depth exploration of React, including hooks, context API, Redux, and React Router. Built multiple complex applications."
-    },
-    {
-      name: "AWS Cloud Architect Pro",
-      issuingOrganization: "Amazon Web Services",
-      issueDate: "Nov 2022",
-      credentialUrl: "https://www.credly.com/badges/example-aws-badge",
-      imageUrl: "https://placehold.co/400x300.png",
-      dataAiHint: "aws certification professional design",
-      description: "Validated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS. Passed with a score of 850/1000."
-    }
   ]
 };

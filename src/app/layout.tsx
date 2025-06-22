@@ -5,7 +5,7 @@ import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { DevtoolBlocker } from '@/components/devtool-blocker';
-import { SidebarNav } from '@/components/sidebar-nav';
+import { Navbar } from '@/components/sidebar-nav'; // This file now contains the Navbar component
 
 const inter = Inter({
   variable: '--font-inter',
@@ -36,8 +36,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <DevtoolBlocker />
-          <SidebarNav />
-          <main className="md:ml-64">
+          <Navbar />
+          <main>
             {children}
           </main>
           <Toaster />

@@ -49,5 +49,4 @@ export interface ResumeData {
   experience: ExperienceEntry[];
   skills: Record<string, string[]>;
   projects: ProjectEntry[];
-  certificates?: CertificateEntry[];
 }
