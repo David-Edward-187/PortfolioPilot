@@ -11,11 +11,6 @@ html {
   scroll-behavior: smooth;
 }
 
-@keyframes pan-grid {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 40px 40px; }
-}
-
 @layer base {
   :root {
     /* Futuristic Dark Theme */
@@ -132,13 +127,6 @@ html {
 }
 
 @layer utilities {
-  .bg-grid-pattern {
-    background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: pan-grid 30s linear infinite;
-  }
   .bg-gradient-radial {
      background-image: radial-gradient(circle at center, transparent 0%, hsl(var(--background)) 70%);
   }

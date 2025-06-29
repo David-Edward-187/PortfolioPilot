@@ -1,4 +1,3 @@
-
 "use client";
 
 import { resumeData } from '@/data/resume';
@@ -16,11 +15,22 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-background"></div>
-        <div className="absolute inset-0 z-10 bg-grid-pattern opacity-10"></div>
-        <div className="absolute inset-0 z-20 bg-gradient-radial from-transparent via-transparent to-background"></div>
+      {/* Video Background */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          poster="https://placehold.co/1920x1080/010816/010816.png" // Placeholder poster matching background
+        >
+          <source src="https://cdn.coverr.co/videos/coverr-digital-data-spheres-5743/1080p.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background"></div>
       </div>
       
       <div className="relative z-10 container mx-auto text-center">
