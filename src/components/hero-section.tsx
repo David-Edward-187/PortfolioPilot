@@ -1,15 +1,9 @@
+
 "use client";
 
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
-import React from 'react';
-import dynamic from 'next/dynamic';
-
-const Hero3DScene = dynamic(() => import('@/components/hero-3d-scene').then(mod => mod.Hero3DScene), {
-  ssr: false,
-  loading: () => <div className="absolute inset-0 z-0 bg-background" />,
-});
 
 export function HeroSection() {
 
@@ -22,8 +16,12 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
-      <Hero3DScene />
+      {/* Animated Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-background"></div>
+        <div className="absolute inset-0 z-10 bg-grid-pattern opacity-10"></div>
+        <div className="absolute inset-0 z-20 bg-gradient-radial from-transparent via-transparent to-background"></div>
+      </div>
       
       <div className="relative z-10 container mx-auto text-center">
         <div className="max-w-3xl mx-auto animate-fade-in-up">

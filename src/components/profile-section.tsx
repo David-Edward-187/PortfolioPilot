@@ -1,49 +1,144 @@
-"use client";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-import { resumeData } from '@/data/resume';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
-import React from 'react';
-import dynamic from 'next/dynamic';
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
-const Hero3DScene = dynamic(() => import('@/components/hero-3d-scene').then(mod => mod.Hero3DScene), {
-  ssr: false,
-  loading: () => <div className="absolute inset-0 z-0 bg-background" />,
-});
+html {
+  scroll-behavior: smooth;
+}
 
-export function HeroSection() {
+@keyframes pan-grid {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 40px 40px; }
+}
 
-  const handleContactClick = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+@layer base {
+  :root {
+    /* Futuristic Dark Theme */
+    --background: 224 71% 4%;    /* #010816 - Very Dark Blue */
+    --foreground: 220 20% 90%;    /* #dce1e9 - Light Grayish Blue */
+    
+    --card: 224 50% 12%;           /* #0f172a - Dark Slate Blue */
+    --card-foreground: 220 20% 90%; 
+    
+    --popover: 224 71% 4%;         
+    --popover-foreground: 220 20% 90%; 
+    
+    --primary: 250 80% 60%;     /* #8c66ff - Vibrant Violet */
+    --primary-foreground: 0 0% 100%; /* White */
+    
+    --secondary: 220 40% 20%;    /* #26314a - Muted Dark Blue */
+    --secondary-foreground: 220 15% 75%; /* #b1b8c5 - Muted Light Gray */
+    
+    --muted: 220 40% 15%;        /* #1c2539 - Darker Muted */
+    --muted-foreground: 220 15% 55%;  /* #7c8596 - Muted Gray */
+    
+    --accent: 190 90% 50%;      /* #19e3ff - Bright Cyan/Neon Blue */
+    --accent-foreground: 224 71% 4%;   /* Dark Blue for text on accent */
+    
+    --destructive: 0 75% 55%;    
+    --destructive-foreground: 0 0% 100%; 
+    
+    --border: 220 30% 25%;       /* #2e3a59 - Subtle Blue Border */
+    --input: 220 40% 10%;        /* #131a29 - Very Dark Input */
+    --input-border: 250 80% 60%;   /* Primary Violet for input focus */
+    --ring: 190 90% 50%;          /* Accent Cyan for focus ring */
+    
+    --radius: 0.5rem;
 
-  return (
-    <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
-      <Hero3DScene />
-      
-      <div className="relative z-10 container mx-auto text-center">
-        <div className="max-w-3xl mx-auto animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold text-white">
-            Hi, I’m <span className="text-glow-accent text-accent">{resumeData.name}</span>
-          </h1>
-          <h2 className="mt-4 text-3xl md:text-5xl font-medium text-foreground">
-            {resumeData.title}
-          </h2>
-          <div className="mt-10">
-            <Button
-              size="lg"
-              onClick={handleContactClick}
-              className="bg-primary text-primary-foreground text-lg h-14 px-8 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-glow-primary active:scale-100 group"
-            >
-              Hire Me <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--accent));
+    --chart-3: hsl(var(--primary) / 0.7);
+    --chart-4: hsl(220 10% 50%);
+    --chart-5: hsl(220 10% 70%);
+  }
+
+  .dark {
+    /* Same as root for a dark-only theme */
+    --background: 224 71% 4%;
+    --foreground: 220 20% 90%;
+    --card: 224 50% 12%;
+    --card-foreground: 220 20% 90%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 220 20% 90%;
+    --primary: 250 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 40% 20%;
+    --secondary-foreground: 220 15% 75%;
+    --muted: 220 40% 15%;
+    --muted-foreground: 220 15% 55%;
+    --accent: 190 90% 50%;
+    --accent-foreground: 224 71% 4%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 25%;
+    --input: 220 40% 10%;
+    --input-border: 250 80% 60%;
+    --ring: 190 90% 50%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .glassmorphic {
+    @apply bg-card/50 backdrop-blur-lg border border-white/10;
+  }
+  
+  .glow-shadow-primary {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2);
+  }
+
+  .glow-shadow-accent {
+    box-shadow: 0 0 15px hsl(var(--accent) / 0.5), 0 0 30px hsl(var(--accent) / 0.3);
+  }
+
+  .text-glow-accent {
+    text-shadow: 0 0 8px hsl(var(--accent) / 0.8);
+  }
+
+  /* Section Fade In Animation */
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
+  }
+  
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  section { 
+    @apply py-24 md:py-32; 
+  }
+
+  .container {
+    @apply px-6 sm:px-8; 
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: pan-grid 30s linear infinite;
+  }
+  .bg-gradient-radial {
+     background-image: radial-gradient(circle at center, transparent 0%, hsl(var(--background)) 70%);
+  }
 }

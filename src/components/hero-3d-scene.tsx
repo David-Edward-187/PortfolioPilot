@@ -1,88 +1,144 @@
-"use client";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-import * as THREE from 'three';
-import { useRef, useState, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float } from '@react-three/drei';
-
-// This component is adapted from a public example by @0xca0a on CodeSandbox
-function Swarm({ count = 150, mouse }) {
-  const mesh = useRef<THREE.InstancedMesh>(null!);
-  const [dummy] = useState(() => new THREE.Object3D());
-
-  const particles = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      const t = Math.random() * 100;
-      const factor = 20 + Math.random() * 100;
-      const speed = 0.005 + Math.random() / 200;
-      const xFactor = -20 + Math.random() * 40;
-      const yFactor = -20 + Math.random() * 40;
-      const zFactor = -20 + Math.random() * 40;
-      temp.push({ t, factor, speed, xFactor, yFactor, zFactor, mx: 0, my: 0 });
-    }
-    return temp;
-  }, [count]);
-
-  useFrame((state) => {
-    if (!mesh.current) return;
-
-    // Fades in the mouse effect
-    particles.forEach(p => {
-        p.mx += (mouse.current[0] * state.viewport.width - p.mx) * 0.02;
-        p.my += (mouse.current[1] * -1 * state.viewport.height - p.my) * 0.02;
-    })
-
-    particles.forEach((particle, i) => {
-      let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
-      
-      t = particle.t += speed;
-
-      const a = Math.cos(t) + Math.sin(t * 1) / 10;
-      const b = Math.sin(t) + Math.cos(t * 2) / 10;
-      const s = Math.max(1.5, Math.cos(t) * 5);
-
-      dummy.position.set(
-        (particle.mx / 10) * a + xFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 1) * factor) / 10,
-        (particle.my / 10) * b + yFactor + Math.sin((t / 10) * factor) + (Math.cos(t * 2) * factor) / 10,
-        (particle.my / 10) * b + zFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 3) * factor) / 10
-      );
-      dummy.scale.set(s, s, s);
-      dummy.rotation.set(s * 5, s * 5, s * 5);
-      dummy.updateMatrix();
-
-      mesh.current.setMatrixAt(i, dummy.matrix);
-    });
-    mesh.current.instanceMatrix.needsUpdate = true;
-  });
-
-  return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
-      <icosahedronGeometry args={[0.1, 0]} />
-      <meshStandardMaterial color="#ffffff" roughness={0.5} />
-    </instancedMesh>
-  );
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
-export function Hero3DScene() {
-  const mouse = useRef([0, 0]);
-  return (
-    <Canvas
-      camera={{ fov: 100, position: [0, 0, 30] }}
-      onPointerMove={(e) => {
-        if(e.pointerType === "mouse") {
-            mouse.current = [(e.clientX / window.innerWidth - 0.5) * 2, (e.clientY / window.innerHeight - 0.5) * 2];
-        }
-      }}
-      className="!absolute !inset-0 !z-0"
-    >
-      <ambientLight intensity={1.5} />
-      <pointLight position={[100, 100, 100]} intensity={2} color="hsl(var(--accent))" />
-      <pointLight position={[-100, -100, -100]} intensity={3} color="hsl(var(--primary))" />
-      <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-        <Swarm count={150} mouse={mouse} />
-      </Float>
-    </Canvas>
-  );
+@keyframes pan-grid {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 40px 40px; }
+}
+
+@layer base {
+  :root {
+    /* Futuristic Dark Theme */
+    --background: 224 71% 4%;    /* #010816 - Very Dark Blue */
+    --foreground: 220 20% 90%;    /* #dce1e9 - Light Grayish Blue */
+    
+    --card: 224 50% 12%;           /* #0f172a - Dark Slate Blue */
+    --card-foreground: 220 20% 90%; 
+    
+    --popover: 224 71% 4%;         
+    --popover-foreground: 220 20% 90%; 
+    
+    --primary: 250 80% 60%;     /* #8c66ff - Vibrant Violet */
+    --primary-foreground: 0 0% 100%; /* White */
+    
+    --secondary: 220 40% 20%;    /* #26314a - Muted Dark Blue */
+    --secondary-foreground: 220 15% 75%; /* #b1b8c5 - Muted Light Gray */
+    
+    --muted: 220 40% 15%;        /* #1c2539 - Darker Muted */
+    --muted-foreground: 220 15% 55%;  /* #7c8596 - Muted Gray */
+    
+    --accent: 190 90% 50%;      /* #19e3ff - Bright Cyan/Neon Blue */
+    --accent-foreground: 224 71% 4%;   /* Dark Blue for text on accent */
+    
+    --destructive: 0 75% 55%;    
+    --destructive-foreground: 0 0% 100%; 
+    
+    --border: 220 30% 25%;       /* #2e3a59 - Subtle Blue Border */
+    --input: 220 40% 10%;        /* #131a29 - Very Dark Input */
+    --input-border: 250 80% 60%;   /* Primary Violet for input focus */
+    --ring: 190 90% 50%;          /* Accent Cyan for focus ring */
+    
+    --radius: 0.5rem;
+
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--accent));
+    --chart-3: hsl(var(--primary) / 0.7);
+    --chart-4: hsl(220 10% 50%);
+    --chart-5: hsl(220 10% 70%);
+  }
+
+  .dark {
+    /* Same as root for a dark-only theme */
+    --background: 224 71% 4%;
+    --foreground: 220 20% 90%;
+    --card: 224 50% 12%;
+    --card-foreground: 220 20% 90%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 220 20% 90%;
+    --primary: 250 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 40% 20%;
+    --secondary-foreground: 220 15% 75%;
+    --muted: 220 40% 15%;
+    --muted-foreground: 220 15% 55%;
+    --accent: 190 90% 50%;
+    --accent-foreground: 224 71% 4%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 25%;
+    --input: 220 40% 10%;
+    --input-border: 250 80% 60%;
+    --ring: 190 90% 50%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .glassmorphic {
+    @apply bg-card/50 backdrop-blur-lg border border-white/10;
+  }
+  
+  .glow-shadow-primary {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2);
+  }
+
+  .glow-shadow-accent {
+    box-shadow: 0 0 15px hsl(var(--accent) / 0.5), 0 0 30px hsl(var(--accent) / 0.3);
+  }
+
+  .text-glow-accent {
+    text-shadow: 0 0 8px hsl(var(--accent) / 0.8);
+  }
+
+  /* Section Fade In Animation */
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
+  }
+  
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  section { 
+    @apply py-24 md:py-32; 
+  }
+
+  .container {
+    @apply px-6 sm:px-8; 
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: pan-grid 30s linear infinite;
+  }
+  .bg-gradient-radial {
+     background-image: radial-gradient(circle at center, transparent 0%, hsl(var(--background)) 70%);
+  }
 }
