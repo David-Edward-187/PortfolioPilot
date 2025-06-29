@@ -86,7 +86,7 @@ export function ProjectsSection() {
                 <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies?.slice(0, 3).map(tech => (
-                    <Badge key={tech} variant="secondary" className="glassmorphic text-xs !bg-white/10 text-white/90 border-0">
+                    <Badge key={tech} variant="secondary">
                       {tech}
                     </Badge>
                   ))}

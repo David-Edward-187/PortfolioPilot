@@ -90,7 +90,7 @@ export function AboutSection() {
                   key={skill}
                   className="flex flex-col items-center gap-2 p-3 rounded-lg glassmorphic w-24 h-24 justify-center"
                   variants={skillIconVariants}
-                  whileHover={{ scale: 1.05, backgroundColor: 'hsla(var(--primary-rgb), 0.2)' }}
+                  whileHover={{ scale: 1.05, backgroundColor: 'hsl(var(--primary) / 0.15)' }}
                   transition={{ duration: 0.2 }}
                 >
                   <Icon size={36} className="text-accent" weight="light" />

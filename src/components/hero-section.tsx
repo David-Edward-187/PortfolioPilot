@@ -55,7 +55,7 @@ export function HeroSection() {
           Your browser does not support the video tag.
         </video>
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-sm bg-grid-pattern"></div>
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background"></div>
       </div>
       

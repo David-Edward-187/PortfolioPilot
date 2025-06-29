@@ -59,6 +59,10 @@ export default {
         sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
+        'pan-grid': {
+          '0%': { backgroundPosition: '0% 0%' },
+          '100%': { backgroundPosition: '40px 40px' },
+        },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
@@ -79,14 +83,15 @@ export default {
         },
   		},
   		animation: {
+        'pan-grid': 'pan-grid 40s linear infinite',
         'float': 'float 6s ease-in-out infinite',
         'float-delay': 'float-delay 8s ease-in-out infinite',
         'tilt': 'tilt 15s ease-in-out infinite',
         'ping-slow': 'ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite',
   		},
       boxShadow: {
-        'glow-primary': '0 0 20px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3)',
-        'glow-accent': '0 0 20px hsl(var(--accent) / 0.7), 0 0 40px hsl(var(--accent) / 0.4)',
+        'glow-primary': '0 0 25px hsl(var(--primary) / 0.5), 0 0 50px hsl(var(--primary) / 0.2)',
+        'glow-accent': '0 0 25px hsl(var(--accent) / 0.6), 0 0 50px hsl(var(--accent) / 0.3)',
         'input-focus': '0 0 0 2px hsl(var(--input-border))'
       },
   	}
