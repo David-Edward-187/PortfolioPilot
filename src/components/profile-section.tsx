@@ -4,11 +4,6 @@ import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import React from 'react';
-import dynamic from 'next/dynamic';
-
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
-});
 
 export function HeroSection() {
 
@@ -21,9 +16,9 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* Spline Background */}
-      <div className="absolute inset-0 z-0">
-        <Spline scene="https://prod.spline.design/Zif2r2J9j2Yy-dAL/scene.splinecode" />
+      {/* Background Effect */}
+      <div className="absolute inset-0 z-0 bg-background overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] h-[150%] bg-[radial-gradient(ellipse_50%_50%_at_50%_0%,hsl(var(--primary)/0.15),transparent)]"></div>
       </div>
       
       {/* Floating Orbs */}
