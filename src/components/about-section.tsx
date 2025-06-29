@@ -63,7 +63,6 @@ export function AboutSection() {
               width={320}
               height={320}
               className="relative rounded-full object-cover border-2 border-primary/50 shadow-2xl transition-transform duration-500 ease-in-out group-hover:scale-105"
-              data-ai-hint="professional headshot tech"
             />
         </div>
         <div className="space-y-6 text-center md:text-left">

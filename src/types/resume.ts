@@ -24,18 +24,15 @@ export interface ProjectEntry {
   description: string[];
   technologies?: string[];
   link: string;
-  imageUrl?: string; 
-  dataAiHint?: string; 
 }
 
 export interface CertificateEntry {
   name: string;
   issuingOrganization: string;
-  issueDate: string; 
-  credentialUrl?: string; 
-  imageUrl?: string; 
-  description?: string;
-  dataAiHint?: string; 
+  issueDate: string; // e.g., "Jan 2023" or "2023"
+  credentialUrl?: string; // Link to the certificate
+  imageUrl?: string; // URL for an image/logo of the certificate or organization
+  description?: string; // Optional short description or key learnings
 }
 
 export interface ResumeData {
@@ -43,10 +40,10 @@ export interface ResumeData {
   title: string;
   bio: string;
   headshotUrl: string;
-  dataAiHint?: string; // Added for profile headshot
   contact: Contact;
   education: EducationEntry[];
   experience: ExperienceEntry[];
   skills: Record<string, string[]>;
   projects: ProjectEntry[];
+  certificates?: CertificateEntry[]; 
 }

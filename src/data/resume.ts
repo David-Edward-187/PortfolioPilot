@@ -5,8 +5,7 @@ export const resumeData: ResumeData = {
   name: "Milad",
   title: "Web Developer",
   bio: "A creative and detail-oriented web developer specializing in building immersive and user-friendly digital experiences. With a passion for clean code and cutting-edge technologies, I transform complex problems into elegant, performant solutions.",
-  headshotUrl: "https://placehold.co/320x320.png", 
-  dataAiHint: "professional headshot tech", 
+  headshotUrl: "https://placehold.co/320x320.png",
   contact: {
     email: "milad.dev@example.com",
     linkedin: "https://linkedin.com/in/milad-dev",
@@ -67,5 +66,6 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "Tailwind CSS", "Spline"],
       link: "#",
     }
-  ]
+  ],
+  certificates: []
 };
