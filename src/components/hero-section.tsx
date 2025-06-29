@@ -1,11 +1,14 @@
-
 "use client";
 
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
-import Spline from '@splinetool/react-spline';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import React from 'react';
+import dynamic from 'next/dynamic';
+
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+});
 
 export function HeroSection() {
 
