@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Preloader } from '@/components/preloader';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { ScrollToTopButton } from '@/components/scroll-to-top-button';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -42,6 +43,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <ScrollToTopButton />
           <Toaster />
         </ThemeProvider>
       </body>
