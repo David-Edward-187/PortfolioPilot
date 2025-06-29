@@ -1,8 +1,34 @@
+
 "use client";
 
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.5, // Delay after preloader
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(5px)' },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    }
+  },
+};
 
 export function HeroSection() {
 
@@ -34,14 +60,28 @@ export function HeroSection() {
       </div>
       
       <div className="relative z-10 container mx-auto text-center">
-        <div className="max-w-3xl mx-auto animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold text-white">
+        <motion.div 
+          className="max-w-3xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold text-white"
+            variants={itemVariants}
+          >
             Hi, I’m <span className="text-glow-accent text-accent">{resumeData.name}</span>
-          </h1>
-          <h2 className="mt-4 text-3xl md:text-5xl font-medium text-foreground">
+          </motion.h1>
+          <motion.h2 
+            className="mt-4 text-3xl md:text-5xl font-medium text-foreground"
+            variants={itemVariants}
+          >
             {resumeData.title}
-          </h2>
-          <div className="mt-10">
+          </motion.h2>
+          <motion.div
+            variants={itemVariants}
+            className="mt-10"
+          >
             <Button
               size="lg"
               onClick={handleContactClick}
@@ -49,8 +89,8 @@ export function HeroSection() {
             >
               Hire Me <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

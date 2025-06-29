@@ -59,10 +59,6 @@ export default {
         sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
-        'fade-in-up': {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
@@ -83,7 +79,6 @@ export default {
         },
   		},
   		animation: {
-        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
         'float': 'float 6s ease-in-out infinite',
         'float-delay': 'float-delay 8s ease-in-out infinite',
         'tilt': 'tilt 15s ease-in-out infinite',

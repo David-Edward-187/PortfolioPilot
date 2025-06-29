@@ -20,49 +20,37 @@ export const resumeData: ResumeData = {
   projects: [
     {
       name: "Project Alpha",
-      description: [
-        "A futuristic dashboard UI with real-time data visualization and complex interactions.",
-      ],
+      description: "A futuristic dashboard UI with real-time data visualization and complex interactions.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
       link: "#",
     },
     {
       name: "Project Beta",
-      description: [
-        "An innovative e-commerce platform with a focus on immersive 3D product previews.",
-      ],
+      description: "An innovative e-commerce platform with a focus on immersive 3D product previews.",
       technologies: ["React", "Spline", "Stripe", "Firebase"],
       link: "#",
     },
     {
       name: "Project Gamma",
-      description: [
-        "A crypto trading interface designed for speed, clarity, and advanced charting.",
-      ],
+      description: "A crypto trading interface designed for speed, clarity, and advanced charting.",
       technologies: ["React", "WebSockets", "Canvas API"],
       link: "#",
     },
     {
       name: "Project Delta",
-      description: [
-        "An AI-powered content generation application with a sleek, minimalist user interface.",
-      ],
+      description: "An AI-powered content generation application with a sleek, minimalist user interface.",
       technologies: ["Next.js", "OpenAI API", "Vercel"],
       link: "#",
     },
     {
       name: "Project Epsilon",
-      description: [
-        "An interactive data visualization tool for analyzing large datasets with custom filters.",
-      ],
+      description: "An interactive data visualization tool for analyzing large datasets with custom filters.",
       technologies: ["D3.js", "React", "Node.js"],
       link: "#",
     },
     {
       name: "Project Zeta",
-      description: [
-        "A personal portfolio showcasing advanced animations and a unique design aesthetic.",
-      ],
+      description: "A personal portfolio showcasing advanced animations and a unique design aesthetic.",
       technologies: ["Next.js", "Tailwind CSS", "Spline"],
       link: "#",
     }

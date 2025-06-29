@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, GithubLogo } from '@phosphor-icons/react/dist/ssr';
 import { resumeData } from '@/data/resume';
 import { Badge } from '@/components/ui/badge';
+import { motion } from 'framer-motion';
 
 const projectImages = [
   "https://placehold.co/600x400.png",
@@ -25,59 +26,64 @@ const dataAiHints = [
   "tech project screenshot"
 ]
 
-const useIntersectionObserver = (options: IntersectionObserverInit) => {
-    const [entry, setEntry] = React.useState<IntersectionObserverEntry | null>(null);
-    const elementRef = React.useRef(null);
-  
-    React.useEffect(() => {
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          setEntry(entry);
-          observer.unobserve(entry.target);
-        }
-      }, options);
-  
-      const currentElement = elementRef.current;
-      if (currentElement) {
-        observer.observe(currentElement);
-      }
-  
-      return () => {
-        if (currentElement) {
-          observer.unobserve(currentElement);
-        }
-      };
-    }, [options]);
-  
-    return [elementRef, entry?.isIntersecting ?? false] as const;
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
 };
 
 
 export function ProjectsSection() {
-    const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
-
   return (
-    <section id="projects" ref={sectionRef} className={`container mx-auto section-reveal ${isVisible ? 'visible' : ''}`}>
-      <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">My Projects</h2>
-      <p className="text-lg text-muted-foreground mb-12 text-center max-w-2xl mx-auto">
+    <motion.section 
+        id="projects" 
+        className="container mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={containerVariants}
+    >
+      <motion.h2 className="text-4xl md:text-5xl font-bold mb-4 text-center" variants={cardVariants}>My Projects</motion.h2>
+      <motion.p className="text-lg text-muted-foreground mb-12 text-center max-w-2xl mx-auto" variants={cardVariants}>
         A selection of my work, demonstrating my skills in creating modern, responsive, and performant web applications.
-      </p>
+      </motion.p>
 
-      {/* On desktop, this will be a bento grid. On mobile, it will stack. */}
-      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6">
-
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6"
+        variants={containerVariants}
+      >
         {resumeData.projects.map((project, index) => (
-          <div
+          <motion.div
             key={project.name}
-            className={`project-card relative rounded-2xl overflow-hidden group transition-all duration-500 ease-in-out hover:scale-[1.02] hover:z-10
+            variants={cardVariants}
+            className={`relative rounded-2xl overflow-hidden group
               ${index === 0 ? 'md:col-span-2' : ''}
               ${index === 3 ? 'md:col-span-2' : ''}
             `}
+            whileHover={{ scale: 1.02, zIndex: 10 }}
+            transition={{ duration: 0.3 }}
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 p-6 flex flex-col justify-end">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
-                <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description[0]}</p>
+                <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies?.slice(0, 3).map(tech => (
                     <Badge key={tech} variant="secondary" className="glassmorphic text-xs !bg-white/10 text-white/90 border-0">
@@ -108,9 +114,9 @@ export function ProjectsSection() {
               className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
               data-ai-hint={dataAiHints[index % dataAiHints.length]}
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

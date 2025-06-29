@@ -21,7 +21,7 @@ export interface ExperienceEntry {
 
 export interface ProjectEntry {
   name: string;
-  description: string[];
+  description: string;
   technologies?: string[];
   link: string;
 }

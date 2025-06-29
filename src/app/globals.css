@@ -103,20 +103,6 @@ html {
     text-shadow: 0 0 8px hsl(var(--accent) / 0.8);
   }
 
-  /* Section Fade In Animation */
-  .section-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    filter: blur(10px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
-  }
-  
-  .section-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-
   section { 
     @apply py-24 md:py-32; 
   }
