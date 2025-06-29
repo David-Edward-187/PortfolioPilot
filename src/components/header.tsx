@@ -33,6 +33,17 @@ export function Header() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
+   React.useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMobileMenuOpen]);
 
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
@@ -70,7 +81,7 @@ export function Header() {
 
       {/* Mobile Menu Overlay */}
       <div className={cn(
-          "fixed inset-0 z-50 bg-background/90 backdrop-blur-lg transition-transform duration-500 ease-in-out md:hidden",
+          "fixed inset-0 z-[100] bg-background/90 backdrop-blur-lg transition-transform duration-500 ease-in-out md:hidden",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <div className="container mx-auto flex h-20 items-center justify-between">

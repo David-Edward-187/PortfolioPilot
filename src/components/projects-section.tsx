@@ -1,74 +1,115 @@
 
 "use client";
-
-import type { ProjectEntry } from '@/types/resume';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from 'next/image';
+import * as React from 'react';
 import { Button } from '@/components/ui/button';
+import { ArrowRight, GithubLogo } from '@phosphor-icons/react/dist/ssr';
+import { resumeData } from '@/data/resume';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Lightbulb } from 'lucide-react';
 
-interface ProjectsSectionProps {
-  projects: ProjectEntry[];
-}
+const projectImages = [
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png"
+];
 
-export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  if (!projects || projects.length === 0) {
-    return (
-      <section id="projects" className="py-8 md:py-12 scroll-mt-16">
-        <div className="container mx-auto px-4 text-center">
-          <Lightbulb className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-          <p className="text-muted-foreground">No projects to display at the moment.</p>
-        </div>
-      </section>
-    );
-  }
+const dataAiHints = [
+  "futuristic dashboard dark",
+  "modern analytics interface",
+  "crypto trading platform",
+  "ai application ui",
+  "glowing data visualization",
+  "tech project screenshot"
+]
+
+const useIntersectionObserver = (options: IntersectionObserverInit) => {
+    const [entry, setEntry] = React.useState<IntersectionObserverEntry | null>(null);
+    const elementRef = React.useRef(null);
+  
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setEntry(entry);
+          observer.unobserve(entry.target);
+        }
+      }, options);
+  
+      const currentElement = elementRef.current;
+      if (currentElement) {
+        observer.observe(currentElement);
+      }
+  
+      return () => {
+        if (currentElement) {
+          observer.unobserve(currentElement);
+        }
+      };
+    }, [options]);
+  
+    return [elementRef, entry?.isIntersecting ?? false] as const;
+};
+
+
+export function ProjectsSection() {
+    const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
-    <section id="projects" className="py-8 md:py-12 scroll-mt-16">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center mb-6 md:mb-8 animate-fadeIn">
-          <Lightbulb className="w-8 h-8 md:w-10 md:h-10 mr-3 text-primary" />
-          <h2 className="text-h2 md:text-h1 text-primary">Projects</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, index) => (
-            <Card 
-              key={index} 
-              className="flex flex-col overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-card/80 backdrop-blur-sm animate-fadeIn"
-              style={{animationDelay: `${index * 0.1}s`}}
-            >
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg md:text-xl text-foreground leading-tight">{project.name}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-grow flex flex-col justify-between pt-0">
-                <div>
-                  <ul className="list-disc list-outside ml-4 space-y-1 text-xs text-foreground/80 mb-4 leading-relaxed">
-                    {project.description.map((desc, i) => (
-                      <li key={i}>{desc}</li>
-                    ))}
-                  </ul>
-                  {project.technologies && project.technologies.length > 0 && (
-                    <div className="mb-3">
-                      <h4 className="text-xs font-semibold text-muted-foreground mb-1.5">Technologies:</h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.map((tech) => (
-                          <Badge key={tech} variant="secondary" className="text-xs px-2 py-0.5">{tech}</Badge>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+    <section id="projects" ref={sectionRef} className={`container mx-auto section-reveal ${isVisible ? 'visible' : ''}`}>
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">My Projects</h2>
+      <p className="text-lg text-muted-foreground mb-12 text-center max-w-2xl mx-auto">
+        A selection of my work, demonstrating my skills in creating modern, responsive, and performant web applications.
+      </p>
+
+      {/* On desktop, this will be a bento grid. On mobile, it will stack. */}
+      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6">
+
+        {resumeData.projects.map((project, index) => (
+          <div
+            key={project.name}
+            className={`project-card relative rounded-2xl overflow-hidden group transition-all duration-500 ease-in-out hover:scale-[1.02] hover:z-10
+              ${index === 0 ? 'md:col-span-2' : ''}
+              ${index === 3 ? 'md:col-span-2' : ''}
+            `}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 p-6 flex flex-col justify-end">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
+                <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description[0]}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies?.slice(0, 3).map(tech => (
+                    <Badge key={tech} variant="secondary" className="glassmorphic text-xs !bg-white/10 text-white/90 border-0">
+                      {tech}
+                    </Badge>
+                  ))}
                 </div>
-                {project.link && project.link !== "#" && (
-                  <Button variant="link" asChild className="p-0 h-auto text-accent hover:text-accent/80 mt-4 self-start text-xs">
+                <div className="flex gap-4">
+                  <Button variant="outline" asChild className="glassmorphic h-9 px-3 text-sm border-white/20 text-white hover:bg-white/10">
                     <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      View Project <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
+                      <ArrowRight className="mr-1.5 h-4 w-4" /> View Live
                     </a>
                   </Button>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                  <Button variant="ghost" asChild className="h-9 px-3 text-sm text-white hover:bg-white/10">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <GithubLogo className="mr-1.5 h-4 w-4" /> GitHub
+                    </a>
+
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <Image
+              src={projectImages[index % projectImages.length]}
+              alt={project.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+              data-ai-hint={dataAiHints[index % dataAiHints.length]}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -2,107 +2,70 @@
 import type { ResumeData } from '@/types/resume';
 
 export const resumeData: ResumeData = {
-  name: "Alex Johnson",
-  title: "Full Stack Developer",
-  bio: "A passionate and results-oriented Full Stack Developer with 5+ years of experience in designing, developing, and deploying web applications. Proficient in JavaScript, React, Node.js, and cloud technologies. Committed to continuous learning and building innovative solutions.",
-  headshotUrl: "https://placehold.co/240x240.png", 
-  dataAiHint: "professional headshot tech abstract", 
+  name: "Milad",
+  title: "Web Developer",
+  bio: "A creative and detail-oriented web developer specializing in building immersive and user-friendly digital experiences. With a passion for clean code and cutting-edge technologies, I transform complex problems into elegant, performant solutions.",
+  headshotUrl: "https://placehold.co/320x320.png", 
+  dataAiHint: "professional headshot tech", 
   contact: {
-    email: "alex.johnson.dev@example.com",
-    linkedin: "https://linkedin.com/in/alexjohnsondev",
-    github: "https://github.com/alexjohnsondev"
+    email: "milad.dev@example.com",
+    linkedin: "https://linkedin.com/in/milad-dev",
+    github: "https://github.com/milad-dev"
   },
-  education: [
-    {
-      degree: "Master of Science in Computer Science",
-      institution: "Tech University",
-      years: "Aug 2018 - May 2020",
-      details: "Specialized in Web Development and Cloud Computing. Thesis on scalable microservices."
-    },
-    {
-      degree: "Bachelor of Science in Software Engineering",
-      institution: "State College of Engineering",
-      years: "Sep 2014 - May 2018",
-      details: "Graduated with Honors. Capstone project: A real-time collaborative coding platform."
-    }
-  ],
-  experience: [
-    {
-      role: "Senior Software Engineer",
-      company: "Innovate Solutions Ltd.",
-      years: "Jan 2021 - Present",
-      description: [
-        "Led a team of 5 developers in building and maintaining a high-traffic e-commerce platform, successfully handling over 10,000 daily active users.",
-        "Architected and implemented new features using React, Node.js, and AWS services, resulting in a 15% increase in user engagement.",
-        "Optimized application performance by 30% through targeted code enhancements and infrastructure upgrades on AWS.",
-        "Mentored 3 junior developers, fostering skill growth and conducting rigorous code reviews to maintain high-quality standards."
-      ]
-    },
-    {
-      role: "Software Developer",
-      company: "Web Wizards Inc.",
-      years: "Jun 2019 - Dec 2020",
-      description: [
-        "Developed responsive and pixel-perfect user interfaces for 5+ diverse client projects using React and Next.js, consistently meeting project deadlines.",
-        "Collaborated effectively with cross-functional teams of designers and backend developers in an agile environment to deliver high-quality web applications.",
-        "Contributed to API development for 3 major client projects using Express.js and MongoDB, enhancing backend functionality and data management.",
-        "Engineered a new client-side rendering strategy for a key project, reducing initial page load time by 25% and improving user experience.",
-        "Utilized Jest and React Testing Library to write unit and integration tests, increasing code coverage by 20% for assigned modules."
-      ]
-    },
-    {
-      role: "Junior Developer Intern",
-      company: "Code Crafters Co.",
-      years: "Jun 2018 - Aug 2018",
-      description: [
-        "Assisted senior developers in testing and debugging web applications, contributing to a 10% reduction in pre-release bugs for two projects by implementing automated test scripts with Jest, which reduced manual QA time by approximately 15%."
-      ]
-    }
-  ],
+  education: [],
+  experience: [],
   skills: {
-    "Languages": ["JavaScript (ES6+)", "TypeScript", "Python"],
-    "Frameworks & Libraries": ["React", "Next.js", "Node.js", "Express.js", "Django"],
-    "Datastores": ["PostgreSQL", "MySQL", "MongoDB", "Firebase"],
-    "Cloud & DevOps": ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "Git & GitHub"],
-    "Methodologies & APIs": ["Agile Methodologies", "RESTful APIs", "GraphQL"],
-    "Other": ["Problem Solving", "Team Collaboration", "Continuous Learning"]
+    "Languages": ["JavaScript (ES6+)", "TypeScript", "HTML", "CSS"],
+    "Frameworks & Libraries": ["React", "Next.js", "Tailwind CSS", "GSAP"],
   },
   projects: [
     {
-      name: "E-commerce Platform X",
+      name: "Project Alpha",
       description: [
-        "Built a full-featured e-commerce site with product listings, shopping cart, user authentication, and payment integration using Next.js and Stripe.",
-        "Successfully processed over $50,000 in transactions within the first 6 months of launch.",
-        "Engineered to support up to 1,000 concurrent users during peak shopping times, maintaining an average response time under 200ms."
+        "A futuristic dashboard UI with real-time data visualization and complex interactions.",
       ],
-      technologies: ["Next.js", "React", "Stripe", "PostgreSQL", "Tailwind CSS", "AWS"],
-      link: "https://github.com/alexjohnsondev/ecommerce-platform",
-      imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "ecommerce ui modern tech"
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
+      link: "#",
     },
     {
-      name: "TaskForce Zero",
+      name: "Project Beta",
       description: [
-        "Developed a collaborative task management tool with real-time updates, drag-and-drop functionality, and an intuitive notification system using React and Firebase.",
-        "Users reported a 20% average reduction in task completion time due to real-time collaboration features and streamlined UI.",
-        "Achieved 99.9% uptime through robust Firebase backend infrastructure and Firestore data persistence."
+        "An innovative e-commerce platform with a focus on immersive 3D product previews.",
       ],
-      technologies: ["React", "Firebase", "Material UI", "Node.js"],
-      link: "https://github.com/alexjohnsondev/task-manager",
-      imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "task manager app professional clean"
+      technologies: ["React", "Spline", "Stripe", "Firebase"],
+      link: "#",
     },
     {
-      name: "PortfolioPilot (This Site)",
+      name: "Project Gamma",
       description: [
-        "Designed and developed this portfolio to showcase skills and projects effectively with a professional tech aesthetic.",
-        "Built with Next.js for optimal performance and SEO, and styled with Tailwind CSS for a modern, responsive design.",
-        "Features dynamically rendered resume content from a TypeScript data file, ensuring easy updates and maintenance."
+        "A crypto trading interface designed for speed, clarity, and advanced charting.",
       ],
-      technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
-      link: "#", 
-      imageUrl: "https://placehold.co/600x338.png",
-      dataAiHint: "portfolio website code screen tech"
+      technologies: ["React", "WebSockets", "Canvas API"],
+      link: "#",
+    },
+    {
+      name: "Project Delta",
+      description: [
+        "An AI-powered content generation application with a sleek, minimalist user interface.",
+      ],
+      technologies: ["Next.js", "OpenAI API", "Vercel"],
+      link: "#",
+    },
+    {
+      name: "Project Epsilon",
+      description: [
+        "An interactive data visualization tool for analyzing large datasets with custom filters.",
+      ],
+      technologies: ["D3.js", "React", "Node.js"],
+      link: "#",
+    },
+    {
+      name: "Project Zeta",
+      description: [
+        "A personal portfolio showcasing advanced animations and a unique design aesthetic.",
+      ],
+      technologies: ["Next.js", "Tailwind CSS", "Spline"],
+      link: "#",
     }
   ]
 };

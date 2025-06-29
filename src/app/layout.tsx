@@ -4,8 +4,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
-import { DevtoolBlocker } from '@/components/devtool-blocker';
-import { Navbar } from '@/components/sidebar-nav'; // This file now contains the Navbar component
+import { Preloader } from '@/components/preloader';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -14,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Alex Johnson | Portfolio', 
-  description: 'Portfolio of Alex Johnson, a passionate Full Stack Developer specializing in modern web technologies.', 
+  title: 'Milad | Web Developer', 
+  description: 'Portfolio of Milad, a skilled Web Developer creating futuristic and immersive web experiences.', 
 };
 
 export default function RootLayout({
@@ -32,14 +33,15 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark" 
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange
         >
-          <DevtoolBlocker />
-          <Navbar />
-          <main>
+          <Preloader />
+          <Header />
+          <main className="relative z-10">
             {children}
           </main>
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>

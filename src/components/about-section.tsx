@@ -11,42 +11,46 @@ import {
   ReactLogo
 } from '@phosphor-icons/react/dist/ssr';
 
-const skillIcons = {
+const skillIcons: { [key: string]: React.ElementType } = {
   "HTML": Html5Logo,
   "CSS": Css3Logo,
-  "JavaScript": JavascriptLogo,
+  "JS": JavascriptLogo,
   "React": ReactLogo,
-  "Next.js": ReactLogo, // Using React icon as a fallback
-  "GSAP": () => <span className="font-bold text-sm">GSAP</span> // Custom display for GSAP
+  "Next.js": () => <span className="font-bold text-sm">N</span>, 
+  "GSAP": () => <span className="font-bold text-sm">G</span>
 };
 
-export function AboutSection() {
-  const [isVisible, setIsVisible] = React.useState(false);
-  const sectionRef = React.useRef<HTMLElement>(null);
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+const useIntersectionObserver = (options: IntersectionObserverInit) => {
+    const [entry, setEntry] = React.useState<IntersectionObserverEntry | null>(null);
+    const elementRef = React.useRef(null);
+  
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setEntry(entry);
+          observer.unobserve(entry.target);
+        }
+      }, options);
+  
+      const currentElement = elementRef.current;
+      if (currentElement) {
+        observer.observe(currentElement);
       }
-    };
-  }, []);
+  
+      return () => {
+        if (currentElement) {
+          observer.unobserve(currentElement);
+        }
+      };
+    }, [options]);
+  
+    return [elementRef, entry?.isIntersecting ?? false] as const;
+};
+
+
+export function AboutSection() {
+    const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
     <section id="about" ref={sectionRef} className={`container mx-auto section-reveal ${isVisible ? 'visible' : ''}`}>

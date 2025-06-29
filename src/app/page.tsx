@@ -1,18 +1,14 @@
 
-import { ProfileSection } from '@/components/profile-section';
-import { AboutSection } from '@/components/deep-dive-case-study-page';
-import { SkillsSection } from '@/components/certificates-display-page';
-import { ExperienceSection } from '@/components/resume-display-page';
-import { ProjectsSection } from '@/components/case-study-overview-page';
-import { ContactSection } from '@/components/contact-connect-page';
+import { HeroSection } from '@/components/hero-section';
+import { AboutSection } from '@/components/about-section';
+import { ProjectsSection } from '@/components/projects-section';
+import { ContactSection } from '@/components/contact-section';
 
 export default function HomePage() {
   return (
     <>
-      <ProfileSection />
+      <HeroSection />
       <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
       <ProjectsSection />
       <ContactSection />
     </>

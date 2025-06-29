@@ -20,10 +20,38 @@ const contactFormSchema = z.object({
 });
 type ContactFormValues = z.infer<typeof contactFormSchema> & { subject?: string };
 
+const useIntersectionObserver = (options: IntersectionObserverInit) => {
+    const [entry, setEntry] = React.useState<IntersectionObserverEntry | null>(null);
+    const elementRef = React.useRef(null);
+  
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setEntry(entry);
+          observer.unobserve(entry.target);
+        }
+      }, options);
+  
+      const currentElement = elementRef.current;
+      if (currentElement) {
+        observer.observe(currentElement);
+      }
+  
+      return () => {
+        if (currentElement) {
+          observer.unobserve(currentElement);
+        }
+      };
+    }, [options]);
+  
+    return [elementRef, entry?.isIntersecting ?? false] as const;
+};
+
 
 export function ContactSection() {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -61,7 +89,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="container mx-auto section-reveal">
+    <section id="contact" ref={sectionRef} className={`container mx-auto section-reveal ${isVisible ? 'visible' : ''}`}>
       <div className="text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
         <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -106,7 +134,7 @@ export function ContactSection() {
           <div className="flex flex-col sm:flex-row items-center gap-6">
              <Button 
                 type="submit" 
-                className="w-full sm:w-auto bg-primary text-primary-foreground text-base font-semibold py-3 px-6 h-auto transition-all duration-300 ease-in-out hover:glow-shadow-primary hover:scale-105 active:scale-100 group"
+                className="w-full sm:w-auto bg-primary text-primary-foreground text-base font-semibold py-3 px-6 h-auto transition-all duration-300 ease-in-out hover:shadow-glow-primary hover:scale-105 active:scale-100 group"
                 disabled={isLoading}>
                 <PaperPlaneTilt className="h-5 w-5 mr-2.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                 {isLoading ? "Sending..." : "Submit"}

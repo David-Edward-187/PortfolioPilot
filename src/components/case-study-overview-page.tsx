@@ -3,87 +3,117 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Package } from 'lucide-react';
+import { ArrowRight, GithubLogo } from '@phosphor-icons/react/dist/ssr';
 import { resumeData } from '@/data/resume';
 import type { ProjectEntry } from '@/types/resume';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+
+const projectImages = [
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png",
+  "https://placehold.co/600x400.png"
+];
+
+const dataAiHints = [
+  "futuristic dashboard dark",
+  "modern analytics interface",
+  "crypto trading platform",
+  "ai application ui",
+  "glowing data visualization",
+  "tech project screenshot"
+]
 
 export function ProjectsSection() {
-  const [hoveredProject, setHoveredProject] = React.useState<string | null>(null);
 
-  if (!resumeData.projects || resumeData.projects.length === 0) {
-    return (
-      <section id="projects" className="py-20 md:py-24 flex flex-col items-center justify-center text-center">
-        <Package className="w-12 h-12 text-muted-foreground mb-4" />
-        <p className="text-xl text-muted-foreground">No projects to display at the moment.</p>
-      </section>
-    );
-  }
+  const useIntersectionObserver = (options: IntersectionObserverInit) => {
+    const [elements, setElements] = React.useState<Element[]>([]);
+    const [entries, setEntries] = React.useState<IntersectionObserverEntry[]>([]);
+
+    const observer = React.useMemo(() => new IntersectionObserver(
+      observedEntries => {
+        setEntries(observedEntries);
+      },
+      options
+    ), [options]);
+
+    React.useEffect(() => {
+      elements.forEach(el => observer.observe(el));
+      return () => elements.forEach(el => observer.unobserve(el));
+    }, [elements, observer]);
+
+    return [observer, setElements, entries] as const;
+  };
+
+  const [containerRef, setContainerRef] = React.useState<HTMLDivElement | null>(null);
+  const [observer, setElements] = useIntersectionObserver({
+    root: containerRef,
+    threshold: 0.1,
+  });
+
+  React.useEffect(() => {
+    if (containerRef) {
+      const cards = Array.from(containerRef.querySelectorAll('.project-card'));
+      setElements(cards);
+    }
+  }, [containerRef, setElements]);
 
   return (
-    <section id="projects" className="py-20 md:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 animate-fadeIn">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">Projects</h2>
-          <p className="text-lg text-muted-foreground mt-2">A selection of my work.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {resumeData.projects.map((project: ProjectEntry, index: number) => (
-            <Card
-              key={project.name}
-              className="bg-card border-border flex flex-col overflow-hidden group transition-all duration-300 hover:border-primary/80 hover:shadow-xl hover:-translate-y-1 animate-fadeIn rounded-lg"
-              style={{animationDelay: `${index * 0.08}s`}}
-              onMouseEnter={() => setHoveredProject(project.name)}
-              onMouseLeave={() => setHoveredProject(null)}
-              role="article"
-            >
-              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-lg">
-                <Image
-                  src={project.imageUrl || `https://placehold.co/600x338.png`}
-                  alt={project.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className={`object-cover transform transition-transform duration-300 ease-in-out ${hoveredProject === project.name ? 'scale-105' : 'scale-100'}`}
-                  data-ai-hint={project.dataAiHint || 'tech project interface abstract'}
-                />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-100 group-hover:opacity-60 transition-opacity duration-300"></div>
+    <section id="projects" className="container mx-auto section-reveal">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">My Projects</h2>
+      <p className="text-lg text-muted-foreground mb-12 text-center max-w-2xl mx-auto">
+        A selection of my work, demonstrating my skills in creating modern, responsive, and performant web applications.
+      </p>
+
+      {/* On desktop, this will be a bento grid. On mobile, it will stack. */}
+      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6">
+
+        {resumeData.projects.map((project, index) => (
+          <div
+            key={project.name}
+            className={`project-card relative rounded-2xl overflow-hidden group transition-all duration-500 ease-in-out hover:scale-[1.02] hover:z-10
+              ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}
+              ${index === 3 ? 'md:col-span-2' : ''}
+            `}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 p-6 flex flex-col justify-end">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
+                <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description[0]}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies?.slice(0, 3).map(tech => (
+                    <Badge key={tech} variant="secondary" className="glassmorphic text-xs !bg-white/10 text-white/90 border-0">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex gap-4">
+                  <Button variant="outline" asChild className="glassmorphic h-9 px-3 text-sm border-white/20 text-white hover:bg-white/10">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <ArrowRight className="mr-1.5 h-4 w-4" /> View Live
+                    </a>
+                  </Button>
+                  <Button variant="ghost" asChild className="h-9 px-3 text-sm text-white hover:bg-white/10">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <GithubLogo className="mr-1.5 h-4 w-4" /> GitHub
+                    </a>
+
+                  </Button>
+                </div>
               </div>
-              <CardHeader className="p-6 md:p-7">
-                <CardTitle className="text-xl md:text-2xl font-semibold text-primary group-hover:text-accent transition-colors">{project.name}</CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 md:p-7 pt-0 flex-grow">
-                <ul className="text-sm text-muted-foreground mt-1 space-y-2 list-disc list-outside ml-4 line-clamp-4 group-hover:text-foreground/90 transition-colors">
-                   {project.description.map((desc, i) => <li key={i}>{desc}</li>)}
-                </ul>
-              </CardContent>
-              <CardFooter className="p-6 md:p-7 pt-4 flex flex-col items-start">
-                {project.technologies && project.technologies.length > 0 && (
-                    <div className="mb-5 w-full">
-                        <h4 className="text-xs font-medium text-muted-foreground mb-2.5 uppercase tracking-wider">Technologies:</h4>
-                        <div className="flex flex-wrap gap-2">
-                            {project.technologies.slice(0, 5).map(tech => (
-                                <Badge key={tech} variant="secondary" className="text-xs px-3 py-1.5 bg-secondary border-border text-secondary-foreground shadow-sm hover:bg-secondary/80">
-                                  {tech}
-                                </Badge>
-                            ))}
-                            {project.technologies.length > 5 && <Badge variant="secondary" className="text-xs px-3 py-1.5 shadow-sm border-border">...</Badge>}
-                        </div>
-                    </div>
-                )}
-                {project.link && project.link !== "#" && (
-                    <Button variant="link" asChild className="text-accent p-0 h-auto text-sm group-hover:underline self-start font-medium hover:text-primary transition-colors duration-300">
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                            <>
-                                View Project <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
-                            </>
-                        </a>
-                    </Button>
-                )}
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+            </div>
+            <Image
+              src={projectImages[index % projectImages.length]}
+              alt={project.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+              data-ai-hint={dataAiHints[index % dataAiHints.length]}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

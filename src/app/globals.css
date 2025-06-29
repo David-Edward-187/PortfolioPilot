@@ -13,37 +13,37 @@ html {
 
 @layer base {
   :root {
-    /* Light Theme - Tech Professional */
-    --background: 220 20% 98%;    /* #F8F9FA - Very Light Gray */
-    --foreground: 220 15% 25%;    /* #3A414A - Dark Gray */
+    /* Futuristic Dark Theme */
+    --background: 224 71% 4%;    /* #010816 - Very Dark Blue */
+    --foreground: 220 20% 90%;    /* #dce1e9 - Light Grayish Blue */
     
-    --card: 0 0% 100%;            /* #FFFFFF - White */
-    --card-foreground: 220 15% 25%; 
+    --card: 224 50% 12%;           /* #0f172a - Dark Slate Blue */
+    --card-foreground: 220 20% 90%; 
     
-    --popover: 0 0% 100%;         
-    --popover-foreground: 220 15% 25%; 
+    --popover: 224 71% 4%;         
+    --popover-foreground: 220 20% 90%; 
     
-    --primary: 210 90% 50%;     /* #3B82F6 - Professional Blue */
+    --primary: 250 80% 60%;     /* #8c66ff - Vibrant Violet */
     --primary-foreground: 0 0% 100%; /* White */
     
-    --secondary: 220 15% 94%;    /* #E9ECEF - Light Gray */
-    --secondary-foreground: 220 10% 35%; /* #495057 - Medium Gray */
+    --secondary: 220 40% 20%;    /* #26314a - Muted Dark Blue */
+    --secondary-foreground: 220 15% 75%; /* #b1b8c5 - Muted Light Gray */
     
-    --muted: 220 15% 90%;        /* #DEE2E6 - Soft Gray */
-    --muted-foreground: 220 10% 45%;  /* #6C757D - Muted Gray */
+    --muted: 220 40% 15%;        /* #1c2539 - Darker Muted */
+    --muted-foreground: 220 15% 55%;  /* #7c8596 - Muted Gray */
     
-    --accent: 190 80% 45%;      /* #23C7D9 - Bright Teal/Cyan */
-    --accent-foreground: 0 0% 100%;   /* White */
+    --accent: 190 90% 50%;      /* #19e3ff - Bright Cyan/Neon Blue */
+    --accent-foreground: 224 71% 4%;   /* Dark Blue for text on accent */
     
-    --destructive: 0 75% 55%;    /* Standard Red */
+    --destructive: 0 75% 55%;    
     --destructive-foreground: 0 0% 100%; 
     
-    --border: 220 15% 85%;       /* #CED4DA - Light Gray Border */
-    --input: 220 15% 96%;        /* #F1F3F5 - Very Light Gray Input */
-    --input-border: 210 90% 50%;   /* Primary Blue for input focus */
-    --ring: 210 90% 55%;          /* Slightly Brighter Blue for focus ring */
+    --border: 220 30% 25%;       /* #2e3a59 - Subtle Blue Border */
+    --input: 220 40% 10%;        /* #131a29 - Very Dark Input */
+    --input-border: 250 80% 60%;   /* Primary Violet for input focus */
+    --ring: 190 90% 50%;          /* Accent Cyan for focus ring */
     
-    --radius: 0.5rem; /* 8px base radius for a modern feel */
+    --radius: 0.5rem;
 
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--accent));
@@ -53,149 +53,75 @@ html {
   }
 
   .dark {
-    /* Dark Theme - Tech Professional */
-    --background: 220 15% 10%;     /* #13171F - Very Dark Desaturated Blue */
-    --foreground: 220 10% 90%;     /* #DEE1E6 - Light Gray */
-
-    --card: 220 15% 15%;           /* #1C212B - Dark Desaturated Blue Card */
-    --card-foreground: 220 10% 90%;  
-
-    --popover: 220 15% 12%;        /* #161B22 - Slightly darker for popovers */
-    --popover-foreground: 220 10% 90%; 
-    
-    --primary: 210 90% 55%;      /* #4B8FF7 - Vibrant Professional Blue */
-    --primary-foreground: 220 10% 5%; /* Very dark for text on primary */
-    
-    --secondary: 220 10% 20%;     /* #2A3038 - Medium Dark Gray */
-    --secondary-foreground: 220 10% 75%; /* #B4BAC0 - Muted Light Gray */
-    
-    --muted: 220 10% 18%;         /* #252B33 - Darker Muted Backgrounds */
-    --muted-foreground: 220 10% 60%;   /* #899099 - Darker Muted Text */
-    
-    --accent: 190 80% 50%;       /* #34D3E8 - Brighter Teal/Cyan */
-    --accent-foreground: 220 10% 5%;  /* Very dark for text on accent */
-    
-    --destructive: 0 70% 60%;    /* Brighter Red for Dark Mode */
-    --destructive-foreground: 0 0% 100%; 
-    
-    --border: 220 10% 28%;        /* #3D444D - Subtle Dark Border */
-    --input: 220 10% 22%;         /* #2D343F - Dark Input Background */
-    --input-border: 210 90% 55%;   /* Primary Blue for input focus */
-    --ring: 210 90% 60%;          /* Bright Blue for focus ring */
-    
-    --chart-1: hsl(var(--primary));
-    --chart-2: hsl(var(--accent));
-    --chart-3: hsl(var(--primary) / 0.7);
-    --chart-4: hsl(220 5% 70%);  
-    --chart-5: hsl(220 5% 50%); 
+    /* Same as root for a dark-only theme */
+    --background: 224 71% 4%;
+    --foreground: 220 20% 90%;
+    --card: 224 50% 12%;
+    --card-foreground: 220 20% 90%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 220 20% 90%;
+    --primary: 250 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 40% 20%;
+    --secondary-foreground: 220 15% 75%;
+    --muted: 220 40% 15%;
+    --muted-foreground: 220 15% 55%;
+    --accent: 190 90% 50%;
+    --accent-foreground: 224 71% 4%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 25%;
+    --input: 220 40% 10%;
+    --input-border: 250 80% 60%;
+    --ring: 190 90% 50%;
+    --radius: 0.5rem;
   }
 
   * {
     @apply border-border;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-size: 100%; 
-    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  /* Typography - Clean and Professional */
-  h1, .text-h1 { 
-    @apply text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl;
-  } 
-  h2, .text-h2 { 
-    @apply text-3xl font-bold tracking-tight md:text-4xl;
-  } 
-  h3, .text-h3 { 
-    @apply text-2xl font-semibold md:text-3xl;
-  }    
-  h4, .text-h4 { 
-    @apply text-xl font-semibold md:text-2xl; 
-  }
-  p, li, span, label, input, textarea, button, a { 
-    @apply text-base leading-relaxed; 
-  } 
-  small, .text-caption { 
-    @apply text-sm text-muted-foreground; 
-  }
-
-  .section-title { 
-    @apply text-3xl md:text-4xl font-bold text-primary text-center;
+  
+  .glassmorphic {
+    @apply bg-card/50 backdrop-blur-lg border border-white/10;
   }
   
-  .section-icon { 
-    @apply w-8 h-8 md:w-10 md:h-10 mr-2.5 text-primary relative -top-0.5 md:-top-1;
+  .glow-shadow-primary {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2);
   }
 
-  /* Card Styling - Clean and Modern */
-  .card, .card-like { 
-    @apply rounded-lg border bg-card text-card-foreground shadow-md transition-all duration-200; 
-  }
-  .dark .card, .dark .card-like {
-     @apply hover:border-primary/70 hover:shadow-lg; 
-  }
-  
-  button:focus-visible, 
-  a:focus-visible, 
-  input:focus-visible, 
-  textarea:focus-visible, 
-  select:focus-visible, 
-  [tabindex]:not([tabindex="-1"]):focus-visible,
-  [role="button"]:focus-visible {
-    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); } 
-    to { opacity: 1; transform: translateY(0); }
+  .glow-shadow-accent {
+    box-shadow: 0 0 15px hsl(var(--accent) / 0.5), 0 0 30px hsl(var(--accent) / 0.3);
   }
 
-  .animate-fadeIn {
-    animation: fadeIn 0.4s ease-out forwards;
+  .text-glow-accent {
+    text-shadow: 0 0 8px hsl(var(--accent) / 0.8);
   }
 
-  .stagger-children > * {
+  /* Section Fade In Animation */
+  .section-reveal {
     opacity: 0;
-    animation: fadeIn 0.4s ease-out forwards;
+    transform: translateY(40px);
+    filter: blur(10px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
   }
-
-  /* Custom Scrollbar Styling - Subtle & Professional */
-  ::-webkit-scrollbar {
-    width: 8px; 
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--background) / 0.5); 
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted) / 0.5); 
-    border-radius: 4px;
-    border: 1px solid transparent;
-    background-clip: padding-box;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground));
-  }
-  .dark ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground) / 0.3);
-  }
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--secondary-foreground));
+  
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
   }
 
   section { 
-    @apply py-16 md:py-20 lg:py-24; 
+    @apply py-24 md:py-32; 
   }
 
   .container {
-    @apply px-4 sm:px-6 lg:px-8; 
+    @apply px-6 sm:px-8; 
   }
 }
-    
