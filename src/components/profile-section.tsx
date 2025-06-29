@@ -23,7 +23,7 @@ export function HeroSection() {
     <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* Spline Background */}
       <div className="absolute inset-0 z-0">
-        <Spline scene="https://prod.spline.design/Wv1sAVo6I1Lef3JB/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/6k0Y-y2y4yF7s7zC/scene.splinecode" />
       </div>
       
       {/* Floating Orbs */}
