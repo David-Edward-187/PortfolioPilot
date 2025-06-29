@@ -5,6 +5,11 @@ import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import React from 'react';
+import dynamic from 'next/dynamic';
+
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+});
 
 export function HeroSection() {
 
@@ -17,17 +22,14 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* Background Effect */}
-      <div className="absolute inset-0 z-0 bg-background overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] h-[150%] bg-[radial-gradient(ellipse_50%_50%_at_50%_0%,hsl(var(--primary)/0.15),transparent)]"></div>
+      {/* Spline Background */}
+      <div className="absolute inset-0 z-0">
+        <Spline
+          scene="https://prod.spline.design/Zif2r2J9j2Yy-dAL/scene.splinecode"
+        />
+        <div className="absolute inset-0 bg-background/20 backdrop-blur-sm"></div>
       </div>
       
-      {/* Floating Orbs */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/20 rounded-full blur-3xl animate-float opacity-50"></div>
-        <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-accent/20 rounded-full blur-3xl animate-float-delay opacity-50"></div>
-      </div>
-
       <div className="relative z-10 container mx-auto text-center">
         <div className="max-w-3xl mx-auto animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold text-white">
