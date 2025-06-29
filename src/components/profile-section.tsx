@@ -6,8 +6,9 @@ import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
+const Hero3DScene = dynamic(() => import('@/components/hero-3d-scene').then(mod => mod.Hero3DScene), {
   ssr: false,
+  loading: () => <div className="absolute inset-0 z-0 bg-background" />,
 });
 
 export function HeroSection() {
@@ -21,12 +22,8 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-primary/10 rounded-full blur-3xl opacity-30 animate-float"></div>
-        <div className="absolute bottom-0 right-0 w-1/3 h-full bg-accent/10 rounded-full blur-3xl opacity-30 animate-float-delay"></div>
-        <div className="absolute inset-0 bg-background/20 backdrop-blur-sm"></div>
-      </div>
+      {/* 3D Background */}
+      <Hero3DScene />
       
       <div className="relative z-10 container mx-auto text-center">
         <div className="max-w-3xl mx-auto animate-fade-in-up">
