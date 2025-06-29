@@ -59,21 +59,9 @@ export default {
         sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
-        'progress-bar': {
-          from: { width: '0%' },
-          to: { width: '100%' },
-        },
-        'fade-in': { 
-          from: { opacity: '0' }, 
-          to: { opacity: '1' },
-        },
         'fade-in-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        'blur-clear': {
-          from: { filter: 'blur(10px)', opacity: '0' },
-          to: { filter: 'blur(0)', opacity: '1' },
         },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -87,19 +75,24 @@ export default {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
         },
+        'ping-slow': {
+          '75%, 100%': {
+            transform: 'scale(1.8)',
+            opacity: '0',
+          },
+        },
   		},
   		animation: {
-        'progress-bar': 'progress-bar 1.5s ease-out forwards',
-        'fade-in': 'fade-in 1s ease-in-out',
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
-        'blur-clear': 'blur-clear 1s ease-out forwards',
         'float': 'float 6s ease-in-out infinite',
         'float-delay': 'float-delay 8s ease-in-out infinite',
         'tilt': 'tilt 15s ease-in-out infinite',
+        'ping-slow': 'ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite',
   		},
       boxShadow: {
         'glow-primary': '0 0 20px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3)',
         'glow-accent': '0 0 20px hsl(var(--accent) / 0.7), 0 0 40px hsl(var(--accent) / 0.4)',
+        'input-focus': '0 0 0 2px hsl(var(--input-border))'
       },
   	}
   },

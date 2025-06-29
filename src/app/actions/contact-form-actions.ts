@@ -35,12 +35,6 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
 
   const { name, email, subject, message } = validationResult.data;
 
-  console.log('Received contact form submission on server:');
-  console.log('Name:', name);
-  console.log('Email:', email);
-  console.log('Subject:', subject);
-  console.log('Message:', message);
-
   const resendApiKey = process.env.RESEND_API_KEY;
   const recipientEmail = process.env.CONTACT_FORM_RECIPIENT_EMAIL;
 
@@ -63,34 +57,31 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
   const resend = new Resend(resendApiKey);
 
   try {
-    console.log(`Attempting to send email to: ${recipientEmail}`);
     const { data: emailData, error: emailError } = await resend.emails.send({
-      // IMPORTANT: For production, replace 'onboarding@resend.dev' with an email from your verified domain in Resend.
-      // See https://resend.com/docs/authentication/domains for domain verification.
       from: 'PortfolioPilot Contact Form <onboarding@resend.dev>', 
       to: [recipientEmail],
       subject: `New Contact Form Submission: ${subject}`,
       reply_to: email, // User's email as reply-to
       html: `
-        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 0;">
-          <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            <div style="text-align: center; border-bottom: 1px solid #eeeeee; padding-bottom: 10px; margin-bottom: 20px;">
-              <h1 style="font-size: 24px; color: #008080; margin: 0;">New Contact Form Submission</h1>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #dce1e9; background-color: #010816; margin: 0; padding: 0;">
+          <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #0f172a; border: 1px solid #2e3a59; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <div style="text-align: center; border-bottom: 1px solid #2e3a59; padding-bottom: 10px; margin-bottom: 20px;">
+              <h1 style="font-size: 24px; color: #8c66ff; margin: 0;">New Contact Form Submission</h1>
             </div>
             <p style="margin-bottom: 15px;">You have received a new message from your portfolio contact form.</p>
             
-            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+            <div style="background-color: #1c2539; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
               <p style="margin: 5px 0;"><strong>Name:</strong> ${name}</p>
-              <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #008080; text-decoration: none;">${email}</a></p>
+              <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #19e3ff; text-decoration: none;">${email}</a></p>
               <p style="margin: 5px 0;"><strong>Subject:</strong> ${subject}</p>
             </div>
             
             <div style="margin-bottom: 20px;">
-              <h2 style="font-size: 18px; color: #008080; border-bottom: 1px solid #eeeeee; padding-bottom: 5px; margin-bottom: 10px;">Message:</h2>
-              <p style="white-space: pre-wrap; background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin: 0;">${message}</p>
+              <h2 style="font-size: 18px; color: #8c66ff; border-bottom: 1px solid #2e3a59; padding-bottom: 5px; margin-bottom: 10px;">Message:</h2>
+              <p style="white-space: pre-wrap; background-color: #1c2539; padding: 15px; border-radius: 4px; margin: 0;">${message}</p>
             </div>
             
-            <div style="text-align: center; font-size: 12px; color: #777777; margin-top: 20px; padding-top: 10px; border-top: 1px solid #eeeeee;">
+            <div style="text-align: center; font-size: 12px; color: #7c8596; margin-top: 20px; padding-top: 10px; border-top: 1px solid #2e3a59;">
               <p>This email was sent from your PortfolioPilot website.</p>
             </div>
           </div>
@@ -106,7 +97,6 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
       };
     }
 
-    console.log('Email sent successfully via Resend:', emailData);
     return { success: true, message: 'Your message has been sent successfully!' };
 
   } catch (error) {
@@ -118,4 +108,3 @@ export async function sendContactEmail(data: ContactFormData): Promise<ActionRes
     };
   }
 }
-

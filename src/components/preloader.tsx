@@ -55,8 +55,3 @@ export function Preloader() {
     </div>
   );
 }
-
-// Add this to your tailwind.config.ts animations if it doesn't exist
-// animation: {
-//   'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
-// }
