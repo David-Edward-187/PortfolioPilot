@@ -1,21 +1,20 @@
-
 "use client";
 
 import Image from 'next/image';
 import { resumeData } from '@/data/resume';
 import * as React from 'react';
 import { 
-  Html5Logo, 
-  Css3Logo, 
-  JavascriptLogo, 
-  ReactLogo
+  FileHtml, 
+  FileCss, 
+  FileJs, 
+  Atom
 } from '@phosphor-icons/react/dist/ssr';
 
 const skillIcons: { [key: string]: React.ElementType } = {
-  "HTML": Html5Logo,
-  "CSS": Css3Logo,
-  "JS": JavascriptLogo,
-  "React": ReactLogo,
+  "HTML": FileHtml,
+  "CSS": FileCss,
+  "JS": FileJs,
+  "React": Atom,
   "Next.js": () => <span className="font-bold text-sm">N</span>, 
   "GSAP": () => <span className="font-bold text-sm">G</span>
 };

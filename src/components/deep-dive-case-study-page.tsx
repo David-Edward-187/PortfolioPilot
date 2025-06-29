@@ -1,23 +1,22 @@
-
 "use client";
 
 import Image from 'next/image';
 import { resumeData } from '@/data/resume';
 import * as React from 'react';
 import { 
-  Html5Logo, 
-  Css3Logo, 
-  JavascriptLogo, 
-  ReactLogo
+  FileHtml, 
+  FileCss, 
+  FileJs, 
+  Atom
 } from '@phosphor-icons/react/dist/ssr';
 
 const skillIcons = {
-  "HTML": Html5Logo,
-  "CSS": Css3Logo,
-  "JavaScript": JavascriptLogo,
-  "React": ReactLogo,
-  "Next.js": ReactLogo, // Using React icon as a fallback
-  "GSAP": () => <span className="font-bold text-sm">GSAP</span> // Custom display for GSAP
+  "HTML": FileHtml,
+  "CSS": FileCss,
+  "JavaScript": FileJs,
+  "React": Atom,
+  "Next.js": () => <span className="font-bold text-sm">N</span>,
+  "GSAP": () => <span className="font-bold text-sm">GSAP</span>
 };
 
 export function AboutSection() {
