@@ -114,7 +114,7 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
             return [[187, 107, 255], [0, 255, 200]]; // Vibrant Purple, Teal for dark mode
         }
         // Softer, theme-aligned colors for light mode
-        return [[125, 77, 255], [20, 184, 166]]; // Primary, Accent from light theme
+        return [[187, 107, 255], [0, 255, 200]] // Primary, Accent from light theme
     }, [resolvedTheme]);
 
     return (
@@ -123,7 +123,7 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
             onMouseLeave={() => setHovered(false)}
             className={cn(
                 "border border-border/20 group/canvas-card flex items-center justify-center",
-                "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-3xl",
+                "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-3xl overflow-hidden",
                 className
             )}
         >
