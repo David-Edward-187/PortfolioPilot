@@ -9,49 +9,54 @@ import { gsap } from 'gsap';
 
 export function HeroSection() {
   const component = useRef(null);
+  const heroContentRef = useRef(null);
 
+  // GSAP animations on component mount
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.set('.hero-content > *', { autoAlpha: 0 });
-      gsap.set('.spline-container', { autoAlpha: 0 });
-
-      const tl = gsap.timeline({
-        delay: 0.5,
-        defaults: { ease: 'power3.out', duration: 1 }
-      });
-
-      tl.to('.spline-container', {
-        autoAlpha: 1,
-        duration: 1.5
-      }, 0)
-      .fromTo('.hero-word', { 
-        y: 40,
-        filter: 'blur(10px)',
-        autoAlpha: 0,
-      }, {
-        y: 0,
-        filter: 'blur(0px)',
-        autoAlpha: 1,
-        stagger: 0.1,
-      }, 0.5) 
-      .fromTo('.hero-subtitle', { 
-        y: 30,
-        autoAlpha: 0,
-      }, {
-        y: 0,
-        autoAlpha: 1,
-      }, "-=0.7")
-      .fromTo('.hero-cta', {
-        scale: 0.8,
-        autoAlpha: 0,
-      }, {
-        scale: 1,
-        autoAlpha: 1,
-      }, "-=0.8");
-
+      // Animate text and CTA
+      gsap.fromTo('.hero-word', 
+        { autoAlpha: 0, y: 40, filter: 'blur(10px)' }, 
+        { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.1, delay: 0.2, duration: 1, ease: 'power3.out' }
+      );
+      gsap.fromTo('.hero-subtitle', 
+        { autoAlpha: 0, y: 30 }, 
+        { autoAlpha: 1, y: 0, delay: 0.5, duration: 1, ease: 'power3.out' }
+      );
+      gsap.fromTo('.hero-cta', 
+        { autoAlpha: 0, scale: 0.8 }, 
+        { autoAlpha: 1, scale: 1, delay: 0.7, duration: 1, ease: 'power3.out' }
+      );
     }, component);
     
     return () => ctx.revert();
+  }, []);
+
+  // Mouse move parallax effect
+  useEffect(() => {
+    const el = heroContentRef.current;
+    if (!el) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { offsetWidth, offsetHeight } = el as HTMLElement;
+      
+      const x = (clientX / offsetWidth - 0.5) * 30; // Multiplier for effect intensity
+      const y = (clientY / offsetHeight - 0.5) * 30;
+
+      gsap.to(el, {
+        x: -x,
+        y: -y,
+        rotationY: x / 15,
+        rotationX: -y / 15,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+
   }, []);
 
   const handleContactClick = () => {
@@ -73,22 +78,13 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+    <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-grid-pattern">
       
-      {/* Spline 3D Background */}
-      <div className="spline-container absolute inset-0 z-0">
-          <iframe 
-            src="https://my.spline.design/purpleparticles-7e51c8a4c330e7136f0b093c78d5305c/" 
-            width="100%" 
-            height="100%"
-            className="w-full h-full"
-            frameBorder="0"
-          />
-         <div className="absolute inset-0 bg-background/20 backdrop-blur-sm"></div>
-      </div>
+      {/* Background Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-radial from-transparent to-background"></div>
       
       <div className="relative z-10 container mx-auto text-center">
-        <div className="hero-content max-w-3xl mx-auto">
+        <div ref={heroContentRef} className="hero-content max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-white">
             {renderHeadline()}
           </h1>
@@ -101,7 +97,7 @@ export function HeroSection() {
               onClick={handleContactClick}
               className="bg-primary text-primary-foreground text-lg h-14 px-8 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:glow-shadow-primary active:scale-100 group"
             >
-              Hire Me <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              Let's Connect <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
           </div>
         </div>
