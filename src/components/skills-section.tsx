@@ -17,22 +17,50 @@ import { resumeData } from '@/data/resume';
 import { cn } from '@/lib/utils';
 import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 
+// SVG for Vercel logo
+const VercelIcon = () => (
+  <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
+    <path d="M12 2.5L2.5 20h19L12 2.5z"/>
+  </svg>
+);
+
+// SVG for GraphQL logo
+const GraphQLIcon = () => (
+    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" stroke="currentColor" strokeWidth="1" fill="none">
+        <path d="M12 2 L3 7 L3 17 L12 22 L21 17 L21 7 Z" />
+        <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+        <circle cx="12" cy="2" r="1.5" fill="currentColor" stroke="none" />
+        <circle cx="3" cy="7" r="1.5" fill="currentColor" stroke="none" />
+        <circle cx="3" cy="17" r="1.5" fill="currentColor" stroke="none" />
+        <circle cx="12" cy="22" r="1.5" fill="currentColor" stroke="none" />
+        <circle cx="21" cy="17" r="1.5" fill="currentColor" stroke="none" />
+        <circle cx="21" cy="7" r="1.5" fill="currentColor" stroke="none" />
+        <path d="M3 7L12 12" />
+        <path d="M3 17L12 12" />
+        <path d="M12 22L12 12" />
+        <path d="M21 17L12 12" />
+        <path d="M21 7L12 12" />
+        <path d="M12 2L12 12" />
+    </svg>
+);
+
+
 // Map skill names to Font Awesome icons and their brand colors
 const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
   // Languages
   "JavaScript (ES6+)": { icon: <FontAwesomeIcon icon={faJs} />, color: "#F7DF1E" },
-  "TypeScript": { icon: <FontAwesomeIcon icon={faCode} />, color: "#3178C6" }, // Generic code icon, but colored for TS
+  "TypeScript": { icon: <span className="font-bold text-3xl">TS</span>, color: "#3178C6" },
   "HTML5": { icon: <FontAwesomeIcon icon={faHtml5} />, color: "#E34F26" },
   "CSS3": { icon: <FontAwesomeIcon icon={faCss3Alt} />, color: "#1572B6" },
   "Python": { icon: <FontAwesomeIcon icon={faPython} />, color: "#3776AB" },
 
   // Frameworks & Libraries
   "React": { icon: <FontAwesomeIcon icon={faReact} />, color: "#61DAFB" },
-  "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "#FFFFFF" }, // Custom text for Next.js
+  "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "#FFFFFF" },
   "Node.js": { icon: <FontAwesomeIcon icon={faNodeJs} />, color: "#339933" },
-  "Express": { icon: <span className="font-bold text-2xl">Express</span>, color: "#828282" }, // Custom text for Express
+  "Express": { icon: <FontAwesomeIcon icon={faServer} />, color: "#828282" },
   "Tailwind CSS": { icon: <FontAwesomeIcon icon={faWind} />, color: "#06B6D4" },
-  "GSAP": { icon: <span className="font-black text-4xl">G</span>, color: "#88CE02" }, // Custom text for GSAP
+  "GSAP": { icon: <span className="font-black text-4xl">G</span>, color: "#88CE02" },
   "Three.js": { icon: <FontAwesomeIcon icon={faCube} />, color: "#FFFFFF" },
 
   // Datastores
@@ -43,7 +71,7 @@ const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
 
   // Cloud & DevOps
   "Docker": { icon: <FontAwesomeIcon icon={faDocker} />, color: "#2496ED" },
-  "Vercel": { icon: <FontAwesomeIcon icon={faCube} />, color: "#FFFFFF" }, // Using a generic cube for Vercel
+  "Vercel": { icon: <VercelIcon />, color: "#FFFFFF" },
   "AWS (S3, EC2)": { icon: <FontAwesomeIcon icon={faAws} />, color: "#FF9900" },
   "CI/CD": { icon: <FontAwesomeIcon icon={faSync} />, color: "#6c5ce7" },
   "Git": { icon: <FontAwesomeIcon icon={faGitAlt} />, color: "#F05032" },
@@ -51,7 +79,7 @@ const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
   // Other
   "Figma": { icon: <FontAwesomeIcon icon={faFigma} />, color: "#F24E1E" },
   "REST APIs": { icon: <FontAwesomeIcon icon={faNetworkWired} />, color: "#d63031" },
-  "GraphQL": { icon: <FontAwesomeIcon icon={faNetworkWired} />, color: "#E10098" },
+  "GraphQL": { icon: <GraphQLIcon />, color: "#E10098" },
   "Agile/Scrum": { icon: <FontAwesomeIcon icon={faUsers} />, color: "#0984e3" },
 };
 
