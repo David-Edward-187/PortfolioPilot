@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from 'react';
@@ -8,7 +7,10 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { resumeData } from '@/data/resume';
 import { List, X, Code } from '@phosphor-icons/react/dist/ssr';
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface NavLink {
   href: string;
@@ -23,23 +25,39 @@ const navLinks: NavLink[] = [
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const [hidden, setHidden] = React.useState(false);
-  const { scrollY } = useScroll();
+  const headerRef = React.useRef<HTMLElement>(null);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-  });
+  React.useEffect(() => {
+    const showAnim = gsap.from(headerRef.current, { 
+      yPercent: -100,
+      paused: true,
+      duration: 0.2
+    }).progress(1);
+
+    ScrollTrigger.create({
+      start: "top top",
+      end: "max",
+      onUpdate: (self) => {
+        self.direction === -1 ? showAnim.play() : showAnim.reverse()
+      }
+    });
+  }, []);
 
   React.useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      gsap.to('.mobile-menu', { autoAlpha: 1, duration: 0.3 });
+      gsap.from('.mobile-menu-item', {
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.5,
+        delay: 0.2
+      });
     } else {
-      document.body.style.overflow = 'auto';
+      gsap.to('.mobile-menu', { autoAlpha: 0, duration: 0.3, onComplete: () => {
+        document.body.style.overflow = 'auto';
+      }});
     }
     return () => {
       document.body.style.overflow = 'auto';
@@ -52,13 +70,8 @@ export function Header() {
 
   return (
     <>
-      <motion.header
-        variants={{
-          visible: { y: 0 },
-          hidden: { y: "-100%" },
-        }}
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.35, ease: "easeInOut" }}
+      <header
+        ref={headerRef}
         className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border"
       >
         <div className="container mx-auto flex h-20 items-center justify-between">
@@ -80,17 +93,16 @@ export function Header() {
           {/* Mobile Nav Trigger */}
           <div className="md:hidden">
             <Button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} variant="ghost" size="icon">
-              <List className="h-7 w-7" />
-              <span className="sr-only">Open menu</span>
+              {isMobileMenuOpen ? <X className="h-7 w-7" /> : <List className="h-7 w-7" />}
+              <span className="sr-only">Toggle menu</span>
             </Button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <div className={cn(
-          "fixed inset-0 z-[100] bg-background/90 backdrop-blur-lg transition-transform duration-500 ease-in-out md:hidden",
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          "mobile-menu fixed inset-0 z-[100] bg-background/95 backdrop-blur-lg md:hidden invisible"
       )}>
         <div className="container mx-auto flex h-20 items-center justify-between">
             <Link href="/" className="flex items-center gap-2.5" onClick={handleLinkClick}>
@@ -104,11 +116,11 @@ export function Header() {
         </div>
         <nav className="flex flex-col items-center justify-center gap-8 mt-16">
             {navLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={handleLinkClick} className="text-3xl font-semibold text-foreground hover:text-primary transition-colors">
+                <a key={link.href} href={link.href} onClick={handleLinkClick} className="mobile-menu-item text-3xl font-semibold text-foreground hover:text-primary transition-colors">
                     {link.label}
                 </a>
             ))}
-            <div className="mt-8">
+            <div className="mobile-menu-item mt-8">
                <ThemeToggle />
             </div>
         </nav>

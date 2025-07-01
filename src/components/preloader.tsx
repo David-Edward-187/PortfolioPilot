@@ -1,78 +1,65 @@
-
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Code } from '@phosphor-icons/react';
-
-const containerVariants = {
-  initial: { opacity: 1 },
-  exit: { 
-    opacity: 0,
-    transition: { duration: 0.8, ease: "easeInOut" }
-  },
-};
-
-const iconVariants = {
-    initial: { opacity: 0, scale: 0.5 },
-    animate: {
-        opacity: 1,
-        scale: 1,
-        transition: {
-            duration: 0.5,
-            ease: 'easeOut'
-        }
-    }
-}
-
-const progressVariants = {
-    initial: { width: '0%' },
-    animate: {
-        width: '100%',
-        transition: {
-            duration: 2,
-            ease: 'easeOut'
-        }
-    }
-}
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 export function Preloader() {
-  const [loading, setLoading] = useState(true);
+  const preloaderRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500); // Preloader duration
-    return () => clearTimeout(timer);
+    if (!preloaderRef.current || !progressBarRef.current || !textRef.current) return;
+
+    const tl = gsap.timeline();
+
+    tl.to(textRef.current, {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power1.out',
+    })
+    .to(progressBarRef.current, {
+        width: '100%',
+        duration: 2,
+        ease: 'power2.out',
+    })
+    .to(textRef.current, {
+        opacity: 0,
+        y: -20,
+        duration: 0.5,
+    }, "-=0.5")
+    .to(preloaderRef.current, {
+        opacity: 0,
+        scale: 0.9,
+        duration: 1,
+        ease: 'power3.inOut',
+        onComplete: () => {
+            if (preloaderRef.current) {
+                preloaderRef.current.style.display = 'none';
+            }
+        },
+    });
+
   }, []);
   
   return (
-    <AnimatePresence>
-      {loading && (
-        <motion.div
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-background"
-          variants={containerVariants}
-          initial="initial"
-          exit="exit"
-        >
-          <motion.div 
-            className="relative flex items-center justify-center w-32 h-32"
-            variants={iconVariants}
-            initial="initial"
-            animate="animate"
-          >
-            <Code weight="bold" className="text-accent h-16 w-16 z-10 animate-pulse" />
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-ping-slow"></div>
-          </motion.div>
-          
-          <div className="w-48 h-1 mt-8 bg-border rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-accent"
-              variants={progressVariants}
-              initial="initial"
-              animate="animate"
-            />
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      ref={preloaderRef}
+      className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-background"
+    >
+      <div 
+        ref={textRef}
+        className="text-4xl font-bold text-foreground opacity-0 mb-4"
+      >
+        Milad
+      </div>
+      <div className="w-64 h-1 bg-border rounded-full overflow-hidden">
+        <div
+          ref={progressBarRef}
+          className="h-full bg-primary"
+          style={{ width: '0%' }}
+        />
+      </div>
+    </div>
   );
 }

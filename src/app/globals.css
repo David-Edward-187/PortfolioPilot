@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,6 +9,7 @@
 
 body {
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  letter-spacing: -0.02em;
 }
 
 html {
@@ -18,7 +18,7 @@ html {
 
 @layer base {
   :root {
-    /* Futuristic Dark Theme - Refined */
+    /* Futuristic Dark Theme - Refined based on new prompt */
     --background: 224 80% 5%;    /* #030815 - Deeper Dark Blue */
     --foreground: 220 20% 90%;    /* #dce1e9 - Light Grayish Blue */
     
