@@ -97,7 +97,7 @@ export const CanvasRevealEffect = ({
 
   return (
     <div
-      className={cn("h-full w-full relative", containerClassName)}
+      className={cn("h-full w-full relative rounded-3xl", containerClassName)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
