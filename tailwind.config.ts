@@ -42,7 +42,6 @@ export default {
   			},
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
-        'input-border': 'hsl(var(--input-border))', 
   			ring: 'hsl(var(--ring))',
   			chart: {
   				'1': 'hsl(var(--chart-1))',
@@ -92,7 +91,6 @@ export default {
       boxShadow: {
         'glow-primary': '0 0 25px hsl(var(--primary) / 0.5), 0 0 50px hsl(var(--primary) / 0.2)',
         'glow-accent': '0 0 25px hsl(var(--accent) / 0.6), 0 0 50px hsl(var(--accent) / 0.3)',
-        'input-focus': '0 0 0 2px hsl(var(--input-border))'
       },
   	}
   },

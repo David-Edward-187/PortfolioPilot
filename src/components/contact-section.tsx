@@ -104,7 +104,7 @@ export function ContactSection() {
               id="name" 
               {...form.register("name")} 
               placeholder="Your Name" 
-              className="bg-input/50 border-border/50 focus:border-primary focus:ring-primary/50 text-base focus:shadow-glow-primary" 
+              className="bg-input/50 border-border/50 text-base" 
             />
             {form.formState.errors.name && <p className="text-xs text-destructive mt-1.5">{form.formState.errors.name.message}</p>}
           </div>
@@ -115,7 +115,7 @@ export function ContactSection() {
               type="email" 
               {...form.register("email")} 
               placeholder="Your Email" 
-              className="bg-input/50 border-border/50 focus:border-primary focus:ring-primary/50 text-base focus:shadow-glow-primary" 
+              className="bg-input/50 border-border/50 text-base" 
             />
             {form.formState.errors.email && <p className="text-xs text-destructive mt-1.5">{form.formState.errors.email.message}</p>}
           </div>
@@ -126,7 +126,7 @@ export function ContactSection() {
               {...form.register("message")} 
               placeholder="Your message..." 
               rows={5} 
-              className="bg-input/50 border-border/50 focus:border-primary focus:ring-primary/50 text-base min-h-[140px] focus:shadow-glow-primary" 
+              className="bg-input/50 border-border/50 text-base min-h-[140px]" 
             />
             {form.formState.errors.message && <p className="text-xs text-destructive mt-1.5">{form.formState.errors.message.message}</p>}
           </div>
