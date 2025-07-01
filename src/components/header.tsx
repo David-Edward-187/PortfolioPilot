@@ -29,7 +29,11 @@ const navLinks: NavLink[] = [
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const headerRef = React.useRef<HTMLElement>(null);
+  const mobileMenuRef = React.useRef<HTMLDivElement>(null);
+  const mobileMenuOverlayRef = React.useRef<HTMLDivElement>(null);
+  const menuTimeline = React.useRef<gsap.core.Timeline | null>(null);
 
+  // GSAP animation to show/hide header on scroll
   React.useEffect(() => {
     const showAnim = gsap.from(headerRef.current, { 
       yPercent: -100,
@@ -46,25 +50,31 @@ export function Header() {
     });
   }, []);
 
+  // GSAP timeline for mobile menu animation
+  React.useEffect(() => {
+    gsap.set(mobileMenuRef.current, { xPercent: 100, autoAlpha: 0 });
+    gsap.set(mobileMenuOverlayRef.current, { autoAlpha: 0 });
+    
+    menuTimeline.current = gsap.timeline({
+      paused: true,
+      onStart: () => { document.body.style.overflow = 'hidden'; },
+      onReverseComplete: () => { document.body.style.overflow = 'auto'; }
+    });
+
+    menuTimeline.current
+      .to(mobileMenuOverlayRef.current, { autoAlpha: 1, duration: 0.2 })
+      .to(mobileMenuRef.current, { xPercent: 0, autoAlpha: 1, duration: 0.4, ease: 'power3.out' }, "-=0.1")
+      .fromTo('.mobile-menu-item', { opacity: 0, y: 20, }, {
+        opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: 'power2.out'
+      }, "-=0.2");
+  }, []);
+
   React.useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      gsap.to('.mobile-menu', { autoAlpha: 1, duration: 0.3 });
-      gsap.from('.mobile-menu-item', {
-        y: 30,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.5,
-        delay: 0.2
-      });
+      menuTimeline.current?.play();
     } else {
-      gsap.to('.mobile-menu', { autoAlpha: 0, duration: 0.3, onComplete: () => {
-        document.body.style.overflow = 'auto';
-      }});
+      menuTimeline.current?.reverse();
     }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
   }, [isMobileMenuOpen]);
 
   const handleLinkClick = () => {
@@ -84,13 +94,18 @@ export function Header() {
           </Link>
           
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary">
-                <Link href={link.href}>{link.label}</Link>
+              <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary relative group/nav-link overflow-hidden">
+                <Link href={link.href}>
+                  {link.label}
+                  <span className="absolute bottom-1.5 left-0 h-0.5 w-full bg-primary transform scale-x-0 group-hover/nav-link:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                </Link>
               </Button>
             ))}
-            <ThemeToggle />
+            <div className="ml-2">
+              <ThemeToggle />
+            </div>
           </nav>
 
           {/* Mobile Nav Trigger */}
@@ -103,27 +118,35 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
-      <div className={cn(
-          "mobile-menu fixed inset-0 z-[100] bg-background/95 backdrop-blur-lg md:hidden invisible"
+      {/* Mobile Menu */}
+      <div 
+        ref={mobileMenuOverlayRef}
+        onClick={handleLinkClick}
+        className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm md:hidden"
+      />
+      <div 
+        ref={mobileMenuRef}
+        className={cn(
+          "fixed top-0 right-0 z-[110] h-full w-4/5 max-w-[320px] bg-background/95 backdrop-blur-lg border-l border-border md:hidden",
+          "invisible" // initially hidden
       )}>
-        <div className="container mx-auto flex h-20 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2.5" onClick={handleLinkClick}>
-                <Code weight="bold" className="h-8 w-8 text-accent" />
-                <span className="text-xl font-bold text-foreground">{resumeData.name}</span>
-            </Link>
-            <Button onClick={() => setIsMobileMenuOpen(false)} variant="ghost" size="icon">
-                <X className="h-7 w-7" />
-                <span className="sr-only">Close menu</span>
-            </Button>
+        <div className="flex items-center justify-between p-4 border-b border-border h-20">
+          <Link href="/" className="flex items-center gap-2.5" onClick={handleLinkClick}>
+              <Code weight="bold" className="h-7 w-7 text-accent" />
+          </Link>
+          <Button onClick={() => setIsMobileMenuOpen(false)} variant="ghost" size="icon">
+              <X className="h-7 w-7" />
+              <span className="sr-only">Close menu</span>
+          </Button>
         </div>
-        <nav className="flex flex-col items-center justify-center gap-8 mt-16">
+        <nav className="flex flex-col gap-6 p-8">
             {navLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={handleLinkClick} className="mobile-menu-item text-3xl font-semibold text-foreground hover:text-primary transition-colors">
+                <a key={link.href} href={link.href} onClick={handleLinkClick} className="mobile-menu-item text-2xl font-semibold text-foreground hover:text-primary transition-colors">
                     {link.label}
                 </a>
             ))}
-            <div className="mobile-menu-item mt-8">
+            <div className="mobile-menu-item mt-8 border-t border-border pt-8 flex flex-col items-start gap-4">
+               <span className="text-sm text-muted-foreground">Theme</span>
                <ThemeToggle />
             </div>
         </nav>
