@@ -7,6 +7,7 @@ import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useTheme } from 'next-themes';
+import { TypewriterEffect } from '@/components/ui/typewriter-effect';
 
 // Helper to parse HSL strings (e.g., "255 85% 65%") into numbers
 const parseHsl = (hsl: string): [number, number, number] | null => {
@@ -20,6 +21,14 @@ export function HeroSection() {
   const component = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { resolvedTheme } = useTheme();
+
+  const typewriterWords = [
+    { text: "I" },
+    { text: "build" },
+    { text: "modern" },
+    { text: "web" },
+    { text: "applications.", className: "text-primary" },
+  ];
 
   // Animation for the Gemini-style canvas background
   useEffect(() => {
@@ -124,15 +133,16 @@ export function HeroSection() {
 
   // GSAP animations for the text and CTA
   useEffect(() => {
-    gsap.set(".hero-title-line", { y: "100%" });
+    gsap.set(".hero-title-line", { y: "100%", opacity: 0 });
     gsap.set(".hero-cta", { opacity: 0, scale: 0.8 });
     
     const tl = gsap.timeline({ delay: 0.5 });
     tl.to(".hero-title-line", {
       y: "0%",
+      opacity: 1,
       duration: 1,
       ease: "power4.out",
-      stagger: 0.15,
+      stagger: 0.2,
     }).to(".hero-cta", {
       opacity: 1,
       scale: 1,
@@ -160,9 +170,9 @@ export function HeroSection() {
         <h1 className="text-5xl md:text-7xl font-bold text-white overflow-hidden py-2">
             <div className="hero-title-line inline-block">{renderHeadline()}</div>
         </h1>
-        <h2 className="text-3xl md:text-5xl font-medium text-foreground overflow-hidden py-1">
-          <div className="hero-title-line inline-block">{resumeData.title}</div>
-        </h2>
+        <div className="hero-title-line mt-4 h-[4rem] md:h-[5rem]">
+            <TypewriterEffect words={typewriterWords} />
+        </div>
         <div className="hero-cta mt-10">
             <Button
               size="lg"
