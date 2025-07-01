@@ -45,11 +45,12 @@ const GraphQLIcon = () => (
 );
 
 const TypeScriptIcon = () => (
-    <svg role="img" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
-      <rect width="48" height="48" rx="8" fill="#3178C6" />
-      <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold" fontFamily="monospace, sans-serif">TS</text>
+    <svg role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
+      <rect width="100" height="100" rx="8" fill="#3178C6" />
+      <path d="M26.4,33.4h19.2v4.8H31.2v11.2h13.6v4.8H31.2v16.4h14.8v4.8H26.4V33.4z M52.4,33.4h12.8l-5.6,22.8l-5.6,22.4h-4.8l9.6-38.4 h11.2l-5.6,22.8l-5.6,22.4h4.8l9.6-38.4H52.4z" fill="white" />
     </svg>
 );
+
 
 const PostgreSqlIcon = () => (
     <svg role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="#336791">
@@ -58,9 +59,9 @@ const PostgreSqlIcon = () => (
 );
 
 const TailwindIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="h-10 w-10">
-    <path fill="#06B6D4" d="M16 4.571a11.429 11.429 0 100 22.858 11.429 11.429 0 000-22.858zm0 20.572a9.143 9.143 0 110-18.286 9.143 9.143 0 010 18.286zM27.429 4.571A11.429 11.429 0 1016 16a11.429 11.429 0 0011.429-11.429zm-11.43 13.714a2.286 2.286 0 110-4.571 2.286 2.286 0 010 4.57z"/>
-  </svg>
+    <svg fill="#38bdf8" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
+        <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.24 11.38c-.53 1.22-1.88 1.88-3.32 1.88-1.78 0-2.8-1.07-3.48-2.1-1.38-2.07-2.73-4.1-4.1-6.17.53-1.22 1.88-1.88 3.32-1.88 1.78 0 2.8 1.07 3.48 2.1 1.38 2.07 2.73 4.1 4.1 6.17zm-4.24-2.2c.45 0 .8-.35.8-.8s-.35-.8-.8-.8-.8.35-.8.8.35.8.8.8z"></path>
+    </svg>
 );
 
 
