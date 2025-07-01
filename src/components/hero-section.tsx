@@ -8,29 +8,47 @@ import { gsap } from 'gsap';
 
 export function HeroSection() {
   const component = useRef(null);
+  const splineRef = useRef(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
+      gsap.set('.hero-content > *', { autoAlpha: 0 });
+      gsap.set(splineRef.current, { autoAlpha: 0, scale: 0.9 });
+
       const tl = gsap.timeline({
+        delay: 2.5, // Wait for preloader to finish
         defaults: { ease: 'power3.out', duration: 1 }
       });
 
-      gsap.set('.spline-container', { autoAlpha: 0, x: 100 });
-      gsap.set('.hero-content > *', { autoAlpha: 0, y: 50, filter: 'blur(10px)' });
-
-      tl.to('.spline-container', {
+      tl.to(splineRef.current, {
         autoAlpha: 1,
-        x: 0,
+        scale: 1,
         duration: 1.5,
-        delay: 2.5 // Wait for preloader
       })
-      .to('.hero-content > *', {
-        autoAlpha: 1,
+      .fromTo('.hero-word', { 
+        y: 40,
+        filter: 'blur(10px)',
+        autoAlpha: 0,
+      }, {
         y: 0,
         filter: 'blur(0px)',
-        stagger: 0.2,
-        duration: 1
-      }, "-=1");
+        autoAlpha: 1,
+        stagger: 0.1,
+      }, "-=1")
+      .fromTo('.hero-subtitle', { 
+        y: 30,
+        autoAlpha: 0,
+      }, {
+        y: 0,
+        autoAlpha: 1,
+      }, "-=0.7")
+      .fromTo('.hero-cta', {
+        scale: 0.8,
+        autoAlpha: 0,
+      }, {
+        scale: 1,
+        autoAlpha: 1,
+      }, "-=0.8");
 
     }, component);
     return () => ctx.revert();
@@ -42,14 +60,23 @@ export function HeroSection() {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  
+  const renderHeadline = () => {
+    const words = `Hi, I’m ${resumeData.name}`.split(' ');
+    return words.map((word, index) => (
+      <span key={index} className="hero-word inline-block mr-[0.25em] last:mr-0">
+        {word === resumeData.name ? <span className="text-glow-accent text-accent">{word}</span> : word}
+      </span>
+    ));
+  };
 
   return (
     <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* Spline Background */}
-      <div className="spline-container absolute inset-0 z-0 opacity-0">
-         <iframe 
-          src="https://my.spline.design/3dglassmorphismroom-8cdc7b31b9f6e6f2e5f8c88d5e4b7a34/" 
-          width="100%" 
+      {/* Spline 3D Background */}
+      <div className="absolute inset-0 z-0 opacity-100" ref={splineRef}>
+         <iframe
+          src="https://my.spline.design/3dglassmorphismroom-8cdc7b31b9f6e6f2e5f8c88d5e4b7a34/"
+          width="100%"
           height="100%"
           className="w-full h-full"
           frameBorder="0"
@@ -65,19 +92,13 @@ export function HeroSection() {
       
       <div className="relative z-10 container mx-auto text-center">
         <div className="hero-content max-w-3xl mx-auto">
-          <h1 
-            className="text-5xl md:text-7xl font-bold text-white"
-          >
-            Hi, I’m <span className="text-glow-accent text-accent">{resumeData.name}</span>
+          <h1 className="text-5xl md:text-7xl font-bold text-white">
+            {renderHeadline()}
           </h1>
-          <h2 
-            className="mt-4 text-3xl md:text-5xl font-medium text-foreground"
-          >
+          <h2 className="hero-subtitle mt-4 text-3xl md:text-5xl font-medium text-foreground">
             {resumeData.title}
           </h2>
-          <div
-            className="mt-10"
-          >
+          <div className="hero-cta mt-10">
             <Button
               size="lg"
               onClick={handleContactClick}
