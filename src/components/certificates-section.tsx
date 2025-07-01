@@ -61,9 +61,9 @@ export function CertificatesSection() {
                             
                             {cert.credentialUrl && cert.credentialUrl !== '#' && (
                                 <div className="mt-auto">
-                                    <Button asChild variant="link" className="p-0 h-auto text-accent self-start">
+                                    <Button asChild variant="outline" size="sm" className="self-start border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
                                         <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
-                                            View Credential <ExternalLink className="ml-2 h-4 w-4" />
+                                            View Credential <ExternalLink className="ml-1.5 h-4 w-4" />
                                         </a>
                                     </Button>
                                 </div>
