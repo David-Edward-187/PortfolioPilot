@@ -6,14 +6,21 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { Hero3DScene } from './hero-3d-scene';
+import dynamic from 'next/dynamic';
+
+const Hero3DScene = dynamic(
+  () => import('./hero-3d-scene').then((mod) => mod.Hero3DScene),
+  { 
+    ssr: false,
+    loading: () => <div className="absolute inset-0 z-0 bg-background" />
+  }
+);
+
 
 export function HeroSection() {
   const component = useRef(null);
-  const [isMounted, setIsMounted] = React.useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     let ctx = gsap.context(() => {
       gsap.set('.hero-content > *', { autoAlpha: 0 });
 
@@ -31,7 +38,7 @@ export function HeroSection() {
         filter: 'blur(0px)',
         autoAlpha: 1,
         stagger: 0.1,
-      }, 0.5) // Start slightly after scene appears
+      }, 0.5) 
       .fromTo('.hero-subtitle', { 
         y: 30,
         autoAlpha: 0,
@@ -72,7 +79,7 @@ export function HeroSection() {
   return (
     <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* 3D Background */}
-      {isMounted && <Hero3DScene />}
+      <Hero3DScene />
       
       {/* Floating Orbs - Kept for extra depth */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
