@@ -1,13 +1,10 @@
 "use client";
 
-import dynamic from 'next/dynamic';
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-
-const Spline = dynamic(() => import('@splinetool/react-spline'), { ssr: false });
 
 export function HeroSection() {
   const component = useRef(null);
@@ -50,8 +47,12 @@ export function HeroSection() {
     <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* Spline Background */}
       <div className="spline-container absolute inset-0 z-0 opacity-0">
-         <Spline
-          scene="https://prod.spline.design/Zif2r2J9j2Yy-dAL/scene.splinecode" 
+        <iframe 
+          src="https://my.spline.design/3dglassmorphismroom-8cdc7b31b9f6e6f2e5f8c88d5e4b7a34/" 
+          width="100%" 
+          height="100%"
+          className="w-full h-full"
+          frameBorder="0"
         />
         <div className="absolute inset-0 bg-background/20 backdrop-blur-sm"></div>
       </div>
