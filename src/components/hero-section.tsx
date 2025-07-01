@@ -167,7 +167,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-10 bg-gradient-radial from-transparent via-background/60 to-background"></div>
       
       <div className="relative z-20 container mx-auto text-center">
-        <h1 className="text-5xl md:text-7xl font-bold text-white overflow-hidden py-2">
+        <h1 className="text-5xl md:text-7xl font-bold text-foreground overflow-hidden py-2">
             <div className="hero-title-line inline-block">{renderHeadline()}</div>
         </h1>
         <div className="hero-title-line mt-4 h-[4rem] md:h-[5rem]">
