@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -112,7 +113,7 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
             onMouseLeave={() => setHovered(false)}
             className={cn(
                 "border border-border/20 group/canvas-card flex items-center justify-center",
-                "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-2xl",
+                "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-3xl",
                 className
             )}
         >
@@ -125,7 +126,7 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
                     >
                         <CanvasRevealEffect
                             animationSpeed={5}
-                            containerClassName="bg-transparent rounded-2xl"
+                            containerClassName="bg-transparent rounded-3xl"
                             colors={[[187, 107, 255], [0, 255, 200]]} // Primary & Accent as RGB
                             dotSize={2}
                         />
@@ -146,7 +147,7 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
             </div>
         </div>
     );
-}
+};
 
 export function SkillsSection() {
     const skills = {
