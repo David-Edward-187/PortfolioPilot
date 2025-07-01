@@ -60,36 +60,42 @@ export const resumeData: ResumeData = {
       description: ["A futuristic dashboard UI with real-time data visualization and complex interactions."],
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
       link: "#",
+      githubUrl: "#",
     },
     {
       name: "Project Beta",
       description: ["An innovative e-commerce platform with a focus on immersive 3D product previews."],
       technologies: ["React", "Spline", "Stripe", "Firebase"],
       link: "#",
+      githubUrl: "#",
     },
     {
       name: "Project Gamma",
       description: ["A crypto trading interface designed for speed, clarity, and advanced charting."],
       technologies: ["React", "WebSockets", "Canvas API"],
       link: "#",
+      githubUrl: "#",
     },
     {
       name: "Project Delta",
       description: ["An AI-powered content generation application with a sleek, minimalist user interface."],
       technologies: ["Next.js", "OpenAI API", "Vercel"],
       link: "#",
+      githubUrl: "#",
     },
     {
       name: "Project Epsilon",
       description: ["An interactive data visualization tool for analyzing large datasets with custom filters."],
       technologies: ["D3.js", "React", "Node.js"],
       link: "#",
+      githubUrl: "#",
     },
     {
       name: "Project Zeta",
       description: ["A personal portfolio showcasing advanced animations and a unique design aesthetic."],
       technologies: ["Next.js", "Tailwind CSS", "Spline"],
       link: "#",
+      githubUrl: "#",
     }
   ],
   certificates: [

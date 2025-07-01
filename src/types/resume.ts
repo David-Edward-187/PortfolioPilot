@@ -24,6 +24,7 @@ export interface ProjectEntry {
   description: string[];
   technologies?: string[];
   link: string;
+  githubUrl?: string;
 }
 
 export interface CertificateEntry {

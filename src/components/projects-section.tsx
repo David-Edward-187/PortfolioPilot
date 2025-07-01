@@ -7,6 +7,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import * as React from 'react';
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { GithubLogo } from "@phosphor-icons/react/dist/ssr";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,18 +37,36 @@ export function ProjectsSection() {
   const projectsForHoverEffect = resumeData.projects.map(project => ({
     title: project.name,
     description: (
-      <>
-        <p>{project.description[0]}</p>
-        {project.technologies && project.technologies.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {project.technologies.map(tech => (
-              <Badge key={tech} variant="secondary">
-                {tech}
-              </Badge>
-            ))}
+      <div className="flex flex-col justify-between h-full">
+        <div>
+          <p>{project.description[0]}</p>
+          {project.technologies && project.technologies.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {project.technologies.map(tech => (
+                <Badge key={tech} variant="secondary">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </div>
+        {project.githubUrl && (
+          <div className="mt-6">
+            <Button asChild variant="link" className="p-0 h-auto text-sm text-muted-foreground hover:text-primary">
+              <a 
+                href={project.githubUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center"
+              >
+                <GithubLogo className="mr-1.5 h-4 w-4" />
+                View on GitHub
+              </a>
+            </Button>
           </div>
         )}
-      </>
+      </div>
     ),
     link: project.link,
   }));
