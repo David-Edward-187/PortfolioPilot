@@ -6,66 +6,47 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export function ExperienceSection() {
-    const ref = useRef<HTMLDivElement>(null);
+    // Ref for the container that will be the scroll target
+    const scrollTargetRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end start"],
+        target: scrollTargetRef,
+        offset: ["start center", "end center"], // Trigger animation as it passes the center
     });
 
+    // Ref for the content container to measure its height
     const contentRef = useRef<HTMLDivElement>(null);
-    const [svgHeight, setSvgHeight] = useState(0);
+    const [contentHeight, setContentHeight] = useState(0);
 
+    // Effect to measure and update the height of the content
     useEffect(() => {
-        // Function to update SVG height based on content
-        const updateSvgHeight = () => {
-            if (contentRef.current) {
-                setSvgHeight(contentRef.current.offsetHeight);
-            }
-        };
+        const contentElement = contentRef.current;
+        if (!contentElement) return;
 
-        // Initial measurement
-        updateSvgHeight();
+        // Use ResizeObserver for efficient monitoring of element size changes
+        const resizeObserver = new ResizeObserver(() => {
+            setContentHeight(contentElement.offsetHeight);
+        });
 
-        // Re-measure on window resize
-        window.addEventListener("resize", updateSvgHeight);
-
-        // Use MutationObserver to watch for content changes that might affect height
-        const observer = new MutationObserver(updateSvgHeight);
-        if (contentRef.current) {
-            observer.observe(contentRef.current, { childList: true, subtree: true, characterData: true });
-        }
+        resizeObserver.observe(contentElement);
 
         return () => {
-            window.removeEventListener("resize", updateSvgHeight);
-            observer.disconnect();
+            resizeObserver.disconnect();
         };
     }, []);
 
-    // Spring-animated pathLength for the SVG line
+    // Create a spring-animated value for the path length for a smoother effect
     const pathLength = useSpring(
         useTransform(scrollYProgress, [0, 1], [0, 1]), 
-        { stiffness: 400, damping: 90 }
+        { stiffness: 300, damping: 50, restDelta: 0.001 }
     );
     
-    // Animate the top dot's properties based on scroll progress
-    const topDotBoxShadow = useTransform(
-        scrollYProgress,
-        [0, 0.05],
-        ["0 0 8px 2px hsl(var(--primary) / 0.6)", "0 0 0 0px hsl(var(--primary) / 0)"]
-    );
-    const topDotBg = useTransform(
-        scrollYProgress,
-        [0, 0.05],
-        ["hsl(var(--background))", "hsl(var(--primary))"]
-    );
-
     return (
         <section id="experience" className="py-20 md:py-24 bg-secondary">
             <div className="container mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16"
                 >
@@ -73,57 +54,53 @@ export function ExperienceSection() {
                     <p className="text-lg text-muted-foreground mt-2">My professional journey.</p>
                 </motion.div>
 
-                <div ref={ref} className="relative w-full max-w-3xl mx-auto h-full">
-                    {/* The animated SVG beam */}
-                    <div className="absolute left-4 top-1 h-full w-6 flex justify-center">
+                <div ref={scrollTargetRef} className="relative w-full max-w-3xl mx-auto">
+                    {/* The animated SVG timeline */}
+                    <motion.div 
+                        className="absolute left-4 top-0 h-full w-6 flex justify-center"
+                        style={{ height: contentHeight > 0 ? contentHeight : 'auto' }}
+                    >
                         <svg
-                            viewBox={`0 0 20 ${svgHeight}`}
+                            viewBox={`0 0 20 ${contentHeight}`}
                             width="20"
-                            height={svgHeight}
+                            height={contentHeight}
                             className="block"
                             aria-hidden="true"
                         >
-                            {/* Static background line */}
                             <path
-                                d={`M 10,0 V ${svgHeight}`}
+                                d={`M 10,0 V ${contentHeight}`}
                                 fill="none"
                                 stroke="hsl(var(--border))"
                                 strokeOpacity="0.3"
-                                strokeWidth="1"
+                                strokeWidth="2"
                             />
-                            {/* Animated foreground line */}
                             <motion.path
-                                d={`M 10,0 V ${svgHeight}`}
+                                d={`M 10,0 V ${contentHeight}`}
                                 fill="none"
                                 stroke="hsl(var(--primary))"
                                 strokeWidth="2"
                                 style={{ pathLength }}
-                                className="motion-reduce:hidden"
+                            />
+                             <motion.circle
+                                cx="10"
+                                cy={useTransform(pathLength, [0, 1], [0, contentHeight])}
+                                r="4"
+                                fill="hsl(var(--primary))"
                             />
                         </svg>
-                    </div>
+                    </motion.div>
 
-                    {/* Timeline content */}
-                    <div ref={contentRef} className="ml-12 md:ml-16 space-y-12">
+                    <div ref={contentRef} className="ml-12 md:ml-16 space-y-16 relative">
                         {resumeData.experience.map((item, index) => (
                             <motion.div 
                                 key={`content-${index}`} 
-                                className="relative"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                className="relative pl-4"
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.5 }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 * index }}
                             >
-                                {/* Dot on the timeline */}
-                                <div className="absolute -left-[calc(3.5rem)] md:-left-[calc(4.5rem)] top-1">
-                                    {index === 0 ? (
-                                         <motion.div style={{boxShadow: topDotBoxShadow}} className="h-4 w-4 rounded-full border-2 border-primary flex items-center justify-center">
-                                            <motion.div style={{backgroundColor: topDotBg}} className="h-2 w-2 rounded-full" />
-                                         </motion.div>
-                                    ) : (
-                                        <div className="h-3 w-3 rounded-full bg-secondary border-2 border-primary" />
-                                    )}
-                                </div>
+                                <div className="absolute -left-4 top-1 h-3 w-3 rounded-full bg-secondary border-2 border-primary" />
                                 
                                 <p className="text-sm font-semibold text-muted-foreground mb-1">{item.years}</p>
                                 <h3 className="text-xl font-bold text-primary mb-1">{item.role}</h3>
