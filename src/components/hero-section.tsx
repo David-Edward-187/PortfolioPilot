@@ -1,31 +1,28 @@
+
 "use client";
 
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { Hero3DScene } from './hero-3d-scene';
 
 export function HeroSection() {
   const component = useRef(null);
-  const splineRef = useRef(null);
+  const [isMounted, setIsMounted] = React.useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     let ctx = gsap.context(() => {
       gsap.set('.hero-content > *', { autoAlpha: 0 });
-      gsap.set(splineRef.current, { autoAlpha: 0, scale: 0.9 });
 
       const tl = gsap.timeline({
         delay: 2.5, // Wait for preloader to finish
         defaults: { ease: 'power3.out', duration: 1 }
       });
 
-      tl.to(splineRef.current, {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 1.5,
-      })
-      .fromTo('.hero-word', { 
+      tl.fromTo('.hero-word', { 
         y: 40,
         filter: 'blur(10px)',
         autoAlpha: 0,
@@ -34,7 +31,7 @@ export function HeroSection() {
         filter: 'blur(0px)',
         autoAlpha: 1,
         stagger: 0.1,
-      }, "-=1")
+      }, 0.5) // Start slightly after scene appears
       .fromTo('.hero-subtitle', { 
         y: 30,
         autoAlpha: 0,
@@ -62,32 +59,25 @@ export function HeroSection() {
   };
   
   const renderHeadline = () => {
-    const words = `Hi, I’m ${resumeData.name}`.split(' ');
+    const nameParts = resumeData.name.split(' ');
+    const nameFirst = nameParts[0];
+    const words = `Hi, I’m ${nameFirst}`.split(' ');
     return words.map((word, index) => (
       <span key={index} className="hero-word inline-block mr-[0.25em] last:mr-0">
-        {word === resumeData.name ? <span className="text-glow-accent text-accent">{word}</span> : word}
+        {word === nameFirst ? <span className="text-glow-accent text-accent">{word}</span> : word}
       </span>
     ));
   };
 
   return (
     <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* Spline 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-100" ref={splineRef}>
-         <iframe
-          src="https://my.spline.design/3dglassmorphismroom-8cdc7b31b9f6e6f2e5f8c88d5e4b7a34/"
-          width="100%"
-          height="100%"
-          className="w-full h-full"
-          frameBorder="0"
-        />
-        <div className="absolute inset-0 bg-background/20 backdrop-blur-sm"></div>
-      </div>
+      {/* 3D Background */}
+      {isMounted && <Hero3DScene />}
       
-      {/* Floating Orbs */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-accent/20 rounded-full blur-3xl animate-float-delay"></div>
+      {/* Floating Orbs - Kept for extra depth */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/10 rounded-full blur-3xl animate-float-delay"></div>
       </div>
       
       <div className="relative z-10 container mx-auto text-center">
