@@ -12,6 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
     const component = useRef(null);
+    const repositoryName = 'portfolio-pilot';
+    const repositoryUrl = `${resumeData.contact.github}/${repositoryName}`;
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -75,9 +77,14 @@ export function Footer() {
                     </a>
                 ))}
             </div>
-            <p className="footer-item text-xs text-muted-foreground">
-                &copy; {new Date().getFullYear()} {resumeData.name}. All Rights Reserved.
-            </p>
+            <div className="footer-item text-xs text-muted-foreground flex justify-center items-center gap-2">
+                <span>&copy; {new Date().getFullYear()} {resumeData.name}. All Rights Reserved.</span>
+                <span className="text-muted-foreground/50">|</span>
+                <a href={repositoryUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
+                    <GithubLogo size={14} weight="fill" />
+                    <span>View Source</span>
+                </a>
+            </div>
         </div>
     </footer>
   );
