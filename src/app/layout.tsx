@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -8,8 +8,8 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { resumeData } from '@/data/resume';
 
-const poppins = Poppins({
-  variable: '--font-poppins',
+const montserrat = Montserrat({
+  variable: '--font-montserrat',
   subsets: ['latin'],
   display: 'swap',
   weight: ['400', '500', '600', '700'],
@@ -30,7 +30,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
       </head>
-      <body className={`${poppins.variable} antialiased bg-background text-foreground`}>
+      <body className={`${montserrat.variable} antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system" 
