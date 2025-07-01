@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
-import { Preloader } from '@/components/preloader';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { resumeData } from '@/data/resume';
@@ -37,7 +36,6 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Preloader />
           <Header />
           <main className="relative z-10">
             {children}
