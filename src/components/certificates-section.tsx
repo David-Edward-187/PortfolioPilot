@@ -3,7 +3,6 @@
 
 import { resumeData } from '@/data/resume';
 import { Award, ExternalLink } from 'lucide-react';
-import { Button } from './ui/button';
 import { WobbleCard } from '@/components/ui/wobble-card';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -46,31 +45,42 @@ export function CertificatesSection() {
                 <p className="text-lg text-muted-foreground mt-2">My professional credentials with an interactive wobble.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                {resumeData.certificates.map((cert, index) => (
-                    <WobbleCard key={index} containerClassName="h-full">
-                        <div className="flex flex-col justify-between h-full">
-                             <div className="flex items-start gap-4 mb-4">
-                                <Award className="h-10 w-10 text-accent flex-shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-1">{cert.name}</h3>
-                                    <p className="text-sm text-muted-foreground">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
+                {resumeData.certificates.map((cert, index) => {
+                    const isClickable = cert.credentialUrl && cert.credentialUrl !== '#';
+                    const Component = isClickable ? 'a' : 'div';
+                    const props = isClickable 
+                        ? { 
+                            href: cert.credentialUrl!, 
+                            target: '_blank', 
+                            rel: 'noopener noreferrer',
+                            className: 'block focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-2xl',
+                            'aria-label': `View certificate for ${cert.name}`
+                          } 
+                        : {};
+
+                    return (
+                        <Component key={index} {...props}>
+                            <WobbleCard containerClassName="h-full group">
+                                <div className="flex flex-col justify-between h-full">
+                                    <div className="flex justify-between items-start">
+                                        <div className="flex items-start gap-4 mb-4">
+                                            <Award className="h-10 w-10 text-accent flex-shrink-0 mt-1" />
+                                            <div>
+                                                <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-1">{cert.name}</h3>
+                                                <p className="text-sm text-muted-foreground">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
+                                            </div>
+                                        </div>
+                                        {isClickable && (
+                                            <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                        )}
+                                    </div>
+                                    
+                                    {cert.description && <p className="text-base text-foreground/80 leading-relaxed flex-grow">{cert.description}</p>}
                                 </div>
-                            </div>
-                            
-                            {cert.description && <p className="text-base text-foreground/80 leading-relaxed mb-6 flex-grow">{cert.description}</p>}
-                            
-                            {cert.credentialUrl && cert.credentialUrl !== '#' && (
-                                <div className="mt-auto">
-                                    <Button asChild variant="outline" size="sm" className="self-start border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-                                        <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
-                                            View Credential <ExternalLink className="ml-1.5 h-4 w-4" />
-                                        </a>
-                                    </Button>
-                                </div>
-                            )}
-                        </div>
-                    </WobbleCard>
-                ))}
+                            </WobbleCard>
+                        </Component>
+                    );
+                })}
             </div>
         </div>
     </section>
