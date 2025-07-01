@@ -4,28 +4,26 @@
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import dynamic from 'next/dynamic';
-
-const Hero3DScene = dynamic(
-  () => import('./hero-3d-scene').then((mod) => mod.Hero3DScene),
-  { 
-    ssr: false,
-    loading: () => <div className="absolute inset-0 z-0 bg-background" />
-  }
-);
-
+import { Hero3DScene } from '@/components/hero-3d-scene';
 
 export function HeroSection() {
   const component = useRef(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     let ctx = gsap.context(() => {
       gsap.set('.hero-content > *', { autoAlpha: 0 });
 
       const tl = gsap.timeline({
-        delay: 2.5, // Wait for preloader to finish
+        delay: 0.5,
         defaults: { ease: 'power3.out', duration: 1 }
       });
 
@@ -55,8 +53,9 @@ export function HeroSection() {
       }, "-=0.8");
 
     }, component);
+    
     return () => ctx.revert();
-  }, []);
+  }, [isMounted]);
 
   const handleContactClick = () => {
     const contactSection = document.getElementById('contact');
@@ -78,13 +77,13 @@ export function HeroSection() {
 
   return (
     <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
-      <Hero3DScene />
       
-      {/* Floating Orbs - Kept for extra depth */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/10 rounded-full blur-3xl animate-float-delay"></div>
+      <div className="absolute inset-0 z-0">
+        {isMounted ? (
+          <Hero3DScene />
+        ) : (
+          <div className="absolute inset-0 z-0 bg-background"></div>
+        )}
       </div>
       
       <div className="relative z-10 container mx-auto text-center">
