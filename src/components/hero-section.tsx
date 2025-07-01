@@ -4,30 +4,27 @@
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { Hero3DScene } from '@/components/hero-3d-scene';
 
 export function HeroSection() {
   const component = useRef(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
     let ctx = gsap.context(() => {
       gsap.set('.hero-content > *', { autoAlpha: 0 });
+      gsap.set('.spline-container', { autoAlpha: 0 });
 
       const tl = gsap.timeline({
         delay: 0.5,
         defaults: { ease: 'power3.out', duration: 1 }
       });
 
-      tl.fromTo('.hero-word', { 
+      tl.to('.spline-container', {
+        autoAlpha: 1,
+        duration: 1.5
+      }, 0)
+      .fromTo('.hero-word', { 
         y: 40,
         filter: 'blur(10px)',
         autoAlpha: 0,
@@ -55,7 +52,7 @@ export function HeroSection() {
     }, component);
     
     return () => ctx.revert();
-  }, [isMounted]);
+  }, []);
 
   const handleContactClick = () => {
     const contactSection = document.getElementById('contact');
@@ -78,12 +75,16 @@ export function HeroSection() {
   return (
     <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       
-      <div className="absolute inset-0 z-0">
-        {isMounted ? (
-          <Hero3DScene />
-        ) : (
-          <div className="absolute inset-0 z-0 bg-background"></div>
-        )}
+      {/* Spline 3D Background */}
+      <div className="spline-container absolute inset-0 z-0">
+          <iframe 
+            src="https://my.spline.design/purpleparticles-7e51c8a4c330e7136f0b093c78d5305c/" 
+            width="100%" 
+            height="100%"
+            className="w-full h-full"
+            frameBorder="0"
+          />
+         <div className="absolute inset-0 bg-background/20 backdrop-blur-sm"></div>
       </div>
       
       <div className="relative z-10 container mx-auto text-center">
