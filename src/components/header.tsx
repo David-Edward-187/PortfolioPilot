@@ -99,7 +99,7 @@ export function Header() {
               <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary relative group/nav-link overflow-hidden">
                 <Link href={link.href}>
                   {link.label}
-                  <span className="absolute bottom-1.5 left-0 h-0.5 w-full bg-primary transform scale-x-0 group-hover/nav-link:scale-x-100 transition-transform duration-300 ease-out origin-center"></span>
+                  <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-0.5 w-2/3 bg-primary transform scale-x-0 group-hover/nav-link:scale-x-100 transition-transform duration-300 ease-out"></span>
                 </Link>
               </Button>
             ))}
