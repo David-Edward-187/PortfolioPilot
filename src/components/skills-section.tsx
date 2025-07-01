@@ -1,7 +1,7 @@
-
 "use client";
 
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useTheme } from 'next-themes';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -107,6 +107,15 @@ const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
 const SkillCard = ({ skill, className }: { skill: string, className?: string }) => {
     const [hovered, setHovered] = React.useState(false);
     const { icon, color } = iconMap[skill] || { icon: <FontAwesomeIcon icon={faCode} className="h-8 w-8" />, color: "hsl(var(--accent))" };
+    const { resolvedTheme } = useTheme();
+
+    const colors = useMemo(() => {
+        if (resolvedTheme === 'dark') {
+            return [[187, 107, 255], [0, 255, 200]]; // Vibrant Purple, Teal for dark mode
+        }
+        // Softer, theme-aligned colors for light mode
+        return [[125, 77, 255], [20, 184, 166]]; // Primary, Accent from light theme
+    }, [resolvedTheme]);
 
     return (
         <div
@@ -128,7 +137,7 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
                         <CanvasRevealEffect
                             animationSpeed={5}
                             containerClassName="bg-transparent rounded-3xl"
-                            colors={[[187, 107, 255], [0, 255, 200]]} // Primary & Accent as RGB
+                            colors={colors}
                             dotSize={2}
                         />
                     </motion.div>
@@ -136,15 +145,14 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
             </AnimatePresence>
 
             <div className="relative z-20 flex flex-col items-center justify-center h-full text-center transition-all duration-200">
-                {/* Icon visible by default, hidden on hover */}
-                <div className="text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0" style={{ color }}>
-                    {icon}
-                </div>
-                
                 {/* Text revealed on hover */}
                 <h2 className="text-white text-center text-lg sm:text-xl font-bold opacity-0 group-hover/canvas-card:opacity-100 relative z-20 transition-opacity duration-200">
                     {skill}
                 </h2>
+                {/* Icon visible by default, hidden on hover */}
+                <div className="text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0" style={{ color }}>
+                    {icon}
+                </div>
             </div>
         </div>
     );
