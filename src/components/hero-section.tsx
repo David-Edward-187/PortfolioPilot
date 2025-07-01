@@ -47,7 +47,7 @@ export function HeroSection() {
     <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* Spline Background */}
       <div className="spline-container absolute inset-0 z-0 opacity-0">
-        <iframe 
+         <iframe 
           src="https://my.spline.design/3dglassmorphismroom-8cdc7b31b9f6e6f2e5f8c88d5e4b7a34/" 
           width="100%" 
           height="100%"
