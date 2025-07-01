@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,34 +19,34 @@ html {
 
 @layer base {
   :root {
-    /* Futuristic Dark Theme - Refined based on new prompt */
-    --background: 224 80% 5%;    /* #030815 - Deeper Dark Blue */
-    --foreground: 220 20% 90%;    /* #dce1e9 - Light Grayish Blue */
+    /* Light Theme */
+    --background: 220 30% 98%;    /* #f7f9fc - Very Light Cool Gray */
+    --foreground: 220 20% 10%;    /* #16171a - Near Black */
     
-    --card: 224 50% 12%;           /* #0f172a - Dark Slate Blue */
-    --card-foreground: 220 20% 90%; 
+    --card: 0 0% 100%;             /* #ffffff - White */
+    --card-foreground: 220 20% 10%; 
     
-    --popover: 224 71% 4%;         
-    --popover-foreground: 220 20% 90%; 
+    --popover: 0 0% 100%;         
+    --popover-foreground: 220 20% 10%; 
     
-    --primary: 255 85% 65%;     /* #bb6bff - More vibrant purple */
+    --primary: 255 80% 60%;       /* #7d4dff - Vibrant Purple (slightly darker for contrast) */
     --primary-foreground: 0 0% 100%; /* White */
     
-    --secondary: 220 40% 20%;    /* #26314a - Muted Dark Blue */
-    --secondary-foreground: 220 15% 75%; /* #b1b8c5 - Muted Light Gray */
+    --secondary: 220 25% 92%;      /* #e4e7ec - Light Gray */
+    --secondary-foreground: 220 10% 25%; /* #3a3d42 - Dark Gray */
     
-    --muted: 220 40% 15%;        /* #1c2539 - Darker Muted */
-    --muted-foreground: 220 15% 55%;  /* #7c8596 - Muted Gray */
+    --muted: 220 30% 95%;          /* #eff1f5 - Lighter Muted Gray */
+    --muted-foreground: 220 10% 45%;  /* #6a6e75 - Muted Gray */
     
-    --accent: 185 100% 50%;     /* #00ffc8 - Brighter, minty cyan */
-    --accent-foreground: 224 71% 4%;   /* Dark Blue for text on accent */
+    --accent: 185 85% 40%;       /* #14b8a6 - Teal (WCAG compliant on white) */
+    --accent-foreground: 0 0% 100%;   /* White for text on accent */
     
-    --destructive: 0 75% 55%;    
+    --destructive: 0 84% 60%;      /* #ff5252 - Bright Red */
     --destructive-foreground: 0 0% 100%; 
     
-    --border: 220 30% 25%;       /* #2e3a59 - Subtle Blue Border */
-    --input: 220 40% 10%;        /* #131a29 - Very Dark Input */
-    --ring: 185 100% 50%;          /* Accent Cyan for focus ring */
+    --border: 220 20% 88%;         /* #d8dbe0 - Subtle Gray Border */
+    --input: 220 20% 92%;          /* #e4e7ec - Light Gray Input */
+    --ring: 255 80% 60%;            /* Primary Purple for focus ring */
     
     --radius: 0.5rem;
 
@@ -57,7 +58,7 @@ html {
   }
 
   .dark {
-    /* Same as root for a dark-only theme */
+    /* Futuristic Dark Theme */
     --background: 224 80% 5%;
     --foreground: 220 20% 90%;
     --card: 224 50% 12%;
