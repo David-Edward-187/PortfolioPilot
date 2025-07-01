@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -9,8 +8,8 @@ import {
   faGitAlt, faDocker, faAws, faFigma
 } from '@fortawesome/free-brands-svg-icons';
 import { 
-  faDatabase, faServer, faCloud, faWind, faCode, faCube, 
-  faNetworkWired, faUsers, faSync, faPalette 
+  faDatabase, faServer, faCloud, faCode, faCube, 
+  faNetworkWired, faUsers, faSync
 } from '@fortawesome/free-solid-svg-icons';
 
 import { resumeData } from '@/data/resume';
@@ -44,12 +43,31 @@ const GraphQLIcon = () => (
     </svg>
 );
 
+const TypeScriptIcon = () => (
+    <svg role="img" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
+      <rect width="48" height="48" rx="8" fill="#3178C6" />
+      <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold" fontFamily="monospace, sans-serif">TS</text>
+    </svg>
+);
+
+const PostgreSqlIcon = () => (
+    <svg role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="#336791">
+        <path d="M78.2,85.5c-3.2-1.1-6.4,0-8.5,2.3c-2.1,2.3-1.9,5.6,0.5,7.5c2.4,1.9,5.7,1.9,8.1,0c2.4-1.9,3.2-5,1.6-7.1 C79.4,87.4,78.8,86.8,78.2,85.5L78.2,85.5z M66.3,95.2c-0.1-3.2,1.9-5.9,4.7-6.8c2.8-0.9,5.8,0.2,7.5,2.7c1.7,2.5,1.1,5.8-1.2,7.6 c-2.3,1.8-5.5,1.6-7.5-0.7C68,96.6,66.4,96,66.3,95.2z M82,73.5c-0.9-2.9-3.8-4.7-6.8-4.5c-3,0.2-5.5,2.5-5.9,5.5 c-0.4,3,1.6,5.9,4.5,6.5c3,0.6,6-1.1,7.1-4.1C82.1,75.9,82.4,74.7,82,73.5L82,73.5z M49.8,97.7c-2.7,0-5-2.2-5-5V50.1h-8.3v42.5 c0,2.8-2.2,5-5,5s-5-2.2-5-5V50.1h-8.3v42.5c0,2.8-2.2,5-5,5s-5-2.2-5-5V38.4h41.7v54.3C54.8,95.4,52.5,97.7,49.8,97.7z M83.3,38.4v13.3c-3.3-2.9-7.5-4.6-12-4.6c-9.2,0-16.7,7.5-16.7,16.7v33.9c0,2.8-2.2,5-5,5s-5-2.2-5-5V50.1H28v-10h41.7v-1.7 c0,0,0-0.1,0-0.1c0-4.6,3.1-8.5,7.5-9.7c0.2,0,0.3-0.1,0.5-0.1h0.1c0.1,0,0.2,0,0.3,0c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.2,0 c0.1,0,0.2,0,0.3-0.1c0.1,0,0.1,0,0.2,0c0.2,0,0.4,0,0.7,0c0,0,0,0,0.1,0c0.2,0,0.5,0,0.7,0c0,0,0.1,0,0.1,0c0.3,0,0.6,0,0.8,0.1 c0,0,0.1,0,0.1,0c0.2,0,0.5,0.1,0.7,0.1c0.1,0,0.1,0,0.2,0.1c0.2,0.1,0.4,0.1,0.6,0.2c0,0,0,0,0,0c4.1,1.5,6.9,5.4,6.9,9.9V38.4 H58.2v-10h33.4v10H83.3z M83.3,21.8c0,2.8-2.2,5-5,5H21.7c-2.8,0-5-2.2-5-5s2.2-5,5-5h56.6C81.1,16.8,83.3,19,83.3,21.8z" />
+    </svg>
+);
+
+const TailwindIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="h-10 w-10">
+    <path fill="#06B6D4" d="M16 4.571a11.429 11.429 0 100 22.858 11.429 11.429 0 000-22.858zm0 20.572a9.143 9.143 0 110-18.286 9.143 9.143 0 010 18.286zM27.429 4.571A11.429 11.429 0 1016 16a11.429 11.429 0 0011.429-11.429zm-11.43 13.714a2.286 2.286 0 110-4.571 2.286 2.286 0 010 4.57z"/>
+  </svg>
+);
+
 
 // Map skill names to Font Awesome icons and their brand colors
 const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
   // Languages
   "JavaScript (ES6+)": { icon: <FontAwesomeIcon icon={faJs} />, color: "#F7DF1E" },
-  "TypeScript": { icon: <span className="font-bold text-3xl">TS</span>, color: "#3178C6" },
+  "TypeScript": { icon: <TypeScriptIcon />, color: "#3178C6" },
   "HTML5": { icon: <FontAwesomeIcon icon={faHtml5} />, color: "#E34F26" },
   "CSS3": { icon: <FontAwesomeIcon icon={faCss3Alt} />, color: "#1572B6" },
   "Python": { icon: <FontAwesomeIcon icon={faPython} />, color: "#3776AB" },
@@ -59,12 +77,12 @@ const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
   "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "#FFFFFF" },
   "Node.js": { icon: <FontAwesomeIcon icon={faNodeJs} />, color: "#339933" },
   "Express": { icon: <FontAwesomeIcon icon={faServer} />, color: "#828282" },
-  "Tailwind CSS": { icon: <FontAwesomeIcon icon={faWind} />, color: "#06B6D4" },
+  "Tailwind CSS": { icon: <TailwindIcon />, color: "#06B6D4" },
   "GSAP": { icon: <span className="font-black text-4xl">G</span>, color: "#88CE02" },
   "Three.js": { icon: <FontAwesomeIcon icon={faCube} />, color: "#FFFFFF" },
 
   // Datastores
-  "PostgreSQL": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#336791" },
+  "PostgreSQL": { icon: <PostgreSqlIcon />, color: "#336791" },
   "MongoDB": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#47A248" },
   "Redis": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#DC382D" },
   "Firebase": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#FFCA28" },
