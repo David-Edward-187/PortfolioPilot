@@ -3,46 +3,62 @@
 
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  Code, Database, Cloud, Library, GitMerge, Wind, Server, Box,
-  PenTool, Network, Share2, Users, RefreshCw, Triangle, Package, Palette
-} from "lucide-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faJs, faHtml5, faCss3Alt, faPython, faReact, faNodeJs,
+  faGitAlt, faDocker, faAws, faFigma
+} from '@fortawesome/free-brands-svg-icons';
+import { 
+  faDatabase, faServer, faCloud, faWind, faCode, faCube, 
+  faNetworkWired, faUsers, faSync, faPalette 
+} from '@fortawesome/free-solid-svg-icons';
 
 import { resumeData } from '@/data/resume';
 import { cn } from '@/lib/utils';
 import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 
-const iconMap: { [key: string]: React.ReactNode } = {
-  "JavaScript (ES6+)": <Code className="h-8 w-8" />,
-  "TypeScript": <Code className="h-8 w-8" />,
-  "HTML5": <Code className="h-8 w-8" />,
-  "CSS3": <Palette className="h-8 w-8" />,
-  "Python": <Code className="h-8 w-8" />,
-  "React": <Library className="h-8 w-8" />,
-  "Next.js": <span className="font-black text-4xl">N</span>,
-  "Node.js": <Server className="h-8 w-8" />,
-  "Express": <span className="font-bold text-2xl">Express</span>,
-  "Tailwind CSS": <Wind className="h-8 w-8" />,
-  "GSAP": <span className="font-black text-4xl">G</span>,
-  "Three.js": <Box className="h-8 w-8" />,
-  "PostgreSQL": <Database className="h-8 w-8" />,
-  "MongoDB": <Database className="h-8 w-8" />,
-  "Redis": <Database className="h-8 w-8" />,
-  "Firebase": <Database className="h-8 w-8" />,
-  "Docker": <Package className="h-8 w-8" />,
-  "Vercel": <Triangle className="h-8 w-8" />,
-  "AWS (S3, EC2)": <Cloud className="h-8 w-8" />,
-  "CI/CD": <RefreshCw className="h-8 w-8" />,
-  "Git": <GitMerge className="h-8 w-8" />,
-  "Figma": <PenTool className="h-8 w-8" />,
-  "REST APIs": <Network className="h-8 w-8" />,
-  "GraphQL": <Share2 className="h-8 w-8" />,
-  "Agile/Scrum": <Users className="h-8 w-8" />,
+// Map skill names to Font Awesome icons and their brand colors
+const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
+  // Languages
+  "JavaScript (ES6+)": { icon: <FontAwesomeIcon icon={faJs} />, color: "#F7DF1E" },
+  "TypeScript": { icon: <FontAwesomeIcon icon={faCode} />, color: "#3178C6" }, // Generic code icon, but colored for TS
+  "HTML5": { icon: <FontAwesomeIcon icon={faHtml5} />, color: "#E34F26" },
+  "CSS3": { icon: <FontAwesomeIcon icon={faCss3Alt} />, color: "#1572B6" },
+  "Python": { icon: <FontAwesomeIcon icon={faPython} />, color: "#3776AB" },
+
+  // Frameworks & Libraries
+  "React": { icon: <FontAwesomeIcon icon={faReact} />, color: "#61DAFB" },
+  "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "#FFFFFF" }, // Custom text for Next.js
+  "Node.js": { icon: <FontAwesomeIcon icon={faNodeJs} />, color: "#339933" },
+  "Express": { icon: <span className="font-bold text-2xl">Express</span>, color: "#828282" }, // Custom text for Express
+  "Tailwind CSS": { icon: <FontAwesomeIcon icon={faWind} />, color: "#06B6D4" },
+  "GSAP": { icon: <span className="font-black text-4xl">G</span>, color: "#88CE02" }, // Custom text for GSAP
+  "Three.js": { icon: <FontAwesomeIcon icon={faCube} />, color: "#FFFFFF" },
+
+  // Datastores
+  "PostgreSQL": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#336791" },
+  "MongoDB": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#47A248" },
+  "Redis": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#DC382D" },
+  "Firebase": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#FFCA28" },
+
+  // Cloud & DevOps
+  "Docker": { icon: <FontAwesomeIcon icon={faDocker} />, color: "#2496ED" },
+  "Vercel": { icon: <FontAwesomeIcon icon={faCube} />, color: "#FFFFFF" }, // Using a generic cube for Vercel
+  "AWS (S3, EC2)": { icon: <FontAwesomeIcon icon={faAws} />, color: "#FF9900" },
+  "CI/CD": { icon: <FontAwesomeIcon icon={faSync} />, color: "#6c5ce7" },
+  "Git": { icon: <FontAwesomeIcon icon={faGitAlt} />, color: "#F05032" },
+
+  // Other
+  "Figma": { icon: <FontAwesomeIcon icon={faFigma} />, color: "#F24E1E" },
+  "REST APIs": { icon: <FontAwesomeIcon icon={faNetworkWired} />, color: "#d63031" },
+  "GraphQL": { icon: <FontAwesomeIcon icon={faNetworkWired} />, color: "#E10098" },
+  "Agile/Scrum": { icon: <FontAwesomeIcon icon={faUsers} />, color: "#0984e3" },
 };
+
 
 const SkillCard = ({ skill, className }: { skill: string, className?: string }) => {
     const [hovered, setHovered] = React.useState(false);
-    const Icon = iconMap[skill] || <Code className="h-8 w-8" />;
+    const { icon, color } = iconMap[skill] || { icon: <FontAwesomeIcon icon={faCode} className="h-8 w-8" />, color: "hsl(var(--accent))" };
 
     return (
         <div
@@ -73,8 +89,8 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
 
             <div className="relative z-20 flex flex-col items-center justify-center h-full text-center transition-all duration-200">
                 {/* Icon visible by default, hidden on hover */}
-                <div className="text-accent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0">
-                    {Icon}
+                <div className="text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0" style={{ color }}>
+                    {icon}
                 </div>
                 
                 {/* Text revealed on hover */}
