@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { resumeData } from '@/data/resume';
 
 export function Preloader() {
   const preloaderRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,7 @@ export function Preloader() {
         ref={textRef}
         className="text-4xl font-bold text-foreground opacity-0 mb-4"
       >
-        Milad
+        {resumeData.name}
       </div>
       <div className="w-64 h-1 bg-border rounded-full overflow-hidden">
         <div

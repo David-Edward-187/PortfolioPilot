@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Preloader } from '@/components/preloader';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { resumeData } from '@/data/resume';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -15,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Milad | Web Developer', 
-  description: 'Portfolio of Milad, a skilled Web Developer creating futuristic and immersive web experiences.', 
+  title: `${resumeData.name} | ${resumeData.title}`, 
+  description: `Portfolio of ${resumeData.name}, a skilled ${resumeData.title} creating futuristic and immersive web experiences.`, 
 };
 
 export default function RootLayout({

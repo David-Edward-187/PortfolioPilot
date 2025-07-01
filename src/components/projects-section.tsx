@@ -72,7 +72,7 @@ export function ProjectsSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 p-6 flex flex-col justify-end">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
-                <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description}</p>
+                <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description[0]}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies?.slice(0, 3).map(tech => (
                     <Badge key={tech} variant="secondary" className="glassmorphic text-xs !bg-white/10 text-white/90 border-0">
