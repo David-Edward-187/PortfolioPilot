@@ -96,7 +96,7 @@ export function Header() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-foreground relative group/nav-link overflow-hidden">
+              <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary relative group/nav-link overflow-hidden">
                 <Link href={link.href}>
                   {link.label}
                   <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-0.5 w-2/3 bg-primary transform scale-x-0 group-hover/nav-link:scale-x-100 transition-transform duration-300 ease-out"></span>
