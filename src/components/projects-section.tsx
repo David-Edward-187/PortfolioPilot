@@ -7,8 +7,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import * as React from 'react';
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { GithubLogo } from "@phosphor-icons/react/dist/ssr";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,20 +50,20 @@ export function ProjectsSection() {
             </div>
           )}
         </div>
-        {project.githubUrl && (
-          <div className="mt-6">
-            <Button asChild variant="link" className="p-0 h-auto text-sm text-muted-foreground hover:text-primary">
-              <a 
-                href={project.githubUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center"
-              >
-                <GithubLogo className="mr-1.5 h-4 w-4" />
-                View on GitHub
-              </a>
-            </Button>
+        {project.githubUrl && project.githubUrl !== '#' && (
+          <div className="mt-6 flex justify-start">
+            <HoverBorderGradient
+              as="a"
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+              containerClassName="rounded-full"
+              className="bg-card text-foreground flex items-center gap-2"
+            >
+              <GithubLogo className="h-4 w-4" />
+              <span>View on GitHub</span>
+            </HoverBorderGradient>
           </div>
         )}
       </div>
