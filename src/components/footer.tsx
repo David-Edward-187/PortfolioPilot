@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -70,12 +69,17 @@ export function Footer() {
                     </Link>
                 ))}
             </div>
-            <div className="footer-item flex justify-center gap-6 mb-8">
+            <div className="footer-item flex justify-center gap-6 mb-6">
                 {socialLinks.map(link => (
                     <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.name} className="text-muted-foreground hover:text-primary transition-colors">
                         <link.icon size={24} />
                     </a>
                 ))}
+            </div>
+            <div className="footer-item mb-8">
+              <a href={`mailto:${resumeData.contact.email}`} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {resumeData.contact.email}
+              </a>
             </div>
             <div className="footer-item text-xs text-muted-foreground flex justify-center items-center gap-2">
                 <span>&copy; {new Date().getFullYear()} {resumeData.name}. All Rights Reserved.</span>
