@@ -11,11 +11,48 @@ export const resumeData: ResumeData = {
     linkedin: "https://linkedin.com/in/milad-dev",
     github: "https://github.com/milad-dev"
   },
-  education: [],
-  experience: [],
+  education: [
+    {
+      degree: "Master of Science in Computer Science",
+      institution: "University of Technology",
+      years: "2020 - 2022",
+      details: "Focused on Human-Computer Interaction and Advanced Web Technologies."
+    },
+    {
+      degree: "Bachelor of Science in Software Engineering",
+      institution: "State University",
+      years: "2016 - 2020",
+      details: "Graduated with honors, specializing in full-stack application development."
+    }
+  ],
+  experience: [
+    {
+      role: "Senior Frontend Developer",
+      company: "Innovate Inc.",
+      years: "2022 - Present",
+      description: [
+        "Lead the development of a new design system using React and Storybook, improving component consistency by 90%.",
+        "Architected and built a new customer-facing dashboard with Next.js, resulting in a 40% improvement in page load times.",
+        "Mentored junior developers on best practices for clean code, testing, and accessibility."
+      ]
+    },
+    {
+      role: "Web Developer",
+      company: "Tech Solutions LLC",
+      years: "2020 - 2022",
+      description: [
+        "Developed and maintained responsive websites for various clients using HTML, CSS, and JavaScript.",
+        "Collaborated with designers to implement pixel-perfect user interfaces.",
+        "Integrated third-party APIs for e-commerce and content management systems."
+      ]
+    }
+  ],
   skills: {
-    "Languages": ["JavaScript (ES6+)", "TypeScript", "HTML", "CSS"],
-    "Frameworks & Libraries": ["React", "Next.js", "Tailwind CSS", "GSAP"],
+    "Languages": ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3", "Python"],
+    "Frameworks & Libraries": ["React", "Next.js", "Node.js", "Express", "Tailwind CSS", "GSAP", "Three.js"],
+    "Datastores": ["PostgreSQL", "MongoDB", "Redis", "Firebase"],
+    "Cloud & DevOps": ["Docker", "Vercel", "AWS (S3, EC2)", "CI/CD", "Git"],
+    "Other": ["Figma", "REST APIs", "GraphQL", "Agile/Scrum"]
   },
   projects: [
     {
@@ -55,5 +92,20 @@ export const resumeData: ResumeData = {
       link: "#",
     }
   ],
-  certificates: []
+  certificates: [
+    {
+        name: "Advanced TypeScript",
+        issuingOrganization: "Udemy",
+        issueDate: "June 2023",
+        credentialUrl: "#",
+        description: "Mastered advanced TypeScript features including decorators, mixins, and advanced type-level programming."
+    },
+    {
+        name: "AWS Certified Cloud Practitioner",
+        issuingOrganization: "Amazon Web Services",
+        issueDate: "March 2023",
+        credentialUrl: "#",
+        description: "Validated foundational, high-level understanding of AWS Cloud, services, and terminology."
+    }
+  ]
 };
