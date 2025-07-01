@@ -72,12 +72,13 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
             </AnimatePresence>
 
             <div className="relative z-20 flex flex-col items-center justify-center h-full text-center transition-all duration-200">
-                {/* Icon revealed on hover */}
-                <div className="text-white opacity-0 group-hover/canvas-card:opacity-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200">
+                {/* Icon visible by default, hidden on hover */}
+                <div className="text-accent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0">
                     {Icon}
                 </div>
-                {/* Text visible by default */}
-                <h2 className="text-foreground text-center text-lg sm:text-xl font-bold group-hover/canvas-card:opacity-0 transition-opacity duration-200">
+                
+                {/* Text revealed on hover */}
+                <h2 className="text-white text-center text-lg sm:text-xl font-bold opacity-0 group-hover/canvas-card:opacity-100 relative z-20 transition-opacity duration-200">
                     {skill}
                 </h2>
             </div>
