@@ -6,92 +6,164 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useTheme } from 'next-themes';
+
+// Helper to parse HSL strings (e.g., "255 85% 65%") into numbers
+const parseHsl = (hsl: string): [number, number, number] | null => {
+    if (!hsl) return null;
+    const match = hsl.match(/(\d+(\.\d+)?)/g);
+    if (!match || match.length < 3) return null;
+    return [parseFloat(match[0]), parseFloat(match[1]), parseFloat(match[2])];
+};
 
 export function HeroSection() {
-  const component = useRef(null);
-  const heroContentRef = useRef(null);
+  const component = useRef<HTMLElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
 
-  // GSAP animations on component mount
+  // Animation for the Gemini-style canvas background
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      // Animate text and CTA
-      gsap.fromTo('.hero-word', 
-        { autoAlpha: 0, y: 40, filter: 'blur(10px)' }, 
-        { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.1, delay: 0.2, duration: 1, ease: 'power3.out' }
-      );
-      gsap.fromTo('.hero-subtitle', 
-        { autoAlpha: 0, y: 30 }, 
-        { autoAlpha: 1, y: 0, delay: 0.5, duration: 1, ease: 'power3.out' }
-      );
-      gsap.fromTo('.hero-cta', 
-        { autoAlpha: 0, scale: 0.8 }, 
-        { autoAlpha: 1, scale: 1, delay: 0.7, duration: 1, ease: 'power3.out' }
-      );
-    }, component);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+
+    const primaryColorHslStr = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+    const accentColorHslStr = getComputedStyle(document.documentElement).getPropertyValue('--accent');
     
-    return () => ctx.revert();
-  }, []);
+    const primaryHsl = parseHsl(primaryColorHslStr);
+    const accentHsl = parseHsl(accentColorHslStr);
+    
+    const colors = [
+        primaryHsl ? `hsl(${primaryHsl[0]}, ${primaryHsl[1]}%, 60%)` : 'hsl(255, 85%, 65%)',
+        accentHsl ? `hsl(${accentHsl[0]}, ${accentHsl[1]}%, 55%)` : 'hsl(185, 100%, 50%)',
+    ];
 
-  // Mouse move parallax effect
-  useEffect(() => {
-    const el = heroContentRef.current;
-    if (!el) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const { offsetWidth, offsetHeight } = el as HTMLElement;
-      
-      const x = (clientX / offsetWidth - 0.5) * 30; // Multiplier for effect intensity
-      const y = (clientY / offsetHeight - 0.5) * 30;
-
-      gsap.to(el, {
-        x: -x,
-        y: -y,
-        rotationY: x / 15,
-        rotationX: -y / 15,
-        duration: 0.8,
-        ease: 'power3.out'
-      });
+    const setCanvasDimensions = () => {
+      canvas.width = component.current?.clientWidth || window.innerWidth;
+      canvas.height = component.current?.clientHeight || window.innerHeight;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    class Path {
+        x: number;
+        y: number;
+        radius: number;
+        speed: number;
+        color: string;
+        angle: number;
+        lineWidth: number;
 
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * (canvas.width / 8) + (canvas.width / 12);
+            this.speed = (Math.random() - 0.5) * 0.005;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.angle = Math.random() * Math.PI * 2;
+            this.lineWidth = Math.random() * 2 + 0.5;
+        }
+
+        draw(context: CanvasRenderingContext2D) {
+            context.beginPath();
+            context.arc(this.x, this.y, this.radius, this.angle, this.angle + Math.PI * 1.5);
+            context.strokeStyle = this.color;
+            context.lineWidth = this.lineWidth;
+            context.stroke();
+        }
+
+        update() {
+            this.angle += this.speed;
+            if (this.x > canvas.width + this.radius || this.x < -this.radius || this.y > canvas.height + this.radius || this.y < -this.radius) {
+                // Reset particle if it goes off-screen
+                if (Math.random() > 0.5) {
+                    this.x = Math.random() > 0.5 ? -this.radius : canvas.width + this.radius;
+                    this.y = Math.random() * canvas.height;
+                } else {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() > 0.5 ? -this.radius : canvas.height + this.radius;
+                }
+            }
+        }
+    }
+
+    let paths: Path[] = [];
+    const pathCount = 12;
+
+    const init = () => {
+      setCanvasDimensions();
+      paths = [];
+      for (let i = 0; i < pathCount; i++) {
+        paths.push(new Path());
+      }
+    };
+    
+    const animate = () => {
+        const bgColor = resolvedTheme === 'dark' ? 'rgba(3, 8, 21, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        paths.forEach(path => {
+            path.update();
+            path.draw(ctx);
+        });
+        animationFrameId = requestAnimationFrame(animate);
+    };
+
+    init();
+    animate();
+
+    window.addEventListener("resize", init);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", init);
+    };
+  }, [resolvedTheme]);
+
+  // GSAP animations for the text and CTA
+  useEffect(() => {
+    gsap.set(".hero-title-line", { y: "100%" });
+    gsap.set(".hero-cta", { opacity: 0, scale: 0.8 });
+    
+    const tl = gsap.timeline({ delay: 0.5 });
+    tl.to(".hero-title-line", {
+      y: "0%",
+      duration: 1,
+      ease: "power4.out",
+      stagger: 0.15,
+    }).to(".hero-cta", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      ease: "power3.out",
+    }, "-=0.8");
   }, []);
 
   const handleContactClick = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
   
   const renderHeadline = () => {
     const nameParts = resumeData.name.split(' ');
     const nameFirst = nameParts[0];
-    const words = `Hi, I’m ${nameFirst}`.split(' ');
-    return words.map((word, index) => (
-      <span key={index} className="hero-word inline-block mr-[0.25em] last:mr-0">
-        {word === nameFirst ? <span className="text-glow-accent text-accent">{word}</span> : word}
-      </span>
-    ));
+    return `Hi, I’m ${nameFirst}`;
   };
 
   return (
-    <section id="home" ref={component} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-grid-pattern">
+    <section ref={component} id="home" className="relative h-screen min-h-[700px] w-full bg-background flex items-center justify-center overflow-hidden">
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-70"></canvas>
+      <div className="absolute inset-0 z-10 bg-gradient-radial from-transparent via-background/60 to-background"></div>
       
-      {/* Background Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent to-background"></div>
-      
-      <div className="relative z-10 container mx-auto text-center">
-        <div ref={heroContentRef} className="hero-content max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white">
-            {renderHeadline()}
-          </h1>
-          <h2 className="hero-subtitle mt-4 text-3xl md:text-5xl font-medium text-foreground">
-            {resumeData.title}
-          </h2>
-          <div className="hero-cta mt-10">
+      <div className="relative z-20 container mx-auto text-center">
+        <h1 className="text-5xl md:text-7xl font-bold text-white overflow-hidden py-2">
+            <div className="hero-title-line inline-block">{renderHeadline()}</div>
+        </h1>
+        <h2 className="text-3xl md:text-5xl font-medium text-foreground overflow-hidden py-1">
+          <div className="hero-title-line inline-block">{resumeData.title}</div>
+        </h2>
+        <div className="hero-cta mt-10">
             <Button
               size="lg"
               onClick={handleContactClick}
@@ -99,7 +171,6 @@ export function HeroSection() {
             >
               Let's Connect <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
-          </div>
         </div>
       </div>
     </section>
