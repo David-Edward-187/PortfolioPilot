@@ -6,23 +6,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export function ExperienceSection() {
-    // Ref for the container that will be the scroll target
     const scrollTargetRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: scrollTargetRef,
-        offset: ["start center", "end center"], // Trigger animation as it passes the center
+        offset: ["start center", "end center"],
     });
 
-    // Ref for the content container to measure its height
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState(0);
 
-    // Effect to measure and update the height of the content
     useEffect(() => {
         const contentElement = contentRef.current;
         if (!contentElement) return;
 
-        // Use ResizeObserver for efficient monitoring of element size changes
         const resizeObserver = new ResizeObserver(() => {
             setContentHeight(contentElement.offsetHeight);
         });
@@ -34,7 +30,6 @@ export function ExperienceSection() {
         };
     }, []);
 
-    // Create a spring-animated value for the path length for a smoother effect
     const pathLength = useSpring(
         useTransform(scrollYProgress, [0, 1], [0, 1]), 
         { stiffness: 300, damping: 50, restDelta: 0.001 }
@@ -55,7 +50,6 @@ export function ExperienceSection() {
                 </motion.div>
 
                 <div ref={scrollTargetRef} className="relative w-full max-w-3xl mx-auto">
-                    {/* The animated SVG timeline */}
                     <motion.div 
                         className="absolute left-4 top-0 h-full w-6 flex justify-center"
                         style={{ height: contentHeight > 0 ? contentHeight : 'auto' }}
@@ -95,7 +89,7 @@ export function ExperienceSection() {
                             <motion.div 
                                 key={`content-${index}`} 
                                 className="relative pl-4"
-                                initial={{ opacity: 0, x: -20 }}
+                                initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 * index }}

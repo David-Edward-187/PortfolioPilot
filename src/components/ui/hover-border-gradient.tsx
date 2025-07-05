@@ -1,8 +1,17 @@
 
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+type HoverBorderGradientProps = {
+  children?: React.ReactNode;
+  containerClassName?: string;
+  className?: string;
+  as?: React.ElementType;
+  duration?: number;
+  clockwise?: boolean;
+} & React.HTMLAttributes<HTMLElement>;
 
 export function HoverBorderGradient({
   children,
@@ -10,33 +19,29 @@ export function HoverBorderGradient({
   className,
   as: Tag = "button",
   duration = 1,
+  clockwise = true,
   ...props
-}: React.PropsWithChildren<
-  {
-    as?: React.ElementType;
-    containerClassName?: string;
-    className?: string;
-    duration?: number;
-  } & React.HTMLAttributes<HTMLElement>
->) {
-
+}: HoverBorderGradientProps) {
   const [hovered, setHovered] = useState(false);
+  const [direction, setDirection] = useState(clockwise ? "clockwise" : "counter-clockwise");
+
+  const rotateDirection = direction === "clockwise" ? 360 : -360;
 
   return (
     <Tag
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={(event: React.MouseEvent<HTMLDivElement>) => {
+        setHovered(true);
+      }}
       onMouseLeave={() => setHovered(false)}
       className={cn(
-        "relative p-[2px] rounded-full",
+        "relative p-[2px] w-fit h-fit rounded-full",
         containerClassName
       )}
       {...props}
     >
       <div
         className={cn(
-          "relative bg-card text-foreground rounded-full px-4 py-1.5 text-sm",
-          "transition-colors duration-300",
-          hovered ? "bg-card/80" : "bg-card",
+          "relative bg-card text-foreground w-full h-full rounded-full px-4 py-1.5 text-sm",
           className
         )}
       >
@@ -45,13 +50,18 @@ export function HoverBorderGradient({
 
       {/* Gradient border */}
       <motion.div
-        className="absolute inset-0 rounded-full"
+        className={cn(
+          "absolute inset-0 rounded-full z-0"
+        )}
         style={{
-            filter: "blur(3px)",
-            zIndex: -1,
+            filter: "blur(2px)",
+        }}
+        initial={{
+            opacity: 0,
         }}
         animate={{
-            rotate: 360,
+            opacity: hovered ? 1 : 0,
+            rotate: rotateDirection,
         }}
         transition={{
             duration: duration,

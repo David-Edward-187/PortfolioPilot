@@ -1,10 +1,11 @@
+
 'use client';
 
 import * as THREE from 'three';
 import { useRef, useState, useMemo, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useTheme } from 'next-themes';
 
-// This component is adapted from a public example by @0xca0a on CodeSandbox
 function Particles({ count = 5000, mouse }) {
   const mesh = useRef<THREE.InstancedMesh>(null!);
   const light = useRef<THREE.PointLight>(null!);
@@ -68,16 +69,26 @@ function Particles({ count = 5000, mouse }) {
 
 export function Hero3DScene() {
   const mouse = useRef([0, 0]);
+  const { resolvedTheme } = useTheme();
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setKey(prevKey => prevKey + 1);
+  }, [resolvedTheme]);
+
+  const bgColor = resolvedTheme === 'dark' ? 'hsl(224, 80%, 5%)' : 'hsl(220, 30%, 98%)';
+  const fogColor = resolvedTheme === 'dark' ? 'hsl(224, 80%, 5%)' : 'hsl(220, 30%, 98%)';
 
   return (
     <Canvas
+      key={key}
       camera={{ fov: 100, position: [0, 0, 30] }}
       onCreated={({ gl }) => {
-        gl.setClearColor(new THREE.Color('hsl(var(--background))'));
+        gl.setClearColor(new THREE.Color(bgColor));
       }}
       onPointerMove={(e) => (mouse.current = [e.clientX - window.innerWidth / 2, e.clientY - window.innerHeight / 2])}
     >
-      <fog attach="fog" args={['hsl(var(--background))', 60, 100]} />
+      <fog attach="fog" args={[fogColor, 60, 100]} />
       <Particles mouse={mouse} />
     </Canvas>
   );

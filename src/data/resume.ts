@@ -64,7 +64,7 @@ export const resumeData: ResumeData = {
     {
       name: "Project Beta",
       description: ["An innovative e-commerce platform with a focus on immersive 3D product previews."],
-      technologies: ["React", "Spline", "Stripe", "Firebase"],
+      technologies: ["React", "Three.js", "Stripe", "Firebase"],
       link: "#",
       githubUrl: "#",
     },
@@ -92,7 +92,7 @@ export const resumeData: ResumeData = {
     {
       name: "Project Zeta",
       description: ["A personal portfolio showcasing advanced animations and a unique design aesthetic."],
-      technologies: ["Next.js", "Tailwind CSS", "Spline"],
+      technologies: ["Next.js", "GSAP", "Three.js"],
       link: "#",
       githubUrl: "#",
     }
@@ -102,14 +102,14 @@ export const resumeData: ResumeData = {
         name: "Advanced TypeScript",
         issuingOrganization: "Udemy",
         issueDate: "June 2023",
-        credentialUrl: "https://www.udemy.com/certificate/UC-EXAMPLE-1234/",
+        credentialUrl: "#",
         description: "Mastered advanced TypeScript features including decorators, mixins, and advanced type-level programming."
     },
     {
         name: "AWS Certified Cloud Practitioner",
         issuingOrganization: "Amazon Web Services",
         issueDate: "March 2023",
-        credentialUrl: "https://www.credly.com/badges/EXAMPLE-BADGE-ID",
+        credentialUrl: "#",
         description: "Validated foundational, high-level understanding of AWS Cloud, services, and terminology."
     }
   ]

@@ -3,19 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes pan-grid {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 40px 40px; }
-}
-
-body {
-  font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 @layer base {
   :root {
     /* Light Theme */
@@ -86,24 +73,17 @@ html {
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+
   .glassmorphic {
     @apply bg-card/50 backdrop-blur-lg border border-border/50;
-  }
-  
-  .glow-shadow-primary {
-    box-shadow: 0 0 25px hsl(var(--primary) / 0.5), 0 0 50px hsl(var(--primary) / 0.2);
-  }
-
-  .glow-shadow-accent {
-    box-shadow: 0 0 25px hsl(var(--accent) / 0.6), 0 0 50px hsl(var(--accent) / 0.3);
-  }
-
-  .text-glow-accent {
-    text-shadow: 0 0 10px hsl(var(--accent) / 0.9);
   }
 
   section { 

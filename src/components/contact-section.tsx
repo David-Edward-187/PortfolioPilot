@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -133,16 +134,16 @@ export function ContactSection() {
           <div className="flex flex-col sm:flex-row items-center gap-6">
              <Button 
                 type="submit" 
-                className="submit-button w-full sm:w-auto bg-primary text-primary-foreground text-base font-semibold py-3 px-6 h-auto transition-all duration-300 ease-in-out hover:glow-shadow-primary hover:scale-105 active:scale-100 group"
+                className="submit-button w-full sm:w-auto bg-primary text-primary-foreground text-base font-semibold py-3 px-6 h-auto transition-all duration-300 ease-in-out hover:shadow-glow-primary hover:scale-105 active:scale-100 group"
                 disabled={isLoading}>
                 <PaperPlaneTilt className="h-5 w-5 mr-2.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                 {isLoading ? "Sending..." : "Submit"}
               </Button>
               <div className="flex gap-4">
-                <a href={resumeData.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-primary transition-colors hover:glow-shadow-primary rounded-full">
+                <a href={resumeData.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-primary transition-colors hover:shadow-glow-primary rounded-full">
                   <GithubLogo size={28} />
                 </a>
-                 <a href={resumeData.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors hover:glow-shadow-primary rounded-full">
+                 <a href={resumeData.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors hover:shadow-glow-primary rounded-full">
                   <LinkedinLogo size={28} />
                 </a>
               </div>

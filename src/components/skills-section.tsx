@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useMemo } from 'react';
@@ -65,38 +66,32 @@ const TailwindIcon = () => (
 );
 
 
-// Map skill names to Font Awesome icons and their brand colors
 const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
-  // Languages
   "JavaScript (ES6+)": { icon: <FontAwesomeIcon icon={faJs} />, color: "#F7DF1E" },
   "TypeScript": { icon: <TypeScriptIcon />, color: "#3178C6" },
   "HTML5": { icon: <FontAwesomeIcon icon={faHtml5} />, color: "#E34F26" },
   "CSS3": { icon: <FontAwesomeIcon icon={faCss3Alt} />, color: "#1572B6" },
   "Python": { icon: <FontAwesomeIcon icon={faPython} />, color: "#3776AB" },
 
-  // Frameworks & Libraries
   "React": { icon: <FontAwesomeIcon icon={faReact} />, color: "#61DAFB" },
-  "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "#FFFFFF" },
+  "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "var(--foreground)" },
   "Node.js": { icon: <FontAwesomeIcon icon={faNodeJs} />, color: "#339933" },
   "Express": { icon: <FontAwesomeIcon icon={faServer} />, color: "#828282" },
   "Tailwind CSS": { icon: <TailwindIcon />, color: "#06B6D4" },
   "GSAP": { icon: <span className="font-black text-4xl">G</span>, color: "#88CE02" },
-  "Three.js": { icon: <FontAwesomeIcon icon={faCube} />, color: "#FFFFFF" },
+  "Three.js": { icon: <FontAwesomeIcon icon={faCube} />, color: "var(--foreground)" },
 
-  // Datastores
   "PostgreSQL": { icon: <PostgreSqlIcon />, color: "#336791" },
   "MongoDB": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#47A248" },
   "Redis": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#DC382D" },
   "Firebase": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#FFCA28" },
 
-  // Cloud & DevOps
   "Docker": { icon: <FontAwesomeIcon icon={faDocker} />, color: "#2496ED" },
-  "Vercel": { icon: <VercelIcon />, color: "#FFFFFF" },
+  "Vercel": { icon: <VercelIcon />, color: "var(--foreground)" },
   "AWS (S3, EC2)": { icon: <FontAwesomeIcon icon={faAws} />, color: "#FF9900" },
   "CI/CD": { icon: <FontAwesomeIcon icon={faSync} />, color: "#6c5ce7" },
   "Git": { icon: <FontAwesomeIcon icon={faGitAlt} />, color: "#F05032" },
 
-  // Other
   "Figma": { icon: <FontAwesomeIcon icon={faFigma} />, color: "#F24E1E" },
   "REST APIs": { icon: <FontAwesomeIcon icon={faNetworkWired} />, color: "#d63031" },
   "GraphQL": { icon: <GraphQLIcon />, color: "#E10098" },
@@ -113,8 +108,7 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
         if (resolvedTheme === 'dark') {
             return [[187, 107, 255], [0, 255, 200]]; // Vibrant Purple, Teal for dark mode
         }
-        // Softer, theme-aligned colors for light mode
-        return [[187, 107, 255], [0, 255, 200]] // Primary, Accent from light theme
+        return [[100, 116, 139], [148, 163, 184]]; // Softer, theme-aligned colors for light mode (slate-500, slate-400)
     }, [resolvedTheme]);
 
     return (
@@ -145,11 +139,9 @@ const SkillCard = ({ skill, className }: { skill: string, className?: string }) 
             </AnimatePresence>
 
             <div className="relative z-20 flex flex-col items-center justify-center h-full text-center transition-all duration-200">
-                {/* Text revealed on hover */}
                 <h2 className="text-white text-center text-lg sm:text-xl font-bold opacity-0 group-hover/canvas-card:opacity-100 relative z-20 transition-opacity duration-200">
                     {skill}
                 </h2>
-                {/* Icon visible by default, hidden on hover */}
                 <div className="text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0" style={{ color }}>
                     {icon}
                 </div>
@@ -167,7 +159,6 @@ export function SkillsSection() {
         other: resumeData.skills["Other"] || [],
     };
     
-    // Ensure we don't try to access skills that don't exist
     const getSkill = (arr: string[], index: number) => arr[index] || `Skill ${index + 1}`;
 
     return (
