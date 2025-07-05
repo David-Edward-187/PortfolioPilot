@@ -6,7 +6,7 @@ import { useRef, useState, useMemo, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useTheme } from 'next-themes';
 
-function Particles({ count = 5000, mouse }) {
+function Particles({ count = 5000, mouse }: any) {
   const mesh = useRef<THREE.InstancedMesh>(null!);
   const light = useRef<THREE.PointLight>(null!);
   const { size, viewport } = useThree();

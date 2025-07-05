@@ -48,7 +48,7 @@ const GraphQLIcon = () => (
 const TypeScriptIcon = () => (
     <svg role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
       <rect width="100" height="100" rx="8" fill="#3178C6" />
-      <path d="M26.4,33.4h19.2v4.8H31.2v11.2h13.6v4.8H31.2v16.4h14.8v4.8H26.4V33.4z M52.4,33.4h12.8l-5.6,22.8l-5.6,22.4h-4.8l9.6-38.4 h11.2l-5.6,22.8l-5.6,22.4h4.8l9.6-38.4H52.4z" fill="white" />
+      <path d="M26.4,33.4h19.2v4.8H31.2v11.2h13.6v4.8H31.2v16.4h14.8v4.8H26.4V33.4z M52.4,33.4h12.8l-5.6,22.8l-5.6,22.4h-4.8l9.6-38.4h11.2l-5.6,22.8l-5.6,22.4h4.8l9.6-38.4H52.4z" fill="white" />
     </svg>
 );
 

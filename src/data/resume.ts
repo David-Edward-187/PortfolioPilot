@@ -1,3 +1,4 @@
+
 import type { ResumeData } from '@/types/resume';
 
 export const resumeData: ResumeData = {
