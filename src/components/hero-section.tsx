@@ -8,13 +8,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useTheme } from 'next-themes';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
-import dynamic from 'next/dynamic';
-
-const Hero3DScene = dynamic(() => import('./hero-3d-scene').then(mod => mod.Hero3DScene), {
-  ssr: false,
-  loading: () => <div className="absolute inset-0 bg-background" />,
-});
-
+import { Hero3DScene } from './hero-3d-scene';
 
 export function HeroSection() {
   const component = useRef<HTMLElement>(null);
