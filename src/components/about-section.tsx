@@ -4,22 +4,19 @@
 import Image from 'next/image';
 import { resumeData } from '@/data/resume';
 import * as React from 'react';
-import { 
-  FileHtml, 
-  FileCss, 
-  FileJs, 
-  Atom
-} from '@phosphor-icons/react/dist/ssr';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaReact } from 'react-icons/fa';
+import { IoLogoHtml5, IoLogoCss3, IoLogoJavascript } from 'react-icons/io5';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const skillIcons: { [key: string]: React.ElementType } = {
-  "HTML": FileHtml,
-  "CSS": FileCss,
-  "JS": FileJs,
-  "React": Atom,
+  "HTML": IoLogoHtml5,
+  "CSS": IoLogoCss3,
+  "JS": IoLogoJavascript,
+  "React": FaReact,
   "Next.js": () => <span className="font-bold text-sm">N</span>, 
   "GSAP": () => <span className="font-bold text-sm">G</span>
 };
@@ -94,7 +91,7 @@ export function AboutSection() {
                   key={skill}
                   className="skill-icon flex flex-col items-center gap-2 p-3 rounded-lg glassmorphic w-24 h-24 justify-center transition-all duration-200 hover:!bg-primary/10 hover:!scale-105"
                 >
-                  <Icon size={36} className="text-accent" weight="light" />
+                  <Icon size={36} className="text-accent" />
                   <span className="text-xs font-medium text-foreground">{skill}</span>
                 </div>
               ))}

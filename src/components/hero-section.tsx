@@ -3,7 +3,7 @@
 
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight } from 'lucide-react';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useTheme } from 'next-themes';

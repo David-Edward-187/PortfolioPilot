@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { List, X, Code } from '@phosphor-icons/react/dist/ssr';
+import { Menu, X, Code } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
@@ -72,12 +72,12 @@ export function Header() {
         {/* Mobile Header */}
         <div className="md:hidden flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border border-border rounded-2xl mx-4">
              <Link href="/" className="flex items-center gap-2.5 group">
-                <Code weight="bold" className="h-7 w-7 text-accent" />
+                <Code className="h-7 w-7 text-accent" />
              </Link>
              <div className='flex items-center gap-2'>
                 <ThemeToggle />
                 <Button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} variant="ghost" size="icon">
-                    {isMobileMenuOpen ? <X className="h-6 w-6" /> : <List className="h-6 w-6" />}
+                    {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     <span className="sr-only">Toggle menu</span>
                 </Button>
              </div>
