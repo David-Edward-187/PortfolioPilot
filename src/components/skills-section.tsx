@@ -148,9 +148,9 @@ const SkillCard = ({ skill, className }: { skill: string; className?: string }) 
         </AnimatePresence>
   
         <div className="relative z-20 w-full h-full flex items-center justify-center">
+            {/* Both icon and text are positioned absolutely to overlay each other */}
             <motion.div
-                className="absolute"
-                initial={{ opacity: 1 }}
+                className="absolute flex items-center justify-center w-full h-full"
                 animate={{ opacity: hovered ? 0 : 1 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
             >
@@ -160,6 +160,7 @@ const SkillCard = ({ skill, className }: { skill: string; className?: string }) 
             </motion.div>
             
             <motion.div
+                className="absolute flex items-center justify-center w-full h-full"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
@@ -205,11 +206,9 @@ export function SkillsSection() {
                     <SkillCard skill={getSkill(skills.datastores, 1)} className="md:col-span-2 lg:col-span-3" />
                     <SkillCard skill={getSkill(skills.devops, 4)} className="md:col-span-2 lg:col-span-2" />
                     <SkillCard skill={getSkill(skills.devops, 0)} className="md:col-span-3 lg:col-span-2" />
-                    <SkillCard skill={getSkill(skills.devops, 1)} className="md:col-span-3 lg:col-span-2" />
+                    <SkillCard skill={getSkill(skills.skills.devops, 1)} className="md:col-span-3 lg:col-span-2" />
                 </div>
              </div>
         </section>
     );
 }
-
-    
