@@ -2,14 +2,14 @@
 import type { ResumeData } from '@/types/resume';
 
 export const resumeData: ResumeData = {
-  name: "Milad",
+  name: "David Edward S",
   title: "Web Developer",
   bio: "A creative and detail-oriented web developer specializing in building immersive and user-friendly digital experiences. With a passion for clean code and cutting-edge technologies, I transform complex problems into elegant, performant solutions.",
   headshotUrl: "https://placehold.co/320x320.png",
   contact: {
-    email: "milad.dev@example.com",
-    linkedin: "https://linkedin.com/in/milad-dev",
-    github: "https://github.com/milad-dev"
+    email: "david.edwards@example.com",
+    linkedin: "https://linkedin.com/in/davidedwards",
+    github: "https://github.com/davidedwards"
   },
   education: [
     {
