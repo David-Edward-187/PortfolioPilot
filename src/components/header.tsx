@@ -3,77 +3,22 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { resumeData } from '@/data/resume';
 import { List, X, Code } from '@phosphor-icons/react/dist/ssr';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
-interface NavLink {
-  href: string;
-  label: string;
-}
-
-const navLinks: NavLink[] = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-];
+import { Menu, MenuItem, ProductItem } from '@/components/ui/navbar-menu';
+import { ThemeToggle } from './theme-toggle';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const headerRef = React.useRef<HTMLElement>(null);
-  const mobileMenuRef = React.useRef<HTMLDivElement>(null);
-  const mobileMenuOverlayRef = React.useRef<HTMLDivElement>(null);
-  const menuTimeline = React.useRef<gsap.core.Timeline | null>(null);
-
-  // GSAP animation to show/hide header on scroll
-  React.useEffect(() => {
-    const showAnim = gsap.from(headerRef.current, { 
-      yPercent: -100,
-      paused: true,
-      duration: 0.2
-    }).progress(1);
-
-    ScrollTrigger.create({
-      start: "top top",
-      end: "max",
-      onUpdate: (self) => {
-        self.direction === -1 ? showAnim.play() : showAnim.reverse()
-      }
-    });
-  }, []);
-
-  // GSAP timeline for mobile menu animation
-  React.useEffect(() => {
-    gsap.set(mobileMenuRef.current, { xPercent: 100, autoAlpha: 0 });
-    gsap.set(mobileMenuOverlayRef.current, { autoAlpha: 0 });
-    
-    menuTimeline.current = gsap.timeline({
-      paused: true,
-      onStart: () => { document.body.style.overflow = 'hidden'; },
-      onReverseComplete: () => { document.body.style.overflow = 'auto'; }
-    });
-
-    menuTimeline.current
-      .to(mobileMenuOverlayRef.current, { autoAlpha: 1, duration: 0.2 })
-      .to(mobileMenuRef.current, { xPercent: 0, autoAlpha: 1, duration: 0.4, ease: 'power3.out' }, "-=0.1")
-      .fromTo('.mobile-menu-item', { opacity: 0, y: 20, }, {
-        opacity: 1, y: 0, stagger: 0.05, duration: 0.3, ease: 'power2.out'
-      }, "-=0.2");
-  }, []);
+  const [active, setActive] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     if (isMobileMenuOpen) {
-      menuTimeline.current?.play();
+      document.body.style.overflow = 'hidden';
     } else {
-      menuTimeline.current?.reverse();
+      document.body.style.overflow = 'auto';
     }
   }, [isMobileMenuOpen]);
 
@@ -81,76 +26,78 @@ export function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const navLinksForMobile = [
+    { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
+    { href: "#skills", label: "Skills" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
     <>
       <header
-        ref={headerRef}
-        className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border"
+        className={cn("sticky top-4 inset-x-0 max-w-2xl mx-auto z-50")}
       >
-        <div className="container mx-auto flex h-20 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Code weight="bold" className="h-8 w-8 text-accent transition-transform duration-300 group-hover:rotate-[-15deg] group-hover:scale-110" />
-            <span className="text-xl font-bold text-foreground">{resumeData.name}</span>
-          </Link>
-          
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary relative group/nav-link overflow-hidden">
-                <Link href={link.href}>
-                  {link.label}
-                  <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-0.5 w-2/3 bg-primary transform scale-x-0 group-hover/nav-link:scale-x-100 transition-transform duration-300 ease-out"></span>
-                </Link>
-              </Button>
-            ))}
-            <div className="ml-2">
-              <ThemeToggle />
-            </div>
-          </nav>
-
-          {/* Mobile Nav Trigger */}
-          <div className="md:hidden">
-            <Button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} variant="ghost" size="icon">
-              {isMobileMenuOpen ? <X className="h-7 w-7" /> : <List className="h-7 w-7" />}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex justify-center">
+            <Menu setActive={setActive}>
+                <MenuItem setActive={setActive} active={active} item="About">
+                    <div className="flex flex-col space-y-4 text-sm p-4">
+                        <p className='max-w-xs text-muted-foreground'>{resumeData.bio.substring(0, 120)}...</p>
+                        <a href="#about" onClick={() => setActive(null)} className='font-bold text-primary hover:underline'>Learn More →</a>
+                    </div>
+                </MenuItem>
+                <MenuItem setActive={setActive} active={active} item="Projects">
+                    <div className="text-sm grid grid-cols-2 gap-10 p-4">
+                        {resumeData.projects.slice(0, 4).map((p) => (
+                            <ProductItem
+                                key={p.name}
+                                title={p.name}
+                                href={p.link}
+                                src={`https://placehold.co/280x140.png`}
+                                description={p.description[0]}
+                            />
+                        ))}
+                    </div>
+                </MenuItem>
+                <MenuItem setActive={setActive} active={active} item="Contact" href="#contact"/>
+            </Menu>
+        </div>
+        
+        {/* Mobile Header */}
+        <div className="md:hidden flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border border-border rounded-2xl mx-4">
+             <Link href="/" className="flex items-center gap-2.5 group">
+                <Code weight="bold" className="h-7 w-7 text-accent" />
+             </Link>
+             <div className='flex items-center gap-2'>
+                <ThemeToggle />
+                <Button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} variant="ghost" size="icon">
+                    {isMobileMenuOpen ? <X className="h-6 w-6" /> : <List className="h-6 w-6" />}
+                    <span className="sr-only">Toggle menu</span>
+                </Button>
+             </div>
         </div>
       </header>
-
-      {/* Mobile Menu */}
-      <div 
-        ref={mobileMenuOverlayRef}
-        onClick={handleLinkClick}
-        className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm md:hidden"
-      />
-      <div 
-        ref={mobileMenuRef}
-        className={cn(
-          "fixed top-0 right-0 z-[110] h-full w-4/5 max-w-[320px] bg-background/95 backdrop-blur-lg border-l border-border md:hidden",
-          "invisible" // initially hidden
-      )}>
-        <div className="flex items-center justify-between p-4 border-b border-border h-20">
-          <Link href="/" className="flex items-center gap-2.5" onClick={handleLinkClick}>
-              <Code weight="bold" className="h-7 w-7 text-accent" />
-          </Link>
-          <Button onClick={() => setIsMobileMenuOpen(false)} variant="ghost" size="icon">
-              <X className="h-7 w-7" />
-              <span className="sr-only">Close menu</span>
-          </Button>
-        </div>
-        <nav className="flex flex-col gap-6 p-8">
-            {navLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={handleLinkClick} className="mobile-menu-item text-2xl font-semibold text-foreground hover:text-primary transition-colors">
-                    {link.label}
-                </a>
-            ))}
-            <div className="mobile-menu-item mt-8 border-t border-border pt-8 flex flex-col items-start gap-4">
-               <span className="text-sm text-muted-foreground">Theme</span>
-               <ThemeToggle />
+      
+      {/* Mobile Menu Panel */}
+      {isMobileMenuOpen && (
+         <div 
+         className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg md:hidden"
+         onClick={handleLinkClick}
+        >
+            <div className="flex justify-end p-4 absolute top-4 right-4">
+                 {/* This space is intentionally left for the close button which is part of the mobile header now */}
             </div>
-        </nav>
-      </div>
+            <nav className="flex flex-col gap-8 pt-28 items-center text-center">
+                {navLinksForMobile.map((link) => (
+                    <a key={link.href} href={link.href} onClick={handleLinkClick} className="text-3xl font-semibold text-foreground hover:text-primary transition-colors">
+                        {link.label}
+                    </a>
+                ))}
+            </nav>
+        </div>
+      )}
     </>
   );
 }
