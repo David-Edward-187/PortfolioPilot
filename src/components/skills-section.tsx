@@ -99,56 +99,86 @@ const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
 };
 
 
-const SkillCard = ({ skill, className }: { skill: string, className?: string }) => {
+const SkillCard = ({ skill, className }: { skill: string; className?: string }) => {
     const [hovered, setHovered] = React.useState(false);
-    const { icon, color } = iconMap[skill] || { icon: <FontAwesomeIcon icon={faCode} className="h-8 w-8" />, color: "hsl(var(--accent))" };
+    const { icon, color } = iconMap[skill] || {
+      icon: <FontAwesomeIcon icon={faCode} className="h-8 w-8" />,
+      color: "hsl(var(--accent))",
+    };
     const { resolvedTheme } = useTheme();
-
+  
     const colors = useMemo(() => {
-        if (resolvedTheme === 'dark') {
-            return [[187, 107, 255], [0, 255, 200]]; // Vibrant Purple, Teal for dark mode
-        }
-        return [[100, 116, 139], [148, 163, 184]]; // Softer, theme-aligned colors for light mode (slate-500, slate-400)
+      if (resolvedTheme === "dark") {
+        return [
+          [187, 107, 255],
+          [0, 255, 200],
+        ]; // Vibrant Purple, Teal for dark mode
+      }
+      return [
+        [100, 116, 139],
+        [148, 163, 184],
+      ]; // Softer, theme-aligned colors for light mode (slate-500, slate-400)
     }, [resolvedTheme]);
-
+  
     return (
-        <div
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            className={cn(
-                "border border-border/20 group/canvas-card flex items-center justify-center",
-                "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-3xl overflow-hidden",
-                className
-            )}
-        >
-            <AnimatePresence>
-                {hovered && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="h-full w-full absolute inset-0"
-                    >
-                        <CanvasRevealEffect
-                            animationSpeed={5}
-                            containerClassName="bg-transparent rounded-3xl"
-                            colors={colors}
-                            dotSize={2}
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <div className="relative z-20 flex flex-col items-center justify-center h-full text-center transition-all duration-200">
-                <h2 className="text-white text-center text-lg sm:text-xl font-bold opacity-0 group-hover/canvas-card:opacity-100 relative z-20 transition-opacity duration-200">
-                    {skill}
-                </h2>
-                <div className="text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0" style={{ color }}>
-                    {icon}
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className={cn(
+          "border border-border/20 group/canvas-card flex items-center justify-center",
+          "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-3xl overflow-hidden cursor-pointer",
+          className
+        )}
+      >
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="h-full w-full absolute inset-0"
+            >
+              <CanvasRevealEffect
+                animationSpeed={5}
+                containerClassName="bg-transparent rounded-3xl"
+                colors={colors}
+                dotSize={2}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+  
+        <div className="relative z-20 w-full h-full flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            {!hovered ? (
+              <motion.div
+                key="icon"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.2, ease: "circOut" }}
+              >
+                <div className="text-5xl" style={{ color }}>
+                  {icon}
                 </div>
-            </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="text"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, ease: "circOut" }}
+              >
+                <h2 className="text-white text-center text-lg sm:text-xl font-bold relative z-20">
+                  {skill}
+                </h2>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
+      </div>
     );
-};
+  };
 
 export function SkillsSection() {
     const skills = {
@@ -181,7 +211,7 @@ export function SkillsSection() {
                     <SkillCard skill={getSkill(skills.datastores, 0)} className="md:col-span-2 lg:col-span-3" />
                     <SkillCard skill={getSkill(skills.datastores, 1)} className="md:col-span-2 lg:col-span-3" />
                     <SkillCard skill={getSkill(skills.devops, 4)} className="md:col-span-2 lg:col-span-2" />
-                    <SkillCard skill={getSkill(skills.devops, 0)} className="md:col-span-3 lg:col-span-2" />
+                    <SkillCard skill={getSkill(devops, 0)} className="md:col-span-3 lg:col-span-2" />
                     <SkillCard skill={getSkill(skills.devops, 1)} className="md:col-span-3 lg:col-span-2" />
                 </div>
              </div>
