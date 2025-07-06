@@ -1,3 +1,4 @@
+
 "use client";
 
 import { resumeData } from '@/data/resume';
@@ -33,6 +34,8 @@ export function ExperienceSection() {
         useTransform(scrollYProgress, [0, 1], [0, 1]), 
         { stiffness: 300, damping: 50, restDelta: 0.001 }
     );
+    
+    const y = useTransform(pathLength, [0, 1], [0, contentHeight]);
     
     return (
         <section id="experience" className="py-20 md:py-24 bg-secondary">
@@ -77,7 +80,7 @@ export function ExperienceSection() {
                                 />
                                 <motion.circle
                                     cx="10"
-                                    cy={useTransform(pathLength, [0, 1], [0, contentHeight])}
+                                    cy={y}
                                     r="4"
                                     fill="hsl(var(--primary))"
                                 />
