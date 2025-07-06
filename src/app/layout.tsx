@@ -13,8 +13,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: `💻 ${resumeData.name} | ${resumeData.title}`,
+  title: `${resumeData.name} | ${resumeData.title}`,
   description: `Portfolio of ${resumeData.name}, a skilled ${resumeData.title} creating futuristic and immersive web experiences.`,
+  icons:{
+    icon:'/favicon.ico'
+  }
 };
 
 export default function RootLayout({
