@@ -38,7 +38,7 @@ export function ExperienceSection() {
     const y = useTransform(pathLength, [0, 1], [0, contentHeight]);
     
     return (
-        <section id="experience" className="py-20 md:py-24 bg-secondary">
+        <section id="experience" className="relative py-20 md:py-24 bg-secondary">
             <div className="container mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
