@@ -10,6 +10,7 @@ import { resumeData } from '@/data/resume';
 import { Preloader } from '@/components/preloader';
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { ScrollToTopButton } from '@/components/scroll-to-top-button';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -65,6 +66,7 @@ export default function RootLayout({
               </main>
               <Footer />
               <Toaster />
+              <ScrollToTopButton />
             </>
           )}
         </ThemeProvider>
