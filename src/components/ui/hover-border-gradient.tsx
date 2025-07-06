@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState, forwardRef } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +33,12 @@ export const HoverBorderGradient = forwardRef<
   ) => {
     const [hovered, setHovered] = useState(false);
     const rotateDirection = clockwise ? 360 : -360;
+
+    useEffect(() => {
+      if (isDeactivated) {
+        setHovered(false);
+      }
+    }, [isDeactivated]);
 
     const finalHovered = hovered && !isDeactivated;
 
