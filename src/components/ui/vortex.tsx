@@ -15,6 +15,7 @@ export const Vortex = ({
   baseRadius = 1,
   rangeRadius = 2,
   backgroundColor = "black",
+  particleColors,
 }: {
   children?: React.ReactNode;
   className?: string;
@@ -27,6 +28,7 @@ export const Vortex = ({
   baseRadius?: number;
   rangeRadius?: number;
   backgroundColor?: string;
+  particleColors?: string[];
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,7 +60,7 @@ export const Vortex = ({
         };
       }
     }
-  }, [backgroundColor]);
+  }, [backgroundColor, particleColors]);
 
   const initParticles = () => {
     particlePool.current = [];
@@ -118,7 +120,12 @@ export const Vortex = ({
       this.radius = baseRadius + Math.random() * rangeRadius;
       this.birth = tick;
       this.death = this.birth + (Math.random() * rangeY * 2 - rangeY) / this.speed;
-      this.color = `hsla(${baseHue + this.x * 0.1}, 100%, 70%, ${0.4 + Math.random() * 0.5})`;
+
+      if (particleColors && particleColors.length > 0) {
+        this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
+      } else {
+        this.color = `hsla(${baseHue + this.x * 0.1}, 100%, 70%, ${0.4 + Math.random() * 0.5})`;
+      }
       return this;
     }
 

@@ -15,6 +15,8 @@ const slideUp = {
 }
 
 export function Preloader() {
+    const vortexColors = ["hsl(255, 85%, 65%)", "hsl(185, 100%, 50%)"];
+
     return (
         <motion.div
             variants={slideUp}
@@ -26,7 +28,7 @@ export function Preloader() {
                 backgroundColor="hsl(224 80% 5%)"
                 rangeY={800}
                 particleCount={500}
-                baseHue={255} // a purple hue
+                particleColors={vortexColors}
                 className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
             >
                 <motion.div
