@@ -99,28 +99,39 @@ const SkillCard = ({ skill }: { skill: string }) => {
             onClick={handleClick}
             className="border border-border/20 group/canvas-card flex items-center justify-center bg-card w-60 h-32 p-4 relative rounded-2xl transition-all duration-300 hover:border-primary/50 overflow-hidden"
         >
-            <div className="absolute inset-0 h-full w-full">
-                <CanvasRevealEffect
-                    animationSpeed={5}
-                    containerClassName="rounded-2xl"
-                    colors={canvasColors}
-                    dotSize={2}
-                />
-            </div>
+            <AnimatePresence>
+                {hovered && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="h-full w-full absolute inset-0"
+                    >
+                        <CanvasRevealEffect
+                            animationSpeed={5}
+                            containerClassName="bg-transparent"
+                            colors={canvasColors}
+                            dotSize={2}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <div className="relative z-20 w-full h-full flex items-center justify-center pointer-events-none">
                 <motion.div
+                    initial={{ opacity: 1 }}
                     animate={{ opacity: hovered ? 0 : 1 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute inset-0 flex items-center justify-center"
+                    className="absolute inset-0 flex flex-col items-center justify-center text-center gap-2"
                 >
                     <Icon className="text-4xl" style={{ color }} />
+                    <span className="text-sm font-medium text-foreground">{skill}</span>
                 </motion.div>
                 
                 <motion.h3
-                    animate={{ opacity: hovered ? 1 : 0 }}
-                    transition={{ duration: 0.2, delay: 0.1 }}
-                    className="text-xl text-white font-bold"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="text-lg text-white font-bold"
                 >
                     {skill}
                 </motion.h3>

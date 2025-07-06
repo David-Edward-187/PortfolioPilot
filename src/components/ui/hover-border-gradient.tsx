@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState, forwardRef } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,7 @@ type HoverBorderGradientProps = {
   as?: React.ElementType;
   duration?: number;
   clockwise?: boolean;
-  forceDeactivated?: boolean;
+  forceDeactivated?: boolean; 
 } & React.HTMLAttributes<HTMLElement>;
 
 export const HoverBorderGradient = forwardRef<
@@ -26,7 +26,7 @@ export const HoverBorderGradient = forwardRef<
       as: Tag = "button",
       duration = 1,
       clockwise = true,
-      forceDeactivated = false,
+      forceDeactivated = false, 
       ...props
     },
     ref
@@ -34,6 +34,12 @@ export const HoverBorderGradient = forwardRef<
     const [hovered, setHovered] = useState(false);
     const rotateDirection = clockwise ? 360 : -360;
 
+    useEffect(() => {
+        if (forceDeactivated) {
+            setHovered(false);
+        }
+    }, [forceDeactivated]);
+    
     const isAnimationActive = hovered && !forceDeactivated;
 
     return (
@@ -71,7 +77,7 @@ export const HoverBorderGradient = forwardRef<
           }}
           transition={{
             duration: duration,
-            repeat: Infinity,
+            repeat: isAnimationActive ? Infinity : 0,
             repeatType: "loop",
             ease: "linear",
           }}
