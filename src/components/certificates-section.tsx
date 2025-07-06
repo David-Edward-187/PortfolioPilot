@@ -2,8 +2,7 @@
 "use client";
 
 import { resumeData } from '@/data/resume';
-import { FaAward } from 'react-icons/fa';
-import { FiExternalLink } from 'react-icons/fi';
+import { FaAward, FaExternalLinkAlt } from 'react-icons/fa';
 import { WobbleCard } from '@/components/ui/wobble-card';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -72,7 +71,7 @@ export function CertificatesSection() {
                                             </div>
                                         </div>
                                         {isClickable && (
-                                            <FiExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                            <FaExternalLinkAlt className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
                                         )}
                                     </div>
                                     
