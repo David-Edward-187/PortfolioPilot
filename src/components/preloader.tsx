@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { resumeData } from '@/data/resume';
+import { Vortex } from '@/components/ui/vortex';
 
 const slideUp = {
     initial: {
@@ -15,40 +15,38 @@ const slideUp = {
 }
 
 export function Preloader() {
-    const [index, setIndex] = useState(0);
-    // Add the final name to the list of words
-    const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten tag", resumeData.name];
-
-    useEffect(() => {
-        // Stop cycling when it reaches the last word (the name)
-        if (index >= words.length - 1) return;
-
-        const timeoutId = setTimeout(() => {
-            setIndex(index + 1)
-        }, index === 0 ? 900 : 150) // Longer delay for the first word "Hello"
-
-        return () => clearTimeout(timeoutId);
-    }, [index, words.length]);
-
     return (
         <motion.div
             variants={slideUp}
             initial="initial"
             exit="exit"
-            className="fixed inset-0 z-[999] flex items-center justify-center bg-primary text-primary-foreground"
+            className="fixed inset-0 z-[999] overflow-hidden"
         >
-            <AnimatePresence mode="wait">
-                <motion.p
-                    key={words[index]}
+            <Vortex
+                backgroundColor="hsl(224 80% 5%)"
+                rangeY={800}
+                particleCount={500}
+                baseHue={255} // a purple hue
+                className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+            >
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="text-4xl md:text-6xl font-bold"
+                    transition={{
+                        duration: 1,
+                        ease: 'easeInOut',
+                        delay: 1, // Delay text animation to let vortex build up
+                    }}
+                    className="text-center"
                 >
-                    {words[index]}
-                </motion.p>
-            </AnimatePresence>
+                    <h2 className="text-white text-3xl md:text-5xl font-bold">
+                        {resumeData.name}
+                    </h2>
+                    <p className="text-white text-base md:text-xl max-w-xl mt-4">
+                        Welcome to my portfolio.
+                    </p>
+                </motion.div>
+            </Vortex>
         </motion.div>
     );
 }
