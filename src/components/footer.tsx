@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { resumeData } from '@/data/resume';
-import { Github, Linkedin, Code } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaCode } from 'react-icons/fa';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -43,8 +43,8 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { href: resumeData.contact.github, icon: Github, name: "GitHub" },
-    { href: resumeData.contact.linkedin, icon: Linkedin, name: "LinkedIn" },
+    { href: resumeData.contact.github, icon: FaGithub, name: "GitHub" },
+    { href: resumeData.contact.linkedin, icon: FaLinkedin, name: "LinkedIn" },
   ];
 
   return (
@@ -59,7 +59,7 @@ export function Footer() {
         <div className="container mx-auto relative z-10 text-center">
             <div className="footer-item flex justify-center items-center mb-6">
                 <Link href="/" className="flex items-center gap-2.5 group">
-                    <Code className="h-7 w-7 text-accent" />
+                    <FaCode className="h-7 w-7 text-accent" />
                     <span className="text-lg font-bold text-foreground">{resumeData.name}</span>
                 </Link>
             </div>
@@ -86,7 +86,7 @@ export function Footer() {
                 <span>&copy; {new Date().getFullYear()} {resumeData.name}. All Rights Reserved.</span>
                 <span className="text-muted-foreground/50">|</span>
                 <a href={repositoryUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
-                    <Github size={14} />
+                    <FaGithub size={14} />
                     <span>View Source</span>
                 </a>
             </div>

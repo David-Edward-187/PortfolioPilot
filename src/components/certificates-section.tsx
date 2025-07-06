@@ -2,7 +2,8 @@
 "use client";
 
 import { resumeData } from '@/data/resume';
-import { Award, ExternalLink } from 'lucide-react';
+import { FaAward } from 'react-icons/fa';
+import { FiExternalLink } from 'react-icons/fi';
 import { WobbleCard } from '@/components/ui/wobble-card';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -64,14 +65,14 @@ export function CertificatesSection() {
                                 <div className="flex flex-col justify-between h-full">
                                     <div className="flex justify-between items-start">
                                         <div className="flex items-start gap-4 mb-4">
-                                            <Award className="h-10 w-10 text-accent flex-shrink-0 mt-1" />
+                                            <FaAward className="h-10 w-10 text-accent flex-shrink-0 mt-1" />
                                             <div>
                                                 <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-1">{cert.name}</h3>
                                                 <p className="text-sm text-muted-foreground">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
                                             </div>
                                         </div>
                                         {isClickable && (
-                                            <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                            <FiExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
                                         )}
                                     </div>
                                     

@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import * as React from 'react';
 import { Badge } from "@/components/ui/badge";
-import { GithubLogo } from "@phosphor-icons/react/dist/ssr";
+import { FaGithub } from 'react-icons/fa';
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -61,7 +61,7 @@ export function ProjectsSection() {
               containerClassName="rounded-full"
               className="bg-card text-foreground flex items-center gap-2"
             >
-              <GithubLogo className="h-4 w-4" />
+              <FaGithub className="h-4 w-4" />
               <span>View on GitHub</span>
             </HoverBorderGradient>
           </div>

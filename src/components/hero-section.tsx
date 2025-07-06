@@ -3,7 +3,7 @@
 
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { FaArrowRight } from 'react-icons/fa';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useTheme } from 'next-themes';
@@ -179,7 +179,7 @@ export function HeroSection() {
               onClick={handleContactClick}
               className="bg-primary text-primary-foreground text-lg h-14 px-8 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:glow-shadow-primary active:scale-100 group"
             >
-              Let's Connect <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              Let's Connect <FaArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
         </div>
       </div>

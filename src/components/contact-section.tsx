@@ -8,7 +8,8 @@ import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Github, Linkedin, Send } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { IoSend } from 'react-icons/io5';
 import * as React from 'react';
 import { sendContactEmail, type ContactFormData } from '@/app/actions/contact-form-actions';
 import { resumeData } from '@/data/resume';
@@ -136,15 +137,15 @@ export function ContactSection() {
                 type="submit" 
                 className="submit-button w-full sm:w-auto bg-primary text-primary-foreground text-base font-semibold py-3 px-6 h-auto transition-all duration-300 ease-in-out hover:shadow-glow-primary hover:scale-105 active:scale-100 group"
                 disabled={isLoading}>
-                <Send className="h-5 w-5 mr-2.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                <IoSend className="h-5 w-5 mr-2.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                 {isLoading ? "Sending..." : "Submit"}
               </Button>
               <div className="flex gap-4">
                 <a href={resumeData.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-primary transition-colors hover:shadow-glow-primary rounded-full">
-                  <Github size={28} />
+                  <FaGithub size={28} />
                 </a>
                  <a href={resumeData.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors hover:shadow-glow-primary rounded-full">
-                  <Linkedin size={28} />
+                  <FaLinkedin size={28} />
                 </a>
               </div>
           </div>

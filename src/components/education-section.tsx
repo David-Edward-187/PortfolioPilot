@@ -3,7 +3,7 @@
 
 import { resumeData } from '@/data/resume';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GraduationCap } from 'lucide-react';
+import { FaGraduationCap } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef, useEffect } from 'react';
@@ -66,7 +66,7 @@ export function EducationSection() {
                         <p className="text-md text-foreground/90 font-medium">{edu.institution}</p>
                         </div>
                         <div className="text-sm text-muted-foreground font-medium text-right flex-shrink-0 ml-4 flex items-center gap-2">
-                        <GraduationCap className="inline-block h-4 w-4 text-primary/70" />
+                        <FaGraduationCap className="inline-block h-4 w-4 text-primary/70" />
                         {edu.years}
                         </div>
                     </div>
