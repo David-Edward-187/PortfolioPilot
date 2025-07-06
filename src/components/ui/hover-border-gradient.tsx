@@ -11,6 +11,7 @@ type HoverBorderGradientProps = {
   as?: React.ElementType;
   duration?: number;
   clockwise?: boolean;
+  forceDeactivated?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
 export const HoverBorderGradient = forwardRef<
@@ -25,12 +26,15 @@ export const HoverBorderGradient = forwardRef<
       as: Tag = "button",
       duration = 1,
       clockwise = true,
+      forceDeactivated = false,
       ...props
     },
     ref
   ) => {
     const [hovered, setHovered] = useState(false);
     const rotateDirection = clockwise ? 360 : -360;
+
+    const isAnimationActive = hovered && !forceDeactivated;
 
     return (
       <Tag
@@ -62,7 +66,7 @@ export const HoverBorderGradient = forwardRef<
             opacity: 0,
           }}
           animate={{
-            opacity: hovered ? 1 : 0,
+            opacity: isAnimationActive ? 1 : 0,
             rotate: rotateDirection,
           }}
           transition={{
