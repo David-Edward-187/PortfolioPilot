@@ -99,24 +99,16 @@ const SkillCard = ({ skill }: { skill: string }) => {
             onClick={handleClick}
             className="border border-border/20 group/canvas-card flex items-center justify-center bg-card w-60 h-32 p-4 relative rounded-2xl transition-all duration-300 hover:border-primary/50 overflow-hidden"
         >
-            <AnimatePresence>
-                {hovered && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="h-full w-full absolute inset-0"
-                    >
-                        <CanvasRevealEffect
-                            animationSpeed={5}
-                            containerClassName="bg-card rounded-2xl"
-                            colors={canvasColors}
-                            dotSize={2}
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <div className="absolute inset-0 h-full w-full">
+                <CanvasRevealEffect
+                    animationSpeed={5}
+                    containerClassName="rounded-2xl"
+                    colors={canvasColors}
+                    dotSize={2}
+                />
+            </div>
 
-            <div className="relative z-20 w-full h-full flex items-center justify-center">
+            <div className="relative z-20 w-full h-full flex items-center justify-center pointer-events-none">
                 <motion.div
                     animate={{ opacity: hovered ? 0 : 1 }}
                     transition={{ duration: 0.2 }}
