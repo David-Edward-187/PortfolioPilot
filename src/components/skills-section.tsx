@@ -206,7 +206,7 @@ export function SkillsSection() {
                     <SkillCard skill={getSkill(skills.datastores, 1)} className="md:col-span-2 lg:col-span-3" />
                     <SkillCard skill={getSkill(skills.devops, 4)} className="md:col-span-2 lg:col-span-2" />
                     <SkillCard skill={getSkill(skills.devops, 0)} className="md:col-span-3 lg:col-span-2" />
-                    <SkillCard skill={getSkill(skills.skills.devops, 1)} className="md:col-span-3 lg:col-span-2" />
+                    <SkillCard skill={getSkill(skills.devops, 1)} className="md:col-span-3 lg:col-span-2" />
                 </div>
              </div>
         </section>
