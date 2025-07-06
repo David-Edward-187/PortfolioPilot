@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { resumeData } from '@/data/resume';
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
-import { cn } from '@/lib/utils';
+import { useIsMobile } from "@/hooks/use-mobile";
 
 import { FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaFigma, FaUsers } from 'react-icons/fa';
 import { IoLogoJavascript, IoLogoHtml5, IoLogoCss3, IoLogoPython } from 'react-icons/io5';
@@ -31,7 +31,7 @@ import { LuCode2 } from 'react-icons/lu';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const iconMap: { [key: string]: { icon: React.ComponentType, color: string } } = {
+const iconMap: { [key: string]: { icon: React.ComponentType<any>, color: string } } = {
   // Languages
   "JavaScript (ES6+)": { icon: IoLogoJavascript, color: "#F7DF1E" },
   "TypeScript": { icon: SiTypescript, color: "#3178C6" },
@@ -71,13 +71,32 @@ const iconMap: { [key: string]: { icon: React.ComponentType, color: string } } =
 const SkillCard = ({ skill }: { skill: string }) => {
     const [hovered, setHovered] = useState(false);
     const { icon: Icon, color } = iconMap[skill] || { icon: LuCode2, color: 'hsl(var(--accent))' };
-    // Colors for CanvasRevealEffect that match the theme
     const canvasColors = [[125, 77, 255], [20, 184, 166]];
+    const isMobile = useIsMobile();
+
+    const handleMouseEnter = () => {
+        if (!isMobile) {
+            setHovered(true);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (!isMobile) {
+            setHovered(false);
+        }
+    };
+
+    const handleClick = () => {
+        if (isMobile) {
+            setHovered(!hovered);
+        }
+    };
 
     return (
         <div
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleClick}
             className="border border-border/20 group/canvas-card flex items-center justify-center bg-card w-60 h-32 p-4 relative rounded-2xl transition-all duration-300 hover:border-primary/50 overflow-hidden"
         >
             <AnimatePresence>
@@ -98,14 +117,30 @@ const SkillCard = ({ skill }: { skill: string }) => {
             </AnimatePresence>
 
             <div className="relative z-20 flex flex-col items-center justify-center text-center">
-                <div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover/canvas-card:opacity-0 transition-opacity duration-200"
-                >
-                    <Icon className="text-4xl" style={{ color }} />
-                </div>
-                <h3 className="text-xl text-foreground opacity-0 group-hover/canvas-card:opacity-100 relative z-10 font-bold group-hover/canvas-card:text-white transition-opacity duration-200">
-                    {skill}
-                </h3>
+                <AnimatePresence>
+                    {!hovered && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="h-full w-full absolute inset-0 flex items-center justify-center"
+                        >
+                             <Icon className="text-4xl" style={{ color }} />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {hovered && (
+                        <motion.h3
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1, transition: { delay: 0.1, duration: 0.3 } }}
+                            exit={{ y: -20, opacity: 0 }}
+                            className="text-xl text-foreground relative z-10 font-bold text-white transition-opacity duration-200"
+                        >
+                            {skill}
+                        </motion.h3>
+                    )}
+                </AnimatePresence>
             </div>
         </div>
     );
