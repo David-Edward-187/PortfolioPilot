@@ -7,9 +7,22 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { List, X, Code } from '@phosphor-icons/react/dist/ssr';
 import { ThemeToggle } from './theme-toggle';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = React.useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    // Hide navbar when scrolling down, show when scrolling up
+    if (previous && latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   React.useEffect(() => {
     if (isMobileMenuOpen) {
@@ -33,12 +46,18 @@ export function Header() {
 
   return (
     <>
-      <header
+      <motion.header
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: "-110%" },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
         className={cn("sticky top-4 inset-x-0 max-w-4xl mx-auto z-50")}
       >
         {/* Desktop Menu */}
         <div className="hidden md:flex justify-center">
-            <nav className="relative rounded-full border border-border bg-background/50 shadow-input flex justify-center items-center space-x-1 px-3 py-2">
+            <nav className="relative rounded-full border border-border bg-background/50 backdrop-blur-md shadow-input flex justify-center items-center space-x-1 px-3 py-2">
                 {navLinks.map((link) => (
                     <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary hover:bg-transparent">
                         <a href={link.href}>{link.label}</a>
@@ -63,7 +82,7 @@ export function Header() {
                 </Button>
              </div>
         </div>
-      </header>
+      </motion.header>
       
       {/* Mobile Menu Panel */}
       {isMobileMenuOpen && (
