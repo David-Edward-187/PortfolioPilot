@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ type HoverBorderGradientProps = {
   clockwise?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-export const HoverBorderGradient = React.forwardRef<
+export const HoverBorderGradient = forwardRef<
   HTMLElement,
   HoverBorderGradientProps
 >(
@@ -35,10 +35,10 @@ export const HoverBorderGradient = React.forwardRef<
     return (
       <Tag
         ref={ref}
-        onMouseEnter={() => {
-          setHovered(true);
-        }}
+        onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onFocus={() => setHovered(true)}
+        onBlur={() => setHovered(false)}
         className={cn(
           "relative p-[2px] w-fit h-fit rounded-full",
           containerClassName
