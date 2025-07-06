@@ -98,7 +98,6 @@ const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
   "Agile/Scrum": { icon: <FontAwesomeIcon icon={faUsers} />, color: "#0984e3" },
 };
 
-
 const SkillCard = ({ skill, className }: { skill: string; className?: string }) => {
     const [hovered, setHovered] = React.useState(false);
     const { icon, color } = iconMap[skill] || {
@@ -110,14 +109,14 @@ const SkillCard = ({ skill, className }: { skill: string; className?: string }) 
     const colors = useMemo(() => {
       if (resolvedTheme === "dark") {
         return [
-          [187, 107, 255],
-          [0, 255, 200],
-        ]; // Vibrant Purple, Teal for dark mode
+          [187, 107, 255], // Vibrant Purple
+          [0, 255, 200],   // Teal
+        ];
       }
       return [
-        [100, 116, 139],
-        [148, 163, 184],
-      ]; // Softer, theme-aligned colors for light mode (slate-500, slate-400)
+        [100, 116, 139], // slate-500
+        [148, 163, 184], // slate-400
+      ];
     }, [resolvedTheme]);
   
     return (
@@ -130,27 +129,16 @@ const SkillCard = ({ skill, className }: { skill: string; className?: string }) 
           className
         )}
       >
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="h-full w-full absolute inset-0"
-            >
-              <CanvasRevealEffect
-                animationSpeed={5}
-                containerClassName="bg-transparent rounded-3xl"
-                colors={colors}
-                dotSize={2}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <CanvasRevealEffect
+            animationSpeed={5}
+            containerClassName="bg-transparent rounded-3xl"
+            colors={colors}
+            dotSize={2}
+        />
   
         <div className="relative z-20 w-full h-full flex items-center justify-center">
-            {/* Both icon and text are positioned absolutely to overlay each other */}
             <motion.div
-                className="absolute flex items-center justify-center w-full h-full"
+                className="absolute inset-0 flex items-center justify-center"
                 animate={{ opacity: hovered ? 0 : 1 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
             >
@@ -160,7 +148,7 @@ const SkillCard = ({ skill, className }: { skill: string; className?: string }) 
             </motion.div>
             
             <motion.div
-                className="absolute flex items-center justify-center w-full h-full"
+                className="absolute inset-0 flex items-center justify-center"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
