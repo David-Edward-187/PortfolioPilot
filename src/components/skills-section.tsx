@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import { FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaFigma, FaUsers } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaFigma, FaUsers, FaCode } from 'react-icons/fa';
 import { IoLogoJavascript, IoLogoHtml5, IoLogoCss3, IoLogoPython } from 'react-icons/io5';
 import { 
   SiTypescript, 
@@ -27,7 +27,7 @@ import {
 import { TbBrandNextjs } from 'react-icons/tb';
 import { GoSync } from 'react-icons/go';
 import { HiServer } from 'react-icons/hi';
-import { LuCode2 } from 'react-icons/lu';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,7 +70,7 @@ const iconMap: { [key: string]: { icon: React.ComponentType<any>, color: string 
 
 const SkillCard = ({ skill }: { skill: string }) => {
     const [hovered, setHovered] = useState(false);
-    const { icon: Icon, color } = iconMap[skill] || { icon: LuCode2, color: 'hsl(var(--accent))' };
+    const { icon: Icon, color } = iconMap[skill] || { icon: FaCode, color: 'hsl(var(--accent))' };
     const canvasColors = [[125, 77, 255], [20, 184, 166]];
     const isMobile = useIsMobile();
 
@@ -116,31 +116,22 @@ const SkillCard = ({ skill }: { skill: string }) => {
                 )}
             </AnimatePresence>
 
-            <div className="relative z-20 flex flex-col items-center justify-center text-center">
-                <AnimatePresence>
-                    {!hovered && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="h-full w-full absolute inset-0 flex items-center justify-center"
-                        >
-                             <Icon className="text-4xl" style={{ color }} />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-                <AnimatePresence>
-                    {hovered && (
-                        <motion.h3
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1, transition: { delay: 0.1, duration: 0.3 } }}
-                            exit={{ y: -20, opacity: 0 }}
-                            className="text-xl text-foreground relative z-10 font-bold text-white transition-opacity duration-200"
-                        >
-                            {skill}
-                        </motion.h3>
-                    )}
-                </AnimatePresence>
+            <div className="relative z-20 w-full h-full flex items-center justify-center">
+                <motion.div
+                    animate={{ opacity: hovered ? 0 : 1 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                >
+                    <Icon className="text-4xl" style={{ color }} />
+                </motion.div>
+                
+                <motion.h3
+                    animate={{ opacity: hovered ? 1 : 0 }}
+                    transition={{ duration: 0.2, delay: 0.1 }}
+                    className="text-xl text-white font-bold"
+                >
+                    {skill}
+                </motion.h3>
             </div>
         </div>
     );
