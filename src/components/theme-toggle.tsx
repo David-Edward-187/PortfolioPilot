@@ -15,12 +15,14 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
 
 export function ThemeToggle() {
   const { setTheme } = useTheme()
+  const [menuOpen, setMenuOpen] = React.useState(false)
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
       <DropdownMenuTrigger asChild>
         <HoverBorderGradient
           as="button"
+          isDeactivated={menuOpen}
           containerClassName="rounded-full"
           className="!p-0 !bg-transparent !rounded-full w-9 h-9 flex items-center justify-center relative"
         >
