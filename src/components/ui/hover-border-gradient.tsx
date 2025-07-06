@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState, useEffect, forwardRef } from "react";
+import React, { useState, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,6 @@ type HoverBorderGradientProps = {
   as?: React.ElementType;
   duration?: number;
   clockwise?: boolean;
-  isDeactivated?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
 export const HoverBorderGradient = forwardRef<
@@ -26,7 +25,6 @@ export const HoverBorderGradient = forwardRef<
       as: Tag = "button",
       duration = 1,
       clockwise = true,
-      isDeactivated = false,
       ...props
     },
     ref
@@ -34,21 +32,11 @@ export const HoverBorderGradient = forwardRef<
     const [hovered, setHovered] = useState(false);
     const rotateDirection = clockwise ? 360 : -360;
 
-    useEffect(() => {
-      if (isDeactivated) {
-        setHovered(false);
-      }
-    }, [isDeactivated]);
-
-    const finalHovered = hovered && !isDeactivated;
-
     return (
       <Tag
         ref={ref}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onFocus={() => setHovered(true)}
-        onBlur={() => setHovered(false)}
         className={cn(
           "relative p-[2px] w-fit h-fit rounded-full",
           containerClassName
@@ -74,7 +62,7 @@ export const HoverBorderGradient = forwardRef<
             opacity: 0,
           }}
           animate={{
-            opacity: finalHovered ? 1 : 0,
+            opacity: hovered ? 1 : 0,
             rotate: rotateDirection,
           }}
           transition={{
