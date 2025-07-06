@@ -1,10 +1,13 @@
 
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { resumeData } from '@/data/resume';
+import { AnimatePresence, motion } from "framer-motion";
+import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+import { cn } from '@/lib/utils';
 
 import { FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaFigma, FaUsers } from 'react-icons/fa';
 import { IoLogoJavascript, IoLogoHtml5, IoLogoCss3, IoLogoPython } from 'react-icons/io5';
@@ -28,7 +31,6 @@ import { LuCode2 } from 'react-icons/lu';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Map skill names to React Icons and their brand colors
 const iconMap: { [key: string]: { icon: React.ComponentType, color: string } } = {
   // Languages
   "JavaScript (ES6+)": { icon: IoLogoJavascript, color: "#F7DF1E" },
@@ -66,6 +68,50 @@ const iconMap: { [key: string]: { icon: React.ComponentType, color: string } } =
   "Agile/Scrum": { icon: FaUsers, color: "#0984e3" },
 };
 
+const SkillCard = ({ skill }: { skill: string }) => {
+    const [hovered, setHovered] = useState(false);
+    const { icon: Icon, color } = iconMap[skill] || { icon: LuCode2, color: 'hsl(var(--accent))' };
+    // Colors for CanvasRevealEffect that match the theme
+    const canvasColors = [[125, 77, 255], [20, 184, 166]];
+
+    return (
+        <div
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className="border border-border/20 group/canvas-card flex items-center justify-center bg-card w-60 h-32 p-4 relative rounded-2xl transition-all duration-300 hover:border-primary/50"
+        >
+            <AnimatePresence>
+                {hovered && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="h-full w-full absolute inset-0"
+                    >
+                        <CanvasRevealEffect
+                            animationSpeed={5}
+                            containerClassName="bg-card rounded-2xl"
+                            colors={canvasColors}
+                            dotSize={2}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <div className="relative z-20 flex flex-col items-center justify-center text-center">
+                <div
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover/canvas-card:opacity-0 transition-opacity duration-200"
+                >
+                    <Icon className="text-4xl" style={{ color }} />
+                </div>
+                <h3 className="text-xl text-foreground opacity-0 group-hover/canvas-card:opacity-100 relative z-10 font-bold group-hover/canvas-card:text-white transition-opacity duration-200">
+                    {skill}
+                </h3>
+            </div>
+        </div>
+    );
+};
+
+
 export function SkillsSection() {
   const component = useRef(null);
 
@@ -93,29 +139,17 @@ export function SkillsSection() {
         <div className="text-center mb-16">
           <h2 className="skill-anim text-4xl md:text-5xl font-bold mb-4">My Skills</h2>
           <p className="skill-anim text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of the technologies and tools I'm proficient in.
+            A showcase of the technologies and tools I'm proficient in. Hover over a card to reveal the magic.
           </p>
         </div>
         <div className="space-y-12">
           {Object.entries(resumeData.skills).map(([category, skills]) => (
             <div key={category} className="skill-anim">
               <h3 className="text-2xl font-semibold text-center mb-8 text-primary">{category}</h3>
-              <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-                {skills.map(skill => {
-                  const { icon: Icon, color } = iconMap[skill] || { icon: LuCode2, color: 'hsl(var(--accent))' };
-                  return (
-                    <div
-                      key={skill}
-                      className="group flex flex-col items-center justify-center gap-2 p-4 w-28 h-28 rounded-2xl glassmorphic transition-all duration-300 hover:!scale-105 hover:bg-primary/10"
-                      title={skill}
-                    >
-                      <Icon className="text-4xl transition-colors duration-300" style={{ color }} />
-                      <span className="text-xs font-medium text-foreground text-center">
-                        {skill}
-                      </span>
-                    </div>
-                  );
-                })}
+              <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+                {skills.map(skill => (
+                  <SkillCard key={skill} skill={skill} />
+                ))}
               </div>
             </div>
           ))}
