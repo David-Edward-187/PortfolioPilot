@@ -148,33 +148,26 @@ const SkillCard = ({ skill, className }: { skill: string; className?: string }) 
         </AnimatePresence>
   
         <div className="relative z-20 w-full h-full flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            {!hovered ? (
-              <motion.div
-                key="icon"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.2, ease: "circOut" }}
-              >
+            <motion.div
+                className="absolute"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: hovered ? 0 : 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+            >
                 <div className="text-5xl" style={{ color }}>
-                  {icon}
+                    {icon}
                 </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="text"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3, ease: "circOut" }}
-              >
-                <h2 className="text-white text-center text-lg sm:text-xl font-bold relative z-20">
-                  {skill}
+            </motion.div>
+            
+            <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+                <h2 className="text-white text-center text-lg sm:text-xl font-bold">
+                    {skill}
                 </h2>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            </motion.div>
         </div>
       </div>
     );
@@ -218,3 +211,5 @@ export function SkillsSection() {
         </section>
     );
 }
+
+    
