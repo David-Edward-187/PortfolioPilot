@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useMemo } from 'react';
@@ -48,7 +47,7 @@ const GraphQLIcon = () => (
 const TypeScriptIcon = () => (
     <svg role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
       <rect width="100" height="100" rx="8" fill="#3178C6" />
-      <path d="M26.4,33.4h19.2v4.8H31.2v11.2h13.6v4.8H31.2v16.4h14.8v4.8H26.4V33.4z M52.4,33.4h12.8l-5.6,22.8l-5.6,22.4h-4.8l9.6-38.4h11.2l-5.6,22.8l-5.6,22.4h4.8l9.6-38.4H52.4z" fill="white" />
+      <path d="M26.4,33.4h19.2v4.8H31.2v11.2h13.6v4.8H31.2v16.4h14.8v4.8H26.4V33.4z M52.4,33.4h12.8l-5.6,22.8l-5.6,22.4h-4.8l9.6-38.4 h11.2l-5.6,22.8l-5.6,22.4h4.8l9.6-38.4H52.4z" fill="white" />
     </svg>
 );
 
@@ -66,101 +65,98 @@ const TailwindIcon = () => (
 );
 
 
+// Map skill names to Font Awesome icons and their brand colors
 const iconMap: { [key: string]: { icon: React.ReactNode, color: string } } = {
+  // Languages
   "JavaScript (ES6+)": { icon: <FontAwesomeIcon icon={faJs} />, color: "#F7DF1E" },
   "TypeScript": { icon: <TypeScriptIcon />, color: "#3178C6" },
   "HTML5": { icon: <FontAwesomeIcon icon={faHtml5} />, color: "#E34F26" },
   "CSS3": { icon: <FontAwesomeIcon icon={faCss3Alt} />, color: "#1572B6" },
   "Python": { icon: <FontAwesomeIcon icon={faPython} />, color: "#3776AB" },
 
+  // Frameworks & Libraries
   "React": { icon: <FontAwesomeIcon icon={faReact} />, color: "#61DAFB" },
-  "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "var(--foreground)" },
+  "Next.js": { icon: <span className="font-black text-4xl">N</span>, color: "#FFFFFF" },
   "Node.js": { icon: <FontAwesomeIcon icon={faNodeJs} />, color: "#339933" },
   "Express": { icon: <FontAwesomeIcon icon={faServer} />, color: "#828282" },
   "Tailwind CSS": { icon: <TailwindIcon />, color: "#06B6D4" },
   "GSAP": { icon: <span className="font-black text-4xl">G</span>, color: "#88CE02" },
-  "Three.js": { icon: <FontAwesomeIcon icon={faCube} />, color: "var(--foreground)" },
+  "Three.js": { icon: <FontAwesomeIcon icon={faCube} />, color: "#FFFFFF" },
 
+  // Datastores
   "PostgreSQL": { icon: <PostgreSqlIcon />, color: "#336791" },
   "MongoDB": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#47A248" },
   "Redis": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#DC382D" },
   "Firebase": { icon: <FontAwesomeIcon icon={faDatabase} />, color: "#FFCA28" },
 
+  // Cloud & DevOps
   "Docker": { icon: <FontAwesomeIcon icon={faDocker} />, color: "#2496ED" },
-  "Vercel": { icon: <VercelIcon />, color: "var(--foreground)" },
+  "Vercel": { icon: <VercelIcon />, color: "#FFFFFF" },
   "AWS (S3, EC2)": { icon: <FontAwesomeIcon icon={faAws} />, color: "#FF9900" },
   "CI/CD": { icon: <FontAwesomeIcon icon={faSync} />, color: "#6c5ce7" },
   "Git": { icon: <FontAwesomeIcon icon={faGitAlt} />, color: "#F05032" },
 
+  // Other
   "Figma": { icon: <FontAwesomeIcon icon={faFigma} />, color: "#F24E1E" },
   "REST APIs": { icon: <FontAwesomeIcon icon={faNetworkWired} />, color: "#d63031" },
   "GraphQL": { icon: <GraphQLIcon />, color: "#E10098" },
   "Agile/Scrum": { icon: <FontAwesomeIcon icon={faUsers} />, color: "#0984e3" },
 };
 
-const SkillCard = ({ skill, className }: { skill: string; className?: string }) => {
+
+const SkillCard = ({ skill, className }: { skill: string, className?: string }) => {
     const [hovered, setHovered] = React.useState(false);
-    const { icon, color } = iconMap[skill] || {
-      icon: <FontAwesomeIcon icon={faCode} className="h-8 w-8" />,
-      color: "hsl(var(--accent))",
-    };
+    const { icon, color } = iconMap[skill] || { icon: <FontAwesomeIcon icon={faCode} className="h-8 w-8" />, color: "hsl(var(--accent))" };
     const { resolvedTheme } = useTheme();
-  
+
     const colors = useMemo(() => {
-      if (resolvedTheme === "dark") {
-        return [
-          [187, 107, 255], // Vibrant Purple
-          [0, 255, 200],   // Teal
-        ];
-      }
-      return [
-        [100, 116, 139], // slate-500
-        [148, 163, 184], // slate-400
-      ];
+        if (resolvedTheme === 'dark') {
+            return [[187, 107, 255], [0, 255, 200]]; // Vibrant Purple, Teal for dark mode
+        }
+        // Softer, theme-aligned colors for light mode
+        return [[187, 107, 255], [0, 255, 200]] // Primary, Accent from light theme
     }, [resolvedTheme]);
-  
+
     return (
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className={cn(
-          "border border-border/20 group/canvas-card flex items-center justify-center",
-          "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-3xl overflow-hidden cursor-pointer",
-          className
-        )}
-      >
-        <CanvasRevealEffect
-            animationSpeed={5}
-            containerClassName="bg-transparent rounded-3xl"
-            colors={colors}
-            dotSize={2}
-        />
-  
-        <div className="relative z-20 w-full h-full flex items-center justify-center">
-            <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                animate={{ opacity: hovered ? 0 : 1 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-                <div className="text-5xl" style={{ color }}>
-                    {icon}
-                </div>
-            </motion.div>
-            
-            <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-                <h2 className="text-white text-center text-lg sm:text-xl font-bold">
+        <div
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className={cn(
+                "border border-border/20 group/canvas-card flex items-center justify-center",
+                "bg-card w-full mx-auto p-4 relative h-36 md:h-48 rounded-3xl overflow-hidden",
+                className
+            )}
+        >
+            <AnimatePresence>
+                {hovered && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="h-full w-full absolute inset-0"
+                    >
+                        <CanvasRevealEffect
+                            animationSpeed={5}
+                            containerClassName="bg-transparent rounded-3xl"
+                            colors={colors}
+                            dotSize={2}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <div className="relative z-20 flex flex-col items-center justify-center h-full text-center transition-all duration-200">
+                {/* Text revealed on hover */}
+                <h2 className="text-white text-center text-lg sm:text-xl font-bold opacity-0 group-hover/canvas-card:opacity-100 relative z-20 transition-opacity duration-200">
                     {skill}
                 </h2>
-            </motion.div>
+                {/* Icon visible by default, hidden on hover */}
+                <div className="text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 group-hover/canvas-card:opacity-0" style={{ color }}>
+                    {icon}
+                </div>
+            </div>
         </div>
-      </div>
     );
-  };
+};
 
 export function SkillsSection() {
     const skills = {
@@ -171,6 +167,7 @@ export function SkillsSection() {
         other: resumeData.skills["Other"] || [],
     };
     
+    // Ensure we don't try to access skills that don't exist
     const getSkill = (arr: string[], index: number) => arr[index] || `Skill ${index + 1}`;
 
     return (

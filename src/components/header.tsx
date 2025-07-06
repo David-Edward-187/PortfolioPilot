@@ -40,7 +40,7 @@ export function Header() {
         <div className="hidden md:flex justify-center">
             <nav className="relative rounded-full border border-border bg-background/50 shadow-input flex justify-center items-center space-x-1 px-3 py-2">
                 {navLinks.map((link) => (
-                    <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary">
+                    <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary hover:bg-transparent">
                         <a href={link.href}>{link.label}</a>
                     </Button>
                 ))}
