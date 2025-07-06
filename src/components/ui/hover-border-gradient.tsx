@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -13,70 +13,77 @@ type HoverBorderGradientProps = {
   clockwise?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-export function HoverBorderGradient({
-  children,
-  containerClassName,
-  className,
-  as: Tag = "button",
-  duration = 1,
-  clockwise = true,
-  ...props
-}: HoverBorderGradientProps) {
-  const [hovered, setHovered] = useState(false);
-  const [direction, setDirection] = useState(clockwise ? "clockwise" : "counter-clockwise");
+export const HoverBorderGradient = React.forwardRef<
+  HTMLElement,
+  HoverBorderGradientProps
+>(
+  (
+    {
+      children,
+      containerClassName,
+      className,
+      as: Tag = "button",
+      duration = 1,
+      clockwise = true,
+      ...props
+    },
+    ref
+  ) => {
+    const [hovered, setHovered] = useState(false);
+    const rotateDirection = clockwise ? 360 : -360;
 
-  const rotateDirection = direction === "clockwise" ? 360 : -360;
-
-  return (
-    <Tag
-      onMouseEnter={(event: React.MouseEvent<HTMLDivElement>) => {
-        setHovered(true);
-      }}
-      onMouseLeave={() => setHovered(false)}
-      className={cn(
-        "relative p-[2px] w-fit h-fit rounded-full",
-        containerClassName
-      )}
-      {...props}
-    >
-      <div
+    return (
+      <Tag
+        ref={ref}
+        onMouseEnter={() => {
+          setHovered(true);
+        }}
+        onMouseLeave={() => setHovered(false)}
         className={cn(
-          "relative bg-card text-foreground w-full h-full rounded-full px-4 py-1.5 text-sm",
-          className
+          "relative p-[2px] w-fit h-fit rounded-full",
+          containerClassName
         )}
+        {...props}
       >
-        {children}
-      </div>
+        <div
+          className={cn(
+            "relative bg-card text-foreground w-full h-full rounded-full px-4 py-1.5 text-sm",
+            className
+          )}
+        >
+          {children}
+        </div>
 
-      {/* Gradient border */}
-      <motion.div
-        className={cn(
-          "absolute inset-0 rounded-full z-0"
-        )}
-        style={{
+        {/* Gradient border */}
+        <motion.div
+          className={cn("absolute inset-0 rounded-full z-0")}
+          style={{
             filter: "blur(2px)",
-        }}
-        initial={{
+          }}
+          initial={{
             opacity: 0,
-        }}
-        animate={{
+          }}
+          animate={{
             opacity: hovered ? 1 : 0,
             rotate: rotateDirection,
-        }}
-        transition={{
+          }}
+          transition={{
             duration: duration,
             repeat: Infinity,
             repeatType: "loop",
             ease: "linear",
-        }}
-      >
-        <div 
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: `conic-gradient(from 0deg at 50% 50%, hsl(var(--primary) / 0.8) 0deg, hsl(var(--accent)) 180deg, hsl(var(--primary) / 0.8) 360deg)`
           }}
-        />
-      </motion.div>
-    </Tag>
-  );
-}
+        >
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: `conic-gradient(from 0deg at 50% 50%, hsl(var(--primary) / 0.8) 0deg, hsl(var(--accent)) 180deg, hsl(var(--primary) / 0.8) 360deg)`,
+            }}
+          />
+        </motion.div>
+      </Tag>
+    );
+  }
+);
+
+HoverBorderGradient.displayName = "HoverBorderGradient";
