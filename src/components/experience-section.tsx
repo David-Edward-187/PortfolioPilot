@@ -1,4 +1,3 @@
-
 "use client";
 
 import { resumeData } from '@/data/resume';
@@ -50,39 +49,41 @@ export function ExperienceSection() {
                 </motion.div>
 
                 <div ref={scrollTargetRef} className="relative w-full max-w-3xl mx-auto">
-                    <motion.div 
-                        className="absolute left-4 top-0 h-full w-6 flex justify-center"
-                        style={{ height: contentHeight > 0 ? contentHeight : 'auto' }}
-                    >
-                        <svg
-                            viewBox={`0 0 20 ${contentHeight}`}
-                            width="20"
-                            height={contentHeight}
-                            className="block"
-                            aria-hidden="true"
+                    {contentHeight > 0 && (
+                        <motion.div 
+                            className="absolute left-4 top-0 h-full w-6 flex justify-center"
+                            style={{ height: contentHeight }}
                         >
-                            <path
-                                d={`M 10,0 V ${contentHeight}`}
-                                fill="none"
-                                stroke="hsl(var(--border))"
-                                strokeOpacity="0.3"
-                                strokeWidth="2"
-                            />
-                            <motion.path
-                                d={`M 10,0 V ${contentHeight}`}
-                                fill="none"
-                                stroke="hsl(var(--primary))"
-                                strokeWidth="2"
-                                style={{ pathLength }}
-                            />
-                             <motion.circle
-                                cx="10"
-                                cy={useTransform(pathLength, [0, 1], [0, contentHeight])}
-                                r="4"
-                                fill="hsl(var(--primary))"
-                            />
-                        </svg>
-                    </motion.div>
+                            <svg
+                                viewBox={`0 0 20 ${contentHeight}`}
+                                width="20"
+                                height={contentHeight}
+                                className="block"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d={`M 10,0 V ${contentHeight}`}
+                                    fill="none"
+                                    stroke="hsl(var(--border))"
+                                    strokeOpacity="0.3"
+                                    strokeWidth="2"
+                                />
+                                <motion.path
+                                    d={`M 10,0 V ${contentHeight}`}
+                                    fill="none"
+                                    stroke="hsl(var(--primary))"
+                                    strokeWidth="2"
+                                    style={{ pathLength }}
+                                />
+                                <motion.circle
+                                    cx="10"
+                                    cy={useTransform(pathLength, [0, 1], [0, contentHeight])}
+                                    r="4"
+                                    fill="hsl(var(--primary))"
+                                />
+                            </svg>
+                        </motion.div>
+                    )}
 
                     <div ref={contentRef} className="ml-12 md:ml-16 space-y-16 relative">
                         {resumeData.experience.map((item, index) => (
