@@ -1,64 +1,77 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { useGLTF, OrbitControls, Environment } from '@react-three/drei';
+import * as THREE from 'three';
+import { Suspense, useMemo, useRef, useEffect, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useTheme } from 'next-themes';
 
-// This is the new, reliable model URL
-const modelUrl = 'https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/macbook-pro/model.gltf';
+function Particles({ count = 5000 }) {
+  const points = useRef<THREE.Points>(null!);
+  const { resolvedTheme } = useTheme();
 
-// This component loads the 3D model
-function Model(props: any) {
-  // useGLTF is a hook from @react-three/drei to load GLTF models
-  const { scene } = useGLTF(modelUrl);
-  return <primitive object={scene} {...props} />;
+  const positions = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      let x = (Math.random() - 0.5) * 30;
+      let y = (Math.random() - 0.5) * 30;
+      let z = (Math.random() - 0.5) * 30;
+      pos.set([x, y, z], i * 3);
+    }
+    return pos;
+  }, [count]);
+
+  useFrame((state, delta) => {
+    if (points.current) {
+      points.current.rotation.y += delta * 0.05;
+      points.current.rotation.x += delta * 0.02;
+    }
+  });
+  
+  const particleColor = resolvedTheme === 'dark' ? '#ffffff' : '#16171a';
+
+  return (
+    <points ref={points}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={positions.length / 3}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.02}
+        color={particleColor}
+        sizeAttenuation
+        transparent={false}
+      />
+    </points>
+  );
 }
-// Preload the model to improve performance
-useGLTF.preload(modelUrl);
-
 
 export function Hero3DScene() {
   const { resolvedTheme } = useTheme();
-  const [bgColor, setBgColor] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Set the background color based on the current theme
   useEffect(() => {
-    if (resolvedTheme) {
-      if (resolvedTheme === 'dark') {
-        setBgColor('hsl(224, 80%, 5%)'); // Dark theme background
-      } else {
-        setBgColor('hsl(220, 30%, 98%)'); // Light theme background
-      }
-    }
-  }, [resolvedTheme]);
+    // This hook ensures the component only renders on the client, after mounting.
+    // This is crucial for theme-dependent components to avoid hydration mismatch.
+    setIsMounted(true);
+  }, []);
 
-  // Don't render the canvas until the theme and background color are resolved
-  if (!bgColor) {
-    return null; 
+  if (!isMounted) {
+    // Render nothing on the server or before hydration.
+    return null;
   }
 
-  return (
-    <Canvas
-      camera={{ fov: 45, position: [0, 1.2, 7] }} // Adjusted camera position for a better view
-    >
-      <color attach="background" args={[bgColor]} />
-      <ambientLight intensity={2.5} />
-      <Environment preset="city" />
-      
-      {/* Suspense is used to show a fallback while the model is loading */}
-      <Suspense fallback={null}>
-        <Model scale={1.2} position={[0, -1.2, 0]}/>
-      </Suspense>
+  const bgColor = resolvedTheme === 'dark' ? 'hsl(224, 80%, 5%)' : 'hsl(220, 30%, 98%)';
 
-      <OrbitControls 
-        autoRotate // The model will rotate automatically
-        autoRotateSpeed={0.5} // Slower rotation
-        enableZoom={false} // Disable zooming
-        // Constrain vertical rotation to prevent flipping
-        minPolarAngle={Math.PI / 2.8}
-        maxPolarAngle={Math.PI / 1.8}
-      />
+  return (
+    <Canvas camera={{ fov: 75, position: [0, 0, 5] }}>
+      <color attach="background" args={[bgColor]} />
+      <Suspense fallback={null}>
+        <Particles />
+      </Suspense>
     </Canvas>
   );
 }
