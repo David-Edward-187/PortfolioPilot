@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
@@ -9,11 +8,11 @@ import { useTheme } from 'next-themes';
 // This component loads the 3D model
 function Model(props: any) {
   // useGLTF is a hook from @react-three/drei to load GLTF models
-  const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/low-poly-pc/model.gltf');
+  const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/gaming-pc/model.gltf');
   return <primitive object={scene} {...props} />;
 }
 // Preload the model to improve performance
-useGLTF.preload('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/low-poly-pc/model.gltf');
+useGLTF.preload('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/gaming-pc/model.gltf');
 
 
 export function Hero3DScene() {
