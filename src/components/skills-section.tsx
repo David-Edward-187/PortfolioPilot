@@ -71,7 +71,10 @@ const iconMap: { [key: string]: { icon: React.ComponentType<any>, color: string 
 const SkillCard = ({ skill }: { skill: string }) => {
     const [hovered, setHovered] = useState(false);
     const { icon: Icon, color } = iconMap[skill] || { icon: FaCode, color: 'hsl(var(--accent))' };
-    const canvasColors = [[125, 77, 255], [20, 184, 166]];
+    const canvasColors = [
+        [125, 77, 255],
+        [20, 184, 166],
+    ];
     const isMobile = useIsMobile();
 
     const handleMouseEnter = () => {
@@ -124,7 +127,6 @@ const SkillCard = ({ skill }: { skill: string }) => {
                     className="absolute inset-0 flex flex-col items-center justify-center text-center gap-2"
                 >
                     <Icon className="text-4xl" style={{ color }} />
-                    <span className="text-sm font-medium text-foreground">{skill}</span>
                 </motion.div>
                 
                 <motion.h3
