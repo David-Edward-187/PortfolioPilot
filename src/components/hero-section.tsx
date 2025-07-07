@@ -8,6 +8,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
 import { Hero3DScene } from './hero-3d-scene';
+import Link from 'next/link';
 
 export function HeroSection() {
   const component = useRef<HTMLElement>(null);
@@ -78,9 +79,9 @@ export function HeroSection() {
               asChild
               className="text-lg h-14 px-8 rounded-full transition-all duration-300 ease-in-out hover:scale-105 active:scale-100 group w-full sm:w-auto"
             >
-              <a href="/mycv.pdf" target="_blank" rel="noopener noreferrer">
-                Download CV <FaDownload className="ml-2 h-5 w-5" />
-              </a>
+              <Link href="/cv">
+                View CV <FaDownload className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
         </div>
       </div>
