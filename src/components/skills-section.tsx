@@ -131,7 +131,7 @@ const SkillCard = ({ skill }: { skill: string }) => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="text-lg text-white font-bold"
+                    className="text-lg text-foreground font-bold"
                 >
                     {skill}
                 </motion.h3>
