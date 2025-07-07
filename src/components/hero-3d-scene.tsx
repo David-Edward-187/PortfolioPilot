@@ -1,12 +1,16 @@
-
 'use client';
 
 import * as THREE from 'three';
-import { useRef, useMemo, useEffect } from 'react';
+import { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useTheme } from 'next-themes';
 
-function Particles({ count = 5000, mouse, particleColor, lightColor }: {
+function Particles({
+  count = 5000,
+  mouse,
+  particleColor,
+  lightColor,
+}: {
   count?: number;
   mouse: React.MutableRefObject<number[]>;
   particleColor: string;
@@ -35,8 +39,12 @@ function Particles({ count = 5000, mouse, particleColor, lightColor }: {
 
   useFrame((state) => {
     if (!mesh.current || !light.current) return;
-    
-    light.current.position.set(mouse.current[0] / aspect, -mouse.current[1] / aspect, 0);
+
+    light.current.position.set(
+      mouse.current[0] / aspect,
+      -mouse.current[1] / aspect,
+      0
+    );
 
     particles.forEach((particle, i) => {
       let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
@@ -49,9 +57,18 @@ function Particles({ count = 5000, mouse, particleColor, lightColor }: {
       particle.my += (mouse.current[1] * -1 - particle.my) * 0.01;
 
       dummy.position.set(
-        (particle.mx / 10) * a + xFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 1) * factor) / 10,
-        (particle.my / 10) * b + yFactor + Math.sin((t / 10) * factor) + (Math.cos(t * 2) * factor) / 10,
-        (particle.my / 10) * b + zFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 3) * factor) / 10
+        (particle.mx / 10) * a +
+          xFactor +
+          Math.cos((t / 10) * factor) +
+          (Math.sin(t * 1) * factor) / 10,
+        (particle.my / 10) * b +
+          yFactor +
+          Math.sin((t / 10) * factor) +
+          (Math.cos(t * 2) * factor) / 10,
+        (particle.my / 10) * b +
+          zFactor +
+          Math.cos((t / 10) * factor) +
+          (Math.sin(t * 3) * factor) / 10
       );
       dummy.scale.setScalar(s);
       dummy.rotation.set(s * 5, s * 5, s * 5);
@@ -63,7 +80,12 @@ function Particles({ count = 5000, mouse, particleColor, lightColor }: {
 
   return (
     <>
-      <pointLight ref={light} distance={100} intensity={10} color={lightColor} />
+      <pointLight
+        ref={light}
+        distance={100}
+        intensity={10}
+        color={lightColor}
+      />
       <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
         <dodecahedronGeometry args={[0.2, 0]} />
         <meshStandardMaterial color={particleColor} roughness={0.5} />
@@ -75,34 +97,58 @@ function Particles({ count = 5000, mouse, particleColor, lightColor }: {
 export function Hero3DScene() {
   const mouse = useRef([0, 0]);
   const { resolvedTheme } = useTheme();
+  // State to hold the theme-dependent colors
+  const [colors, setColors] = useState<{
+    bgColor: string;
+    fogColor: string;
+    particleColor: string;
+    lightColor: string;
+  } | null>(null);
 
-  // Define colors for both themes to avoid using CSS variables in the canvas
-  const colors = useMemo(() => {
-    if (resolvedTheme === 'dark') {
-      return {
-        bgColor: 'hsl(224, 80%, 5%)',
-        fogColor: 'hsl(224, 80%, 5%)',
-        particleColor: 'hsl(220, 20%, 90%)',
-        lightColor: 'hsl(255, 85%, 65%)',
-      };
+  // Effect to update colors when the theme changes
+  useEffect(() => {
+    // Wait until the theme is resolved
+    if (resolvedTheme) {
+      if (resolvedTheme === 'dark') {
+        setColors({
+          bgColor: 'hsl(224, 80%, 5%)',
+          fogColor: 'hsl(224, 80%, 5%)',
+          particleColor: 'hsl(220, 20%, 90%)',
+          lightColor: 'hsl(255, 85%, 65%)',
+        });
+      } else {
+        setColors({
+          bgColor: 'hsl(220, 30%, 98%)',
+          fogColor: 'hsl(220, 30%, 98%)',
+          particleColor: 'hsl(220, 20%, 10%)',
+          lightColor: 'hsl(255, 80%, 60%)',
+        });
+      }
     }
-    // Default to light theme
-    return {
-      bgColor: 'hsl(220, 30%, 98%)',
-      fogColor: 'hsl(220, 30%, 98%)',
-      particleColor: 'hsl(220, 20%, 10%)',
-      lightColor: 'hsl(255, 80%, 60%)',
-    };
   }, [resolvedTheme]);
+
+  // Don't render the canvas until the colors are determined to prevent FOUC
+  if (!colors) {
+    return null; 
+  }
 
   return (
     <Canvas
       camera={{ fov: 100, position: [0, 0, 30] }}
-      onPointerMove={(e) => (mouse.current = [e.clientX - window.innerWidth / 2, e.clientY - window.innerHeight / 2])}
+      onPointerMove={(e) =>
+        (mouse.current = [
+          e.clientX - window.innerWidth / 2,
+          e.clientY - window.innerHeight / 2,
+        ])
+      }
     >
       <color attach="background" args={[colors.bgColor]} />
       <fog attach="fog" args={[colors.fogColor, 60, 100]} />
-      <Particles mouse={mouse} particleColor={colors.particleColor} lightColor={colors.lightColor} />
+      <Particles
+        mouse={mouse}
+        particleColor={colors.particleColor}
+        lightColor={colors.lightColor}
+      />
     </Canvas>
   );
 }
