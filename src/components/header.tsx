@@ -17,6 +17,13 @@ export function Header() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
+
+    // Prevent hiding if the mobile menu is open
+    if (isMobileMenuOpen) {
+      setHidden(false);
+      return;
+    }
+
     // Hide navbar when scrolling down, show when scrolling up
     if (previous && latest > previous && latest > 150) {
       setHidden(true);
@@ -50,7 +57,9 @@ export function Header() {
       <motion.header
         variants={{
           visible: { y: 0 },
-          hidden: { y: "-110%" },
+          // The y translation now accounts for the element's height AND its top offset (top-4 = 1rem)
+          // to ensure it slides completely out of view.
+          hidden: { y: "calc(-100% - 1rem)" },
         }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
