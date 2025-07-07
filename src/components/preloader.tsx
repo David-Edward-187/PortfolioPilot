@@ -1,8 +1,9 @@
+
 'use client';
 
 import { motion } from 'framer-motion';
 import { resumeData } from '@/data/resume';
-import { Vortex } from '@/components/ui/vortex';
+import { TypewriterEffect } from '@/components/ui/typewriter-effect';
 
 const slideUp = {
     initial: {
@@ -15,40 +16,23 @@ const slideUp = {
 }
 
 export function Preloader() {
-    const vortexColors = ["hsl(255, 85%, 65%)", "hsl(185, 100%, 50%)"];
+    // Creating words for the typewriter effect from the resume data name
+    const words = resumeData.name.split(' ').map(word => ({ text: word }));
 
     return (
         <motion.div
             variants={slideUp}
             initial="initial"
             exit="exit"
-            className="fixed inset-0 z-[999] overflow-hidden"
+            className="fixed inset-0 z-[999] bg-background flex items-center justify-center"
         >
-            <Vortex
-                backgroundColor="hsl(224 80% 5%)"
-                rangeY={800}
-                particleCount={500}
-                particleColors={vortexColors}
-                className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
             >
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 1,
-                        ease: 'easeInOut',
-                        delay: 1, // Delay text animation to let vortex build up
-                    }}
-                    className="text-center"
-                >
-                    <h2 className="text-white text-3xl md:text-5xl font-bold">
-                        {resumeData.name}
-                    </h2>
-                    <p className="text-white text-base md:text-xl max-w-xl mt-4">
-                        Welcome to my portfolio.
-                    </p>
-                </motion.div>
-            </Vortex>
+                <TypewriterEffect words={words} />
+            </motion.div>
         </motion.div>
     );
 }

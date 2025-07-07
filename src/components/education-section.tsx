@@ -57,7 +57,7 @@ export function EducationSection() {
                 className="education-card"
             >
                 <Card
-                className="bg-card/80 border-border/50 backdrop-blur-sm overflow-hidden hover:shadow-xl transition-all duration-300 rounded-lg shadow-md group"
+                className="bg-card/80 border-border/50 backdrop-blur-sm overflow-hidden hover:shadow-xl transition-all duration-300 rounded-lg shadow-md group hover:-translate-y-1"
                 >
                 <CardHeader className="pb-3 pt-5 px-6 md:px-8">
                     <div className="flex justify-between items-start">

@@ -25,6 +25,7 @@ export interface ProjectEntry {
   technologies?: string[];
   link: string;
   githubUrl?: string;
+  imageUrl?: string;
 }
 
 export interface CertificateEntry {

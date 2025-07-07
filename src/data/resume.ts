@@ -61,6 +61,7 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
       link: "#",
       githubUrl: "#",
+      imageUrl: "https://placehold.co/800x600.png",
     },
     {
       name: "Project Beta",
@@ -68,6 +69,7 @@ export const resumeData: ResumeData = {
       technologies: ["React", "Three.js", "Stripe", "Firebase"],
       link: "#",
       githubUrl: "#",
+      imageUrl: "https://placehold.co/600x400.png",
     },
     {
       name: "Project Gamma",
@@ -75,6 +77,7 @@ export const resumeData: ResumeData = {
       technologies: ["React", "WebSockets", "Canvas API"],
       link: "#",
       githubUrl: "#",
+      imageUrl: "https://placehold.co/600x400.png",
     },
     {
       name: "Project Delta",
@@ -82,6 +85,7 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "OpenAI API", "Vercel"],
       link: "#",
       githubUrl: "#",
+      imageUrl: "https://placehold.co/600x400.png",
     },
     {
       name: "Project Epsilon",
@@ -89,6 +93,7 @@ export const resumeData: ResumeData = {
       technologies: ["D3.js", "React", "Node.js"],
       link: "#",
       githubUrl: "#",
+      imageUrl: "https://placehold.co/600x400.png",
     },
     {
       name: "Project Zeta",
@@ -96,6 +101,7 @@ export const resumeData: ResumeData = {
       technologies: ["Next.js", "GSAP", "Three.js"],
       link: "#",
       githubUrl: "#",
+      imageUrl: "https://placehold.co/600x400.png",
     }
   ],
   certificates: [
