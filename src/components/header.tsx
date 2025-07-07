@@ -6,9 +6,9 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { FiMenu, FiX } from 'react-icons/fi';
-import { FaCode } from 'react-icons/fa';
 import { ThemeToggle } from './theme-toggle';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { Logo } from './logo';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -82,7 +82,7 @@ export function Header() {
         {/* Mobile Header */}
         <div className="md:hidden flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border border-border rounded-2xl mx-4">
              <Link href="/" className="flex items-center gap-2.5 group">
-                <FaCode className="h-7 w-7 text-accent" />
+                <Logo className="h-7 w-7 text-accent" />
              </Link>
              <div className='flex items-center gap-2'>
                 <ThemeToggle />
