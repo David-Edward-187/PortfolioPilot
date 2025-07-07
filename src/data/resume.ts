@@ -1,4 +1,3 @@
-
 import type { ResumeData } from '@/types/resume';
 
 export const resumeData: ResumeData = {
@@ -51,7 +50,7 @@ export const resumeData: ResumeData = {
     "Languages": ["JavaScript", "TypeScript", "Dart","Python","HTML","CSS"],
     "Frameworks & Libraries": ["React Native", "React", "Flutter", "Tailwind"],
     "Datastores": [ "MySQL", "Firebase"],
-    "Cloud & DevOps": ["Git & GitHub"],
+    "Cloud & DevOps": ["Git", "GitHub"],
     "Other": ["Agile Methodologies", "RESTful APIs", "Problem Solving", "Team Collaboration", "Continuous Learning"]
   },
   projects: [

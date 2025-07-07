@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import { FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaFigma, FaUsers, FaCode } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaFigma, FaUsers, FaCode, FaGithub } from 'react-icons/fa';
 import { IoLogoJavascript, IoLogoHtml5, IoLogoCss3, IoLogoPython } from 'react-icons/io5';
 import { 
   SiTypescript, 
@@ -32,22 +32,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const iconMap: { [key: string]: { icon: React.ComponentType<any>, color: string } } = {
   // Languages
-  "JavaScript (ES6+)": { icon: IoLogoJavascript, color: "#F7DF1E" },
+  "JavaScript": { icon: IoLogoJavascript, color: "#F7DF1E" },
   "TypeScript": { icon: SiTypescript, color: "#3178C6" },
+  "HTML": { icon: IoLogoHtml5, color: "#E34F26" },
   "HTML5": { icon: IoLogoHtml5, color: "#E34F26" },
+  "CSS": { icon: IoLogoCss3, color: "#1572B6" },
   "CSS3": { icon: IoLogoCss3, color: "#1572B6" },
   "Python": { icon: IoLogoPython, color: "#3776AB" },
+  "Dart": { icon: SiTypescript, color: "#0175C2" }, // Placeholder for Dart
 
   // Frameworks & Libraries
   "React": { icon: FaReact, color: "#61DAFB" },
+  "React Native": { icon: FaReact, color: "#61DAFB" },
+  "Flutter": { icon: TbBrandNextjs, color: "#02569B" }, // Placeholder for Flutter
   "Next.js": { icon: TbBrandNextjs, color: "hsl(var(--foreground))" },
   "Node.js": { icon: FaNodeJs, color: "#339933" },
   "Express": { icon: SiExpress, color: "hsl(var(--foreground))" },
+  "Tailwind": { icon: SiTailwindcss, color: "#06B6D4" },
   "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
   "GSAP": { icon: SiGreensock, color: "#88CE02" },
   "Three.js": { icon: SiThreedotjs, color: "hsl(var(--foreground))" },
 
   // Datastores
+  "MySQL": { icon: SiPostgresql, color: "#4479A1" },
   "PostgreSQL": { icon: SiPostgresql, color: "#336791" },
   "MongoDB": { icon: SiMongodb, color: "#47A248" },
   "Redis": { icon: SiRedis, color: "#DC382D" },
@@ -59,12 +66,18 @@ const iconMap: { [key: string]: { icon: React.ComponentType<any>, color: string 
   "AWS (S3, EC2)": { icon: FaAws, color: "#FF9900" },
   "CI/CD": { icon: GoSync, color: "#6c5ce7" },
   "Git": { icon: FaGitAlt, color: "#F05032" },
+  "GitHub": { icon: FaGithub, color: "hsl(var(--foreground))" },
 
   // Other
   "Figma": { icon: FaFigma, color: "#F24E1E" },
   "REST APIs": { icon: HiServer, color: "#d63031" },
+  "RESTful APIs": { icon: HiServer, color: "#d63031" },
   "GraphQL": { icon: SiGraphql, color: "#E10098" },
   "Agile/Scrum": { icon: FaUsers, color: "#0984e3" },
+  "Agile Methodologies": { icon: FaUsers, color: "#0984e3" },
+  "Problem Solving": { icon: FaCode, color: "hsl(var(--accent))" },
+  "Team Collaboration": { icon: FaUsers, color: "#0984e3" },
+  "Continuous Learning": { icon: FaCode, color: "hsl(var(--primary))" },
 };
 
 const SkillCard = ({ skill }: { skill: string }) => {
