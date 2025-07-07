@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Vortex } from '@/components/ui/vortex';
 import { useTheme } from 'next-themes';
 import React from 'react';
-import { Logo } from '@/components/logo';
+import { resumeData } from '@/data/resume';
 
 const slideUp = {
     initial: {
@@ -53,11 +53,12 @@ export function Preloader() {
                 className="flex items-center justify-center w-full h-full"
             >
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.5, type: 'spring' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                    className="text-4xl font-bold text-foreground"
                 >
-                    <Logo className="w-24 h-24 text-foreground" />
+                    {resumeData.name}
                 </motion.div>
             </Vortex>
         </motion.div>

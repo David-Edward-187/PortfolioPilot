@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { ThemeToggle } from './theme-toggle';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { Logo } from './logo';
+import { resumeData } from '@/data/resume';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -81,8 +81,8 @@ export function Header() {
         
         {/* Mobile Header */}
         <div className="md:hidden flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border border-border rounded-2xl mx-4">
-             <Link href="/" className="flex items-center gap-2.5 group">
-                <Logo className="h-7 w-7 text-accent" />
+             <Link href="/" className="text-lg font-bold text-foreground">
+                {resumeData.name.split(' ')[0]}
              </Link>
              <div className='flex items-center gap-2'>
                 <ThemeToggle />

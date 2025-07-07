@@ -7,7 +7,6 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Logo } from './logo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +59,6 @@ export function Footer() {
         <div className="container mx-auto relative z-10 text-center">
             <div className="footer-item flex justify-center items-center mb-6">
                 <Link href="/" className="flex items-center gap-2.5 group">
-                    <Logo className="h-7 w-7 text-accent" />
                     <span className="text-lg font-bold text-foreground">{resumeData.name}</span>
                 </Link>
             </div>

@@ -19,9 +19,6 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: `${resumeData.name} | ${resumeData.title}`,
   description: resumeData.bio,
-  icons:{
-    icon:'/logo.svg'
-  }
 };
 
 export default function RootLayout({
