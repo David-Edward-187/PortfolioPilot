@@ -1,13 +1,13 @@
 
 "use client";
 
-import Image from 'next/image';
 import { resumeData } from '@/data/resume';
 import * as React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaReact } from 'react-icons/fa';
 import { IoLogoHtml5, IoLogoCss3, IoLogoJavascript } from 'react-icons/io5';
+import { About3DScene } from './about-3d-scene';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +26,7 @@ export function AboutSection() {
 
   React.useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.set('.about-image', { autoAlpha: 0, x: -50, filter: 'blur(10px)' });
+      gsap.set('.about-3d-container', { autoAlpha: 0, x: -50, filter: 'blur(10px)' });
       gsap.set('.about-content > *', { autoAlpha: 0, y: 40, filter: 'blur(10px)' });
       gsap.set('.skill-icon', { autoAlpha: 0, scale: 0.8 });
 
@@ -38,22 +38,10 @@ export function AboutSection() {
         }
       });
 
-      tl.to('.about-image', { autoAlpha: 1, x: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out' })
+      tl.to('.about-3d-container', { autoAlpha: 1, x: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out' })
         .to('.about-content > *', { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.2, duration: 0.8 }, "-=0.5")
         .to('.skill-icon', { autoAlpha: 1, scale: 1, stagger: 0.1, duration: 0.5 }, "-=0.5");
       
-      gsap.to('.about-image-inner', {
-        rotation: 3,
-        y: -10,
-        scale: 1.05,
-        scrollTrigger: {
-          trigger: component.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        }
-      });
-
     }, component);
     return () => ctx.revert();
   }, []);
@@ -66,17 +54,9 @@ export function AboutSection() {
     >
       <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <div 
-          className="about-image relative w-64 h-64 md:w-80 md:h-80 mx-auto group"
+          className="about-3d-container w-full h-80 md:h-96"
         >
-            <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-30 group-hover:opacity-40 transition-opacity duration-300 animate-tilt"></div>
-            <Image
-              src={resumeData.headshotUrl}
-              alt={resumeData.name}
-              width={320}
-              height={320}
-              className="about-image-inner relative rounded-full object-cover border-2 border-primary/50 shadow-2xl"
-              data-ai-hint="developer headshot"
-            />
+            <About3DScene />
         </div>
         <div className="about-content space-y-6 text-center md:text-left">
           <h2 className="text-4xl md:text-5xl font-bold">About Me</h2>
