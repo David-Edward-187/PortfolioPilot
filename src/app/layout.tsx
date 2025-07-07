@@ -14,10 +14,10 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: `${resumeData.name} | Curriculum Vitae`,
+  title: `Curriculum Vitae | ${resumeData.name}`,
   description: `The professional curriculum vitae of ${resumeData.name}, a skilled ${resumeData.title}.`,
   icons:{
-    icon:'/favicon.ico'
+    icon:'/logo.svg'
   }
 };
 
