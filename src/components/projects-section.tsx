@@ -5,24 +5,20 @@ import { resumeData } from '@/data/resume';
 import * as React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FaArrowRight, FaGithub } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const dataAiHints = [
-    "futuristic dashboard dark", "modern analytics interface", "crypto trading platform",
-    "ai application ui", "glowing data visualization", "tech project screenshot"
-];
-
 export function ProjectsSection() {
     const component = React.useRef(null);
 
     React.useEffect(() => {
         let ctx = gsap.context(() => {
-            gsap.from(".project-title", {
+            // Animate section title
+            gsap.from(".project-title-anim", {
                 autoAlpha: 0,
                 y: 40,
                 duration: 0.8,
@@ -34,7 +30,8 @@ export function ProjectsSection() {
                     toggleActions: "play none none none"
                 }
             });
-            gsap.from(".project-card", {
+            // Animate project cards
+            gsap.from(".project-card-anim", {
                 autoAlpha: 0,
                 y: 50,
                 stagger: 0.1,
@@ -53,74 +50,49 @@ export function ProjectsSection() {
     return (
         <section id="projects" ref={component} className="container mx-auto py-20 md:py-24">
             <div className="text-center mb-16">
-                <h2 className="project-title text-4xl md:text-5xl font-bold mb-4">My Projects</h2>
-                <p className="project-title text-lg text-muted-foreground max-w-2xl mx-auto">
+                <h2 className="project-title-anim text-4xl md:text-5xl font-bold mb-4">My Projects</h2>
+                <p className="project-title-anim text-lg text-muted-foreground max-w-2xl mx-auto">
                     A selection of my work, demonstrating my skills in creating modern, responsive, and performant web applications.
                 </p>
             </div>
             
-            <div className="projects-grid grid grid-cols-1 md:grid-cols-6 gap-6 max-w-7xl mx-auto">
-                {resumeData.projects.slice(0, 5).map((project, index) => {
-                    const gridClasses = [
-                        'md:col-span-4 md:row-span-2', // Project 1
-                        'md:col-span-2 md:row-span-1', // Project 2
-                        'md:col-span-2 md:row-span-1', // Project 3
-                        'md:col-span-3 md:row-span-1', // Project 4
-                        'md:col-span-3 md:row-span-1'  // Project 5
-                    ];
-
-                    return (
-                        <a
-                            key={project.name}
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`project-card h-[450px] relative rounded-2xl overflow-hidden group transition-all duration-500 ease-in-out hover:scale-[1.02] hover:z-10 shadow-lg hover:shadow-primary/20
-                                ${gridClasses[index]}
-                            `}
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
-                                    <p className="text-sm text-foreground/80 mb-4 line-clamp-2">{project.description[0]}</p>
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                        {project.technologies?.slice(0, 3).map(tech => (
-                                            <Badge key={tech} variant="secondary" className="glassmorphic text-xs !bg-white/10 text-white/90 border-0">
-                                                {tech}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                    <div className="flex gap-4">
-                                      <Button variant="outline" size="sm" asChild className="glassmorphic border-white/20 text-white hover:bg-white/10">
-                                          <span className="flex items-center">
-                                              <FaArrowRight className="mr-1.5 h-4 w-4" /> View Live
-                                          </span>
-                                      </Button>
-                                      {project.githubUrl && project.githubUrl !== '#' && (
-                                        <Button variant="ghost" size="sm" asChild className="text-white hover:bg-white/10">
-                                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                                            <FaGithub className="mr-1.5 h-4 w-4" /> GitHub
-                                          </a>
-                                        </Button>
-                                      )}
-                                    </div>
+            <div className="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                {resumeData.projects.map((project, index) => (
+                    <div key={index} className="project-card-anim">
+                        <Card className="flex flex-col h-full bg-card/80 border-border/50 backdrop-blur-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                            <CardHeader>
+                                <CardTitle className="text-xl text-primary">{project.name}</CardTitle>
+                                <CardDescription className="pt-2 h-20 line-clamp-3">
+                                    {project.description[0]}
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-grow">
+                                <p className="text-sm font-semibold mb-3 text-foreground/90">Technologies Used:</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {project.technologies?.map(tech => (
+                                        <Badge key={tech} variant="secondary">
+                                            {tech}
+                                        </Badge>
+                                    ))}
                                 </div>
-                            </div>
-                            <Image
-                                src={project.imageUrl!}
-                                alt={project.name}
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                                data-ai-hint={dataAiHints[index % dataAiHints.length]}
-                            />
-                            <div className="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-black/60 to-transparent group-hover:from-black/80 transition-colors duration-300 pointer-events-none"></div>
-                            <h3 className="absolute bottom-6 left-6 text-xl font-bold text-white z-0 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
-                              {project.name}
-                            </h3>
-                        </a>
-                    );
-                })}
+                            </CardContent>
+                            <CardFooter className="flex justify-start gap-4">
+                                <Button asChild size="sm" variant="default">
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                        <FaArrowRight className="mr-2 h-4 w-4" /> View Live
+                                    </a>
+                                </Button>
+                                {project.githubUrl && project.githubUrl !== '#' && (
+                                    <Button asChild size="sm" variant="outline">
+                                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                        <FaGithub className="mr-2 h-4 w-4" /> GitHub
+                                      </a>
+                                    </Button>
+                                )}
+                            </CardFooter>
+                        </Card>
+                    </div>
+                ))}
             </div>
         </section>
     );
