@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as THREE from 'three';
@@ -5,9 +6,8 @@ import { Suspense, useMemo, useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTheme } from 'next-themes';
 
-function Particles({ count = 5000 }) {
+function Particles({ count = 5000, particleColor }: { count?: number; particleColor: string }) {
   const points = useRef<THREE.Points>(null!);
-  const { resolvedTheme } = useTheme();
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -26,8 +26,6 @@ function Particles({ count = 5000 }) {
       points.current.rotation.x += delta * 0.02;
     }
   });
-  
-  const particleColor = resolvedTheme === 'dark' ? '#ffffff' : '#16171a';
 
   return (
     <points ref={points}>
@@ -65,12 +63,13 @@ export function Hero3DScene() {
   }
 
   const bgColor = resolvedTheme === 'dark' ? 'hsl(224, 80%, 5%)' : 'hsl(220, 30%, 98%)';
+  const particleColor = resolvedTheme === 'dark' ? '#ffffff' : '#16171a';
 
   return (
     <Canvas camera={{ fov: 75, position: [0, 0, 5] }}>
       <color attach="background" args={[bgColor]} />
       <Suspense fallback={null}>
-        <Particles />
+        <Particles count={5000} particleColor={particleColor} />
       </Suspense>
     </Canvas>
   );
