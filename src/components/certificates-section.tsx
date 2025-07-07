@@ -3,17 +3,17 @@
 
 import { resumeData } from '@/data/resume';
 import { FaAward, FaExternalLinkAlt } from 'react-icons/fa';
-import { WobbleCard } from '@/components/ui/wobble-card';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function CertificatesSection() {
     const component = useRef(null);
 
-    // Animate the section title
+    // GSAP animations for the section and cards
     useEffect(() => {
         if (!resumeData.certificates || resumeData.certificates.length === 0) return;
         
@@ -26,6 +26,18 @@ export function CertificatesSection() {
                 scrollTrigger: {
                     trigger: component.current,
                     start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+            gsap.from(".certificate-card", {
+                autoAlpha: 0,
+                y: 50,
+                stagger: 0.2,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: ".certificates-grid",
+                    start: "top 85%",
                     toggleActions: "play none none none"
                 }
             });
@@ -42,9 +54,9 @@ export function CertificatesSection() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="certificates-title text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-primary">Certifications</h2>
-                <p className="text-lg text-muted-foreground mt-2">My professional credentials with an interactive wobble.</p>
+                <p className="text-lg text-muted-foreground mt-2">My professional credentials.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="certificates-grid grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {resumeData.certificates.map((cert, index) => {
                     const isClickable = cert.credentialUrl && cert.credentialUrl !== '#';
                     const Component = isClickable ? 'a' : 'div';
@@ -53,31 +65,36 @@ export function CertificatesSection() {
                             href: cert.credentialUrl!, 
                             target: '_blank', 
                             rel: 'noopener noreferrer',
-                            className: 'block focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-2xl',
+                            className: 'block focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-xl certificate-card',
                             'aria-label': `View certificate for ${cert.name}`
                           } 
-                        : {};
+                        : {
+                            className: 'certificate-card'
+                        };
 
                     return (
                         <Component key={index} {...props}>
-                            <WobbleCard containerClassName="h-full group">
-                                <div className="flex flex-col justify-between h-full">
-                                    <div className="flex justify-between items-start">
-                                        <div className="flex items-start gap-4 mb-4">
-                                            <FaAward className="h-10 w-10 text-accent flex-shrink-0 mt-1" />
+                            <Card className="h-full group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <CardHeader>
+                                    <div className="flex justify-between items-start gap-4">
+                                        <div className="flex items-start gap-4">
+                                            <FaAward className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
                                             <div>
-                                                <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-1">{cert.name}</h3>
-                                                <p className="text-sm text-muted-foreground">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
+                                                <CardTitle className="text-lg font-semibold">{cert.name}</CardTitle>
+                                                <p className="text-sm text-muted-foreground mt-1">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
                                             </div>
                                         </div>
                                         {isClickable && (
-                                            <FaExternalLinkAlt className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                            <FaExternalLinkAlt className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
                                         )}
                                     </div>
-                                    
-                                    {cert.description && <p className="text-base text-foreground/80 leading-relaxed flex-grow">{cert.description}</p>}
-                                </div>
-                            </WobbleCard>
+                                </CardHeader>
+                                {cert.description && (
+                                    <CardContent className="pt-0">
+                                        <p className="text-sm text-foreground/80">{cert.description}</p>
+                                    </CardContent>
+                                )}
+                            </Card>
                         </Component>
                     );
                 })}
