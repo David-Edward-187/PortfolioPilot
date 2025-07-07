@@ -25,7 +25,7 @@ export const WobbleCard = ({
   };
 
   return (
-    <motion.section
+    <motion.div
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => {
@@ -39,29 +39,31 @@ export const WobbleCard = ({
         transition: "transform 0.1s ease-out",
       }}
       className={cn(
-        "mx-auto w-full bg-card border-border/50 backdrop-blur-sm relative rounded-2xl overflow-hidden",
+        "mx-auto w-full bg-card border border-border/50 backdrop-blur-sm relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300",
         containerClassName
       )}
     >
       <div
-        className="relative h-full [background-image:radial-gradient(88%_100%_at_top,rgba(255,255,255,0.05),rgba(255,255,255,0))] sm:mx-0 sm:rounded-2xl"
+        className="absolute inset-0 h-full w-full transition-opacity duration-300"
         style={{
-          boxShadow:
-            "0 10px 32px rgba(34, 42, 53, 0.12), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.05), 0 4px 6px rgba(34, 42, 53, 0.08), 0 24px 108px rgba(47, 48, 55, 0.10)",
+          backgroundImage:
+            "radial-gradient(circle at 50% 0%, hsl(var(--primary) / 0.1), transparent)",
+          opacity: isHovering ? 1 : 0.5,
         }}
+      />
+      <motion.div
+        style={{
+          transform: isHovering
+            ? `translate3d(${-mousePosition.x * 0.25}px, ${
+                -mousePosition.y * 0.25
+              }px, 0)`
+            : "translate3d(0px, 0px, 0)",
+          transition: "transform 0.3s ease-out",
+        }}
+        className={cn("h-full p-6 sm:p-8 relative z-10", className)}
       >
-        <motion.div
-          style={{
-            transform: isHovering
-              ? `translate3d(${-mousePosition.x / 4}px, ${-mousePosition.y / 4}px, 0) scale3d(1.0, 1.0, 1)`
-              : "translate3d(0px, 0px, 0) scale3d(1, 1, 1)",
-            transition: "transform 0.1s ease-out",
-          }}
-          className={cn("h-full px-6 py-8 sm:px-8", className)}
-        >
-          {children}
-        </motion.div>
-      </div>
-    </motion.section>
+        {children}
+      </motion.div>
+    </motion.div>
   );
 };
