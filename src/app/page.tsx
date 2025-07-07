@@ -1,31 +1,52 @@
 
 'use client';
 
-import dynamic from 'next/dynamic';
-import { AboutSection } from '@/components/about-section';
-import { ProjectsSection } from '@/components/projects-section';
-import { ContactSection } from '@/components/contact-section';
-import { ExperienceSection } from '@/components/experience-section';
-import { SkillsSection } from '@/components/skills-section';
-import { EducationSection } from '@/components/education-section';
-import { CertificatesSection } from '@/components/certificates-section';
-
-const HeroSection = dynamic(() => import('@/components/hero-section').then(mod => mod.HeroSection), { 
-  ssr: false,
-  loading: () => <div className="relative h-screen min-h-[700px] w-full bg-background" />
-});
+import { Button } from '@/components/ui/button';
+import { FaDownload } from 'react-icons/fa';
+import { resumeData } from '@/data/resume';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 export default function HomePage() {
+    const component = useRef(null);
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+        gsap.from(".cv-anim", {
+            autoAlpha: 0,
+            y: 40,
+            filter: 'blur(10px)',
+            stagger: 0.2,
+            duration: 0.8,
+            ease: 'power3.out',
+        });
+        }, component);
+        return () => ctx.revert();
+    }, []);
+
   return (
-    <>
-      <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <EducationSection />
-      <ProjectsSection />
-      <CertificatesSection />
-      <ContactSection />
-    </>
+    <div ref={component}>
+      <section className="container mx-auto py-8">
+        <div className="cv-anim flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+            Curriculum Vitae
+          </h1>
+          <Button asChild size="lg">
+            <a href="/mycv.pdf" download={`${resumeData.name.replace(/\s/g, '_')}_CV.pdf`}>
+              <FaDownload className="mr-2" />
+              Download PDF
+            </a>
+          </Button>
+        </div>
+        <div className="cv-anim relative w-full h-[calc(100vh-160px)] min-h-[600px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card">
+          <iframe
+            src="/mycv.pdf#toolbar=0&navpanes=0&scrollbar=0"
+            title={`${resumeData.name}'s CV`}
+            className="w-full h-full"
+            style={{ border: 'none' }}
+          />
+        </div>
+      </section>
+    </div>
   );
 }

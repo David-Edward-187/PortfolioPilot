@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
@@ -13,8 +14,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: `${resumeData.name} | ${resumeData.title}`,
-  description: `Portfolio of ${resumeData.name}, a skilled ${resumeData.title} creating futuristic and immersive web experiences.`,
+  title: `${resumeData.name} | Curriculum Vitae`,
+  description: `The professional curriculum vitae of ${resumeData.name}, a skilled ${resumeData.title}.`,
   icons:{
     icon:'/favicon.ico'
   }
