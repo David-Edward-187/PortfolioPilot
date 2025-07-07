@@ -6,7 +6,7 @@ import { FaAward, FaExternalLinkAlt } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { WobbleCard } from '@/components/ui/wobble-card';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,36 +65,34 @@ export function CertificatesSection() {
                             href: cert.credentialUrl!, 
                             target: '_blank', 
                             rel: 'noopener noreferrer',
-                            className: 'block focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-xl certificate-card',
+                            className: 'block group focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-2xl certificate-card',
                             'aria-label': `View certificate for ${cert.name}`
                           } 
                         : {
-                            className: 'certificate-card'
+                            className: 'certificate-card rounded-2xl'
                         };
 
                     return (
                         <Component key={index} {...props}>
-                            <Card className="h-full group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                                <CardHeader>
-                                    <div className="flex justify-between items-start gap-4">
-                                        <div className="flex items-start gap-4">
-                                            <FaAward className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
-                                            <div>
-                                                <CardTitle className="text-lg font-semibold">{cert.name}</CardTitle>
-                                                <p className="text-sm text-muted-foreground mt-1">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
-                                            </div>
+                            <WobbleCard containerClassName="h-full">
+                                <div className="flex justify-between items-start gap-4">
+                                    <div className="flex items-start gap-4">
+                                        <FaAward className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
+                                        <div>
+                                            <h4 className="text-lg font-semibold text-foreground">{cert.name}</h4>
+                                            <p className="text-sm text-muted-foreground mt-1">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
                                         </div>
-                                        {isClickable && (
-                                            <FaExternalLinkAlt className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
-                                        )}
                                     </div>
-                                </CardHeader>
+                                    {isClickable && (
+                                        <FaExternalLinkAlt className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                    )}
+                                </div>
                                 {cert.description && (
-                                    <CardContent className="pt-0">
-                                        <p className="text-sm text-foreground/80">{cert.description}</p>
-                                    </CardContent>
+                                    <div className="mt-4">
+                                        <p className="text-sm text-foreground/80 leading-relaxed">{cert.description}</p>
+                                    </div>
                                 )}
-                            </Card>
+                            </WobbleCard>
                         </Component>
                     );
                 })}
