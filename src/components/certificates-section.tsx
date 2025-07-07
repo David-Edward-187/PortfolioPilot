@@ -1,4 +1,3 @@
-
 "use client";
 
 import { resumeData } from '@/data/resume';
@@ -65,33 +64,37 @@ export function CertificatesSection() {
                             href: cert.credentialUrl!, 
                             target: '_blank', 
                             rel: 'noopener noreferrer',
-                            className: 'block group focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-2xl certificate-card',
+                            className: 'block group focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-2xl certificate-card self-stretch',
                             'aria-label': `View certificate for ${cert.name}`
                           } 
                         : {
-                            className: 'certificate-card rounded-2xl'
+                            className: 'certificate-card rounded-2xl self-stretch'
                         };
 
                     return (
                         <Component key={index} {...props}>
                             <WobbleCard containerClassName="h-full">
-                                <div className="flex justify-between items-start gap-4">
-                                    <div className="flex items-start gap-4">
-                                        <FaAward className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
-                                        <div>
-                                            <h4 className="text-lg font-semibold text-foreground">{cert.name}</h4>
-                                            <p className="text-sm text-muted-foreground mt-1">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
+                                <div className="flex flex-col justify-between h-full">
+                                    <div>
+                                        <div className="flex justify-between items-start gap-4">
+                                            <div className="flex items-start gap-3">
+                                                <FaAward className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
+                                                <div>
+                                                    <h4 className="text-lg font-bold text-foreground">{cert.name}</h4>
+                                                    <p className="text-sm text-muted-foreground mt-1">{cert.issuingOrganization} &middot; {cert.issueDate}</p>
+                                                </div>
+                                            </div>
+                                            {isClickable && (
+                                                <FaExternalLinkAlt className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                            )}
                                         </div>
                                     </div>
-                                    {isClickable && (
-                                        <FaExternalLinkAlt className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                    {cert.description && (
+                                        <div className="mt-4">
+                                            <p className="text-sm text-foreground/80 leading-relaxed">{cert.description}</p>
+                                        </div>
                                     )}
                                 </div>
-                                {cert.description && (
-                                    <div className="mt-4">
-                                        <p className="text-sm text-foreground/80 leading-relaxed">{cert.description}</p>
-                                    </div>
-                                )}
                             </WobbleCard>
                         </Component>
                     );
