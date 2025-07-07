@@ -32,9 +32,7 @@ export function PageWrapper({
 
       {!isLoading && (
         <>
-          <main className="relative z-10">
-            {children}
-          </main>
+          {children}
           <Toaster />
         </>
       )}

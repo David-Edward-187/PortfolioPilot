@@ -5,6 +5,9 @@ import './globals.css';
 import { ThemeProvider } from "@/components/theme-provider";
 import { resumeData } from '@/data/resume';
 import { PageWrapper } from '@/components/page-wrapper';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { ScrollToTopButton } from '@/components/scroll-to-top-button';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -14,8 +17,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: `Curriculum Vitae | ${resumeData.name}`,
-  description: `The professional curriculum vitae of ${resumeData.name}, a skilled ${resumeData.title}.`,
+  title: `${resumeData.name} | ${resumeData.title}`,
+  description: resumeData.bio,
   icons:{
     icon:'/logo.svg'
   }
@@ -36,7 +39,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <PageWrapper>
-            {children}
+            <Header />
+            <main className="relative z-10">
+              {children}
+            </main>
+            <Footer />
+            <ScrollToTopButton />
           </PageWrapper>
         </ThemeProvider>
       </body>
