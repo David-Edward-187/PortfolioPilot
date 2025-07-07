@@ -3,7 +3,7 @@
 
 import { resumeData } from '@/data/resume';
 import { Button } from '@/components/ui/button';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaDownload } from 'react-icons/fa';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
@@ -64,13 +64,23 @@ export function HeroSection() {
         <div className="hero-title-line mt-4 h-[4rem] md:h-[5rem]">
             <TypewriterEffect words={typewriterWords} />
         </div>
-        <div className="hero-cta mt-10">
+        <div className="hero-cta mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
               onClick={handleContactClick}
-              className="bg-primary text-primary-foreground text-lg h-14 px-8 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-glow-primary active:scale-100 group"
+              className="bg-primary text-primary-foreground text-lg h-14 px-8 rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-glow-primary active:scale-100 group w-full sm:w-auto"
             >
               Let's Connect <FaArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+              className="text-lg h-14 px-8 rounded-full transition-all duration-300 ease-in-out hover:scale-105 active:scale-100 group w-full sm:w-auto"
+            >
+              <a href="/mycv.pdf" target="_blank" rel="noopener noreferrer">
+                Download CV <FaDownload className="ml-2 h-5 w-5" />
+              </a>
             </Button>
         </div>
       </div>
