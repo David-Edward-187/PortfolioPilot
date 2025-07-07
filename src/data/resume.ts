@@ -48,11 +48,11 @@ export const resumeData: ResumeData = {
     }
   ],
   skills: {
-    "Languages": ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3", "Python"],
-    "Frameworks & Libraries": ["React", "Next.js", "Node.js", "Express", "Tailwind CSS", "GSAP", "Three.js"],
-    "Datastores": ["PostgreSQL", "MongoDB", "Redis", "Firebase"],
-    "Cloud & DevOps": ["Docker", "Vercel", "AWS (S3, EC2)", "CI/CD", "Git"],
-    "Other": ["Figma", "REST APIs", "GraphQL", "Agile/Scrum"]
+    "Languages": ["JavaScript", "TypeScript", "Dart","Python","HTML","CSS"],
+    "Frameworks & Libraries": ["React Native", "React", "Flutter", "Tailwind"],
+    "Datastores": [ "MySQL", "Firebase"],
+    "Cloud & DevOps": ["Git & GitHub"],
+    "Other": ["Agile Methodologies", "RESTful APIs", "Problem Solving", "Team Collaboration", "Continuous Learning"]
   },
   projects: [
     {
