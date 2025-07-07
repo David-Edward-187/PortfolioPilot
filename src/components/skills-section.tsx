@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -21,9 +22,11 @@ import {
   SiRedis, 
   SiFirebase, 
   SiVercel, 
-  SiGraphql 
+  SiGraphql,
+  SiDart,
+  SiMysql,
 } from 'react-icons/si';
-import { TbBrandNextjs } from 'react-icons/tb';
+import { TbBrandNextjs, TbBrandFlutter } from 'react-icons/tb';
 import { GoSync } from 'react-icons/go';
 import { HiServer } from 'react-icons/hi';
 
@@ -39,12 +42,12 @@ const iconMap: { [key: string]: { icon: React.ComponentType<any>, color: string 
   "CSS": { icon: IoLogoCss3, color: "#1572B6" },
   "CSS3": { icon: IoLogoCss3, color: "#1572B6" },
   "Python": { icon: IoLogoPython, color: "#3776AB" },
-  "Dart": { icon: SiTypescript, color: "#0175C2" }, // Placeholder for Dart
+  "Dart": { icon: SiDart, color: "#0175C2" },
 
   // Frameworks & Libraries
   "React": { icon: FaReact, color: "#61DAFB" },
   "React Native": { icon: FaReact, color: "#61DAFB" },
-  "Flutter": { icon: TbBrandNextjs, color: "#02569B" }, // Placeholder for Flutter
+  "Flutter": { icon: TbBrandFlutter, color: "#02569B" },
   "Next.js": { icon: TbBrandNextjs, color: "hsl(var(--foreground))" },
   "Node.js": { icon: FaNodeJs, color: "#339933" },
   "Express": { icon: SiExpress, color: "hsl(var(--foreground))" },
@@ -54,7 +57,7 @@ const iconMap: { [key: string]: { icon: React.ComponentType<any>, color: string 
   "Three.js": { icon: SiThreedotjs, color: "hsl(var(--foreground))" },
 
   // Datastores
-  "MySQL": { icon: SiPostgresql, color: "#4479A1" },
+  "MySQL": { icon: SiMysql, color: "#4479A1" },
   "PostgreSQL": { icon: SiPostgresql, color: "#336791" },
   "MongoDB": { icon: SiMongodb, color: "#47A248" },
   "Redis": { icon: SiRedis, color: "#DC382D" },
