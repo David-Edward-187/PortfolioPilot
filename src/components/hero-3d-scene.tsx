@@ -2,11 +2,16 @@
 'use client';
 
 import * as THREE from 'three';
-import { useRef, useState, useMemo, useEffect } from 'react';
+import { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useTheme } from 'next-themes';
 
-function Particles({ count = 5000, mouse }: any) {
+function Particles({ count = 5000, mouse, particleColor, lightColor }: {
+  count?: number;
+  mouse: React.MutableRefObject<number[]>;
+  particleColor: string;
+  lightColor: string;
+}) {
   const mesh = useRef<THREE.InstancedMesh>(null!);
   const light = useRef<THREE.PointLight>(null!);
   const { size, viewport } = useThree();
@@ -29,7 +34,7 @@ function Particles({ count = 5000, mouse }: any) {
   }, [count]);
 
   useFrame((state) => {
-    if (!mesh.current) return;
+    if (!mesh.current || !light.current) return;
     
     light.current.position.set(mouse.current[0] / aspect, -mouse.current[1] / aspect, 0);
 
@@ -58,10 +63,10 @@ function Particles({ count = 5000, mouse }: any) {
 
   return (
     <>
-      <pointLight ref={light} distance={100} intensity={10} color="hsl(var(--primary))" />
+      <pointLight ref={light} distance={100} intensity={10} color={lightColor} />
       <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
         <dodecahedronGeometry args={[0.2, 0]} />
-        <meshStandardMaterial color="hsl(var(--foreground))" roughness={0.5} />
+        <meshStandardMaterial color={particleColor} roughness={0.5} />
       </instancedMesh>
     </>
   );
@@ -70,26 +75,34 @@ function Particles({ count = 5000, mouse }: any) {
 export function Hero3DScene() {
   const mouse = useRef([0, 0]);
   const { resolvedTheme } = useTheme();
-  const [key, setKey] = useState(0);
 
-  useEffect(() => {
-    setKey(prevKey => prevKey + 1);
+  // Define colors for both themes to avoid using CSS variables in the canvas
+  const colors = useMemo(() => {
+    if (resolvedTheme === 'dark') {
+      return {
+        bgColor: 'hsl(224, 80%, 5%)',
+        fogColor: 'hsl(224, 80%, 5%)',
+        particleColor: 'hsl(220, 20%, 90%)',
+        lightColor: 'hsl(255, 85%, 65%)',
+      };
+    }
+    // Default to light theme
+    return {
+      bgColor: 'hsl(220, 30%, 98%)',
+      fogColor: 'hsl(220, 30%, 98%)',
+      particleColor: 'hsl(220, 20%, 10%)',
+      lightColor: 'hsl(255, 80%, 60%)',
+    };
   }, [resolvedTheme]);
-
-  const bgColor = resolvedTheme === 'dark' ? 'hsl(224, 80%, 5%)' : 'hsl(220, 30%, 98%)';
-  const fogColor = resolvedTheme === 'dark' ? 'hsl(224, 80%, 5%)' : 'hsl(220, 30%, 98%)';
 
   return (
     <Canvas
-      key={key}
       camera={{ fov: 100, position: [0, 0, 30] }}
-      onCreated={({ gl }) => {
-        gl.setClearColor(new THREE.Color(bgColor));
-      }}
       onPointerMove={(e) => (mouse.current = [e.clientX - window.innerWidth / 2, e.clientY - window.innerHeight / 2])}
     >
-      <fog attach="fog" args={[fogColor, 60, 100]} />
-      <Particles mouse={mouse} />
+      <color attach="background" args={[colors.bgColor]} />
+      <fog attach="fog" args={[colors.fogColor, 60, 100]} />
+      <Particles mouse={mouse} particleColor={colors.particleColor} lightColor={colors.lightColor} />
     </Canvas>
   );
 }
