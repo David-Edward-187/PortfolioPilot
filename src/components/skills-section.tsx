@@ -108,7 +108,7 @@ const SkillCard = ({ skill }: { skill: string }) => {
                     >
                         <CanvasRevealEffect
                             animationSpeed={5}
-                            containerClassName="bg-transparent"
+                            containerClassName="bg-background"
                             colors={canvasColors}
                             dotSize={2}
                         />
