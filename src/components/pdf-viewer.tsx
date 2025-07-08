@@ -8,13 +8,11 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { Skeleton } from './ui/skeleton';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-// Set up the worker to load the PDF
-if (typeof window !== 'undefined') {
-  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.js',
-    import.meta.url,
-  ).toString();
-}
+// Set up the worker to load the PDF. This is the recommended way for Next.js App Router.
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.mjs',
+  import.meta.url,
+).toString();
 
 
 export function PdfViewer({ fileUrl }: { fileUrl: string }) {
