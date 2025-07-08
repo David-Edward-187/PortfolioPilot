@@ -38,9 +38,9 @@ export default function CVPage() {
             </a>
           </Button>
         </div>
-        <div className="cv-anim relative w-full aspect-video max-h-[1000px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card">
+        <div className="cv-anim relative w-full max-w-4xl mx-auto aspect-[8.5/11] max-h-[1200px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card">
           <iframe
-            src="/mycv.pdf#toolbar=0&navpanes=0&scrollbar=0"
+            src="/mycv.pdf#toolbar=0&navpanes=0"
             title={`${resumeData.name}'s CV`}
             className="w-full h-full"
             style={{ border: 'none' }}
