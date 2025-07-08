@@ -3,6 +3,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { FiMenu, FiX } from 'react-icons/fi';
@@ -14,6 +15,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { scrollY } = useScroll();
   const [hidden, setHidden] = React.useState(false);
+  const pathname = usePathname();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -51,6 +53,10 @@ export function Header() {
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
   ];
+  
+  const isHomePage = pathname === '/';
+
+  const getHref = (href: string) => (isHomePage ? href : `/${href}`);
 
   return (
     <>
@@ -70,7 +76,7 @@ export function Header() {
             <nav className="relative rounded-full border border-border bg-background/50 backdrop-blur-md shadow-input flex justify-center items-center space-x-1 px-3 py-2">
                 {navLinks.map((link) => (
                     <Button key={link.href} variant="ghost" asChild className="text-sm font-medium text-muted-foreground hover:text-primary hover:bg-transparent">
-                        <a href={link.href}>{link.label}</a>
+                        <Link href={getHref(link.href)}>{link.label}</Link>
                     </Button>
                 ))}
                 <div className='pl-2'>
@@ -105,9 +111,9 @@ export function Header() {
             </div>
             <nav className="flex flex-col gap-8 pt-28 items-center text-center">
                 {navLinks.map((link) => (
-                    <a key={link.href} href={link.href} onClick={handleLinkClick} className="text-3xl font-semibold text-foreground hover:text-primary transition-colors">
+                    <Link key={link.href} href={getHref(link.href)} onClick={handleLinkClick} className="text-3xl font-semibold text-foreground hover:text-primary transition-colors">
                         {link.label}
-                    </a>
+                    </Link>
                 ))}
             </nav>
         </div>

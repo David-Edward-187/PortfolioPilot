@@ -2,6 +2,7 @@
 "use client";
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { resumeData } from '@/data/resume';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useEffect, useRef } from 'react';
@@ -14,6 +15,7 @@ export function Footer() {
     const component = useRef(null);
     const repositoryName = 'portfolio-pilot';
     const repositoryUrl = `${resumeData.contact.github}/${repositoryName}`;
+    const pathname = usePathname();
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -47,6 +49,9 @@ export function Footer() {
     { href: resumeData.contact.linkedin, icon: FaLinkedin, name: "LinkedIn" },
   ];
 
+  const isHomePage = pathname === '/';
+  const getHref = (href: string) => (isHomePage ? href : `/${href}`);
+
   return (
     <footer 
         ref={component}
@@ -64,7 +69,7 @@ export function Footer() {
             </div>
             <div className="footer-item flex justify-center gap-6 mb-6">
                 {navLinks.map(link => (
-                    <Link key={link.label} href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    <Link key={link.label} href={getHref(link.href)} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                         {link.label}
                     </Link>
                 ))}
