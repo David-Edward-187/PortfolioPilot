@@ -6,6 +6,22 @@ import { FaDownload } from 'react-icons/fa';
 import { resumeData } from '@/data/resume';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+// Dynamically import the PDF viewer to reduce initial bundle size.
+// SSR is disabled as this component relies on browser APIs.
+const PdfViewer = dynamic(() => 
+    import('@/components/pdf-viewer').then(mod => mod.PdfViewer), 
+    { 
+        ssr: false,
+        loading: () => (
+            <div className="w-full max-w-4xl mx-auto space-y-4">
+                <Skeleton className="h-[80vh] w-full rounded-lg" />
+            </div>
+        )
+    }
+);
 
 export default function CVPage() {
     const component = useRef(null);
@@ -38,13 +54,8 @@ export default function CVPage() {
             </a>
           </Button>
         </div>
-        <div className="cv-anim relative w-full max-w-4xl mx-auto aspect-[8.5/11] max-h-[1200px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card">
-          <iframe
-            src="/mycv.pdf#toolbar=0&navpanes=0"
-            title={`${resumeData.name}'s CV`}
-            className="w-full h-full"
-            style={{ border: 'none' }}
-          />
+        <div className="cv-anim relative w-full flex justify-center">
+            <PdfViewer fileUrl="/mycv.pdf" />
         </div>
       </section>
     </div>
