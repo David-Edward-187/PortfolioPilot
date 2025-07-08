@@ -31,10 +31,10 @@ export function PageWrapper({
       </AnimatePresence>
 
       {!isLoading && (
-        <>
+        <div className="flex flex-col min-h-screen">
           {children}
           <Toaster />
-        </>
+        </div>
       )}
     </>
   );

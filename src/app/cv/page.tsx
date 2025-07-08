@@ -42,7 +42,7 @@ export default function CVPage() {
 
   return (
     <div ref={component}>
-      <section className="container mx-auto py-12 md:py-16">
+      <section className="container mx-auto py-8">
         <div className="cv-anim flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground">
             Curriculum Vitae

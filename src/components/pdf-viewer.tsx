@@ -51,7 +51,7 @@ export function PdfViewer({ fileUrl }: { fileUrl: string }) {
         error={<p className="text-destructive text-center">Failed to load PDF file.</p>}
         className="flex flex-col items-center"
       >
-        <div className="w-full h-[85vh] overflow-y-auto rounded-lg border border-border/50 shadow-lg bg-card/50 p-2">
+        <div className="w-full h-[75vh] overflow-y-auto rounded-lg border border-border/50 shadow-lg bg-card/50 p-2">
              {Array.from(new Array(numPages), (el, index) => (
                 <Page
                     key={`page_${index + 1}`}

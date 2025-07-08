@@ -37,7 +37,7 @@ export default function RootLayout({
         >
           <PageWrapper>
             <Header />
-            <main className="relative z-10">
+            <main className="relative z-10 flex-grow">
               {children}
             </main>
             <Footer />
