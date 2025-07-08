@@ -9,7 +9,13 @@ import { Skeleton } from './ui/skeleton';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 // Set up the worker to load the PDF
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+if (typeof window !== 'undefined') {
+  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.js',
+    import.meta.url,
+  ).toString();
+}
+
 
 export function PdfViewer({ fileUrl }: { fileUrl: string }) {
   const [numPages, setNumPages] = useState<number | null>(null);
